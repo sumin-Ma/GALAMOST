@@ -4,16 +4,18 @@
    contain the root `toctree` directive.
 
 Welcome to galamost's documentation!
-====================================
+++++++++++++++++++++++++++++++++++++
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
 
-   chapter1 
+   introduction 
+   installation
+   usage
+   forcefield
 
 Indices and tables
-==================
+++++++++++++++++++
 
 * :ref:`genindex`
 * :ref:`modindex`

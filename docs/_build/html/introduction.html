@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; GALAMOST 3.1.0 documentation</title>
+  <title>Introduction &mdash; GALAMOST 3.1.0 documentation</title>
   
 
   
@@ -34,9 +33,11 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/> 
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="next" title="Compilation and installation" href="installation.html"/>
+        <link rel="prev" title="Welcome to galamost’s documentation!" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -89,8 +90,8 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
@@ -138,12 +139,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Introduction</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -155,11 +158,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>GALAMOST is a versatile molecular simulation package which is designed to utilize computational power of graphics processing units (GPUs) as much as possible. In addition to common features of molecular dynamics programs, it is developed specially for coarse-graining simulation of soft matter systems by encompassing some latest techniques, such as hybrid particle-field molecular dynamics, iterative Boltzmann inversion numerical potential method, soft anisotropic particle model, and chain-growth polymerization model. By continuously optimizing the algorithms, each method implemented on a single GPU by GALAMOST has gained a good performance. Some biomolecules and polymers can be modeled in coarse-grained MD (CGMD) simulations implemented by GALAMOST. The CGMD has become a powerful tool, accounting for the problems related to self-assembly, phase separation, and other phenomena of soft matter systems.
+The choices for general force field functions in GALAMOST will be listed in the following sections. Especially, a hybrid particle field MD technique (MD-SCF) for calculating intermolecular interactions has been incorporated to accelerate simulations. With this technique, the most computational time-consuming parts in MD, i.e., the intermolecular pair interactions, are replaced by interactions of particles with density fields. It will greatly speed up some slowly evolving collective processes in MD simulations, such as micro-phase separation and self-assembly of polymeric systems.
+In addition to analytical potentials, a numerical potential method can be used in GALAMOST by reading the potential tables derived from, such as iterative Boltzmann inversion (IBI) method or other structure-based coarse-graining methods by mapping the structural distributions onto the ones obtained either from atomistic simulations or from experiments. With the bottom-up coarse-graining scheme, the derived coarse-grained numerical potentials can be applied in larger systems, but under the same thermodynamic conditions. The numerical potential can describe not only non-bonded interactions, but also the bonded interactions, including stretching, angle bending and dihedral torsion interactions. With this mothed, you can freely design your force field.
+Besides some basic functions of general MD, such as CGMD, Brownian dynamics (BD), and dissipative particle dynamics(DPD), GALAMOST also encompasses several tailor-made modules: a soft anisotropic particle model has been incorporated for modeling some kinds of anisotropic particles and a stochastic chain-growth polymerization reaction model has been developed specially for the studies related to polymerization.
+In summary, by using these advanced simulation techniques on the GPU, GALAMOST enriches the routes for researchers to investigate soft matter systems via computer simulations.</p>
 </div>
 
 
@@ -169,6 +174,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="installation.html" class="btn btn-neutral float-right" title="Compilation and installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to galamost’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

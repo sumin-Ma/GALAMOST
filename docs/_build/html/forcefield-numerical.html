@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Numerical interaction &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="up" title="Force field" href="forcefield.html"/>
+        <link rel="next" title="Coulomb interaction" href="forcefield-coulomb.html"/>
+        <link rel="prev" title="Dihedral torsion" href="forcefield-bonded-dihedral.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Numerical interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#non-bonded-interaction">Non-bonded interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bond-interaction">Bond interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angle-interaction">Angle interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dihedral-interaction">Dihedral interaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="forcefield.html">Force field</a> &raquo;</li>
+        
+      <li>Numerical interaction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/forcefield-numerical.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="numerical-interaction">
+<h1>Numerical interaction<a class="headerlink" href="#numerical-interaction" title="Permalink to this headline">¶</a></h1>
+<p>The numerical non-bonded, bond, angle, and torsion potentials can be derived from IBI or reverse Monte Carlo method.
+With IBI method, the procedure starts with the potentials of mean force as guessed potentials and then optimizes
+the potentials iteratively by mapping the structural distributions (i.e., radial distribution function, RDF) onto
+the ones obtained either from atomistic simulations or from experiments. The resulting numerical potentials usually
+take the form as a table in which the potential values at discrete grid points of distance are given.
+In the treatment of tabulated potentials, the initial inputted potential tables on grid points of r are
+transformed to the tables (arrays) on grid points of <span class="math">\(z = r^2\)</span>. With this trick, the <span class="math">\(r = SQRT(r^2)\)</span> in the inner
+loop of force calculation is avoided, and the force is then calculated by</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+F=-r\frac{\partial V(r)}{\partial r}\frac{1}{r}=-2r\frac{\partial V(z)}{\partial z}
+\end{eqnarray*}</div></div></blockquote>
+<p>Within each interval between the grid points, potentials are fitted to a cubic spline function,
+more specifically, for each <span class="math">\(x_i&lt; x &lt; x_{i+1}\)</span>, let <span class="math">\(δ = x - x_i\)</span>, <span class="math">\(V(x)\)</span> is represented by</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V(x)=C_{0}+C_{1}\delta +C_{2}{\delta}^{2}+C_{3}{\delta}^{3}
+\end{eqnarray*}</div></div></blockquote>
+<p>where <span class="math">\(x\)</span> corresponds to <span class="math">\(z\)</span>, <span class="math">\(\theta\)</span>, and <span class="math">\(\varphi\)</span> for particle-particle distance square, bending angle,
+and torsion angle, respectively. <span class="math">\(i\)</span> is the index of the grid point and <span class="math">\(C_0\)</span> is the starting potential value of each grid point.
+Other parameters <span class="math">\(C_1\)</span>, <span class="math">\(C_2\)</span>, and <span class="math">\(C_3\)</span> are chosen to make the values of the first derivative and the second derivative
+at both ends of interval <span class="math">\(x_i\)</span> and <span class="math">\(x_{i+1}\)</span> equal to the correct values of function V.
+The potentials can be read from two columns in a file by function <code class="docutils literal"><span class="pre">setPotential()</span></code> with the formats, such as for pair interactions</p>
+<blockquote>
+<div><p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">PairPotential</span><span class="o">&gt;</span>
+<span class="n">r</span>  <span class="n">potential</span>
+<span class="o">&lt;/</span> <span class="n">PairPotential</span> <span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The distance points in first column should be in equal interval and the potentials at the distance points are given in second column.
+The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondPotential</span></code>, <code class="docutils literal"><span class="pre">AnglePotential</span></code>, and <code class="docutils literal"><span class="pre">Dihedralpotential</span></code>.</p>
+<p>The interaction parameters <span class="math">\((C_0, C_1, C_2, C_3)\)</span> can be read directly from four columns in a file by function <code class="docutils literal"><span class="pre">setParams()</span></code>
+with the formats, such as pair interactions with</p>
+<blockquote>
+<div><p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">PairForcePoints</span><span class="o">&gt;</span>
+<span class="n">C0</span>  <span class="n">C1</span>  <span class="n">C2</span>  <span class="n">C3</span>
+<span class="o">&lt;/</span><span class="n">PairForcePoints</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondForcePoints</span></code>, <code class="docutils literal"><span class="pre">AngleForcePoints</span></code>, and <code class="docutils literal"><span class="pre">DihedralForcePoints</span></code>.</p>
+<div class="section" id="non-bonded-interaction">
+<h2>Non-bonded interaction<a class="headerlink" href="#non-bonded-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PairForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
+               <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<span class="c1"># initializes an object of numerical pair force with system information, neighbor list,</span>
+<span class="c1"># and the number of potential points.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical interaction parameters(C0,C1,C2,C3) with type1, type2, cut-off,</span>
+<span class="c1"># inputting file name, start column, end column</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with type1, type2, potential array(r, potential)</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span><span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with type1, type2, inputting file name,</span>
+<span class="c1"># start column, end column.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pair</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PairForceTable</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">pair</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span> <span class="p">,</span><span class="mf">1.3</span><span class="p">,</span> <span class="s2">&quot;table.dat&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="bond-interaction">
+<h2>Bond interaction<a class="headerlink" href="#bond-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<span class="c1"># initializes an object of numerical bond force with system information</span>
+<span class="c1"># and the number of potential points.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical bond interaction parameters(C0,C1,C2,C3) with bond type,</span>
+<span class="c1"># cut-off, inputting file name, start column, end column.</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with bond type and the array of potential.</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with bond type, inputting file name,</span>
+<span class="c1"># start column, and end column.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bond</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForceTable</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">bond</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;1_1&#39;</span> <span class="p">,</span> <span class="s2">&quot;table.dat&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bond</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="angle-interaction">
+<h2>Angle interaction<a class="headerlink" href="#angle-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AngleForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npoint</span><span class="p">)</span>
+<span class="c1"># initializes a method of numerical angle force with system information</span>
+<span class="c1"># and the number of potential points.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">file</span> <span class="n">name</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical angle force parameters(C0,C1,C2,C3) with angle type,</span>
+<span class="c1"># inputting file name, start column, and end column.</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with angle type and the array of potential(r, potential).</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with angle type, inputting file name,</span>
+<span class="c1"># start column, and end column.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angle</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AngleForceTable</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">angle</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;111&#39;</span> <span class="p">,</span> <span class="s2">&quot;table.dat&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="dihedral-interaction">
+<h2>Dihedral interaction<a class="headerlink" href="#dihedral-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DihedralForceTable</span> <span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<span class="c1"># initializes an object of numerical dihedral force with system information</span>
+<span class="c1"># and the number of potential points.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical dihedral force parameters(C0,C1,C2,C3) with dihedral type,</span>
+<span class="c1"># inputting file name, start column, end column.</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with dihedral type and the array of potential(r, potential).</span>
+
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="c1"># specifies the numerical potential with dihedral type, inputting file name,</span>
+<span class="c1"># start column, end column.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dihedral</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DihedralForceTable</span> <span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">dihedral</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;111&#39;</span> <span class="p">,</span> <span class="s2">&quot;table.dat&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dihedral</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forcefield-coulomb.html" class="btn btn-neutral float-right" title="Coulomb interaction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="forcefield-bonded-dihedral.html" class="btn btn-neutral" title="Dihedral torsion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

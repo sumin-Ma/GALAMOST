@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to galamost&#39;s documentation! &mdash; GALAMOST 3.1.0 documentation</title>
+  <title>Welcome to galamost’s documentation! &mdash; GALAMOST 3.1.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GALAMOST 3.1.0 documentation" href="#"/>
-        <link rel="next" title="This is a Title" href="chapter1.html"/> 
+        <link rel="next" title="Introduction" href="introduction.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -89,9 +89,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">This is a Title</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
 </ul>
 
             
@@ -136,7 +138,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Welcome to galamost's documentation!</li>
+      <li>Welcome to galamost’s documentation!</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,13 +158,39 @@
            <div itemprop="articleBody">
             
   <div class="section" id="welcome-to-galamost-s-documentation">
-<h1>Welcome to galamost's documentation!<a class="headerlink" href="#welcome-to-galamost-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to galamost’s documentation!<a class="headerlink" href="#welcome-to-galamost-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="chapter1.html">This is a Title</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapter1.html#subject-subtitle">Subject Subtitle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter1.html#inline-markup">Inline Markup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#shift-lennard-jones-lj-interaction">Shift Lennard-Jones (LJ) interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#pair-interaction">Pair interaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-bonded-bond.html">Bond stretching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-bonded-angle.html">Angle bending</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-bonded-dihedral.html">Dihedral torsion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-numerical.html">Numerical interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-numerical.html#non-bonded-interaction">Non-bonded interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-numerical.html#bond-interaction">Bond interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-numerical.html#angle-interaction">Angle interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-numerical.html#dihedral-interaction">Dihedral interaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-coulomb.html#ewald-summation-theory">Ewald summation theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-coulomb.html#ewald-short-range-part">Ewald (short-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-coulomb.html#pppm-long-range-part">PPPM (long-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-coulomb.html#enuf-long-range-part">ENUF (long-range part)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -187,7 +215,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="chapter1.html" class="btn btn-neutral float-right" title="This is a Title" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -229,6 +257,7 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

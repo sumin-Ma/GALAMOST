@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="next" title="Force field" href="forcefield.html"/>
+        <link rel="prev" title="Compilation and installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>The C++ and CUDA C code has been written as an extended module of Python. We can use the functions of GALAMOST by loading and calling its modules through a Python script.
+With the prepared script, you should now be able to try running GALAMOST as:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">yourscript</span><span class="o">.</span><span class="n">gala</span> <span class="o">--</span><span class="n">gpu</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;</span><span class="n">a</span><span class="o">.</span><span class="n">log</span><span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Where you may specify the GPU id with the <code class="docutils literal"><span class="pre">--gpu=</span></code> option and output the screen information into <code class="docutils literal"><span class="pre">a.log</span></code> file. If the script file has no executive permission, the command of <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">yourscript.gala</span></code> should be executed before running above command.
+Here is an example of script for DPD simulation. The head of GALAMOST script usually is:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/opt/galamost3/lib&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">galamost</span>
+
+<span class="k">global</span> <span class="n">_options</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s1">&#39;--gpu&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;gpu&#39;</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s1">&#39;GPU on which to execute&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">_options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>where the first paragraph sets the path of the installed library of GALAMOST <code class="docutils literal"><span class="pre">galamost.so</span></code> for loading the Python extensible modules of GALAMOST. The second paragraph is used for parsing GPU id from the executive command.
+Then, by reading the configuration from a prepared XML file, a system with necessary information can be built up by</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;A.xml&#39;</span>
+<span class="n">build_method</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">XmlReader</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">perform_config</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PerformConfig</span><span class="p">(</span><span class="n">_options</span><span class="o">.</span><span class="n">gpu</span><span class="p">)</span>
+<span class="n">all_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AllInfo</span><span class="p">(</span><span class="n">build_method</span><span class="p">,</span><span class="n">perform_config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>After that, we need to build up an application which will call following defined and added objects by:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Further, we should define the needed objects by the classes of GALAMOST and pass them to the application, such as the following example: non-bonded DPD force, NVT thermostat with GWVV algorithm, and information analysis methods:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">neighbor_list</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NeighborList</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="mf">1.0</span> <span class="p">,</span><span class="mf">0.05</span><span class="p">)</span> <span class="c1"># (,rcut,rbuffer)</span>
+<span class="n">dpd</span><span class="o">=</span><span class="n">galamost</span><span class="o">.</span><span class="n">DpdForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="n">neighbor_list</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">12345</span><span class="p">)</span> <span class="c1"># (,,rcut,seed)</span>
+<span class="n">dpd</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1"># (,,alpha,sigma)</span>
+<span class="n">dpd</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1"># ( ,,alpha,sigma)</span>
+<span class="n">dpd</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span> <span class="c1"># ( ,,alpha,sigma)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dpd</span><span class="p">)</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s2">&quot;all&quot;</span> <span class="p">)</span>
+<span class="n">comp_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+<span class="n">Gwvv</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DpdGwvv</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Gwvv</span><span class="p">)</span>
+
+<span class="n">dinfo</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DumpInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="s1">&#39;data.log&#39;</span><span class="p">)</span>
+<span class="n">dinfo</span><span class="o">.</span><span class="n">setPeriod</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dinfo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The tail of script usually sets the number of time steps to run, and the function of analysis of neighbor list etc.</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">neighbor_list</span><span class="o">.</span><span class="n">printStats</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forcefield.html" class="btn btn-neutral float-right" title="Force field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="Compilation and installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

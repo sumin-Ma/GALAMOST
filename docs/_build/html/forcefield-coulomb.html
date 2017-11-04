@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Coulomb interaction &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="up" title="Force field" href="forcefield.html"/>
+        <link rel="prev" title="Numerical interaction" href="forcefield-numerical.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-numerical.html">Numerical interaction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coulomb interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ewald-summation-theory">Ewald summation theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ewald-short-range-part">Ewald (short-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pppm-long-range-part">PPPM (long-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enuf-long-range-part">ENUF (long-range part)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="forcefield.html">Force field</a> &raquo;</li>
+        
+      <li>Coulomb interaction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/forcefield-coulomb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="coulomb-interaction">
+<h1>Coulomb interaction<a class="headerlink" href="#coulomb-interaction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ewald-summation-theory">
+<h2>Ewald summation theory<a class="headerlink" href="#ewald-summation-theory" title="Permalink to this headline">¶</a></h2>
+<p>The Coulomb interaction between two charge particles is given by:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+    U\left( r \right)=f\frac{q_{i} q_{j}}{\varepsilon_{r}r}
+\end{eqnarray*}</div></div></blockquote>
+<p>where electric conversion factor <span class="math">\(f= 1/4\pi \varepsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}\)</span>.
+The total electrostatic energy of N particles and their periodic images is given by</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+ V=\frac{f}{2}\sum\limits_{n}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+n \right|}}}
+\end{eqnarray*}</div></div></blockquote>
+<p>The electrostatic potential is practically calculated in GALAMOST by</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+    U\left( r \right)=f\frac{q_{i} q_{j}}{r}
+\end{eqnarray*}</div></div></blockquote>
+<p>The electric conversion factor and relative dielectric constant are considered in the reduced charge.
+For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
+<span class="math">\(\sqrt{f/{\varepsilon }_{r}}\)</span> with <span class="math">\(f = 138.935\)</span>.</p>
+<p>The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part.
+The short-range part can employ Ewald summation and long-range part can employ PPPM or ENUF method.</p>
+</div>
+<div class="section" id="ewald-short-range-part">
+<h2>Ewald (short-range part)<a class="headerlink" href="#ewald-short-range-part" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
+<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># initializes an Ewald force object for a group of charged particles with system information,</span>
+<span class="c1"># neighbor list, particle set, and cut-off radius.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type0</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
+<span class="c1"># specifies the force parameters with kappa.</span>
+
+<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
+<span class="c1"># specifies the force parameters for all particle types with kappa.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+<span class="n">kappa</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">ewald</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">ewald</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ewald</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pppm-long-range-part">
+<h2>PPPM (long-range part)<a class="headerlink" href="#pppm-long-range-part" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
+<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">)</span>
+<span class="c1"># initializes a PPPM force object for a group of charged particles with system information,</span>
+<span class="c1">#  neighbor list, and particle group.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="nb">int</span> <span class="n">nx</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ny</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nz</span><span class="p">,</span> <span class="nb">int</span> <span class="n">order</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># specifies the PPPM force with the number of grid points in x, y, and z direction,</span>
+<span class="c1"># the order of interpolation, and the cutoff radius of direct force.</span>
+
+<span class="n">Real</span> <span class="n">getKappa</span><span class="p">()</span>
+<span class="c1"># return the kappa calculated by PPPM force.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+<span class="n">pppm</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+<span class="n">pppm</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pppm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="enuf-long-range-part">
+<h2>ENUF (long-range part)<a class="headerlink" href="#enuf-long-range-part" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
+<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">)</span>
+<span class="c1"># initializes an ENUF force object for a group of charged particles with system information,</span>
+<span class="c1"># neighbor list, and particle group.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="nb">int</span> <span class="n">precision</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Nx</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Ny</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Nz</span><span class="p">)</span>
+<span class="c1"># specifies the ENUF force with alpha, hyper sampling factor sigma,</span>
+<span class="c1"># precision determine the order of interpolation (precision*2+2),</span>
+<span class="c1"># and the number of grid points in x, y, and z direction.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+<span class="n">kappa</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">enuf</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+<span class="n">enuf</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enuf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="forcefield-numerical.html" class="btn btn-neutral" title="Numerical interaction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

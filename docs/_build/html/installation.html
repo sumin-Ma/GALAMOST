@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>This is a Title &mdash; GALAMOST 3.1.0 documentation</title>
+  <title>Compilation and installation &mdash; GALAMOST 3.1.0 documentation</title>
   
 
   
@@ -36,7 +36,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
-        <link rel="prev" title="Welcome to galamost&#39;s documentation!" href="index.html"/> 
+        <link rel="next" title="Usage" href="usage.html"/>
+        <link rel="prev" title="Introduction" href="introduction.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -89,13 +90,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">This is a Title</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subject-subtitle">Subject Subtitle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inline-markup">Inline Markup</a></li>
-</ul>
-</li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
 </ul>
 
             
@@ -140,13 +139,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>This is a Title</li>
+      <li>Compilation and installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/chapter1.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -159,35 +158,72 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="this-is-a-title">
-<h1>This is a Title<a class="headerlink" href="#this-is-a-title" title="Permalink to this headline">¶</a></h1>
-<p>That has a paragraph about a main subject and is set when the '='
-is at least the same length of the title itself.</p>
-<div class="section" id="subject-subtitle">
-<h2>Subject Subtitle<a class="headerlink" href="#subject-subtitle" title="Permalink to this headline">¶</a></h2>
-<p>Subtitles are set with '-' and are required to have the same length
-of the subtitle itself, just like titles.</p>
-<p>Lists can be unnumbered like:</p>
+  <div class="section" id="compilation-and-installation">
+<h1>Compilation and installation<a class="headerlink" href="#compilation-and-installation" title="Permalink to this headline">¶</a></h1>
+<p>The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program. The binary program and the code can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>
+Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path</p>
 <blockquote>
-<div><ul class="simple">
-<li>Item Foo</li>
-<li>Item Bar</li>
-</ul>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configuration</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">galamost3</span>
+</pre></div>
+</div>
 </div></blockquote>
-<p>Or automatically numbered:</p>
+<p>More configuration commands are given here:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="43%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Commands</th>
+<th class="head">Functions</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>–prefix=</td>
+<td>installation path</td>
+<td>–prefix=/opt/galamost3</td>
+</tr>
+<tr class="row-odd"><td>–cuda_arch=</td>
+<td>compute capability of GPU</td>
+<td>–cuda_arch=20</td>
+</tr>
+<tr class="row-even"><td>–precision=</td>
+<td>precision format</td>
+<td>–precision=double</td>
+</tr>
+<tr class="row-odd"><td>–gprof=</td>
+<td>profiling tool</td>
+<td>–gprof=on</td>
+</tr>
+<tr class="row-even"><td>–gdb=</td>
+<td>gdb tool</td>
+<td>–gdb=on</td>
+</tr>
+<tr class="row-odd"><td>–cuda=</td>
+<td>the path of CUDA toolkit</td>
+<td>–cuda=/usr/local/cuda</td>
+</tr>
+<tr class="row-even"><td>–boost=</td>
+<td>the path of boost library</td>
+<td>–boost=/usr</td>
+</tr>
+<tr class="row-odd"><td>–python=</td>
+<td>the path of Python program</td>
+<td>–python=/usr</td>
+</tr>
+</tbody>
+</table>
+<p>After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>Item 1</li>
-<li>Item 2</li>
-</ol>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span> <span class="o">-</span><span class="n">j4</span>
+<span class="c1"># where -j indicates the number of threads to compile the code.</span>
+</pre></div>
+</div>
 </div></blockquote>
-</div>
-<div class="section" id="inline-markup">
-<h2>Inline Markup<a class="headerlink" href="#inline-markup" title="Permalink to this headline">¶</a></h2>
-<p>Words can have <em>emphasis in italics</em> or be <strong>bold</strong> and you can define
-code samples with back quotes, like when you talk about a command: <code class="docutils literal"><span class="pre">sudo</span></code>
-gives you super user powers!</p>
-</div>
 </div>
 
 
@@ -200,8 +236,10 @@ gives you super user powers!</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="index.html" class="btn btn-neutral" title="Welcome to galamost&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -242,6 +280,7 @@ gives you super user powers!</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

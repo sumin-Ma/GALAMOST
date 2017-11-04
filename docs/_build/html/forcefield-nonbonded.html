@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Short range non-bonded interactions &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="up" title="Force field" href="forcefield.html"/>
+        <link rel="next" title="Bonded interactions" href="forcefield-bonded.html"/>
+        <link rel="prev" title="Force field" href="forcefield.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Short range non-bonded interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shift-lennard-jones-lj-interaction">Shift Lennard-Jones (LJ) interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pair-interaction">Pair interaction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#harmonic-repulsion">Harmonic repulsion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gaussian-repulsion">Gaussian repulsion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ipl-potential">IPL potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-commands">Script commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-numerical.html">Numerical interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="forcefield.html">Force field</a> &raquo;</li>
+        
+      <li>Short range non-bonded interactions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/forcefield-nonbonded.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="short-range-non-bonded-interactions">
+<h1>Short range non-bonded interactions<a class="headerlink" href="#short-range-non-bonded-interactions" title="Permalink to this headline">¶</a></h1>
+<p>The net non-bonded force of each particle is produced by summing all the non-bonded forces of neighboring particles on the basis of a neighbor list that lists
+the interacting particles for each particle, built beforehand. Because of the independence of parallel CUDA threads, a pair of interacting particles is inevitably
+included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy
+functions are included in GALAMOST</p>
+<div class="section" id="lennard-jones-lj-interaction">
+<h2>Lennard-Jones (LJ) interaction<a class="headerlink" href="#lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
+                  \alpha \left( \frac{\sigma}{r} \right)^{6} \right] &amp; r &lt; r_{\mathrm{cut}} \\
+                    = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
+<li><span class="math">\(\alpha\)</span> - <em>alpha</em> (unitless) - <em>optional</em>: defaults to 1.0</li>
+<li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)
+- <em>optional</em>: defaults to the global r_cut specified in the pair command</li>
+</ul>
+</div></blockquote>
+<p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LjForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># initializes a LJ interaction calculation object with system information, neighbor list,</span>
+    <span class="c1"># and cut-off radius.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
+<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha,</span>
+<span class="c1"># and cut-off of radius.</span>
+<span class="n">void</span> <span class="n">setEnergy_shift</span><span class="p">()</span>
+<span class="c1"># calls the function to shift LJ potential to be zero at cut-off point.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lj</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">LjForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">lj</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">lj</span><span class="o">.</span><span class="n">setEnergy_shift</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lj</span><span class="p">)</span>       <span class="c1"># Note: adds this object to the application.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="shift-lennard-jones-lj-interaction">
+<h2>Shift Lennard-Jones (LJ) interaction<a class="headerlink" href="#shift-lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+   V_{\mathrm{SLJ}}(r)=&amp;4 \varepsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\alpha \left( \frac{\sigma }{r-\Delta } \right)^{6} \right]
+                               &amp; r&lt;(r_{\mathrm{cut}}+\Delta )  \\
+                    = &amp; 0 &amp; r \ge (r_{\mathrm{cut}}+\Delta )  \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
+<li><span class="math">\(\alpha\)</span> - <em>alpha</em> (unitless) - <em>optional</em>: defaults to 1.0</li>
+<li><span class="math">\(\Delta = (d_{i} + d_{j})/2 - \sigma\)</span> - (in distance units); <span class="math">\(d_{i}\)</span> and <span class="math">\(d_{j}\)</span> are the diameter of particle <span class="math">\(i\)</span> and <span class="math">\(j\)</span> which can be input from XML file.</li>
+<li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)
+- <em>optional</em>: defaults to the global r_cut specified in the pair command</li>
+</ul>
+</div></blockquote>
+<p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SljForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># initializes a shift LJ interaction object with system information, neighbor list,</span>
+<span class="c1"># and cut-off radius.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
+<span class="c1"># specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
+<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha,</span>
+<span class="c1"># and cut-off of radius.</span>
+<span class="n">void</span> <span class="n">setEnergy_shift</span><span class="p">()</span>
+<span class="c1"># calls the function to shift LJ potential to be zero at the cut-off point.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">slj</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">SljForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">slj</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">slj</span><span class="o">.</span><span class="n">setEnergy_shift</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">slj</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="pair-interaction">
+<h2>Pair interaction<a class="headerlink" href="#pair-interaction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="harmonic-repulsion">
+<h3>Harmonic repulsion<a class="headerlink" href="#harmonic-repulsion" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V_{\mathrm{harmonic}}(r)=&amp;\frac{1}{2}\alpha \left(1-\frac{r}{r_{cut}} \right)^{2} &amp; r &lt; r_{\mathrm{cut}} \\
+                    = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\alpha\)</span> - <em>alpha</em> (in energy units)</li>
+<li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#pair-sc-label"><span class="std std-ref">Script commands</span></a></p>
+</div></blockquote>
+</div>
+<div class="section" id="gaussian-repulsion">
+<h3>Gaussian repulsion<a class="headerlink" href="#gaussian-repulsion" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] &amp; r &lt; r_{\mathrm{cut}} \\
+                    = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
+<li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#pair-sc-label"><span class="std std-ref">Script commands</span></a></p>
+</div></blockquote>
+</div>
+<div class="section" id="ipl-potential">
+<h3>IPL potential<a class="headerlink" href="#ipl-potential" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r &lt; r_{\mathrm{cut}} \\
+                    = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
+<li><span class="math">\(n\)</span> - <em>n</em> (unitless)</li>
+<li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)</li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="#pair-sc-label"><span class="std std-ref">Script commands</span></a></p>
+</div></blockquote>
+</div>
+<div class="section" id="script-commands">
+<span id="pair-sc-label"></span><h3>Script commands<a class="headerlink" href="#script-commands" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PairForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">)</span>
+<span class="c1"># initializes a pair interaction object with system information and neighbor list.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
+             <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
+<span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
+<span class="c1"># parameter1, parameter2, cut-off radius, and potential type.</span>
+
+<span class="n">void</span> <span class="n">setShiftParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
+                  <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_shift</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
+<span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
+<span class="c1"># parameter1, parameter2, cut-off radius, shift radius, and potential type.</span>
+<span class="c1"># This method employs the shift function same as the one of GROMACS.</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function types</th>
+<th class="head">Parameter0</th>
+<th class="head">Parameter1</th>
+<th class="head">Parameter2</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>lj12_6</td>
+<td>epsilon</td>
+<td>sigma</td>
+<td>alpha</td>
+</tr>
+<tr class="row-odd"><td>lj9_6</td>
+<td>epsilon</td>
+<td>sigma</td>
+<td>alpha</td>
+</tr>
+<tr class="row-even"><td>harmonic</td>
+<td>alpha</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>gauss</td>
+<td>epsilon</td>
+<td>sigma</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ipl</td>
+<td>epsilon</td>
+<td>sigma</td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pair</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PairForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">)</span>
+<span class="n">pair</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PairForce</span><span class="o">.</span><span class="n">Func</span><span class="o">.</span><span class="n">harmonic</span><span class="p">)</span>
+<span class="n">pair</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>  <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PairForce</span><span class="o">.</span><span class="n">Func</span><span class="o">.</span><span class="n">gauss</span><span class="p">)</span>
+<span class="n">pair</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>  <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PairForce</span><span class="o">.</span><span class="n">Func</span><span class="o">.</span><span class="n">ipl</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forcefield-bonded.html" class="btn btn-neutral float-right" title="Bonded interactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="forcefield.html" class="btn btn-neutral" title="Force field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
