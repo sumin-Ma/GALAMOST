@@ -79,7 +79,7 @@ Non-bonded interaction
    Example::
    
       pair = galamost.PairForceTable(all_info, neighbor_list, 1.3, 2000)
-      pair.setParams('A', 'A' ,1.3, "table.dat", 0, 3)
+      pair.setParams('A', 'A', 1.3, "table.dat", 0, 3)
       app.add(pair)
 	  
 Bond interaction
@@ -106,8 +106,8 @@ Bond interaction
 	  
    Example::
    
-      bond = galamost.BondForceTable(all_info, 2.0, 2000)
-      bond.setParams('1_1' , "table.dat", 0, 3)
+      bond = galamost.BondForceTable(all_info, 2000)
+      bond.setParams('1_1', 2.0, "table.dat", 0, 3)
       app.add(bond)
 	  
 Angle interaction
@@ -135,7 +135,7 @@ Angle interaction
    Example::
    
       angle = galamost.AngleForceTable(all_info, 500)
-      angle.setParams('111' , "table.dat", 0, 3)
+      angle.setParams('111', "table.dat", 0, 3)
       app.add(angle)
 	  
 Dihedral interaction
@@ -163,7 +163,7 @@ Dihedral interaction
    Example::
    
       dihedral = galamost.DihedralForceTable (all_info, 500)
-      dihedral.setParams('111' , "table.dat", 0, 3) 
+      dihedral.setParams('111', "table.dat", 0, 3) 
       app.add(dihedral)
 
 
