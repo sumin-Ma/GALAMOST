@@ -4,7 +4,7 @@ Angle bending
 Harmonic angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -18,14 +18,15 @@ Harmonic angle potential
     - :math:`k` - potential constant ``k`` (in units of energy/radians^2)
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in degrees)
 
-   Constructor::
-   
-      AngleForceHarmonic(boost::shared_ptr<AllInfo> all_info)
-      # initializes an angle harmonic interaction object with system information.
+.. py:class:: AngleForceHarmonic(all_info)
+
+   The constructor of angle harmonic interaction object.
+ 
+   :param AllInfo all_info: The system information.
 	  
    Functions::
    
-      void setParams(string& type, Real k, Real theta0)
+      setParams(string type, Real k, Real theta0)
       # specifies the angle harmonic force parameters with angle type, 
       # potential constant, and equilibrium angle degree.
 	  
@@ -38,7 +39,7 @@ Harmonic angle potential
 Cosine harmonic angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -52,14 +53,15 @@ Cosine harmonic angle potential
     - :math:`k` - potential constant ``k`` (in units of energy)
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in degrees)
 
-   Constructor::
-   
-      AngleForceHarmonicCos(boost::shared_ptr<AllInfo> all_info)
-      # initializes an angle cosine harmonic interaction object with system information.
-	  
+.. py:class:: AngleForceHarmonicCos(all_info)
+
+   The constructor of angle cosine harmonic interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& type, Real k, Real theta0)
+      setParams(string type, Real k, Real theta0)
       # specifies the angle cosine harmonic force parameters with angle type, 
       # potential constant, and equilibrium angle degree.
 	  
@@ -72,7 +74,7 @@ Cosine harmonic angle potential
 Cosine angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -86,14 +88,15 @@ Cosine angle potential
     - :math:`k` - potential constant ``k`` (in units of energy)
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in degrees)
 
-   Constructor::
-   
-      AngleForceCos(boost::shared_ptr<AllInfo> all_info)
-      # initializes an angle cosine interaction object with system information.
-	  
+.. py:class:: AngleForceCos(all_info)
+
+   The constructor of angle cosine interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& type, Real k, Real theta0)
+      setParams(string type, Real k, Real theta0)
       # specifies the angle cosine force parameters with angle type, 
       # spring constant, and equilibrium angle degree.
 	  

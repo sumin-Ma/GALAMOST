@@ -4,7 +4,7 @@ Bond stretching
 Harmonic bond potential
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -18,14 +18,15 @@ Harmonic bond potential
     - :math:`k` - spring constant ``k`` (in units of energy/distance^2)
     - :math:`r_0` - equilibrium length ``r0`` (in distance units)
 
-   Constructor::
-   
-      BondForceHarmonic(boost::shared_ptr<AllInfo> all_info)
-      # initializes a harmonic bond interaction object with system information.
-	  
+.. py:class:: BondForceHarmonic(all_info)
+
+   The constructor of harmonic bond interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& type, Real k, Real r0)
+      setParams(string type, Real k, Real r0)
       # specifies the bond interaction parameters with bond type, 
       # spring constant, and equilibrium length.
 
@@ -38,7 +39,7 @@ Harmonic bond potential
 FENE bond potential
 ^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -66,27 +67,28 @@ FENE bond potential
     Note:
         :math:`\Delta` only will be considered (default value is 0.0) by calling the function ``setConsiderDiameter(True)`` 	
 	
-   Constructor::
-   
-      BondForceFene(boost::shared_ptr<AllInfo> all_info)
-      # initializes a FENE bond interaction object with system information.
+.. py:class:: BondForceFene(all_info)
+
+   The constructor of FENE bond interaction object.
+ 
+   :param AllInfo all_info: The system information.
 	  
    Functions::
    
-      void setParams(string& type, Real k, Real rm)
+      setParams(string type, Real k, Real rm)
       # specifies the FENE bond force parameters with bond type, 
       # spring constant, and the maximum length of the bond.
 	  
-      void setParams(string& type, Real k, Real rm, Real r0)
+      setParams(string type, Real k, Real rm, Real r0)
       # specifies the FENE bond force parameters with bond type, 
       # spring constant, maximum length, and equilibrium length.
 	  
-      void setParams(string& type, Real k, Real rm, Real epsilon, Real sigma)
+      setParams(string type, Real k, Real rm, Real epsilon, Real sigma)
       # specifies the FENE+LJ bond parameters with bond type, spring constant, 
       # maximum length of the bond, epsilon, sigma (the latter two parameters 
       # for LJ force between two bonded particles ).
 
-      void setConsiderDiameter(bool con_dia)
+      setConsiderDiameter(bool con_dia)
       # the diameter of particles will be considered or not
 
    Example::
@@ -98,7 +100,7 @@ FENE bond potential
 Polynominal bond potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -114,14 +116,15 @@ Polynominal bond potential
     - :math:`r_0` - equilibrium length ``r0`` (in distance units)
 
 	
-   Constructor:: 
-   
-      BondForcePolynomial(boost::shared_ptr<AllInfo> all_info)
-      # initializes a polynomial bond interaction object with system information.
-	  
+.. py:class:: BondForcePolynomial(all_info)
+
+   The constructor of polynomial bond interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string &type, Real k1, Real k2, Real r0)
+      setParams(string type, Real k1, Real k2, Real r0)
       # specifies the polynomial bond force parameters with bond type, spring constant k1,
       # spring constant k2, and equilibrium bond length r0.
 	  
@@ -135,7 +138,7 @@ Polynominal bond potential
 Morse bond potential
 ^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -152,14 +155,15 @@ Morse bond potential
     - :math:`r_0` - equilibrium length ``r0`` (in distance units)
     - :math:`r_m` - maximum interaction range ``rm`` (in distance units)
 	
-   Constructor::
-   
-      BondForceMorse(boost::shared_ptr<AllInfo> all_info)
-      # initializes a Morse bond interaction object and system information.
-	  
+.. py:class:: BondForceMorse(all_info)
+
+   The constructor of Morse bond interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& name, Real k, Real alpha, Real r0, Real rm)
+      setParams(string name, Real k, Real alpha, Real r0, Real rm)
       # specifies the Morse bond force parameters with bond type, spring constant, alpha 
       # controls the 'width' of the potential, equilibrium bond length, maximum interaction range.
 	  

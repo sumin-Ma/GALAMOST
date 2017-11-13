@@ -93,8 +93,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Short range non-bonded interactions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
@@ -113,6 +115,11 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
 
             
@@ -186,8 +193,7 @@ included independently in neighbor list in the mode that one thread calculates a
 functions are included in GALAMOST</p>
 <div class="section" id="lennard-jones-lj-interaction">
 <h2>Lennard-Jones (LJ) interaction<a class="headerlink" href="#lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -203,19 +209,32 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 - <em>optional</em>: defaults to the global r_cut specified in the pair command</li>
 </ul>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LjForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># initializes a LJ interaction calculation object with system information, neighbor list,</span>
-    <span class="c1"># and cut-off radius.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="LjForce">
+<em class="property">class </em><code class="descname">LjForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#LjForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of LJ interaction calculation object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
 <span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
-<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+
+<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
 <span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha,</span>
 <span class="c1"># and cut-off of radius.</span>
-<span class="n">void</span> <span class="n">setEnergy_shift</span><span class="p">()</span>
+
+<span class="n">setEnergy_shift</span><span class="p">()</span>
 <span class="c1"># calls the function to shift LJ potential to be zero at cut-off point.</span>
 </pre></div>
 </div>
@@ -226,12 +245,12 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lj</span><span class="p">)</span>       <span class="c1"># Note: adds this object to the application.</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="shift-lennard-jones-lj-interaction">
 <h2>Shift Lennard-Jones (LJ) interaction<a class="headerlink" href="#shift-lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -248,19 +267,32 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 - <em>optional</em>: defaults to the global r_cut specified in the pair command</li>
 </ul>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SljForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># initializes a shift LJ interaction object with system information, neighbor list,</span>
-<span class="c1"># and cut-off radius.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="SljForce">
+<em class="property">class </em><code class="descname">SljForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#SljForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of shift LJ interaction calculation object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
 <span class="c1"># specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
-<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+
+<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
 <span class="c1"># specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha,</span>
 <span class="c1"># and cut-off of radius.</span>
-<span class="n">void</span> <span class="n">setEnergy_shift</span><span class="p">()</span>
+
+<span class="n">setEnergy_shift</span><span class="p">()</span>
 <span class="c1"># calls the function to shift LJ potential to be zero at the cut-off point.</span>
 </pre></div>
 </div>
@@ -271,15 +303,16 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">slj</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="pair-interaction">
 <h2>Pair interaction<a class="headerlink" href="#pair-interaction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="harmonic-repulsion">
 <h3>Harmonic repulsion<a class="headerlink" href="#harmonic-repulsion" title="Permalink to this headline">¶</a></h3>
+<p>Description:</p>
 <blockquote>
-<div><p>Description:</p>
-<blockquote>
+<div><blockquote>
 <div><div class="math">
 \begin{eqnarray*}
 V_{\mathrm{harmonic}}(r)=&amp;\frac{1}{2}\alpha \left(1-\frac{r}{r_{cut}} \right)^{2} &amp; r &lt; r_{\mathrm{cut}} \\
@@ -295,9 +328,9 @@ V_{\mathrm{harmonic}}(r)=&amp;\frac{1}{2}\alpha \left(1-\frac{r}{r_{cut}} \right
 </div>
 <div class="section" id="gaussian-repulsion">
 <h3>Gaussian repulsion<a class="headerlink" href="#gaussian-repulsion" title="Permalink to this headline">¶</a></h3>
+<p>Description:</p>
 <blockquote>
-<div><p>Description:</p>
-<blockquote>
+<div><blockquote>
 <div><div class="math">
 \begin{eqnarray*}
 V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] &amp; r &lt; r_{\mathrm{cut}} \\
@@ -314,9 +347,9 @@ V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac
 </div>
 <div class="section" id="ipl-potential">
 <h3>IPL potential<a class="headerlink" href="#ipl-potential" title="Permalink to this headline">¶</a></h3>
+<p>Description:</p>
 <blockquote>
-<div><p>Description:</p>
-<blockquote>
+<div><blockquote>
 <div><div class="math">
 \begin{eqnarray*}
 V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r &lt; r_{\mathrm{cut}} \\
@@ -334,19 +367,29 @@ V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r 
 </div>
 <div class="section" id="script-commands">
 <span id="pair-sc-label"></span><h3>Script commands<a class="headerlink" href="#script-commands" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PairForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">)</span>
-<span class="c1"># initializes a pair interaction object with system information and neighbor list.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="PairForce">
+<em class="property">class </em><code class="descname">PairForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em><span class="sig-paren">)</span><a class="headerlink" href="#PairForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of pair interaction calculation object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
              <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
 <span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
 <span class="c1"># parameter1, parameter2, cut-off radius, and potential type.</span>
 
-<span class="n">void</span> <span class="n">setShiftParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
+<span class="n">setShiftParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
                   <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_shift</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
 <span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
 <span class="c1"># parameter1, parameter2, cut-off radius, shift radius, and potential type.</span>
@@ -403,7 +446,8 @@ V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r 
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 </div>

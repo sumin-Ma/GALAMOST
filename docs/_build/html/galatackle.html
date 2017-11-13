@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GalaTackle &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="prev" title="Molgen" href="molgen.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GalaTackle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#function-1">Function 1:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-2">Function 2:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-3">Function 3:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-4">Function 4:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-5">Function 5:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-6">Function 6:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-7">Function 7:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-8">Function 8:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-9">Function 9:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-10">Function 10:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-11">Function 11:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-12">Function 12:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-13">Function 13:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-14">Function 14:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-15">Function 15:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-16">Function 16:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-17">Function 17:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-18">Function 18:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function-19">Function 19:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>GalaTackle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/galatackle.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="galatackle">
+<h1>GalaTackle<a class="headerlink" href="#galatackle" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The “galaTackle” is a plugin of GALAMOST to obtain some important statistical information by analyzing the output configuration files.
+You can use this tool by running the following</p>
+<blockquote>
+<div><p>Command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">galaTackle</span> <span class="n">particle</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">galaTackle</span> <span class="n">particle0</span><span class="o">.</span><span class="n">xml</span> <span class="n">particle1</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">galaTackle</span> <span class="o">*.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The “galaTackle” plugin supports the configuration files with XML and DCD formats.
+The XML files can be tackled independently. However, a DCD trajectory file has to be tackled along with
+a XML file for particle attributes and topological information,</p>
+<blockquote>
+<div><p>Such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">galaTackle</span> <span class="n">particle</span><span class="o">.</span><span class="n">xml</span> <span class="n">trajectory</span><span class="o">.</span><span class="n">dcd</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The “galaTackle” can be found in the installed “bin” folder and the XML configuration files should be put in current directory.
+After the executing of above command, a menu of many options will be listed. You can choose one or several functions by
+input the number index separated by blank and press enter to execute them.</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Function list:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-------------------------------------------------------------</span>
+<span class="mi">1</span>  <span class="n">Rg</span><span class="o">^</span><span class="mi">2</span>              <span class="mi">2</span>  <span class="n">Ed</span><span class="o">^</span><span class="mi">2</span>             <span class="mi">3</span>  <span class="n">RDF</span>
+<span class="mi">4</span>  <span class="n">bond_distri</span>       <span class="mi">5</span>  <span class="n">angle_distri</span>     <span class="mi">6</span>  <span class="n">dihedral_distri</span>
+<span class="mi">7</span>  <span class="n">stress</span> <span class="n">tensor</span>     <span class="mi">8</span>  <span class="n">density</span>          <span class="mi">9</span>  <span class="n">unwrapping</span>
+<span class="mi">10</span> <span class="n">MSD</span>               <span class="mi">11</span> <span class="n">RDF</span><span class="o">-</span><span class="n">CM</span>           <span class="mi">12</span> <span class="n">MSD</span><span class="o">-</span><span class="n">CM</span>
+<span class="mi">13</span> <span class="n">ents</span>              <span class="mi">14</span> <span class="n">strfac</span>           <span class="mi">15</span> <span class="n">domain</span> <span class="n">size</span>
+<span class="mi">16</span> <span class="n">dynamic</span> <span class="n">strfac</span>    <span class="mi">17</span> <span class="n">config</span> <span class="n">check</span>     <span class="mi">18</span> <span class="n">RDF</span> <span class="n">between</span> <span class="n">types</span>
+<span class="mi">19</span> <span class="n">XML</span> <span class="n">conversion</span>
+<span class="o">-------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="function-1">
+<h3>Function 1:<a class="headerlink" href="#function-1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the mean square of gyration radius and output result to <code class="docutils literal"><span class="pre">rg2.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-2">
+<h3>Function 2:<a class="headerlink" href="#function-2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the mean square of end to end distance and output result to <code class="docutils literal"><span class="pre">ed2.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-3">
+<h3>Function 3:<a class="headerlink" href="#function-3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the radial distribution function of all particles and output result to <code class="docutils literal"><span class="pre">*.rdf</span></code> and <code class="docutils literal"><span class="pre">rdf.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:maxbin=100|gpu=0|rmax=Lx/2|bondex=false|angleex=false|molex=false</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-4">
+<h3>Function 4:<a class="headerlink" href="#function-4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the distribution of bond lengths and output result to <code class="docutils literal"><span class="pre">bond_distr.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:npot=2001</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-5">
+<h3>Function 5:<a class="headerlink" href="#function-5" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the distribution of angle degrees and output result to <code class="docutils literal"><span class="pre">angle_distr.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:npot=2001</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-6">
+<h3>Function 6:<a class="headerlink" href="#function-6" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the distribution of dihedral degrees and output result to <code class="docutils literal"><span class="pre">dihedral_distr.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:npot=2001</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-7">
+<h3>Function 7:<a class="headerlink" href="#function-7" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the stress tensor by inputing the parameters of force calculation and output result to <code class="docutils literal"><span class="pre">stress_tensor.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:bondex=true|bodyex=true|diameter=true</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-8">
+<h3>Function 8:<a class="headerlink" href="#function-8" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the real density (g/cm^3) with basic units [amu] and [nm] and output result to <code class="docutils literal"><span class="pre">density.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-9">
+<h3>Function 9:<a class="headerlink" href="#function-9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To unwrap or shift molecules by changing the image information</dd>
+<dt>Parameters:</dt>
+<dd>:unwrap_molecule=true|label_free_particle=particle type| molecule_center_in_box=false|shiftx=0.0|shifty=0.0|remove_image=false| convert_constraint_to_bond=false</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-10">
+<h3>Function 10:<a class="headerlink" href="#function-10" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To compute mean square displacement of all particles and output result to <code class="docutils literal"><span class="pre">msd.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-11">
+<h3>Function 11:<a class="headerlink" href="#function-11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the radial distribution function of the mass center of molecules and output result to <code class="docutils literal"><span class="pre">rdf_cm.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:maxbin=100|gpu=0|rmax=Lx/2</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-12">
+<h3>Function 12:<a class="headerlink" href="#function-12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To compute mean square displacement of the mass center of molecules and output result to <code class="docutils literal"><span class="pre">msd_cm.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-13">
+<h3>Function 13:<a class="headerlink" href="#function-13" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To analyze the entanglements of polymers and output result to <code class="docutils literal"><span class="pre">ents.log</span></code>.</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-14">
+<h3>Function 14:<a class="headerlink" href="#function-14" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the structure factor of particles and output result to <code class="docutils literal"><span class="pre">*.strf</span></code> and <code class="docutils literal"><span class="pre">strf.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:kmax=80|gpu=0|qbin=2pi/L</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-15">
+<h3>Function 15:<a class="headerlink" href="#function-15" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the domain size of components in mixtures and output result to <code class="docutils literal"><span class="pre">domsize.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:kmax=20|qc=0.4690|gpu=0</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-16">
+<h3>Function 16:<a class="headerlink" href="#function-16" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To calculate the dynamic structure factor of particles and output result to <code class="docutils literal"><span class="pre">dstrf.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:kmax=20|q=7.0</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-17">
+<h3>Function 17:<a class="headerlink" href="#function-17" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To check the configuration including the minimum distance of particles, and the Maximum and minimum length of bonds, etc. and output result to <code class="docutils literal"><span class="pre">config_check.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:bondex=true|angleex=true|dihedralex=true|bodyex=true|rcut=2.0</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-18">
+<h3>Function 18:<a class="headerlink" href="#function-18" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To compute the radial distribution function between types and output result to <code class="docutils literal"><span class="pre">*.type.rdf</span></code> and <code class="docutils literal"><span class="pre">rdf_by_type.log</span></code>.</dd>
+<dt>Parameters:</dt>
+<dd>:maxbin=100|gpu=0|rmax=Lx/2|bondex=false|angleex=false|molex=false</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="function-19">
+<h3>Function 19:<a class="headerlink" href="#function-19" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>Description:</dt>
+<dd>To convert XML files into other formats</dd>
+<dt>Parameters:</dt>
+<dd>:lammps=false|gromacs=false</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="molgen.html" class="btn btn-neutral" title="Molgen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

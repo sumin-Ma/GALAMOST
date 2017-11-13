@@ -44,14 +44,13 @@ Ewald (short-range part)
 
    Constructor::
    
-      EwaldForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist,
-      boost::shared_ptr<ParticleSet> group, Real r_cut)
+      EwaldForce(AllInfo all_info, NeighborList nlist, ParticleSet group, Real r_cut)
       # initializes an Ewald force object for a group of charged particles with system information,
       # neighbor list, particle set, and cut-off radius.
 	  
    Functions::
    
-      void setParams(string& type0, string& type1, Real kappa)
+      void setParams(string type0, string type1, Real kappa)
       # specifies the force parameters with kappa.
 	  
       void setParams(Real kappa)
@@ -70,10 +69,9 @@ PPPM (long-range part)
 
    Constructor::
    
-      PPPMForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist,
-      boost::shared_ptr<ParticleSet> group)	  
+      PPPMForce(AllInfo all_info, NeighborList nlist, ParticleSet group)	  
       # initializes a PPPM force object for a group of charged particles with system information,
-      #  neighbor list, and particle group.
+      # neighbor list, and particle group.
 	  
    Functions::
    
@@ -96,8 +94,7 @@ ENUF (long-range part)
 
    Constructor::
    
-      ENUFForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist,
-      boost::shared_ptr<ParticleSet> group)	  
+      ENUFForce(AllInfo all_info, NeighborList nlist, ParticleSet group)	  
       # initializes an ENUF force object for a group of charged particles with system information,
       # neighbor list, and particle group.
 	  

@@ -58,21 +58,20 @@ Non-bonded interaction
 
    Constructor::
    
-      PairForceTable(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist, 
-                     unsigned int npot)
+      PairForceTable(AllInfo all_info, NeighborList nlist, unsigned int npot)
       # initializes an object of numerical pair force with system information, neighbor list,
       # and the number of potential points.
 	  
    Functions::
    
-      void setParams(string& type1, string& type2, Real r_cut, string& filename, int scol, int ecol)
+      void setParams(string type1, string type2, Real r_cut, string& filename, int scol, int ecol)
       # specifies the numerical interaction parameters(C0,C1,C2,C3) with type1, type2, cut-off, 
       # inputting file name, start column, end column
 	  
-      void setPotential(string& type1, string& type2, std::vector<Real2> potential)
+      void setPotential(string type1, string type2, std::vector<Real2> potential)
       # specifies the numerical potential with type1, type2, potential array(r, potential)
 	  
-      void setPotential(string& type1, string& type2, string& filename, int scol,int ecol)
+      void setPotential(string type1, string type2, string& filename, int scol,int ecol)
       # specifies the numerical potential with type1, type2, inputting file name,
       # start column, end column.
 	  
@@ -87,20 +86,20 @@ Bond interaction
 
    Constructor::
    
-      BondForceTable(boost::shared_ptr<AllInfo> all_info, unsigned int npot)
+      BondForceTable(AllInfo all_info, unsigned int npot)
       # initializes an object of numerical bond force with system information 
       # and the number of potential points.
 	  
    Functions::
    
-      void setParams(string& type, Real r_cut, string& filename, int scol, int ecol)
+      void setParams(string type, Real r_cut, string filename, int scol, int ecol)
       # specifies the numerical bond interaction parameters(C0,C1,C2,C3) with bond type,
       # cut-off, inputting file name, start column, end column.
 	   
-      void setPotential(string& type, std::vector<Real2> potential)
+      void setPotential(string type, std::vector<Real2> potential)
       # specifies the numerical potential with bond type and the array of potential.
 	  
-      void setPotential(string& type, string& filename, int scol, int ecol)
+      void setPotential(string type, string filename, int scol, int ecol)
       # specifies the numerical potential with bond type, inputting file name,
       # start column, and end column.
 	  
@@ -115,20 +114,20 @@ Angle interaction
 
    Constructor::
    
-      AngleForceTable(boost::shared_ptr<AllInfo> all_info, unsigned int npoint)
+      AngleForceTable(AllInfo all_info, unsigned int npoint)
       # initializes a method of numerical angle force with system information
       # and the number of potential points.
 	  
    Functions::
    
-      void setParams(string& type, string& file name, int scol, int ecol)
+      void setParams(string type, string file name, int scol, int ecol)
       # specifies the numerical angle force parameters(C0,C1,C2,C3) with angle type, 
       # inputting file name, start column, and end column.
 	  
-      void setPotential(string& type, std::vector<Real2> potential)
+      void setPotential(string type, std::vector<Real2> potential)
       # specifies the numerical potential with angle type and the array of potential(r, potential).
 	  
-      void setPotential(string& type, string& filename, int scol, int ecol)
+      void setPotential(string type, string filename, int scol, int ecol)
       # specifies the numerical potential with angle type, inputting file name, 
       # start column, and end column.	  
 	  
@@ -143,20 +142,20 @@ Dihedral interaction
 
    Constructor::
    
-      DihedralForceTable (boost::shared_ptr<AllInfo> all_info, unsigned int npot)
+      DihedralForceTable(AllInfo all_info, unsigned int npot)
       # initializes an object of numerical dihedral force with system information 
       # and the number of potential points.
 	  
    Functions::
    
-      void setParams(string& type, string& filename, int scol, int ecol)
+      void setParams(string type, string filename, int scol, int ecol)
       # specifies the numerical dihedral force parameters(C0,C1,C2,C3) with dihedral type,
       # inputting file name, start column, end column.
 	  
-      void setPotential(string& dihedral_type, std::vector<Real2> potential)
+      void setPotential(string dihedral_type, std::vector<Real2> potential)
       # specifies the numerical potential with dihedral type and the array of potential(r, potential).
 	  
-      void setPotential(string& dihedral_type, string& file, int scol, int ecol)
+      void setPotential(string dihedral_type, string file, int scol, int ecol)
       # specifies the numerical potential with dihedral type, inputting file name,
       # start column, end column.	  
 	  

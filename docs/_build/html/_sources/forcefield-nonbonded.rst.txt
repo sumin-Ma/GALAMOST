@@ -9,7 +9,7 @@ functions are included in GALAMOST
 Lennard-Jones (LJ) interaction
 ------------------------------
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -28,20 +28,24 @@ Lennard-Jones (LJ) interaction
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
       - *optional*: defaults to the global r_cut specified in the pair command
 
-   Constructor::
-   
-      LjForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist, Real r_cut)
-      # initializes a LJ interaction calculation object with system information, neighbor list, 
-	  # and cut-off radius.
+.. py:class:: LjForce(all_info, nlist, r_cut)
+
+   The constructor of LJ interaction calculation object.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.
 	  
    Functions::
    
-      void setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha)
+      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha)
       # specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
-      void setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
+	  
+      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
       # specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha, 
       # and cut-off of radius.
-      void setEnergy_shift()
+	  
+      setEnergy_shift()
       # calls the function to shift LJ potential to be zero at cut-off point.
    
    Example::
@@ -55,7 +59,7 @@ Lennard-Jones (LJ) interaction
 Shift Lennard-Jones (LJ) interaction
 ------------------------------------
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -75,22 +79,25 @@ Shift Lennard-Jones (LJ) interaction
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
       - *optional*: defaults to the global r_cut specified in the pair command
 
-	
-	
-   Constructor::
-   
-      SljForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist, Real r_cut)
-      # initializes a shift LJ interaction object with system information, neighbor list, 
-      # and cut-off radius.
+	  
+.. py:class:: SljForce(all_info, nlist, r_cut)
+
+   The constructor of shift LJ interaction calculation object.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.
 	  
    Functions::
    
-      void setParams(string & type1, string &type2, Real epsilon, Real sigma, Real alpha)
+      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha)
       # specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
-      void setParams(string& type1, string& type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
+	  
+      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
       # specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha, 
       # and cut-off of radius.
-      void setEnergy_shift()
+	  
+      setEnergy_shift()
       # calls the function to shift LJ potential to be zero at the cut-off point.
 	  
    Example::
@@ -106,7 +113,7 @@ Pair interaction
 Harmonic repulsion
 ^^^^^^^^^^^^^^^^^^
    
-   Description:
+Description:
    
     .. math::
         :nowrap:
@@ -127,7 +134,7 @@ Harmonic repulsion
 Gaussian repulsion
 ^^^^^^^^^^^^^^^^^^
    
-   Description:
+Description:
    
     .. math::
         :nowrap:
@@ -149,7 +156,7 @@ Gaussian repulsion
 IPL potential
 ^^^^^^^^^^^^^
    
-   Description:
+Description:
    
     .. math::
         :nowrap:
@@ -174,19 +181,21 @@ IPL potential
 Script commands
 ^^^^^^^^^^^^^^^
 
-   Constructor::
-   
-      PairForce(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<NeighborList> nlist)
-      # initializes a pair interaction object with system information and neighbor list.
-    
+.. py:class:: PairForce(all_info, nlist)
+
+   The constructor of pair interaction calculation object.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+
    Functions::
    
-      void setParams(string& type1, string& type2, Real param0, Real param1, 
+      setParams(string type1, string type2, Real param0, Real param1, 
                    Real param2, Real r_cut, Func function)
       # specifies the interaction and its parameters with type1, type2, parameter0,
       # parameter1, parameter2, cut-off radius, and potential type.
    
-      void setShiftParams(string& type1, string& type2, Real param0, Real param1,
+      setShiftParams(string type1, string type2, Real param0, Real param1,
                         Real param2, Real r_cut, Real r_shift, Func function)
       # specifies the interaction and its parameters with type1, type2, parameter0, 
       # parameter1, parameter2, cut-off radius, shift radius, and potential type.

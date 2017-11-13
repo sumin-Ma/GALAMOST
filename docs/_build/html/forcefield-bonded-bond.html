@@ -93,8 +93,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a><ul class="current">
@@ -113,6 +115,11 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
 
             
@@ -184,8 +191,7 @@
 <h1>Bond stretching<a class="headerlink" href="#bond-stretching" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="harmonic-bond-potential">
 <h2>Harmonic bond potential<a class="headerlink" href="#harmonic-bond-potential" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -196,13 +202,20 @@ V_{\mathrm{bond}}(r) = \frac{1}{2}k\left( r - r_{0} \right)^{2}
 <li><span class="math">\(r_0\)</span> - equilibrium length <code class="docutils literal"><span class="pre">r0</span></code> (in distance units)</li>
 </ul>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceHarmonic</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">)</span>
-<span class="c1"># initializes a harmonic bond interaction object with system information.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="BondForceHarmonic">
+<em class="property">class </em><code class="descname">BondForceHarmonic</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceHarmonic" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of harmonic bond interaction object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
 <span class="c1"># specifies the bond interaction parameters with bond type,</span>
 <span class="c1"># spring constant, and equilibrium length.</span>
 </pre></div>
@@ -213,12 +226,12 @@ V_{\mathrm{bond}}(r) = \frac{1}{2}k\left( r - r_{0} \right)^{2}
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bondforce</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="fene-bond-potential">
 <h2>FENE bond potential<a class="headerlink" href="#fene-bond-potential" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -244,26 +257,33 @@ V_{\mathrm{bond}}(r)=-\frac{1}{2}k {r_{m}}^{2}\log \left[ 1-\frac{\left(r - r_{0
 <dd><span class="math">\(\Delta\)</span> only will be considered (default value is 0.0) by calling the function <code class="docutils literal"><span class="pre">setConsiderDiameter(True)</span></code></dd>
 </dl>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceFene</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">)</span>
-<span class="c1"># initializes a FENE bond interaction object with system information.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="BondForceFene">
+<em class="property">class </em><code class="descname">BondForceFene</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceFene" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of FENE bond interaction object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
 <span class="c1"># specifies the FENE bond force parameters with bond type,</span>
 <span class="c1"># spring constant, and the maximum length of the bond.</span>
 
-<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
+<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
 <span class="c1"># specifies the FENE bond force parameters with bond type,</span>
 <span class="c1"># spring constant, maximum length, and equilibrium length.</span>
 
-<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">)</span>
 <span class="c1"># specifies the FENE+LJ bond parameters with bond type, spring constant,</span>
 <span class="c1"># maximum length of the bond, epsilon, sigma (the latter two parameters</span>
 <span class="c1"># for LJ force between two bonded particles ).</span>
 
-<span class="n">void</span> <span class="n">setConsiderDiameter</span><span class="p">(</span><span class="nb">bool</span> <span class="n">con_dia</span><span class="p">)</span>
+<span class="n">setConsiderDiameter</span><span class="p">(</span><span class="nb">bool</span> <span class="n">con_dia</span><span class="p">)</span>
 <span class="c1"># the diameter of particles will be considered or not</span>
 </pre></div>
 </div>
@@ -273,12 +293,12 @@ V_{\mathrm{bond}}(r)=-\frac{1}{2}k {r_{m}}^{2}\log \left[ 1-\frac{\left(r - r_{0
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bondforcefene</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="polynominal-bond-potential">
 <h2>Polynominal bond potential<a class="headerlink" href="#polynominal-bond-potential" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -290,13 +310,20 @@ V_{\mathrm{bond}}(r)=k_{1}\left( r - r_{0} \right)^{2}+k_{2}\left( r - r_{0} \ri
 <li><span class="math">\(r_0\)</span> - equilibrium length <code class="docutils literal"><span class="pre">r0</span></code> (in distance units)</li>
 </ul>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForcePolynomial</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">)</span>
-<span class="c1"># initializes a polynomial bond interaction object with system information.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="BondForcePolynomial">
+<em class="property">class </em><code class="descname">BondForcePolynomial</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForcePolynomial" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of polynomial bond interaction object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="o">&amp;</span><span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
 <span class="c1"># specifies the polynomial bond force parameters with bond type, spring constant k1,</span>
 <span class="c1"># spring constant k2, and equilibrium bond length r0.</span>
 </pre></div>
@@ -307,12 +334,12 @@ V_{\mathrm{bond}}(r)=k_{1}\left( r - r_{0} \right)^{2}+k_{2}\left( r - r_{0} \ri
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bondforce_polynomial</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="morse-bond-potential">
 <h2>Morse bond potential<a class="headerlink" href="#morse-bond-potential" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Description:</p>
+<p>Description:</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
@@ -326,13 +353,20 @@ V_{\mathrm{bond}}(r)=&amp;k\left[ 1-e^{-\alpha \left( r-r_{0} \right)} \right]^{
 <li><span class="math">\(r_m\)</span> - maximum interaction range <code class="docutils literal"><span class="pre">rm</span></code> (in distance units)</li>
 </ul>
 </div></blockquote>
-<p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceMorse</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">)</span>
-<span class="c1"># initializes a Morse bond interaction object and system information.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="BondForceMorse">
+<em class="property">class </em><code class="descname">BondForceMorse</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceMorse" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of Morse bond interaction object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
 <span class="c1"># specifies the Morse bond force parameters with bond type, spring constant, alpha</span>
 <span class="c1"># controls the &#39;width&#39; of the potential, equilibrium bond length, maximum interaction range.</span>
 </pre></div>
@@ -343,7 +377,8 @@ V_{\mathrm{bond}}(r)=&amp;k\left[ 1-e^{-\alpha \left( r-r_{0} \right)} \right]^{
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bondforce_morse</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

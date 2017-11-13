@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Molgen &mdash; GALAMOST 3.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+        <link rel="next" title="GalaTackle" href="galatackle.html"/>
+        <link rel="prev" title="Application" href="application.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> GALAMOST
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Molgen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#molecule-generator-description">Molecule generator description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#molecule-definition">Molecule definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objects-definition">Objects definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generator-definition">Generator definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GALAMOST</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Molgen</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/molgen.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="molgen">
+<h1>Molgen<a class="headerlink" href="#molgen" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="molecule-generator-description">
+<h2>Molecule generator description<a class="headerlink" href="#molecule-generator-description" title="Permalink to this headline">¶</a></h2>
+<p>The initial configurations can be generated by employing a Plug-Ins (named Molgen) of GALAMOST and output in XML format.</p>
+<blockquote>
+<div><p>The head of script:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/opt/galamost3/lib&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">molgen</span>
+<span class="c1"># sets the path of molgen.so and imports an extended Python module of molgen.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Two steps to employ this tool:
+1.      Defines each single molecule or object (the object module is usually used to describe the objects with various shape).
+2.      Sets box size and the number of defined molecules and objects.
+A molecule is defined by “Molecule” class with the number of particles, particle types, topology, and so on.
+An object is defined by “Object” class with the number of particles and shape.</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol1</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;A,A,A,A&quot;</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="s2">&quot;0-1,1-2, 2-3&quot;</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setBondLength</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setAngleDegree</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="mf">90.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>One or more molecules or objects can be defined in this way.
+Then the box size and the number of these molecules should be specified by “Generators”.</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gen</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Generators</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">setMinimumDistance</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">outPutXml</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The configuration of a molecule can be partially read from a XML file and
+partially defined in the script.</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol0</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="s2">&quot;sphere.xml&quot;</span><span class="p">,</span><span class="mi">65</span><span class="p">)</span>
+<span class="c1"># total 65 particles with 60 read from &quot;sphere.xml&quot;.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;B*5&quot;</span><span class="p">)</span>
+<span class="c1"># define the types of the particles which will be generated.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="s2">&quot;59-60,60-61,61-62,62-63,63-64&quot;</span><span class="p">)</span>
+<span class="c1"># add the bonds.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If the configuration of a molecule (including particle positions, types, topology and so on)
+has been completely given in a XML file, we only need to randomly put it by employing “object”.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Examples::</dt>
+<dd>mol1 = molgen.Object(“mol1.xml”, 65, molgen.Object.Shape.none)
+gen=molgen.Generators(30,30,30)
+gen.addMolecule(mol1,20)
+gen.outPutXml(“test”)</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="molecule-definition">
+<h2>Molecule definition<a class="headerlink" href="#molecule-definition" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Molecule</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">np</span><span class="p">)</span>
+<span class="c1"># initializes a molecule with the number of particles.</span>
+
+<span class="n">Molecule</span><span class="p">(</span><span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">np</span><span class="p">)</span>
+<span class="c1"># initializes a molecule and reads particles data from the XML file</span>
+<span class="c1"># with file name and the number of particles.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParticleTypes</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">)</span>
+<span class="c1"># specifies the particle types separated by comma according to particle index</span>
+<span class="c1"># form 0 to N-1 in sequence.</span>
+
+<span class="n">void</span> <span class="n">setTopology</span><span class="p">(</span><span class="n">string</span> <span class="n">topo</span><span class="p">)</span>
+<span class="c1"># specifies the bonds separated by comma which connect two particles</span>
+<span class="c1"># separated by crossband.</span>
+
+<span class="n">void</span> <span class="n">setIsotactic</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
+<span class="c1"># switches the isotactic configuration of molecule.</span>
+
+<span class="n">void</span> <span class="n">setBondLength</span><span class="p">(</span><span class="n">double</span> <span class="n">bl</span><span class="p">)</span>
+<span class="c1"># specifies the bond length of all bonds.</span>
+
+<span class="n">void</span> <span class="n">setBondLength</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">double</span> <span class="n">bl</span><span class="p">)</span>
+<span class="c1"># specifies the bond length of the bond which connect two kind particles with</span>
+<span class="c1"># particle type1, type2, and bond length.</span>
+
+<span class="n">void</span> <span class="n">setAngleDegree</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">sstring</span> <span class="n">type2</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">double</span> <span class="n">degree</span><span class="p">)</span>
+<span class="c1"># specifies the angle with particle type 1, type2, type3, and degree.</span>
+
+<span class="n">void</span> <span class="n">setAngleDegree</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx1</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx2</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx3</span><span class="p">,</span> <span class="n">double</span> <span class="n">degree</span><span class="p">)</span>
+<span class="c1"># specifies the angle with particle idx1, idx2, idx3, and degree.</span>
+
+<span class="n">void</span> <span class="n">setDihedralDegree</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">string</span> <span class="n">type3</span><span class="p">,</span> <span class="n">string</span> <span class="n">type4</span><span class="p">,</span> <span class="n">double</span> <span class="n">degree</span><span class="p">)</span>
+<span class="c1"># specifies the dihedral with particle type1, type2, type3, type4, and degree.</span>
+
+<span class="n">void</span> <span class="n">setDihedralDegree</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx1</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx2</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx3</span><span class="p">,</span>
+<span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx4</span><span class="p">,</span> <span class="n">double</span> <span class="n">degree</span><span class="p">)</span>
+<span class="c1"># specifies the dihedral with particle idx1, idx2, idx3, idx4, and degree.</span>
+
+<span class="n">void</span> <span class="n">setMass</span><span class="p">(</span><span class="n">double</span> <span class="n">mass</span><span class="p">)</span>
+<span class="c1"># specifies the mass of all particles.</span>
+
+<span class="n">void</span> <span class="n">setMass</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">double</span> <span class="n">mass</span><span class="p">)</span>
+<span class="c1"># specifies the mass of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setMass</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">double</span> <span class="n">mass</span><span class="p">)</span>
+<span class="c1"># specifies the mass of a particle.</span>
+
+<span class="n">void</span> <span class="n">setCharge</span><span class="p">(</span><span class="n">double</span> <span class="n">charge</span><span class="p">)</span>
+<span class="c1"># specifies the charge of all particles.</span>
+
+<span class="n">void</span> <span class="n">setCharge</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">double</span> <span class="n">charge</span><span class="p">)</span>
+<span class="c1"># specifies the charge of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setCharge</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">double</span> <span class="n">charge</span><span class="p">)</span>
+<span class="c1"># specifies the charge of a particle.</span>
+
+<span class="n">void</span> <span class="n">setOrientation</span><span class="p">()</span>
+<span class="c1"># specifies all particles having orientation.</span>
+
+<span class="n">void</span> <span class="n">setOrientation</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">)</span>
+<span class="c1"># specifies a kind of particles having orientation.</span>
+
+<span class="n">void</span> <span class="n">setOrientation</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">)</span>
+<span class="c1"># specifies a particle having orientation.</span>
+
+<span class="n">void</span> <span class="n">setInert</span><span class="p">(</span><span class="n">double</span> <span class="n">inertx</span><span class="p">,</span> <span class="n">double</span> <span class="n">inerty</span><span class="p">,</span> <span class="n">double</span> <span class="n">inertz</span><span class="p">)</span>
+<span class="c1"># specifies the inert in x, y, z directions of all particles.</span>
+
+<span class="n">void</span> <span class="n">setInert</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">double</span> <span class="n">inertx</span><span class="p">,</span> <span class="n">double</span> <span class="n">inerty</span><span class="p">,</span> <span class="n">double</span> <span class="n">inertz</span><span class="p">)</span>
+  　<span class="c1"># specifies the inert in x, y, z directions of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setInert</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">double</span> <span class="n">inertx</span><span class="p">,</span> <span class="n">double</span> <span class="n">inerty</span><span class="p">,</span> <span class="n">double</span> <span class="n">inertz</span><span class="p">)</span>
+<span class="c1"># specifies the inert in x, y, z directions of a particle.</span>
+
+<span class="n">void</span> <span class="n">setQuaternion</span><span class="p">()</span>
+<span class="c1"># specifies all particles having quaternion.</span>
+
+<span class="n">void</span> <span class="n">setQuaternion</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">)</span>
+<span class="c1"># specifies a kind of particles having quaternion.</span>
+
+<span class="n">void</span> <span class="n">setQuaternion</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">)</span>
+<span class="c1"># specifies a particle having quaternion.</span>
+
+<span class="n">void</span> <span class="n">setDiameter</span><span class="p">(</span><span class="n">double</span> <span class="n">di</span><span class="p">)</span>
+<span class="c1"># specifies the diameter of all particles.</span>
+
+<span class="n">void</span> <span class="n">setDiameter</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">double</span> <span class="n">di</span><span class="p">)</span>
+<span class="c1"># specifies the diameter of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setDiameter</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">double</span> <span class="n">di</span><span class="p">)</span>
+<span class="c1"># specifies the diameter of a particle.</span>
+
+<span class="n">void</span> <span class="n">setCris</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">cris</span><span class="p">)</span>
+<span class="c1"># specifies the cris of all particles.</span>
+
+<span class="n">void</span> <span class="n">setCris</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">cris</span><span class="p">)</span>
+<span class="c1"># specifies the cris of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setCris</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">cris</span><span class="p">)</span>
+<span class="c1"># specifies the cris of a particle.</span>
+
+<span class="n">void</span> <span class="n">setInit</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">init</span><span class="p">)</span>
+<span class="c1"># specifies the init of all particles.</span>
+
+<span class="n">void</span> <span class="n">setInit</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">init</span><span class="p">)</span>
+<span class="c1"># specifies the init of a kind of particles.</span>
+
+<span class="n">void</span> <span class="n">setInit</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">init</span><span class="p">)</span>
+<span class="c1"># specifies the init of a particle.</span>
+
+<span class="n">void</span> <span class="n">setBody</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">body_id</span><span class="p">)</span>
+<span class="c1"># specifies the body id of all particles (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setBody</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">body_id</span><span class="p">)</span>
+<span class="c1"># specifies the body id of a kind of particles (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setBody</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">body_id</span><span class="p">)</span>
+<span class="c1"># specifies the body id of a particle (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setMolecule</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">mol_id</span><span class="p">)</span>
+<span class="c1"># specifies the molecule id of all particles (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setMolecule</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">mol_id</span><span class="p">)</span>
+<span class="c1"># specifies the mlecule id of a kind of particles (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setMolecule</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">particle_index</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">mol_id</span><span class="p">)</span>
+<span class="c1"># specifies the molecule id of a particle (start form 0).</span>
+
+<span class="n">void</span> <span class="n">setBox</span><span class="p">(</span><span class="n">double</span> <span class="n">lx</span><span class="p">,</span> <span class="n">double</span> <span class="n">ly</span><span class="p">,</span> <span class="n">double</span> <span class="n">lz</span><span class="p">)</span>
+<span class="c1"># specifies the size of box where the molecules are generated.</span>
+
+<span class="n">void</span> <span class="n">setBox</span><span class="p">(</span><span class="n">double</span> <span class="n">lx_min</span><span class="p">,</span> <span class="n">double</span> <span class="n">lx_max</span><span class="p">,</span> <span class="n">double</span> <span class="n">ly_min</span><span class="p">,</span> <span class="n">double</span> <span class="n">ly_max</span><span class="p">,</span>
+    <span class="n">double</span> <span class="n">lz_min</span><span class="p">,</span> <span class="n">double</span> <span class="n">lz_max</span><span class="p">)</span>
+<span class="c1"># specifies the box where the molecules are generated with</span>
+<span class="c1"># box boundaries: lx_min, lx_max, ly_min, ly_max, lz_min, lz_max.</span>
+
+<span class="n">void</span> <span class="n">setSphere</span><span class="p">(</span><span class="n">double</span> <span class="n">sx</span><span class="p">,</span> <span class="n">double</span> <span class="n">sy</span><span class="p">,</span> <span class="n">double</span> <span class="n">sz</span><span class="p">,</span> <span class="n">double</span> <span class="n">r_min</span><span class="p">,</span> <span class="n">double</span> <span class="n">r_max</span><span class="p">)</span>
+<span class="c1"># specifies the sphere where the molecules are generated with</span>
+<span class="c1"># sphere center position(sx, sy, sz), spherical shell radius r_min, and r_max.</span>
+<span class="c1"># The molecules are generated in the range r_min&lt; r&lt;r_max.</span>
+
+<span class="n">void</span> <span class="n">setCylinder</span><span class="p">(</span><span class="n">double</span> <span class="n">px</span><span class="p">,</span> <span class="n">double</span> <span class="n">py</span><span class="p">,</span> <span class="n">double</span> <span class="n">pz</span><span class="p">,</span> <span class="n">double</span> <span class="n">ax</span><span class="p">,</span> <span class="n">double</span> <span class="n">ay</span><span class="p">,</span> <span class="n">double</span> <span class="n">az</span><span class="p">,</span>
+    <span class="n">double</span> <span class="n">r_min</span><span class="p">,</span> <span class="n">double</span> <span class="n">r_max</span><span class="p">)</span>
+<span class="c1"># specifies the cylinder where the molecules are generated with cylinder</span>
+<span class="c1"># center position(px, py, pz), cylinder axe vecter(ax, ay, ax), cyliner radius r_min,</span>
+<span class="c1"># and r_max. The molecules are generated in the range r_min&lt; r&lt;r_max.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol0</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1"># initializes a molecule object with the number of particles.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;A,A,A,A,A,A,A,A&quot;</span><span class="p">)</span>
+<span class="c1"># sets particle types.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="s2">&quot;0-1,0-3,0-4,2-3,1-2,1-5,2-6,3-7,4-5,4-7,5-6,6-7&quot;</span><span class="p">)</span>
+<span class="c1"># sets topology.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setBondLength</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="c1"># sets bond length for all bonds.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1"># sets mass for all particle.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setAngleDegree</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="c1"># sets the degree of the angle of particles with the type 1, 2 and 3.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="objects-definition">
+<h2>Objects definition<a class="headerlink" href="#objects-definition" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Object</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">np</span><span class="p">,</span> <span class="n">Object</span><span class="p">::</span><span class="n">Shape</span> <span class="n">shape</span><span class="p">)</span>
+<span class="c1"># initializes an object with the number of particles and shape.</span>
+
+<span class="n">Object</span><span class="p">(</span><span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span><span class="p">,</span> <span class="n">Object</span><span class="p">::</span><span class="n">Shape</span><span class="p">)</span>
+<span class="c1"># initializes an object by reading partial data from a file with file name,</span>
+<span class="c1"># the number of particles, and shape (the candidates are &quot;none&quot; and &quot;sphere&quot;).</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setRadius</span><span class="p">(</span><span class="n">double</span> <span class="n">radius</span><span class="p">)</span>
+<span class="c1"># specifies the radius of the sphere which will be generated</span>
+<span class="c1"># (only works for &quot;sphere&quot; shape) with radius.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol0</span> <span class="o">=</span> <span class="n">molgen</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="s2">&quot;sphere.xml&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="n">molgen</span><span class="o">.</span><span class="n">Object</span><span class="o">.</span><span class="n">Shape</span><span class="o">.</span><span class="n">none</span><span class="p">)</span>
+<span class="c1"># initializes an object by the reading file (containing 60 particles),</span>
+<span class="c1"># the number of particles, and object shape.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;A*5&quot;</span><span class="p">)</span>
+<span class="c1"># sets particle types (the former 60 types can be read form the file).</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="s2">&quot;59-60,60-61,61-62,62-63,63-64&quot;</span><span class="p">)</span>
+<span class="c1"># sets topology.</span>
+<span class="n">mol0</span><span class="o">.</span><span class="n">setBody</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># sets body index (the type &quot;C&quot; particles are thereby rigid body particles).</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="generator-definition">
+<h2>Generator definition<a class="headerlink" href="#generator-definition" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Constructor:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Generators</span><span class="p">(</span><span class="n">double</span> <span class="n">lx</span><span class="p">,</span> <span class="n">double</span> <span class="n">ly</span><span class="p">,</span> <span class="n">double</span> <span class="n">lz</span><span class="p">)</span>
+<span class="c1">#initializes a molecule generator with box length in x y z directions.</span>
+</pre></div>
+</div>
+<p>Functions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">addMolecule</span><span class="p">(</span><span class="n">Molecule</span> <span class="n">mol</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">num</span><span class="p">)</span>
+<span class="c1"># adds a molecule into generator with molecule object and number.</span>
+
+<span class="n">void</span> <span class="n">setMinimumDistance</span> <span class="p">(</span><span class="n">double</span> <span class="n">min_dis</span><span class="p">)</span>
+<span class="c1"># sets the minimum separated distance of all particles.</span>
+
+<span class="n">void</span> <span class="n">setMinimumDistance</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">double</span> <span class="n">min_dis</span><span class="p">)</span>
+<span class="c1"># sets the minimum separated distance between two particle types with</span>
+<span class="c1"># particle type 1, particle type 2 and minimum distance.</span>
+
+<span class="n">void</span> <span class="n">setParam</span><span class="p">(</span><span class="n">cstring</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">double</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">double</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">double</span> <span class="n">r_cut</span><span class="p">)</span>
+<span class="c1"># sets the LJ potential parameters between two particle types for Rosenblueth method</span>
+<span class="c1"># with particle type1, particle type2, epsilon, sigma, and cut-off radius.</span>
+
+<span class="n">void</span> <span class="n">setDimension</span> <span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">dimension</span><span class="p">)</span>
+<span class="c1"># specifies system dimension, the default value is 3.</span>
+
+<span class="n">void</span> <span class="n">outPutXml</span><span class="p">(</span><span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
+<span class="c1"># switch the function of outputting XML filename.</span>
+
+<span class="n">void</span> <span class="n">outPutMol2</span><span class="p">(</span><span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
+<span class="c1"># switch the function of outputting Mol2 files.</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gen</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Generators</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># initializes a generator object by box length in x, y, and z direction.</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="c1"># adds a molecule by molecule name and the number of molecules.</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">setParam</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="c1"># sets the parameters of LJ potential which is used for Rosenblueth method.</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">setMinimumDistance</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="c1"># sets the minimum separated distance of all particles.</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">setMinimumDistance</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="c1"># sets the minimum separated distance between the particle types.</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">outPutXml</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="c1"># sets the name of output XML file.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="galatackle.html" class="btn btn-neutral float-right" title="GalaTackle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="application.html" class="btn btn-neutral" title="Application" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Youliang Zhu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

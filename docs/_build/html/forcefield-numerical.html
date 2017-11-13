@@ -93,8 +93,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a></li>
@@ -108,6 +110,11 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
 
             
@@ -225,21 +232,20 @@ with the formats, such as pair interactions with</p>
 <h2>Non-bonded interaction<a class="headerlink" href="#non-bonded-interaction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PairForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
-               <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PairForceTable</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
 <span class="c1"># initializes an object of numerical pair force with system information, neighbor list,</span>
 <span class="c1"># and the number of potential points.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical interaction parameters(C0,C1,C2,C3) with type1, type2, cut-off,</span>
 <span class="c1"># inputting file name, start column, end column</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with type1, type2, potential array(r, potential)</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type2</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span><span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span><span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with type1, type2, inputting file name,</span>
 <span class="c1"># start column, end column.</span>
 </pre></div>
@@ -256,20 +262,20 @@ with the formats, such as pair interactions with</p>
 <h2>Bond interaction<a class="headerlink" href="#bond-interaction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceTable</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
 <span class="c1"># initializes an object of numerical bond force with system information</span>
 <span class="c1"># and the number of potential points.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical bond interaction parameters(C0,C1,C2,C3) with bond type,</span>
 <span class="c1"># cut-off, inputting file name, start column, end column.</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with bond type and the array of potential.</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with bond type, inputting file name,</span>
 <span class="c1"># start column, and end column.</span>
 </pre></div>
@@ -286,20 +292,20 @@ with the formats, such as pair interactions with</p>
 <h2>Angle interaction<a class="headerlink" href="#angle-interaction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AngleForceTable</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npoint</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AngleForceTable</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npoint</span><span class="p">)</span>
 <span class="c1"># initializes a method of numerical angle force with system information</span>
 <span class="c1"># and the number of potential points.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">file</span> <span class="n">name</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span> <span class="n">file</span> <span class="n">name</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical angle force parameters(C0,C1,C2,C3) with angle type,</span>
 <span class="c1"># inputting file name, start column, and end column.</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with angle type and the array of potential(r, potential).</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with angle type, inputting file name,</span>
 <span class="c1"># start column, and end column.</span>
 </pre></div>
@@ -316,20 +322,20 @@ with the formats, such as pair interactions with</p>
 <h2>Dihedral interaction<a class="headerlink" href="#dihedral-interaction" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DihedralForceTable</span> <span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DihedralForceTable</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">npot</span><span class="p">)</span>
 <span class="c1"># initializes an object of numerical dihedral force with system information</span>
 <span class="c1"># and the number of potential points.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical dihedral force parameters(C0,C1,C2,C3) with dihedral type,</span>
 <span class="c1"># inputting file name, start column, end column.</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Real2</span><span class="o">&gt;</span> <span class="n">potential</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with dihedral type and the array of potential(r, potential).</span>
 
-<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">file</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
+<span class="n">void</span> <span class="n">setPotential</span><span class="p">(</span><span class="n">string</span> <span class="n">dihedral_type</span><span class="p">,</span> <span class="n">string</span> <span class="n">file</span><span class="p">,</span> <span class="nb">int</span> <span class="n">scol</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ecol</span><span class="p">)</span>
 <span class="c1"># specifies the numerical potential with dihedral type, inputting file name,</span>
 <span class="c1"># start column, end column.</span>
 </pre></div>

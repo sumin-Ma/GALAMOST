@@ -4,7 +4,7 @@ Dihedral torsion
 Harmonic dihedral potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -18,27 +18,28 @@ Harmonic dihedral potential
     - :math:`k` - multiplicative constant ``k`` (in units of energy)
     - :math:`\delta` - phase shift angle ``delta`` (in degrees)
 
-   Constructor::
-   
-      DihedralForceHarmonic(boost::shared_ptr<AllInfo> all_info)
-      # initializes a dihedral harmonic interaction object with system information.
-	  
+.. py:class:: DihedralForceHarmonic(all_info)
+
+   The constructor of dihedral harmonic interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& name, Real k, Real delta)
+      setParams(string name, Real k, Real delta)
       # specifies the dihedral harmonic force parameters with dihedral type,
       # multiplicative constant, and phase shift angle.	  
 	  
    Example::
    
-      dihedralforce = galamost.DihedralForceHarmonic (all_info)
+      dihedralforce = galamost.DihedralForceHarmonic(all_info)
       dihedralforce.setParams('A-B-B-A', 10.0, 0.0)
       app.add(dihedralforce)
 
 OPLS dihedral potential
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-   Description:
+Description:
 
     .. math::
         :nowrap:
@@ -52,14 +53,15 @@ OPLS dihedral potential
     - :math:`k_1, k_2, k_3, k_4` - multiplicative constant ``k1, k2, k3, k4`` (in units of energy)
     - :math:`\delta` - phase shift angle ``delta`` (in degrees)
 
-   Constructor::
-   
-      DihedralForceOplsCosine(boost::shared_ptr<AllInfo> all_info)
-      # initializes a dihedral OPLS cosine interaction object with system information.
-	  
+.. py:class:: DihedralForceOplsCosine(all_info)
+
+   The constructor of dihedral OPLS cosine interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
    Functions::
    
-      void setParams(string& name, Real k1, Real k2, Real k3, Real k4, Real delta)
+      setParams(string name, Real k1, Real k2, Real k3, Real k4, Real delta)
       # specifies the dihedral OPLS cosine force parameters with dihedral type, 
       # k1, k2, k3, k4, and phase shift angle.
 	  

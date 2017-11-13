@@ -37,6 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
         <link rel="up" title="Force field" href="forcefield.html"/>
+        <link rel="next" title="Modules" href="module.html"/>
         <link rel="prev" title="Numerical interaction" href="forcefield-numerical.html"/> 
 
   
@@ -92,8 +93,10 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Compilation and installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forcefield-bonded.html">Bonded interactions</a></li>
@@ -107,6 +110,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
 
             
@@ -205,14 +213,13 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <h2>Ewald (short-range part)<a class="headerlink" href="#ewald-short-range-part" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
-<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
 <span class="c1"># initializes an Ewald force object for a group of charged particles with system information,</span>
 <span class="c1"># neighbor list, particle set, and cut-off radius.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">type0</span><span class="p">,</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">type1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type0</span><span class="p">,</span> <span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
 <span class="c1"># specifies the force parameters with kappa.</span>
 
 <span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
@@ -233,10 +240,9 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <h2>PPPM (long-range part)<a class="headerlink" href="#pppm-long-range-part" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
-<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
 <span class="c1"># initializes a PPPM force object for a group of charged particles with system information,</span>
-<span class="c1">#  neighbor list, and particle group.</span>
+<span class="c1"># neighbor list, and particle group.</span>
 </pre></div>
 </div>
 <p>Functions:</p>
@@ -261,8 +267,7 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <h2>ENUF (long-range part)<a class="headerlink" href="#enuf-long-range-part" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AllInfo</span><span class="o">&gt;</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">NeighborList</span><span class="o">&gt;</span> <span class="n">nlist</span><span class="p">,</span>
-<span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ParticleSet</span><span class="o">&gt;</span> <span class="n">group</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
 <span class="c1"># initializes an ENUF force object for a group of charged particles with system information,</span>
 <span class="c1"># neighbor list, and particle group.</span>
 </pre></div>
@@ -295,6 +300,8 @@ The short-range part can employ Ewald summation and long-range part can employ P
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="module.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="forcefield-numerical.html" class="btn btn-neutral" title="Numerical interaction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
