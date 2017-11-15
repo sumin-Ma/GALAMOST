@@ -237,13 +237,13 @@ partially defined in the script.</p>
 <p>If the configuration of a molecule (including particle positions, types, topology and so on)
 has been completely given in a XML file, we only need to randomly put it by employing “object”.</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>Examples::</dt>
-<dd>mol1 = molgen.Object(“mol1.xml”, 65, molgen.Object.Shape.none)
-gen=molgen.Generators(30,30,30)
-gen.addMolecule(mol1,20)
-gen.outPutXml(“test”)</dd>
-</dl>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol1</span> <span class="o">=</span> <span class="n">molgen</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="s2">&quot;mol1.xml&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="n">molgen</span><span class="o">.</span><span class="n">Object</span><span class="o">.</span><span class="n">Shape</span><span class="o">.</span><span class="n">none</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Generators</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">outPutXml</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div></blockquote>
 </div>
 <div class="section" id="molecule-definition">
@@ -266,15 +266,15 @@ gen.outPutXml(“test”)</dd>
 <dt>
 <em class="property">class </em><code class="descname">Molecule</code><span class="sig-paren">(</span><em>filename</em>, <em>np</em><span class="sig-paren">)</span></dt>
 <dd><p>The constructor of a molecule and reads particles data from the XML file with file name and the number of particles.</p>
-<blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">param str filename:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">The name of inputting file.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">param int np:</th><td class="field-body">The number of particles.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The name of inputting file.</li>
+<li><strong>np</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of particles.</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -299,9 +299,8 @@ gen.outPutXml(“test”)</dd>
 <dl class="function">
 <dt id="Molecule.setBondLength">
 <code class="descname">setBondLength</code><span class="sig-paren">(</span><em>double bl</em><span class="sig-paren">)</span><a class="headerlink" href="#Molecule.setBondLength" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">specifies the bond length of all bonds.</code></dt>
-<dd></dd></dl>
+<dd><p>specifies the bond length of all bonds.</p>
+</dd></dl>
 
 <dl class="function">
 <dt>
@@ -552,7 +551,6 @@ gen.outPutXml(“test”)</dd>
 <span class="c1"># sets the degree of the angle of particles with the type 1, 2 and 3.</span>
 </pre></div>
 </div>
-</div></blockquote>
 </dd></dl>
 
 </div>

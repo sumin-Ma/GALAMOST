@@ -55,6 +55,7 @@ If the configuration of a molecule (including particle positions, types, topolog
 has been completely given in a XML file, we only need to randomly put it by employing "object".
 
    Examples::
+   
       mol1 = molgen.Object("mol1.xml", 65, molgen.Object.Shape.none)
       gen=molgen.Generators(30,30,30)
       gen.addMolecule(mol1,20)
@@ -72,7 +73,7 @@ Molecule definition
 	  
 .. py:class:: Molecule(filename, np)
 
-  The constructor of a molecule and reads particles data from the XML file with file name and the number of particles.
+   The constructor of a molecule and reads particles data from the XML file with file name and the number of particles.
 	  
    :param str filename: The name of inputting file.
    :param int np: The number of particles.   
@@ -90,6 +91,7 @@ Molecule definition
       switches the isotactic configuration of molecule.
 	  
    .. py:function:: setBondLength(double bl)
+   
       specifies the bond length of all bonds.
 	  
    .. py:function:: setBondLength(string type1, string type2, double bl)
