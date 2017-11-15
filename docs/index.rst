@@ -8,16 +8,28 @@ Welcome to galamost's documentation!
 
 .. toctree::
    :maxdepth: 3
-
+   :caption: General introduction
+   
    introduction 
    installation
    usage
+   
+.. toctree::
+   :maxdepth: 3
+   :caption: Methods and modules
+   
    data
    system   
    forcefield
+   constraint   
    module
    integration
    application
+   
+.. toctree::
+   :maxdepth: 3
+   :caption: Plug-Ins
+   
    molgen
    galatackle
 

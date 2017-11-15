@@ -7,19 +7,17 @@ Gay-Berne model
 GB interaction
 ^^^^^^^^^^^^^^
 
-   Constructor::
+.. py:class:: GBForce(all_info, nlist, r_cut)
+
+   initializes a method of Gay-Berne force with system information, neighbor list, and cut-off radius.
    
-      GBForce(AllInfo all_info, Neighbor List nlist, Real r_cut)
-      # initializes a method of Gay-Berne force with system information, 
-      # neighbor list, and cut-off radius.
-	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.	  
+
+   .. py:function:: setParams(string type1, string type2, float epsilon0, float sigma0, float nu, float mu, float sigma_e, float sigma_s, float epsilon_e, float epsilon_s, float Ps)
    
-      void setParams(string type1, string type2, Real epsilon0, Real sigma0, Real nu, Real mu,
-      Real sigma_e, Real sigma_s, Real epsilon_e, Real epsilon_s, Real Ps)
-      # specifies the GB force parameters with type1, type2, epsilon0, sigma0, nu, mu, 
-      # end-to-end length (sigma_e), side-by-side length (sigma_s), end-to-end energy (epsilon_e), 
-      # side-by-side energy (epsilon_s), Ps.
+      specifies the GB force parameters with type1, type2, epsilon0, sigma0, nu, mu, end-to-end length (sigma_e), side-by-side length (sigma_s), end-to-end energy (epsilon_e), side-by-side energy (epsilon_s), Ps.
 	  
    Example::
    
@@ -32,16 +30,14 @@ GB interaction
 Bond Force of GB particles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Constructor::
+.. py:class:: BondForceAni(all_info)
+
+   initializes a method of bond force of anisotropic particles with system information.
+   :param AllInfo all_info: The system information.   
+
+   .. py:function:: setParams(string bondtype, float Kbond, float rbond, float Kangle, float dangle)
    
-      BondForceAni(AllInfo all_info)
-      # initializes a method of bond force of anisotropic particles with system information.
-      
-   Functions::
-   
-      void setParams(string bondtype, Real Kbond, Real rbond, Real Kangle, Real dangle)
-      # specifies the bond force parameters with bond type, bond spring constant, 
-      # end-to-end length of GB particle, angle spring constant, equilibrium angle degree.
+      specifies the bond force parameters with bond type, bond spring constant, end-to-end length of GB particle, angle spring constant, equilibrium angle degree.
 	  
    Example::
    
@@ -55,18 +51,21 @@ Soft anisotropic model
 Interaction
 ^^^^^^^^^^^
 
-   Constructor::
-   
-      LzwForce(AllInfo all_info, NeighborList nlist, Real r_cut)
+.. py:class:: LzwForce(all_info, nlist, r_cut)
+
       initializes a method of LZW force with system information, neighbor list, and cut-off radius.
 	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.	  
+
+   .. py:function:: setParams(string type1, string type2, float alphaR, float mu, float nu, float alphaA, float beta)
    
-      void setParams(string type1, string type2, Real alphaR, Real mu, Real nu, Real alphaA, Real beta)
-      # specifies the LZW force parameters with type1, type2, alphaR, mu, nu, alphaA, and beta.
+      specifies the LZW force parameters with type1, type2, alphaR, mu, nu, alphaA, and beta.
 	  
-      void setMethod(string method)
-      # chooses a method of 'Disk', 'Janus', ABAtriJanus', 'BABtriJanus'.
+   .. py:function:: setMethod(string method)
+   
+      chooses a method of 'Disk', 'Janus', ABAtriJanus', 'BABtriJanus'.
 	  
    Example::
    
@@ -79,23 +78,27 @@ Interaction
 Thermostat
 ^^^^^^^^^^
 
-   Constructor::
+.. py:class:: BerendsenAniNvt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info, float T, float tauT, float tauR)
+
+   initializes a Berendsen NVT thermostat for anisotropic particles with system information, particle group, information computation, temperature, tauT, and tauR.
+	  
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param ComputeInfo comp_info: The object of calculation of collective information.	   
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.	 	  
+
+   .. py:function:: setTau(float tauT, float tauR)
    
-      BerendsenAniNvt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info, Real T, 
-      Real tauT, Real tauR)
-      # initializes a Berendsen NVT thermostat for anisotropic particles with system information, 
-	  # particle group, information computation, temperature, tauT, and tauR.
+      specifies the Berendsen NVT thermostat with tauT and tauR.
 	  
-   Functions::
+   .. py:function:: setT(float T)
    
-      void setTau(Real tauT, Real tauR)
-      # specifies the Berendsen NVT thermostat with tauT and tauR.
+      specifies the temperature with a constant value.
 	  
-      void setT(Real T)
-      # specifies the temperature with a constant value.
-	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time step.
 	  
    Example::
    

@@ -91,18 +91,24 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="integration.html">Integration</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NVE ensemble</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#nve-thermostat">NVE thermostat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nve-for-rigid-body">NVE for rigid body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nve-for-rigid-body-with-tunable-freedoms">NVE for rigid body with tunable freedoms</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="integration-nvt.html">NVT ensemble</a></li>
@@ -110,6 +116,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -181,58 +190,94 @@
 <h1>NVE ensemble<a class="headerlink" href="#nve-ensemble" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="nve-thermostat">
 <h2>NVE thermostat<a class="headerlink" href="#nve-thermostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Nve</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes a NVE thermostat object for a group of particles</span>
-<span class="c1"># with system information and particle group.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setZeroForce</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of making all force to be zero (the default is False).</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="Nve">
+<em class="property">class </em><code class="descname">Nve</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#Nve" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVE thermostat object for a group of particles with system information and particle group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Nve.setZeroForce">
+<code class="descname">setZeroForce</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#Nve.setZeroForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of making all force to be zero (the default is False).</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="n">thermo</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">Nve</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="n">group</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thermo</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="nve-for-rigid-body">
 <h2>NVE for rigid body<a class="headerlink" href="#nve-for-rigid-body" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NveRigid</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes a NVE thermostat object for rigid bodies with system</span>
-<span class="c1"># information and particle group.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="NveRigid">
+<em class="property">class </em><code class="descname">NveRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#NveRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVE thermostat object for rigid bodies with system information and particle group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bgroup</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
 <span class="n">rigidnve</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NveRigid</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rigidnve</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
-<p>NVE for rigid body with tunable freedoms</p>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TranRigid</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes a NVE thermostat object for rigid bodies for defined</span>
-<span class="c1"># freedoms with system information and particle group.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setTraDimension</span><span class="p">(</span><span class="nb">bool</span> <span class="n">x</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">y</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">z</span><span class="p">)</span>
-<span class="c1"># switches the freedoms of translocation in x y z directions.</span>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setRotDimension</span><span class="p">(</span><span class="nb">bool</span> <span class="n">x</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">y</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">z</span><span class="p">)</span>
-<span class="c1"># switches the freedoms of rotation in x y z directions.</span>
-</pre></div>
 </div>
+<div class="section" id="nve-for-rigid-body-with-tunable-freedoms">
+<h2>NVE for rigid body with tunable freedoms<a class="headerlink" href="#nve-for-rigid-body-with-tunable-freedoms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="TranRigid">
+<em class="property">class </em><code class="descname">TranRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#TranRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVE thermostat object for rigid bodies for defined freedoms with system information and particle group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="TranRigid.setTraDimension">
+<code class="descname">setTraDimension</code><span class="sig-paren">(</span><em>bool x</em>, <em>bool y</em>, <em>bool z</em><span class="sig-paren">)</span><a class="headerlink" href="#TranRigid.setTraDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the freedoms of translocation in x y z directions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="TranRigid.setRotDimension">
+<code class="descname">setRotDimension</code><span class="sig-paren">(</span><em>bool x</em>, <em>bool y</em>, <em>bool z</em><span class="sig-paren">)</span><a class="headerlink" href="#TranRigid.setRotDimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the freedoms of rotation in x y z directions.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bdrigidnvt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">TranRigid</span> <span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">)</span>
 <span class="n">bdrigidnvt</span><span class="o">.</span><span class="n">setTraDimension</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
@@ -240,7 +285,8 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bdrigidnvt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

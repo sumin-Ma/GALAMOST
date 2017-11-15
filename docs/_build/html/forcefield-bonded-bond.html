@@ -91,10 +91,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
@@ -115,9 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -189,6 +197,7 @@
             
   <div class="section" id="bond-stretching">
 <h1>Bond stretching<a class="headerlink" href="#bond-stretching" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/bond.png"><img alt="Principle of bond stretching" class="align-center" src="_images/bond.png" style="width: 250px;" /></a>
 <div class="section" id="harmonic-bond-potential">
 <h2>Harmonic bond potential<a class="headerlink" href="#harmonic-bond-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
@@ -214,12 +223,12 @@ V_{\mathrm{bond}}(r) = \frac{1}{2}k\left( r - r_{0} \right)^{2}
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
-<span class="c1"># specifies the bond interaction parameters with bond type,</span>
-<span class="c1"># spring constant, and equilibrium length.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="BondForceHarmonic.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float r0</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceHarmonic.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the bond interaction parameters with bond type, spring constant, and equilibrium length.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bondforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForceHarmonic</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">bondforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;polymer&#39;</span><span class="p">,</span> <span class="mf">1250.000</span><span class="p">,</span> <span class="mf">0.470</span><span class="p">)</span>
@@ -269,24 +278,30 @@ V_{\mathrm{bond}}(r)=-\frac{1}{2}k {r_{m}}^{2}\log \left[ 1-\frac{\left(r - r_{0
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
-<span class="c1"># specifies the FENE bond force parameters with bond type,</span>
-<span class="c1"># spring constant, and the maximum length of the bond.</span>
+<dl class="function">
+<dt id="BondForceFene.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float rm</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceFene.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the FENE bond force parameters with bond type, spring constant, and the maximum length of the bond.</p>
+</dd></dl>
 
-<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
-<span class="c1"># specifies the FENE bond force parameters with bond type,</span>
-<span class="c1"># spring constant, maximum length, and equilibrium length.</span>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float rm</em>, <em>float r0</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the FENE bond force parameters with bond type, spring constant, maximum length, and equilibrium length.</p>
+</dd></dl>
 
-<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">)</span>
-<span class="c1"># specifies the FENE+LJ bond parameters with bond type, spring constant,</span>
-<span class="c1"># maximum length of the bond, epsilon, sigma (the latter two parameters</span>
-<span class="c1"># for LJ force between two bonded particles ).</span>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float rm</em>, <em>float epsilon</em>, <em>float sigma</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the FENE+LJ bond parameters with bond type, spring constant, maximum length of the bond, epsilon, sigma (the latter two parameters for LJ force between two bonded particles ).</p>
+</dd></dl>
 
-<span class="n">setConsiderDiameter</span><span class="p">(</span><span class="nb">bool</span> <span class="n">con_dia</span><span class="p">)</span>
-<span class="c1"># the diameter of particles will be considered or not</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="BondForceFene.setConsiderDiameter">
+<code class="descname">setConsiderDiameter</code><span class="sig-paren">(</span><em>bool con_dia</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceFene.setConsiderDiameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>the diameter of particles will be considered or not</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bondforcefene</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForceFene</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">bondforcefene</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;polymer&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
@@ -322,12 +337,12 @@ V_{\mathrm{bond}}(r)=k_{1}\left( r - r_{0} \right)^{2}+k_{2}\left( r - r_{0} \ri
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">)</span>
-<span class="c1"># specifies the polynomial bond force parameters with bond type, spring constant k1,</span>
-<span class="c1"># spring constant k2, and equilibrium bond length r0.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="BondForcePolynomial.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k1</em>, <em>float k2</em>, <em>float r0</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForcePolynomial.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the polynomial bond force parameters with bond type, spring constant k1, spring constant k2, and equilibrium bond length r0.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bondforce_polynomial</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForcePolynomial</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">bondforce_polynomial</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;polymer&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
@@ -365,12 +380,12 @@ V_{\mathrm{bond}}(r)=&amp;k\left[ 1-e^{-\alpha \left( r-r_{0} \right)} \right]^{
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rm</span><span class="p">)</span>
-<span class="c1"># specifies the Morse bond force parameters with bond type, spring constant, alpha</span>
-<span class="c1"># controls the &#39;width&#39; of the potential, equilibrium bond length, maximum interaction range.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="BondForceMorse.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string name</em>, <em>float k</em>, <em>float alpha</em>, <em>float r0</em>, <em>float rm</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceMorse.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the Morse bond force parameters with bond type, spring constant, alpha controls the ‘width’ of the potential, equilibrium bond length, maximum interaction range.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bondforce_morse</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForceMorse</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">bondforce_morse</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;polymer&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>

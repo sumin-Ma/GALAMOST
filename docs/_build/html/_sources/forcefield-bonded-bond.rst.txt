@@ -1,6 +1,11 @@
 Bond stretching
 ---------------
 
+.. image:: bond.png
+    :width: 250 px
+    :align: center
+    :alt: Principle of bond stretching
+	
 Harmonic bond potential
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -24,11 +29,9 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+   .. py:function:: setParams(string type, float k, float r0)
    
-      setParams(string type, Real k, Real r0)
-      # specifies the bond interaction parameters with bond type, 
-      # spring constant, and equilibrium length.
+      specifies the bond interaction parameters with bond type, spring constant, and equilibrium length.
 
    Example::
    
@@ -72,24 +75,22 @@ Description:
    The constructor of FENE bond interaction object.
  
    :param AllInfo all_info: The system information.
-	  
-   Functions::
-   
-      setParams(string type, Real k, Real rm)
-      # specifies the FENE bond force parameters with bond type, 
-      # spring constant, and the maximum length of the bond.
-	  
-      setParams(string type, Real k, Real rm, Real r0)
-      # specifies the FENE bond force parameters with bond type, 
-      # spring constant, maximum length, and equilibrium length.
-	  
-      setParams(string type, Real k, Real rm, Real epsilon, Real sigma)
-      # specifies the FENE+LJ bond parameters with bond type, spring constant, 
-      # maximum length of the bond, epsilon, sigma (the latter two parameters 
-      # for LJ force between two bonded particles ).
 
-      setConsiderDiameter(bool con_dia)
-      # the diameter of particles will be considered or not
+   .. py:function:: setParams(string type, float k, float rm)
+   
+      specifies the FENE bond force parameters with bond type, spring constant, and the maximum length of the bond.
+	  
+   .. py:function:: setParams(string type, float k, float rm, float r0)
+   
+      specifies the FENE bond force parameters with bond type, spring constant, maximum length, and equilibrium length.
+	  
+   .. py:function:: setParams(string type, float k, float rm, float epsilon, float sigma)
+   
+      specifies the FENE+LJ bond parameters with bond type, spring constant, maximum length of the bond, epsilon, sigma (the latter two parameters for LJ force between two bonded particles ).
+
+   .. py:function:: setConsiderDiameter(bool con_dia)
+   
+      the diameter of particles will be considered or not
 
    Example::
    
@@ -122,11 +123,9 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+   .. py:function:: setParams(string type, float k1, float k2, float r0)
    
-      setParams(string type, Real k1, Real k2, Real r0)
-      # specifies the polynomial bond force parameters with bond type, spring constant k1,
-      # spring constant k2, and equilibrium bond length r0.
+      specifies the polynomial bond force parameters with bond type, spring constant k1, spring constant k2, and equilibrium bond length r0.
 	  
    Example::
    
@@ -160,12 +159,10 @@ Description:
    The constructor of Morse bond interaction object.
  
    :param AllInfo all_info: The system information.
-
-   Functions::
    
-      setParams(string name, Real k, Real alpha, Real r0, Real rm)
-      # specifies the Morse bond force parameters with bond type, spring constant, alpha 
-      # controls the 'width' of the potential, equilibrium bond length, maximum interaction range.
+   .. py:function:: setParams(string name, float k, float alpha, float r0, float rm)
+   
+      specifies the Morse bond force parameters with bond type, spring constant, alpha controls the 'width' of the potential, equilibrium bond length, maximum interaction range.
 	  
    Example::
    

@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
         <link rel="up" title="Force field" href="forcefield.html"/>
-        <link rel="next" title="Modules" href="module.html"/>
+        <link rel="next" title="Constraint" href="constraint.html"/>
         <link rel="prev" title="Numerical interaction" href="forcefield-numerical.html"/> 
 
   
@@ -91,10 +91,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
@@ -110,9 +114,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -211,21 +219,36 @@ The short-range part can employ Ewald summation and long-range part can employ P
 </div>
 <div class="section" id="ewald-short-range-part">
 <h2>Ewald (short-range part)<a class="headerlink" href="#ewald-short-range-part" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># initializes an Ewald force object for a group of charged particles with system information,</span>
-<span class="c1"># neighbor list, particle set, and cut-off radius.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type0</span><span class="p">,</span> <span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
-<span class="c1"># specifies the force parameters with kappa.</span>
+<dl class="class">
+<dt id="EwaldForce">
+<em class="property">class </em><code class="descname">EwaldForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#EwaldForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes an Ewald force object for a group of charged particles with system information, neighbor list, particle set, and cut-off radius.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of charged particles.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="EwaldForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type0</em>, <em>string type1</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#EwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the force parameters with kappa.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">Real</span> <span class="n">kappa</span><span class="p">)</span>
-<span class="c1"># specifies the force parameters for all particle types with kappa.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>float kappa</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the force parameters for all particle types with kappa.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
 <span class="n">kappa</span><span class="o">=</span><span class="mf">0.8</span>
@@ -234,26 +257,40 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ewald</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="pppm-long-range-part">
 <h2>PPPM (long-range part)<a class="headerlink" href="#pppm-long-range-part" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes a PPPM force object for a group of charged particles with system information,</span>
-<span class="c1"># neighbor list, and particle group.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="nb">int</span> <span class="n">nx</span><span class="p">,</span> <span class="nb">int</span> <span class="n">ny</span><span class="p">,</span> <span class="nb">int</span> <span class="n">nz</span><span class="p">,</span> <span class="nb">int</span> <span class="n">order</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># specifies the PPPM force with the number of grid points in x, y, and z direction,</span>
-<span class="c1"># the order of interpolation, and the cutoff radius of direct force.</span>
+<dl class="class">
+<dt id="PPPMForce">
+<em class="property">class </em><code class="descname">PPPMForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#PPPMForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a PPPM force object for a group of charged particles with system information, neighbor list, and particle group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of charged particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="PPPMForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>int nx</em>, <em>int ny</em>, <em>int nz</em>, <em>int order</em>, <em>float r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#PPPMForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the PPPM force with the number of grid points in x, y, and z direction, the order of interpolation, and the cutoff radius of direct force.</p>
+</dd></dl>
 
-<span class="n">Real</span> <span class="n">getKappa</span><span class="p">()</span>
-<span class="c1"># return the kappa calculated by PPPM force.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">float getKappa()</code></dt>
+<dd><p>return the kappa calculated by PPPM force.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
 <span class="n">pppm</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
@@ -261,24 +298,34 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pppm</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="enuf-long-range-part">
 <h2>ENUF (long-range part)<a class="headerlink" href="#enuf-long-range-part" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes an ENUF force object for a group of charged particles with system information,</span>
-<span class="c1"># neighbor list, and particle group.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="nb">int</span> <span class="n">precision</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Nx</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Ny</span><span class="p">,</span> <span class="nb">int</span> <span class="n">Nz</span><span class="p">)</span>
-<span class="c1"># specifies the ENUF force with alpha, hyper sampling factor sigma,</span>
-<span class="c1"># precision determine the order of interpolation (precision*2+2),</span>
-<span class="c1"># and the number of grid points in x, y, and z direction.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="ENUFForce">
+<em class="property">class </em><code class="descname">ENUFForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ENUFForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes an ENUF force object for a group of charged particles with system information, neighbor list, and particle group.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of charged particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="ENUFForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>float alpha</em>, <em>float sigma</em>, <em>int precision</em>, <em>int Nx</em>, <em>int Ny</em>, <em>int Nz</em><span class="sig-paren">)</span><a class="headerlink" href="#ENUFForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the ENUF force with alpha, hyper sampling factor sigma, precision determine the order of interpolation (precision*2+2), and the number of grid points in x, y, and z direction.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
 <span class="n">kappa</span><span class="o">=</span><span class="mf">0.8</span>
@@ -287,7 +334,8 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enuf</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 
@@ -301,7 +349,7 @@ The short-range part can employ Ewald summation and long-range part can employ P
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="module.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="constraint.html" class="btn btn-neutral float-right" title="Constraint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="forcefield-numerical.html" class="btn btn-neutral" title="Numerical interaction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

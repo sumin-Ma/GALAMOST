@@ -56,24 +56,25 @@ The other node names for bond, angle and dihedral are ``BondForcePoints``, ``Ang
 Non-bonded interaction
 ----------------------
 
-   Constructor::
+.. py:class:: PairForceTable(all_info, nlist, npoint)
+
+   initializes an object of numerical pair force with system information, neighbor list, and the number of potential points.
    
-      PairForceTable(AllInfo all_info, NeighborList nlist, unsigned int npot)
-      # initializes an object of numerical pair force with system information, neighbor list,
-      # and the number of potential points.
-	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param int npoint: The number of numerical points.  
+
+   .. py:function:: setParams(string type1, string type2, float r_cut, string& filename, int scol, int ecol)
    
-      void setParams(string type1, string type2, Real r_cut, string& filename, int scol, int ecol)
-      # specifies the numerical interaction parameters(C0,C1,C2,C3) with type1, type2, cut-off, 
-      # inputting file name, start column, end column
+      specifies the numerical interaction parameters(C0,C1,C2,C3) with type1, type2, cut-off, inputting file name, start column, end column
 	  
-      void setPotential(string type1, string type2, std::vector<Real2> potential)
-      # specifies the numerical potential with type1, type2, potential array(r, potential)
+   .. py:function:: setPotential(string type1, string type2, std::vector<float2> potential)
+   
+      specifies the numerical potential with type1, type2, potential array(r, potential)
 	  
-      void setPotential(string type1, string type2, string& filename, int scol,int ecol)
-      # specifies the numerical potential with type1, type2, inputting file name,
-      # start column, end column.
+   .. py:function:: setPotential(string type1, string type2, string filename, int scol,int ecol)
+   
+      specifies the numerical potential with type1, type2, inputting file name, start column, end column.
 	  
    Example::
    
@@ -84,24 +85,24 @@ Non-bonded interaction
 Bond interaction
 ----------------
 
-   Constructor::
+.. py:class:: BondForceTable(all_info, npoint)
+
+   initializes an object of numerical bond force with system information and the number of potential points.
+
+   :param AllInfo all_info: The system information.
+   :param int npoint: The number of numerical points.
+
+   .. py:function:: setParams(string type, float r_cut, string filename, int scol, int ecol)
    
-      BondForceTable(AllInfo all_info, unsigned int npot)
-      # initializes an object of numerical bond force with system information 
-      # and the number of potential points.
-	  
-   Functions::
-   
-      void setParams(string type, Real r_cut, string filename, int scol, int ecol)
-      # specifies the numerical bond interaction parameters(C0,C1,C2,C3) with bond type,
-      # cut-off, inputting file name, start column, end column.
+      specifies the numerical bond interaction parameters(C0,C1,C2,C3) with bond type, cut-off, inputting file name, start column, end column.
 	   
-      void setPotential(string type, std::vector<Real2> potential)
-      # specifies the numerical potential with bond type and the array of potential.
+   .. py:function:: setPotential(string type, std::vector<float2> potential)
+   
+      specifies the numerical potential with bond type and the array of potential.
 	  
-      void setPotential(string type, string filename, int scol, int ecol)
-      # specifies the numerical potential with bond type, inputting file name,
-      # start column, and end column.
+   .. py:function:: setPotential(string type, string filename, int scol, int ecol)
+   
+      specifies the numerical potential with bond type, inputting file name, start column, and end column.
 	  
    Example::
    
@@ -112,24 +113,24 @@ Bond interaction
 Angle interaction
 -----------------
 
-   Constructor::
+.. py:class:: AngleForceTable(all_info, npoint)
+
+   initializes a method of numerical angle force with system information and the number of potential points.
+	
+   :param AllInfo all_info: The system information.
+   :param int npoint: The number of numerical points.
+	
+   .. py:function:: setParams(string type, string file name, int scol, int ecol)
    
-      AngleForceTable(AllInfo all_info, unsigned int npoint)
-      # initializes a method of numerical angle force with system information
-      # and the number of potential points.
+      specifies the numerical angle force parameters(C0,C1,C2,C3) with angle type, inputting file name, start column, and end column.
 	  
-   Functions::
+   .. py:function:: setPotential(string type, std::vector<float2> potential)
    
-      void setParams(string type, string file name, int scol, int ecol)
-      # specifies the numerical angle force parameters(C0,C1,C2,C3) with angle type, 
-      # inputting file name, start column, and end column.
+      specifies the numerical potential with angle type and the array of potential(r, potential).
 	  
-      void setPotential(string type, std::vector<Real2> potential)
-      # specifies the numerical potential with angle type and the array of potential(r, potential).
-	  
-      void setPotential(string type, string filename, int scol, int ecol)
-      # specifies the numerical potential with angle type, inputting file name, 
-      # start column, and end column.	  
+   .. py:function:: setPotential(string type, string filename, int scol, int ecol)
+   
+      specifies the numerical potential with angle type, inputting file name, start column, and end column.	  
 	  
    Example::
    
@@ -139,25 +140,25 @@ Angle interaction
 	  
 Dihedral interaction
 --------------------
+   
+.. py:class:: DihedralForceTable(all_info, npoint)
 
-   Constructor::
+   initializes an object of numerical dihedral force with system information and the number of potential points.
+
+   :param AllInfo all_info: The system information.
+   :param int npoint: The number of numerical points.
    
-      DihedralForceTable(AllInfo all_info, unsigned int npot)
-      # initializes an object of numerical dihedral force with system information 
-      # and the number of potential points.
-	  
-   Functions::
+   .. py:function:: setParams(string type, string filename, int scol, int ecol)
    
-      void setParams(string type, string filename, int scol, int ecol)
-      # specifies the numerical dihedral force parameters(C0,C1,C2,C3) with dihedral type,
-      # inputting file name, start column, end column.
+      specifies the numerical dihedral force parameters(C0,C1,C2,C3) with dihedral type, inputting file name, start column, end column.
 	  
-      void setPotential(string dihedral_type, std::vector<Real2> potential)
-      # specifies the numerical potential with dihedral type and the array of potential(r, potential).
+   .. py:function:: setPotential(string dihedral_type, std::vector<float2> potential)
+   
+      specifies the numerical potential with dihedral type and the array of potential(r, potential).
 	  
-      void setPotential(string dihedral_type, string file, int scol, int ecol)
-      # specifies the numerical potential with dihedral type, inputting file name,
-      # start column, end column.	  
+   .. py:function:: setPotential(string dihedral_type, string file, int scol, int ecol)
+   
+      specifies the numerical potential with dihedral type, inputting file name, start column, end column.	  
 	  
    Example::
    

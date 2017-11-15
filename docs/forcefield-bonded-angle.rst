@@ -1,6 +1,11 @@
 Angle bending
 -------------
 
+.. image:: angle.png
+    :width: 250 px
+    :align: center
+    :alt: Principle of angle bending
+
 Harmonic angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -23,12 +28,10 @@ Description:
    The constructor of angle harmonic interaction object.
  
    :param AllInfo all_info: The system information.
-	  
-   Functions::
+
+   .. py:function:: setParams(string type, float k, float theta0)
    
-      setParams(string type, Real k, Real theta0)
-      # specifies the angle harmonic force parameters with angle type, 
-      # potential constant, and equilibrium angle degree.
+      specifies the angle harmonic force parameters with angle type, potential constant, and equilibrium angle degree.
 	  
    Example::
    
@@ -59,11 +62,9 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+   .. py:function:: setParams(string type, float k, float theta0)
    
-      setParams(string type, Real k, Real theta0)
-      # specifies the angle cosine harmonic force parameters with angle type, 
-      # potential constant, and equilibrium angle degree.
+      specifies the angle cosine harmonic force parameters with angle type, potential constant, and equilibrium angle degree.
 	  
    Example::
    
@@ -94,11 +95,10 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+
+   .. py:function:: setParams(string type, float k, float theta0)
    
-      setParams(string type, Real k, Real theta0)
-      # specifies the angle cosine force parameters with angle type, 
-      # spring constant, and equilibrium angle degree.
+      specifies the angle cosine force parameters with angle type, spring constant, and equilibrium angle degree.
 	  
    Example::
    

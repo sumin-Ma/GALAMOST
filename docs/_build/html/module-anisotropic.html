@@ -91,13 +91,18 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="module-mdscf.html">MD-SCF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module-polymerization.html">Polymerization</a></li>
@@ -119,6 +124,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -192,21 +200,29 @@
 <h2>Gay-Berne model<a class="headerlink" href="#gay-berne-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gb-interaction">
 <h3>GB interaction<a class="headerlink" href="#gb-interaction" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GBForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">Neighbor</span> <span class="n">List</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># initializes a method of Gay-Berne force with system information,</span>
-<span class="c1"># neighbor list, and cut-off radius.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">nu</span><span class="p">,</span> <span class="n">Real</span> <span class="n">mu</span><span class="p">,</span>
-<span class="n">Real</span> <span class="n">sigma_e</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma_s</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon_e</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon_s</span><span class="p">,</span> <span class="n">Real</span> <span class="n">Ps</span><span class="p">)</span>
-<span class="c1"># specifies the GB force parameters with type1, type2, epsilon0, sigma0, nu, mu,</span>
-<span class="c1"># end-to-end length (sigma_e), side-by-side length (sigma_s), end-to-end energy (epsilon_e),</span>
-<span class="c1"># side-by-side energy (epsilon_s), Ps.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="GBForce">
+<em class="property">class </em><code class="descname">GBForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#GBForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a method of Gay-Berne force with system information, neighbor list, and cut-off radius.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="GBForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float epsilon0</em>, <em>float sigma0</em>, <em>float nu</em>, <em>float mu</em>, <em>float sigma_e</em>, <em>float sigma_s</em>, <em>float epsilon_e</em>, <em>float epsilon_s</em>, <em>float Ps</em><span class="sig-paren">)</span><a class="headerlink" href="#GBForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the GB force parameters with type1, type2, epsilon0, sigma0, nu, mu, end-to-end length (sigma_e), side-by-side length (sigma_s), end-to-end energy (epsilon_e), side-by-side energy (epsilon_s), Ps.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gb</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">GBForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 <span class="n">gb</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span> <span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -215,49 +231,66 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gb</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="bond-force-of-gb-particles">
 <h3>Bond Force of GB particles<a class="headerlink" href="#bond-force-of-gb-particles" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BondForceAni</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">)</span>
-<span class="c1"># initializes a method of bond force of anisotropic particles with system information.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">bondtype</span><span class="p">,</span> <span class="n">Real</span> <span class="n">Kbond</span><span class="p">,</span> <span class="n">Real</span> <span class="n">rbond</span><span class="p">,</span> <span class="n">Real</span> <span class="n">Kangle</span><span class="p">,</span> <span class="n">Real</span> <span class="n">dangle</span><span class="p">)</span>
-<span class="c1"># specifies the bond force parameters with bond type, bond spring constant,</span>
-<span class="c1"># end-to-end length of GB particle, angle spring constant, equilibrium angle degree.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="BondForceAni">
+<em class="property">class </em><code class="descname">BondForceAni</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceAni" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a method of bond force of anisotropic particles with system information.
+:param AllInfo all_info: The system information.</p>
+<dl class="function">
+<dt id="BondForceAni.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string bondtype</em>, <em>float Kbond</em>, <em>float rbond</em>, <em>float Kangle</em>, <em>float dangle</em><span class="sig-paren">)</span><a class="headerlink" href="#BondForceAni.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the bond force parameters with bond type, bond spring constant, end-to-end length of GB particle, angle spring constant, equilibrium angle degree.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bondani</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BondForceAni</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">bondani</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A-A&#39;</span><span class="p">,</span> <span class="mf">100.0</span> <span class="p">,</span> <span class="mf">4.498</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bondani</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 <div class="section" id="soft-anisotropic-model">
 <h2>Soft anisotropic model<a class="headerlink" href="#soft-anisotropic-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="interaction">
 <h3>Interaction<a class="headerlink" href="#interaction" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LzwForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="n">initializes</span> <span class="n">a</span> <span class="n">method</span> <span class="n">of</span> <span class="n">LZW</span> <span class="n">force</span> <span class="k">with</span> <span class="n">system</span> <span class="n">information</span><span class="p">,</span> <span class="n">neighbor</span> <span class="nb">list</span><span class="p">,</span> <span class="ow">and</span> <span class="n">cut</span><span class="o">-</span><span class="n">off</span> <span class="n">radius</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alphaR</span><span class="p">,</span> <span class="n">Real</span> <span class="n">mu</span><span class="p">,</span> <span class="n">Real</span> <span class="n">nu</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alphaA</span><span class="p">,</span> <span class="n">Real</span> <span class="n">beta</span><span class="p">)</span>
-<span class="c1"># specifies the LZW force parameters with type1, type2, alphaR, mu, nu, alphaA, and beta.</span>
+<dl class="class">
+<dt id="LzwForce">
+<em class="property">class </em><code class="descname">LzwForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#LzwForce" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>initializes a method of LZW force with system information, neighbor list, and cut-off radius.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="LzwForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float alphaR</em>, <em>float mu</em>, <em>float nu</em>, <em>float alphaA</em>, <em>float beta</em><span class="sig-paren">)</span><a class="headerlink" href="#LzwForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the LZW force parameters with type1, type2, alphaR, mu, nu, alphaA, and beta.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setMethod</span><span class="p">(</span><span class="n">string</span> <span class="n">method</span><span class="p">)</span>
-<span class="c1"># chooses a method of &#39;Disk&#39;, &#39;Janus&#39;, ABAtriJanus&#39;, &#39;BABtriJanus&#39;.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="LzwForce.setMethod">
+<code class="descname">setMethod</code><span class="sig-paren">(</span><em>string method</em><span class="sig-paren">)</span><a class="headerlink" href="#LzwForce.setMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>chooses a method of ‘Disk’, ‘Janus’, ABAtriJanus’, ‘BABtriJanus’.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lzw</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">LzwForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">lzw</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span> <span class="p">,</span> <span class="mf">396.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">88.0</span><span class="p">,</span><span class="mf">60.0</span><span class="o">/</span><span class="mf">180.0</span><span class="o">*</span><span class="mf">3.1415926</span><span class="p">)</span>
@@ -266,35 +299,55 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lzw</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="thermostat">
 <h3>Thermostat<a class="headerlink" href="#thermostat" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BerendsenAniNvt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span>
-<span class="n">Real</span> <span class="n">tauT</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauR</span><span class="p">)</span>
-<span class="c1"># initializes a Berendsen NVT thermostat for anisotropic particles with system information,</span>
-    <span class="c1"># particle group, information computation, temperature, tauT, and tauR.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setTau</span><span class="p">(</span><span class="n">Real</span> <span class="n">tauT</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauR</span><span class="p">)</span>
-<span class="c1"># specifies the Berendsen NVT thermostat with tauT and tauR.</span>
+<dl class="class">
+<dt id="BerendsenAniNvt">
+<em class="property">class </em><code class="descname">BerendsenAniNvt</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>ParticleSet group</em>, <em>ComputeInfo comp_info</em>, <em>float T</em>, <em>float tauT</em>, <em>float tauR</em><span class="sig-paren">)</span><a class="headerlink" href="#BerendsenAniNvt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a Berendsen NVT thermostat for anisotropic particles with system information, particle group, information computation, temperature, tauT, and tauR.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The object of calculation of collective information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="BerendsenAniNvt.setTau">
+<code class="descname">setTau</code><span class="sig-paren">(</span><em>float tauT</em>, <em>float tauR</em><span class="sig-paren">)</span><a class="headerlink" href="#BerendsenAniNvt.setTau" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the Berendsen NVT thermostat with tauT and tauR.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="function">
+<dt id="BerendsenAniNvt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#BerendsenAniNvt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bere</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BerendsenAniNvt</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bere</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 </div>

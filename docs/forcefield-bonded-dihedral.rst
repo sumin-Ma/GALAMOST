@@ -1,6 +1,12 @@
 Dihedral torsion
 ----------------
 
+.. image:: dihedral.png
+    :width: 250 px
+    :align: center
+    :alt: Principle of dihedral torsion
+
+
 Harmonic dihedral potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -24,11 +30,9 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+   .. py:function:: setParams(string name, float k, float delta)
    
-      setParams(string name, Real k, Real delta)
-      # specifies the dihedral harmonic force parameters with dihedral type,
-      # multiplicative constant, and phase shift angle.	  
+      specifies the dihedral harmonic force parameters with dihedral type, multiplicative constant, and phase shift angle.	  
 	  
    Example::
    
@@ -59,11 +63,9 @@ Description:
  
    :param AllInfo all_info: The system information.
 
-   Functions::
+   .. py:function:: setParams(string name, float k1, float k2, float k3, float k4, float delta)
    
-      setParams(string name, Real k1, Real k2, Real k3, Real k4, Real delta)
-      # specifies the dihedral OPLS cosine force parameters with dihedral type, 
-      # k1, k2, k3, k4, and phase shift angle.
+      specifies the dihedral OPLS cosine force parameters with dihedral type, k1, k2, k3, k4, and phase shift angle.
 	  
    Example::
    

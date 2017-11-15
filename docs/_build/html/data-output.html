@@ -91,10 +91,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="data.html">Data</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="data-format.html">Data format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data-input.html">Data input</a></li>
@@ -110,9 +114,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -184,45 +192,74 @@
 <h1>Data output<a class="headerlink" href="#data-output" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="collective-information">
 <h2>Collective information<a class="headerlink" href="#collective-information" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DumpInfo</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1"># initializes an information dump object of a group of particles with system information,</span>
-<span class="c1"># information computation, and output file name.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">dumpAnisotropy</span><span class="p">()</span>
-<span class="c1"># switches on the dump of information related to anisotropic particles.</span>
+<dl class="class">
+<dt id="DumpInfo">
+<em class="property">class </em><code class="descname">DumpInfo</code><span class="sig-paren">(</span><em>all_info</em>, <em>comp_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#DumpInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes an information dump object of a group of particles with system information, information computation, and output file name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>comp_info</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The object of calculation of collective information.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="DumpInfo.dumpAnisotropy">
+<code class="descname">dumpAnisotropy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DumpInfo.dumpAnisotropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches on the dump of information related to anisotropic particles.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">dumpVirialEnergy</span><span class="p">(</span><span class="n">Force</span> <span class="n">force</span><span class="p">)</span>
-<span class="c1"># switches on the dump of energy and virial of inputting force object.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="DumpInfo.dumpVirialEnergy">
+<code class="descname">dumpVirialEnergy</code><span class="sig-paren">(</span><em>Force force</em><span class="sig-paren">)</span><a class="headerlink" href="#DumpInfo.dumpVirialEnergy" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches on the dump of energy and virial of inputting force object.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dinfo</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DumpInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="s1">&#39;data.log&#39;</span><span class="p">)</span>
 <span class="n">dinfo</span><span class="o">.</span><span class="n">setPeriod</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dinfo</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="mol2-dump">
 <h2>MOL2 dump<a class="headerlink" href="#mol2-dump" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Mol2Dump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of mol2 files with system information and file name.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setChangeFreeType</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">)</span>
-<span class="c1"># specifies the type of free particles which will be changed to be &#39;F&#39; in output file.</span>
+<dl class="class">
+<dt id="Mol2Dump">
+<em class="property">class </em><code class="descname">Mol2Dump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#Mol2Dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a dump object of mol2 files with system information and file name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Mol2Dump.setChangeFreeType">
+<code class="descname">setChangeFreeType</code><span class="sig-paren">(</span><em>string type</em><span class="sig-paren">)</span><a class="headerlink" href="#Mol2Dump.setChangeFreeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the type of free particles which will be changed to be ‘F’ in output file.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">deleteBoundaryBond</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches on the function of not displaying the bonds across the box.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="Mol2Dump.deleteBoundaryBond">
+<code class="descname">deleteBoundaryBond</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#Mol2Dump.deleteBoundaryBond" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches on the function of not displaying the bonds across the box.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mol2</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">Mol2Dump</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;particles&#39;</span><span class="p">)</span>
 <span class="n">mol2</span><span class="o">.</span><span class="n">setPeriod</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
@@ -230,84 +267,172 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mol2</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="xml-dump">
 <h2>XML dump<a class="headerlink" href="#xml-dump" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XmlDump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of XML files with system information and base file name.</span>
+<dl class="class">
+<dt id="XmlDump">
+<em class="property">class </em><code class="descname">XmlDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a dump object of XML files with system information and base file name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-<span class="n">XmlDump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of XML files with system information, particle set, and base file name.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setOutput</span> <span class="p">(</span><span class="n">PyObject</span><span class="o">*</span> <span class="n">out_put_list</span><span class="p">)</span>
-<span class="c1"># indicate the output data type.</span>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descname">XmlDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>filename</em><span class="sig-paren">)</span></dt>
+<dd><p>initializes a dump object of XML files with system information, particle set, and base file name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="XmlDump.setOutput">
+<code class="descname">setOutput</code><span class="sig-paren">(</span><em>PyObject* out_put_list</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>indicate the output data type.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputPosition</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output position (the default is true).</span>
+<dl class="function">
+<dt id="XmlDump.setOutputPosition">
+<code class="descname">setOutputPosition</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output position (the default is true).</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputType</span> <span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1">#switches the function of output type (the default is true).</span>
+<dl class="function">
+<dt id="XmlDump.setOutputType">
+<code class="descname">setOutputType</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputType" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output type (the default is true).</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputImage</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output image.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputImage">
+<code class="descname">setOutputImage</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output image.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputVelocity</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output velocity.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputVelocity">
+<code class="descname">setOutputVelocity</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputVelocity" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output velocity.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputMass</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output mass.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputMass">
+<code class="descname">setOutputMass</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputMass" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output mass.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputCharge</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switchesthe function of output charge.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputCharge">
+<code class="descname">setOutputCharge</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputCharge" title="Permalink to this definition">¶</a></dt>
+<dd><p>switchesthe function of output charge.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputDiameter</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output diameter.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputDiameter">
+<code class="descname">setOutputDiameter</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputDiameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output diameter.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputBody</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output body.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputBody">
+<code class="descname">setOutputBody</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputBody" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output body.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputVirial</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output virial.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputVirial">
+<code class="descname">setOutputVirial</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputVirial" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output virial.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputForce</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output force.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputForce">
+<code class="descname">setOutputForce</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output force.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputOrientation</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output orientation.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputOrientation">
+<code class="descname">setOutputOrientation</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputOrientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output orientation.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputQuaternion</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output quaternion.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputQuaternion">
+<code class="descname">setOutputQuaternion</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputQuaternion" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output quaternion.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputRotation</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output rotation velocity.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputRotation">
+<code class="descname">setOutputRotation</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output rotation velocity.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputTorque</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output torque.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputTorque">
+<code class="descname">setOutputTorque</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputTorque" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output torque.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputInert</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output inert tensor.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputInert">
+<code class="descname">setOutputInert</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputInert" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output inert tensor.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputInit</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output initiator indication.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputInit">
+<code class="descname">setOutputInit</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputInit" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output initiator indication.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputCris</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output cris.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputCris">
+<code class="descname">setOutputCris</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputCris" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output cris.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputBond</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output bond.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputBond">
+<code class="descname">setOutputBond</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputBond" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output bond.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputAngle</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output angle.</span>
+<dl class="function">
+<dt id="XmlDump.setOutputAngle">
+<code class="descname">setOutputAngle</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output angle.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputDihedral</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of output dihedral.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="XmlDump.setOutputDihedral">
+<code class="descname">setOutputDihedral</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump.setOutputDihedral" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of output dihedral.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xml</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">XmlDump</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;particles&#39;</span><span class="p">)</span>
 <span class="n">xml</span><span class="o">.</span><span class="n">setOutput</span><span class="p">([</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;bond &#39;</span><span class="p">])</span>
@@ -315,31 +440,60 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="dcd-trajectory-dump">
 <h2>DCD trajectory dump<a class="headerlink" href="#dcd-trajectory-dump" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DcdDump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">overwrite</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of DCD file with system information, file name,</span>
-<span class="c1"># and if overwrite former data.</span>
+<dl class="class">
+<dt id="DcdDump">
+<em class="property">class </em><code class="descname">DcdDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em>, <em>overwrite</em><span class="sig-paren">)</span><a class="headerlink" href="#DcdDump" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a dump object of DCD file with system information, file name, and if overwrite former data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If overwrite the existed DCD file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-<span class="n">DcdDump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">overwrite</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of DCD file with system information, particle set,</span>
-<span class="c1"># file name, and if overwrite former data.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">unpbc</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of outputing the particle position without the application</span>
-<span class="c1"># of PBC, the default value is false.</span>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descname">DcdDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>filename</em>, <em>overwrite</em><span class="sig-paren">)</span></dt>
+<dd><p>initializes a dump object of DCD file with system information, particle set, file name, and if overwrite former data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – If overwrite the existed DCD file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="DcdDump.unpbc">
+<code class="descname">unpbc</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#DcdDump.unpbc" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of outputing the particle position without the application of PBC, the default value is false.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">unwrap</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of unwrapping the molecules across box boundary due to</span>
-<span class="c1"># PBC condition, the default value is false.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="DcdDump.unwrap">
+<code class="descname">unwrap</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#DcdDump.unwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of unwrapping the molecules across box boundary due to PBC condition, the default value is false.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dcd</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DcdDump</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;particles&#39;</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">dcd</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -347,27 +501,45 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dcd</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="galamost-binary-dump">
 <h2>GALAMOST binary dump<a class="headerlink" href="#galamost-binary-dump" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BinaryDump</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">string</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1"># initializes a dump object of GALAMOST binary file with system information and file base name.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setOutputAll</span><span class="p">()</span>
-<span class="c1"># switches on the function of output all data.</span>
+<dl class="class">
+<dt id="BinaryDump">
+<em class="property">class </em><code class="descname">BinaryDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#BinaryDump" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a dump object of GALAMOST binary file with system information and file base name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="BinaryDump.setOutputAll">
+<code class="descname">setOutputAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BinaryDump.setOutputAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches on the function of output all data.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setOutputForRestart</span><span class="p">()</span>
-<span class="c1"># switches on the function of output data needed for restarting.</span>
+<dl class="function">
+<dt id="BinaryDump.setOutputForRestart">
+<code class="descname">setOutputForRestart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BinaryDump.setOutputForRestart" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches on the function of output data needed for restarting.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">enableCompression</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of compressing output file.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="BinaryDump.enableCompression">
+<code class="descname">enableCompression</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#BinaryDump.enableCompression" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of compressing output file.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BinaryDump</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;particle&#39;</span><span class="p">)</span>
 <span class="n">binary</span><span class="o">.</span><span class="n">setOutput</span><span class="p">([</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;bond&#39;</span><span class="p">])</span>
@@ -375,7 +547,8 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

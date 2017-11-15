@@ -9,4 +9,5 @@ To employ some popular force fields, GALAMOST accommodate the potential function
    system-information
    system-list
    system-group
- 
+   system-compute
+   system-sort 

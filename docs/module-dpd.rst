@@ -4,29 +4,42 @@ Dissipative particle dynamics
 DPD force
 ^^^^^^^^^
 
-   Constructor::
-   
-      DpdForce(AllInfo all_info, NeighborList nlist, Real r_cut, Real temperature, unsigned int rand_num)
-      # initializes a DPD interaction object with system information, neighbor list, cut-off radius, 
-      # temperature, and RNG seed.
+.. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, float temperature, unsigned int rand_num)
+
+   initializes a DPD interaction object with system information, neighbor list, cut-off radius, temperature, and RNG seed.
 	  
-      DpdForce(AllInfo all_info, NeighborList nlist, Real r_cut, unsigned int rand_num)
-      # initializes a DPD interaction object with system information, neighbor list, cut-off of radius, 
-      # and RNG seed. The default temperature is 1.0.
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.
+   :param float temperature: The temperature.
+   :param int rand_num: The seed of random number generator.   
+   
+.. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, unsigned int rand_num)
+
+   initializes a DPD interaction object with system information, neighbor list, cut-off of radius, and RNG seed. The default temperature is 1.0.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.
+   :param int rand_num: The seed of random number generator.	  
 	  
    Functions::
    
-      void setParams(string type1, string type2, Real alpha, Real sigma)
-      # specifies the DPD interaction parameters with type1, type2, alpha, sigma.
+   .. py:function:: setParams(string type1, string type2, float alpha, float sigma)
+   
+      specifies the DPD interaction parameters with type1, type2, alpha, sigma.
 	  
-      void setT(Real T)
-      # specifies the temperature with a constant value.
+   .. py:function:: setT(float T)
+   
+      specifies the temperature with a constant value.
 	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time step.
 	  
-      void setDPDVV()
-      # calls the function to enable DPDVV method (the default is GWVV).
+   .. py:function:: setDPDVV()
+   
+      calls the function to enable DPDVV method (the default is GWVV).
 	  
    Example::
    
@@ -37,16 +50,16 @@ DPD force
 GWVV integration
 ^^^^^^^^^^^^^^^^
 
-   Constructor:: 
-   
-      DpdGwvv(AllInfo all_info, ParticleSet group)
-     # initializes a GWVV NVT thermostat for a group of DPD particles with 
-     # system information and particle group
+.. py:class:: DpdGwvv(AllInfo all_info, ParticleSet group)
 
-   Functions::
+   initializes a GWVV NVT thermostat for a group of DPD particles with system information and particle group
+
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	   
+
+   .. py:function:: setLamda(float lamda)
    
-      void setLamda(Real lamda)	
-      # specifies lamda.	  
+      specifies lamda.	  
 	  
    Example::
 

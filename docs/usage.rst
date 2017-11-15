@@ -9,6 +9,7 @@ With the prepared script, you should now be able to try running GALAMOST as:
       ./yourscript.gala --gpu=0 >a.log&
 	  
 Where you may specify the GPU id with the ``--gpu=`` option and output the screen information into ``a.log`` file. If the script file has no executive permission, the command of ``chmod +x yourscript.gala`` should be executed before running above command.
+
 Here is an example of script for DPD simulation. The head of GALAMOST script usually is:
 
    Examples::
@@ -24,7 +25,8 @@ Here is an example of script for DPD simulation. The head of GALAMOST script usu
       (_options, args) = parser.parse_args()
 	  
 where the first paragraph sets the path of the installed library of GALAMOST ``galamost.so`` for loading the Python extensible modules of GALAMOST. The second paragraph is used for parsing GPU id from the executive command. 
-Then, by reading the configuration from a prepared XML file, a system with necessary information can be built up by
+
+Then, reading the configuration from a prepared XML file by :py:class:`XmlReader` and building up perform configuration of GPU by :py:class:`PerformConfig`, a system information (:py:class:`AllInfo`) can be built up by
 
    Examples::
    
@@ -33,25 +35,25 @@ Then, by reading the configuration from a prepared XML file, a system with neces
       perform_config = galamost.PerformConfig(_options.gpu)
       all_info = galamost.AllInfo(build_method,perform_config)
 	  
-After that, we need to build up an application which will call following defined and added objects by:
+After that, we need to build up an application with :py:class:`Application` which will call following defined and added objects.
 
    Examples::
    
       dt = 0.01
       app = galamost.Application(all_info, dt)
 
-Further, we should define the needed objects by the classes of GALAMOST and pass them to the application, such as the following example: non-bonded DPD force, NVT thermostat with GWVV algorithm, and information analysis methods:
+Further, we should define the wanted objects by the classes of GALAMOST and pass them to the application, such as the following example: non-bonded DPD force (:py:class:`DpdForce`), NVT thermostat with GWVV algorithm (:py:class:`DpdGwvv`), and information analysis methods (:py:class:`ComputeInfo`).
       
    Examples::
   	  
       neighbor_list = galamost.NeighborList(all_info, 1.0 ,0.05) # (,rcut,rbuffer)
       dpd=galamost.DpdForce(all_info,neighbor_list,1.0, 12345) # (,,rcut,seed)
-      dpd.setParams('A', 'A', 25.0, 3.0) # (,,alpha,sigma)
-      dpd.setParams('A', 'B', 40.0, 3.0) # ( ,,alpha,sigma)
-      dpd.setParams('B', 'B', 25.0, 3.0) # ( ,,alpha,sigma)
+      dpd.setParams('A', 'A', 25.0, 3.0) # (type1, type2, alpha, sigma)
+      dpd.setParams('A', 'B', 40.0, 3.0) # (type1, type2, alpha, sigma)
+      dpd.setParams('B', 'B', 25.0, 3.0) # (type1, type2, alpha, sigma)
       app.add(dpd)
 
-      group = galamost.ParticleSet(all_info,"all" )
+      group = galamost.ParticleSet(all_info, "all" )
       comp_info = galamost.ComputeInfo(all_info, group)
       Gwvv = galamost.DpdGwvv(all_info, group)
       app.add(Gwvv)
@@ -60,7 +62,7 @@ Further, we should define the needed objects by the classes of GALAMOST and pass
       dinfo.setPeriod(200)
       app.add(dinfo)
 	  
-The tail of script usually sets the number of time steps to run, and the function of analysis of neighbor list etc.
+The tail of script usually sets the number of time steps to run, and the function of analysis of neighbor list (:py:class:`NeighborList`) etc.
       
    Examples::
   	  

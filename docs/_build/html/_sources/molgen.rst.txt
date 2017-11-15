@@ -63,156 +63,190 @@ has been completely given in a XML file, we only need to randomly put it by empl
 Molecule definition
 -------------------
 
-   Constructor::
+.. py:class:: Molecule(np)
+
+   initializes a molecule with the number of particles.
    
-      Molecule(unsigned int np)
-      # initializes a molecule with the number of particles.
+   :param int np: The number of particles.
 	  
-      Molecule(string filename, unsigned int np)
-      # initializes a molecule and reads particles data from the XML file 
-      # with file name and the number of particles.
 	  
-   Functions::
+.. py:class:: Molecule(filename, np)
+
+   initializes a molecule and reads particles data from the XML file with file name and the number of particles.
+	  
+   :param str filename: The name of inputting file.
+   :param int np: The number of particles.   
+
+   .. py:function:: setParticleTypes(string type)
    
-      void setParticleTypes(string type)
-      # specifies the particle types separated by comma according to particle index 
-      # form 0 to N-1 in sequence.
+      specifies the particle types separated by comma according to particle index form 0 to N-1 in sequence.
 	  
-      void setTopology(string topo)
-      # specifies the bonds separated by comma which connect two particles 
-      # separated by crossband.
+   .. py:function:: setTopology(string topo)
+   
+      specifies the bonds separated by comma which connect two particles separated by crossband.
 	  
-      void setIsotactic(bool switch)
-      # switches the isotactic configuration of molecule.
+   .. py:function:: setIsotactic(bool switch)
+   
+      switches the isotactic configuration of molecule.
 	  
-      void setBondLength(double bl)
-      # specifies the bond length of all bonds.
+   .. py:function:: setBondLength(double bl)
+      specifies the bond length of all bonds.
 	  
-      void setBondLength(string type1, string type2, double bl)
-      # specifies the bond length of the bond which connect two kind particles with 
-      # particle type1, type2, and bond length.
+   .. py:function:: setBondLength(string type1, string type2, double bl)
+   
+      specifies the bond length of the bond which connect two kind particles with particle type1, type2, and bond length.
 	  
-      void setAngleDegree(string type1, sstring type2, string type2, double degree)
-      # specifies the angle with particle type 1, type2, type3, and degree.
+   .. py:function:: setAngleDegree(string type1, sstring type2, string type2, double degree)
+   
+      specifies the angle with particle type 1, type2, type3, and degree.
 	  
-      void setAngleDegree(unsigned int idx1, unsigned int idx2, unsigned int idx3, double degree)
-      # specifies the angle with particle idx1, idx2, idx3, and degree.
+   .. py:function:: setAngleDegree(unsigned int idx1, unsigned int idx2, unsigned int idx3, double degree)
+   
+      specifies the angle with particle idx1, idx2, idx3, and degree.
 	  
-      void setDihedralDegree(string type1, string type2, string type3, string type4, double degree)
-      # specifies the dihedral with particle type1, type2, type3, type4, and degree.
+   .. py:function:: setDihedralDegree(string type1, string type2, string type3, string type4, double degree)
+   
+      specifies the dihedral with particle type1, type2, type3, type4, and degree.
 	  
-      void setDihedralDegree(unsigned int idx1, unsigned int idx2, unsigned int idx3, 
-      unsigned int idx4, double degree)
-      # specifies the dihedral with particle idx1, idx2, idx3, idx4, and degree.
+   .. py:function:: setDihedralDegree(unsigned int idx1, unsigned int idx2, unsigned int idx3, unsigned int idx4, double degree)
+   
+      specifies the dihedral with particle idx1, idx2, idx3, idx4, and degree.
 	  
-      void setMass(double mass)
-      # specifies the mass of all particles.
+   .. py:function:: setMass(double mass)
+   
+      specifies the mass of all particles.
 	  
-      void setMass(string type, double mass)
-      # specifies the mass of a kind of particles.
+   .. py:function:: setMass(string type, double mass)
+   
+      specifies the mass of a kind of particles.
 	  
-      void setMass(unsigned int particle_index, double mass)
-      # specifies the mass of a particle.
+   .. py:function:: setMass(unsigned int particle_index, double mass)
+   
+      specifies the mass of a particle.
 	  
-      void setCharge(double charge)
-      # specifies the charge of all particles.
+   .. py:function:: setCharge(double charge)
+   
+      specifies the charge of all particles.
 	  
-      void setCharge(string type, double charge)
-      # specifies the charge of a kind of particles.
+   .. py:function:: setCharge(string type, double charge)
+   
+      specifies the charge of a kind of particles.
 	  
-      void setCharge(unsigned int particle_index, double charge)
-      # specifies the charge of a particle.
+   .. py:function:: setCharge(unsigned int particle_index, double charge)
+   
+      specifies the charge of a particle.
 	  
-      void setOrientation()
-      # specifies all particles having orientation.
+   .. py:function:: setOrientation()
+   
+      specifies all particles having orientation.
 	  
-      void setOrientation(string type)
-      # specifies a kind of particles having orientation.
+   .. py:function:: setOrientation(string type)
+   
+      specifies a kind of particles having orientation.
 	  
-      void setOrientation(unsigned int particle_index)
-      # specifies a particle having orientation.
+   .. py:function:: setOrientation(unsigned int particle_index)
+   
+      specifies a particle having orientation.
 	  
-      void setInert(double inertx, double inerty, double inertz)
-      # specifies the inert in x, y, z directions of all particles.
+   .. py:function:: setInert(double inertx, double inerty, double inertz)
+   
+      specifies the inert in x, y, z directions of all particles.
 	  
-      void setInert(string type, double inertx, double inerty, double inertz)
-	　# specifies the inert in x, y, z directions of a kind of particles.
+   .. py:function:: setInert(string type, double inertx, double inerty, double inertz)
+   
+	　specifies the inert in x, y, z directions of a kind of particles.
 	
-      void setInert(unsigned int particle_index, double inertx, double inerty, double inertz)
-      # specifies the inert in x, y, z directions of a particle.
+   .. py:function:: setInert(unsigned int particle_index, double inertx, double inerty, double inertz)
+   
+      specifies the inert in x, y, z directions of a particle.
 	  
-      void setQuaternion()
-      # specifies all particles having quaternion.
+   .. py:function:: setQuaternion()
+   
+      specifies all particles having quaternion.
 	  
-      void setQuaternion(string type)
-      # specifies a kind of particles having quaternion.
+   .. py:function:: setQuaternion(string type)
+   
+      specifies a kind of particles having quaternion.
 	  
-      void setQuaternion(unsigned int particle_index)
-      # specifies a particle having quaternion.
+   .. py:function:: setQuaternion(unsigned int particle_index)
+   
+      specifies a particle having quaternion.
 	  
-      void setDiameter(double di)
-      # specifies the diameter of all particles.
+   .. py:function:: setDiameter(double di)
+   
+      specifies the diameter of all particles.
 	  
-      void setDiameter(string type, double di)
-      # specifies the diameter of a kind of particles.
+   .. py:function:: setDiameter(string type, double di)
+   
+      specifies the diameter of a kind of particles.
 	  
-      void setDiameter(unsigned int particle_index, double di)
-      # specifies the diameter of a particle.
+   .. py:function:: setDiameter(unsigned int particle_index, double di)
+   
+      specifies the diameter of a particle.
 	  
-      void setCris(unsigned int cris)
-      # specifies the cris of all particles.
+   .. py:function:: setCris(unsigned int cris)
+   
+      specifies the cris of all particles.
 	  
-      void setCris(string type, unsigned int cris)
-      # specifies the cris of a kind of particles.
+   .. py:function:: setCris(string type, unsigned int cris)
+   
+      specifies the cris of a kind of particles.
 	  
-      void setCris(unsigned int particle_index, unsigned int cris)
-      # specifies the cris of a particle.
+   .. py:function:: setCris(unsigned int particle_index, unsigned int cris)
+   
+      specifies the cris of a particle.
 	  
-      void setInit(unsigned int init)
-      # specifies the init of all particles.
+   .. py:function:: setInit(unsigned int init)
+   
+      specifies the init of all particles.
 	  
-      void setInit(string type, unsigned int init)
-      # specifies the init of a kind of particles.
+   .. py:function:: setInit(string type, unsigned int init)
+   
+      specifies the init of a kind of particles.
 	  
-      void setInit(unsigned int particle_index, unsigned int init)
-      # specifies the init of a particle.
+   .. py:function:: setInit(unsigned int particle_index, unsigned int init)
+   
+      specifies the init of a particle.
 	  
-      void setBody(unsigned int body_id)
-      # specifies the body id of all particles (start form 0).
+   .. py:function:: setBody(unsigned int body_id)
+   
+      specifies the body id of all particles (start form 0).
 	  
-      void setBody(string type, unsigned int body_id)
-      # specifies the body id of a kind of particles (start form 0).
+   .. py:function:: setBody(string type, unsigned int body_id)
+   
+      specifies the body id of a kind of particles (start form 0).
 	  
-      void setBody(unsigned int particle_index, unsigned int body_id)
-      # specifies the body id of a particle (start form 0).
+   .. py:function:: setBody(unsigned int particle_index, unsigned int body_id)
+   
+      specifies the body id of a particle (start form 0).
 	  
-      void setMolecule(unsigned int mol_id)
-      # specifies the molecule id of all particles (start form 0).
+   .. py:function:: setMolecule(unsigned int mol_id)
+   
+      specifies the molecule id of all particles (start form 0).
 	  
-      void setMolecule(string type, unsigned int mol_id)
-      # specifies the mlecule id of a kind of particles (start form 0).
+   .. py:function:: setMolecule(string type, unsigned int mol_id)
+   
+      specifies the mlecule id of a kind of particles (start form 0).
 	  
-      void setMolecule(unsigned int particle_index, unsigned int mol_id)
-      # specifies the molecule id of a particle (start form 0).
+   .. py:function:: setMolecule(unsigned int particle_index, unsigned int mol_id)
+   
+      specifies the molecule id of a particle (start form 0).
 	  
-      void setBox(double lx, double ly, double lz)
-      # specifies the size of box where the molecules are generated.
+   .. py:function:: setBox(double lx, double ly, double lz)
+   
+      specifies the size of box where the molecules are generated.
 	  
-      void setBox(double lx_min, double lx_max, double ly_min, double ly_max, 
-	  double lz_min, double lz_max)
-      # specifies the box where the molecules are generated with 
-      # box boundaries: lx_min, lx_max, ly_min, ly_max, lz_min, lz_max.
+   .. py:function:: setBox(double lx_min, double lx_max, double ly_min, double ly_max, double lz_min, double lz_max)
+   
+      specifies the box where the molecules are generated with box boundaries: lx_min, lx_max, ly_min, ly_max, lz_min, lz_max.
 	  
-      void setSphere(double sx, double sy, double sz, double r_min, double r_max)
-      # specifies the sphere where the molecules are generated with 
-      # sphere center position(sx, sy, sz), spherical shell radius r_min, and r_max. 
-      # The molecules are generated in the range r_min< r<r_max.
+   .. py:function:: setSphere(double sx, double sy, double sz, double r_min, double r_max)
+   
+      specifies the sphere where the molecules are generated with sphere center position(sx, sy, sz), spherical shell radius r_min, and r_max. The molecules are generated in the range r_min< r < r_max.
 	  
-      void setCylinder(double px, double py, double pz, double ax, double ay, double az, 
-	  double r_min, double r_max)
-      # specifies the cylinder where the molecules are generated with cylinder 
-      # center position(px, py, pz), cylinder axe vecter(ax, ay, ax), cyliner radius r_min,
-      # and r_max. The molecules are generated in the range r_min< r<r_max.
+   .. py:function:: setCylinder(double px, double py, double pz, double ax, double ay, double az, double r_min, double r_max)
+   
+      specifies the cylinder where the molecules are generated with cylinder center position(px, py, pz), cylinder axe vecter(ax, ay, ax), cyliner radius r_min, and r_max. The molecules are generated in the range r_min< r<r_max.
 	  
    Example::
    
@@ -232,20 +266,24 @@ Molecule definition
 Objects definition
 ------------------
 
-   Constructor::
-    
-      Object(unsigned int np, Object::Shape shape)
-      # initializes an object with the number of particles and shape.
+.. py:class:: Object(np, shape)
+
+   initializes an object with the number of particles and shape.
 	  
-      Object(string filename, unsigned int, Object::Shape)
-      # initializes an object by reading partial data from a file with file name, 
-      # the number of particles, and shape (the candidates are "none" and "sphere").
-	  
-   Functions::
+   :param int np: The number of particles.   	  
+   :param Shape shape: The shape of object.
    
-      void setRadius(double radius)
-      # specifies the radius of the sphere which will be generated
-      # (only works for "sphere" shape) with radius.
+.. py:class:: Object(string filename, unsigned int, Object::Shape)
+
+   initializes an object by reading partial data from a file with file name, the number of particles, and shape (the candidates are "none" and "sphere").
+	  
+   :param str filename: The name of inputting file.  	  
+   :param int np: The number of particles.   	  
+   :param Shape shape: The shape of object.	  
+
+   .. py:function:: setRadius(double radius)
+   
+      specifies the radius of the sphere which will be generated(only works for "sphere" shape) with radius.
 	  
    Example::
    
@@ -262,35 +300,41 @@ Objects definition
 Generator definition
 --------------------
 
-   Constructor::
+.. py:class:: Generators(double lx, double ly, double lz)
+
+   initializes a molecule generator with box length in x y z directions.
+	  
+   :param float lx: The box length in x direction.  	  
+   :param float ly: The box length in y direction.   	  
+   :param float lz: The box length in z direction.		  
+
+   .. py:function:: addMolecule(Molecule mol, unsigned int num)
    
-      Generators(double lx, double ly, double lz)
-      #initializes a molecule generator with box length in x y z directions.
+      adds a molecule into generator with molecule object and number.
 	  
-   Functions::
+   .. py:function:: setMinimumDistance (double min_dis)
    
-      void addMolecule(Molecule mol, unsigned int num)
-      # adds a molecule into generator with molecule object and number.
+      sets the minimum separated distance of all particles.
 	  
-      void setMinimumDistance (double min_dis)
-      # sets the minimum separated distance of all particles.
+   .. py:function:: setMinimumDistance(string type1, string type2, double min_dis)
+   
+      sets the minimum separated distance between two particle types with particle type 1, particle type 2 and minimum distance.
 	  
-      void setMinimumDistance(string type1, string type2, double min_dis)
-      # sets the minimum separated distance between two particle types with 
-      # particle type 1, particle type 2 and minimum distance.
+   .. py:function:: setParam(cstring type1, string type2, double epsilon, double sigma, double r_cut)
+   
+      sets the LJ potential parameters between two particle types for Rosenblueth method with particle type1, particle type2, epsilon, sigma, and cut-off radius.
 	  
-      void setParam(cstring type1, string type2, double epsilon, double sigma, double r_cut)
-      # sets the LJ potential parameters between two particle types for Rosenblueth method 
-      # with particle type1, particle type2, epsilon, sigma, and cut-off radius.
+   .. py:function:: setDimension (unsigned int dimension)
+   
+      specifies system dimension, the default value is 3.
 	  
-      void setDimension (unsigned int dimension)
-      # specifies system dimension, the default value is 3.
+   .. py:function:: outPutXml(string filename)
+   
+      switch the function of outputting XML filename.
 	  
-      void outPutXml(string filename)
-      # switch the function of outputting XML filename.
-	  
-      void outPutMol2(string filename)
-      # switch the function of outputting Mol2 files.
+   .. py:function:: outPutMol2(string filename)
+   
+      switch the function of outputting Mol2 files.
 	  
    Example::
    

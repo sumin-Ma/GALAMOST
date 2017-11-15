@@ -1,19 +1,23 @@
 MD-SCF
 ======
 
-   Constructor::
+.. py:class:: MdScfForce(all_info, nx, ny, nz, comp)
+
+   initializes an object of MD-SCF force with system information, grid number in x, y, z, direction, and compressibility.
    
-      MdScfForce(AllInfo all_info, unsigned int nx , unsigned int ny, unsigned int nz, Real comp)
-      # initializes an object of MD-SCF force with system information, 
-      # grid number in x, y, z, direction, and compressibility.
-	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param int nx: The number of grid in x direction.  
+   :param int ny: The number of grid in y direction.  
+   :param int nz: The number of grid in z direction.     
+   :param float comp: The compressibility.
+
+   .. py:function:: setParams(string type1, string type2, float chi)
    
-      void setParams(string type1, string type2, Real chi)
-      # specifies the MD-SCF interaction parameters by pair types with type1, type2, chi parameter.
+      specifies the MD-SCF interaction parameters by pair types with type1, type2, chi parameter.
 	  
-      void setNewVersion(bool switch)
-      # switches the function of newly developed method of implementation.
+   .. py:function:: setNewVersion(bool switch)
+   
+      switches the function of newly developed method of implementation.
 	  
    Example::
    

@@ -30,26 +30,30 @@ All information
    
    :param Reader reader: The file parser   
    :param PerformConfig perf_conf: The perform configuration  
-	  
-   Functions::
+
+   .. py:function:: setNDimensions(unsigned int nds)
    
-      setNDimensions(unsigned int nds);
-      # set the number of dimensions
+      set the number of dimensions
 	  
-      addParticleType(string ptype)
-      # add a particle type to system
+   .. py:function:: addParticleType(string ptype)
+   
+      add a particle type to system
 	  
-      addBondType(string bondtype)
-      # add a bond type to system     
+   .. py:function:: addBondType(string bondtype)
+   
+      add a bond type to system     
       
-      addAngleType(string angletype)
-      # add a angle type to system     
+   .. py:function:: addAngleType(string angletype)
+   
+      add a angle type to system     
       
-      addBondTypeByPairs()
-      # add bond types to system according to particle types      
+   .. py:function:: addBondTypeByPairs()
+   
+      add bond types to system according to particle types      
       
-      addAngleTypeByPairs()
-      # add angle types to system according to particle types 
+   .. py:function:: addAngleTypeByPairs()
+   
+      add angle types to system according to particle types 
    
    Example::
    

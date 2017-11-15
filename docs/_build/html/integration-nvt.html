@@ -91,13 +91,18 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="integration.html">Integration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="integration-nve.html">NVE ensemble</a></li>
@@ -114,6 +119,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -185,21 +193,37 @@
 <h1>NVT ensemble<a class="headerlink" href="#nvt-ensemble" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="nose-hoover-thermostat">
 <h2>Nose Hoover thermostat<a class="headerlink" href="#nose-hoover-thermostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NoseHooverNvt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauT</span><span class="p">)</span>
-<span class="c1"># initializes a NVT NoseHoover thermostat object for a group of particles with system information,</span>
-<span class="c1"># particle group, information computation, temperature, and tauT.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="class">
+<dt id="NoseHooverNvt">
+<em class="property">class </em><code class="descname">NoseHooverNvt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info</em>, <em>T</em>, <em>tauT</em><span class="sig-paren">)</span><a class="headerlink" href="#NoseHooverNvt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVT NoseHoover thermostat object for a group of particles with system information, particle group, information computation, temperature, and tauT.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The object of calculation of collective information.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thermostat coupling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="NoseHooverNvt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#NoseHooverNvt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a defined varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a defined varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="n">comp_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
@@ -207,137 +231,232 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nh</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="berendsen-thermostat">
 <h2>Berendsen thermostat<a class="headerlink" href="#berendsen-thermostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BerendsenNvt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauT</span><span class="p">)</span>
-<span class="c1"># initializes a NVT Berendsen thermostat object for a group of particles with system information,</span>
-<span class="c1"># particle set, information computation, temperature, and tauT.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="class">
+<dt id="BerendsenNvt">
+<em class="property">class </em><code class="descname">BerendsenNvt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info</em>, <em>T</em>, <em>tauT</em><span class="sig-paren">)</span><a class="headerlink" href="#BerendsenNvt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVT Berendsen thermostat object for a group of particles with system information, particle set, information computation, temperature, and tauT.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The object of calculation of collective information.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thermostat coupling parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="BerendsenNvt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#BerendsenNvt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time steps.</span>
-</pre></div>
-</div>
-</div></blockquote>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time steps.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="andersen-thermostat">
 <h2>Andersen thermostat<a class="headerlink" href="#andersen-thermostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AndersenNvt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">seed</span><span class="p">)</span>
-<span class="c1"># initializes a NVT Andersen thermostat object for a group of particles with system information,</span>
-<span class="c1"># particle set, temperature, collision frequency, and RNG seed.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="class">
+<dt id="AndersenNvt">
+<em class="property">class </em><code class="descname">AndersenNvt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>T</em>, <em>gamma</em>, <em>seed</em><span class="sig-paren">)</span><a class="headerlink" href="#AndersenNvt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVT Andersen thermostat object for a group of particles with system information, particle set, temperature, collision frequency, and RNG seed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The collision frequency.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The seed of random number generator.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="AndersenNvt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#AndersenNvt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time steps.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time steps.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">an</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AndersenNvt</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="n">group</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span> <span class="mi">12345</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">an</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="brownian-dynamic-thermostat">
 <h2>Brownian dynamic thermostat<a class="headerlink" href="#brownian-dynamic-thermostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BdNvt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">seed</span><span class="p">)</span>
-<span class="c1"># initializes a Brownian NVT thermostat object with system information,</span>
-<span class="c1"># particle group, temperature, and RNG seed.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setGamma</span><span class="p">(</span><span class="n">Real</span> <span class="n">gamma</span><span class="p">)</span>
-<span class="c1"># specifies the gamma with a constant value.</span>
+<dl class="class">
+<dt id="BdNvt">
+<em class="property">class </em><code class="descname">BdNvt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>T</em>, <em>seed</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a Brownian NVT thermostat object with system information, particle group, temperature, and RNG seed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The seed of random number generator.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="BdNvt.setGamma">
+<code class="descname">setGamma</code><span class="sig-paren">(</span><em>float gamma</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvt.setGamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the gamma with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setGamma</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">gamma</span><span class="p">)</span>
-<span class="c1"># specifies the gamma of a particle type.</span>
+<dl class="function">
+<dt>
+<code class="descname">setGamma</code><span class="sig-paren">(</span><em>string type</em>, <em>float gamma</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the gamma of a particle type.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="function">
+<dt id="BdNvt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="n">bdnvt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BdNvt</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bdnvt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="nvt-for-rigid-body">
 <h2>NVT for rigid body<a class="headerlink" href="#nvt-for-rigid-body" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NvtRigid</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauT</span><span class="p">)</span>
-<span class="c1"># initializes a NVT thermostat object for rigid bodies with system information,</span>
-<span class="c1"># particle group, temperature, and tauT.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a fixed value.</span>
+<dl class="class">
+<dt id="NvtRigid">
+<em class="property">class </em><code class="descname">NvtRigid</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>ParticleSet group</em>, <em>float T</em>, <em>float tauT</em><span class="sig-paren">)</span><a class="headerlink" href="#NvtRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NVT thermostat object for rigid bodies with system information, particle group, temperature, and tauT.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thermostat coupling parameter.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="NvtRigid.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#NvtRigid.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a fixed value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>pecifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bgroup</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
 <span class="n">rigidnvt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NvtRigid</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rigidnvt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="brownian-dynamic-for-rigid-body">
 <h2>Brownian dynamic for rigid body<a class="headerlink" href="#brownian-dynamic-for-rigid-body" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BdNvtRigid</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">seed</span><span class="p">)</span>
-<span class="c1"># initializes a Brownian NVT thermostat object for rigid bodies with system information,</span>
-<span class="c1"># particle group, temperature, and RNG seed.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setGamma</span><span class="p">(</span><span class="n">Real</span> <span class="n">gamma</span><span class="p">)</span>
-<span class="c1"># specifies the gamma of Brownian method with a constant value.</span>
+<dl class="class">
+<dt id="BdNvtRigid">
+<em class="property">class </em><code class="descname">BdNvtRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>T</em>, <em>seed</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvtRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a Brownian NVT thermostat object for rigid bodies with system information, particle group, temperature, and RNG seed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The seed of random number generator.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="BdNvtRigid.setGamma">
+<code class="descname">setGamma</code><span class="sig-paren">(</span><em>float gamma</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvtRigid.setGamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the gamma of Brownian method with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setGamma</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="o">&amp;</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">gamma</span><span class="p">)</span>
-<span class="c1"># specifies the gamma of Brownian method of a particle type.</span>
+<dl class="function">
+<dt>
+<code class="descname">setGamma</code><span class="sig-paren">(</span><em>const std::string &amp; type</em>, <em>float gamma</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the gamma of Brownian method of a particle type.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="function">
+<dt id="BdNvtRigid.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvtRigid.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bgroup</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
 <span class="n">bdrigidnvt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">BdNvtRigid</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bdrigidnvt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

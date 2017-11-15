@@ -90,16 +90,24 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -167,27 +175,46 @@
             
   <div class="section" id="application">
 <h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Application</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">Real</span> <span class="n">dt</span><span class="p">)</span>
-<span class="c1"># initializes an application object with system information</span>
-<span class="c1"># and integration time step.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">add</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;*&gt;</span> <span class="nb">object</span><span class="p">)</span>
-<span class="c1"># adds an object to the application.</span>
+<dl class="class">
+<dt id="Application">
+<em class="property">class </em><code class="descname">Application</code><span class="sig-paren">(</span><em>all_info</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes an application object with system information and integration time step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information</li>
+<li><strong>dt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The integration time step</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Application.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>boost::shared_ptr&lt;*&gt; object</em><span class="sig-paren">)</span><a class="headerlink" href="#Application.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds an object to the application.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">remove</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;*&gt;</span> <span class="nb">object</span><span class="p">)</span>
-<span class="c1"># removes an added object.</span>
+<dl class="function">
+<dt id="Application.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>boost::shared_ptr&lt;*&gt; object</em><span class="sig-paren">)</span><a class="headerlink" href="#Application.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>removes an added object.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">clear</span><span class="p">()</span>
-<span class="c1"># removes all objects from the application.</span>
+<dl class="function">
+<dt id="Application.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Application.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>removes all objects from the application.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">run</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">N</span><span class="p">)</span>
-<span class="c1"># runs the simulation for N time steps.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="Application.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>unsigned int N</em><span class="sig-paren">)</span><a class="headerlink" href="#Application.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>runs the simulation for N time steps.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
@@ -196,7 +223,8 @@
 <span class="c1"># runs the simulation for 10000 time steps.</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 
 

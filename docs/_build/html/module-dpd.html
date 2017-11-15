@@ -91,13 +91,18 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="module-mdscf.html">MD-SCF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module-polymerization.html">Polymerization</a></li>
@@ -111,6 +116,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -182,59 +190,109 @@
 <h1>Dissipative particle dynamics<a class="headerlink" href="#dissipative-particle-dynamics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dpd-force">
 <h2>DPD force<a class="headerlink" href="#dpd-force" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DpdForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Real</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">rand_num</span><span class="p">)</span>
-<span class="c1"># initializes a DPD interaction object with system information, neighbor list, cut-off radius,</span>
-<span class="c1"># temperature, and RNG seed.</span>
+<dl class="class">
+<dt id="DpdForce">
+<em class="property">class </em><code class="descname">DpdForce</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>NeighborList nlist</em>, <em>float r_cut</em>, <em>float temperature</em>, <em>unsigned int rand_num</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a DPD interaction object with system information, neighbor list, cut-off radius, temperature, and RNG seed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+<li><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>rand_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The seed of random number generator.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-<span class="n">DpdForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">NeighborList</span> <span class="n">nlist</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">rand_num</span><span class="p">)</span>
-<span class="c1"># initializes a DPD interaction object with system information, neighbor list, cut-off of radius,</span>
-<span class="c1"># and RNG seed. The default temperature is 1.0.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descname">DpdForce</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>NeighborList nlist</em>, <em>float r_cut</em>, <em>unsigned int rand_num</em><span class="sig-paren">)</span></dt>
+<dd><p>initializes a DPD interaction object with system information, neighbor list, cut-off of radius, and RNG seed. The default temperature is 1.0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+<li><strong>rand_num</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The seed of random number generator.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">)</span>
-<span class="c1"># specifies the DPD interaction parameters with type1, type2, alpha, sigma.</span>
-
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
-
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-
-<span class="n">void</span> <span class="n">setDPDVV</span><span class="p">()</span>
-<span class="c1"># calls the function to enable DPDVV method (the default is GWVV).</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">py</span><span class="p">:</span><span class="n">function</span><span class="p">::</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="nb">float</span> <span class="n">alpha</span><span class="p">,</span> <span class="nb">float</span> <span class="n">sigma</span><span class="p">)</span>
 </pre></div>
 </div>
+<blockquote>
+<div>specifies the DPD interaction parameters with type1, type2, alpha, sigma.</div></blockquote>
+<dl class="function">
+<dt id="DpdForce.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DpdForce.setDPDVV">
+<code class="descname">setDPDVV</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setDPDVV" title="Permalink to this definition">¶</a></dt>
+<dd><p>calls the function to enable DPDVV method (the default is GWVV).</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dpd</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DpdForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">12345</span><span class="p">)</span>
 <span class="n">dpd</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dpd</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="gwvv-integration">
 <h2>GWVV integration<a class="headerlink" href="#gwvv-integration" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="n">DpdGwvv</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">)</span>
-<span class="c1"># initializes a GWVV NVT thermostat for a group of DPD particles with</span>
-<span class="c1"># system information and particle group</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setLamda</span><span class="p">(</span><span class="n">Real</span> <span class="n">lamda</span><span class="p">)</span>
-<span class="c1"># specifies lamda.</span>
-</pre></div>
-</div>
+<dl class="class">
+<dt id="DpdGwvv">
+<em class="property">class </em><code class="descname">DpdGwvv</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>ParticleSet group</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a GWVV NVT thermostat for a group of DPD particles with system information and particle group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="DpdGwvv.setLamda">
+<code class="descname">setLamda</code><span class="sig-paren">(</span><em>float lamda</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv.setLamda" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies lamda.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gwvv</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DpdGwvv</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gwvv</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

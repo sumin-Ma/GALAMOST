@@ -42,19 +42,22 @@ The short-range part can employ Ewald summation and long-range part can employ P
 Ewald (short-range part)
 -------------------------------------
 
-   Constructor::
-   
-      EwaldForce(AllInfo all_info, NeighborList nlist, ParticleSet group, Real r_cut)
-      # initializes an Ewald force object for a group of charged particles with system information,
-      # neighbor list, particle set, and cut-off radius.
+.. py:class:: EwaldForce(all_info, nlist, group, r_cut)
+
+   initializes an Ewald force object for a group of charged particles with system information, neighbor list, particle set, and cut-off radius.
 	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.
+   :param ParticleSet group: The group of charged particles. 
+   :param float r_cut: The cut-off radius.	  
+
+   .. py:function:: setParams(string type0, string type1, float kappa)
    
-      void setParams(string type0, string type1, Real kappa)
-      # specifies the force parameters with kappa.
+      specifies the force parameters with kappa.
 	  
-      void setParams(Real kappa)
-      # specifies the force parameters for all particle types with kappa.
+   .. py:function:: setParams(float kappa)
+   
+      specifies the force parameters for all particle types with kappa.
 	  
    Example::
    
@@ -67,20 +70,21 @@ Ewald (short-range part)
 PPPM (long-range part)
 ----------------------
 
-   Constructor::
-   
-      PPPMForce(AllInfo all_info, NeighborList nlist, ParticleSet group)	  
-      # initializes a PPPM force object for a group of charged particles with system information,
-      # neighbor list, and particle group.
+.. py:class:: PPPMForce(all_info, nlist, group)
 	  
-   Functions::
+   initializes a PPPM force object for a group of charged particles with system information, neighbor list, and particle group.
+
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.
+   :param ParticleSet group: The group of charged particles.
+
+   .. py:function:: setParams(int nx, int ny, int nz, int order, float r_cut)
    
-      void setParams(int nx, int ny, int nz, int order, Real r_cut)
-      # specifies the PPPM force with the number of grid points in x, y, and z direction, 
-      # the order of interpolation, and the cutoff radius of direct force.
+      specifies the PPPM force with the number of grid points in x, y, and z direction, the order of interpolation, and the cutoff radius of direct force.
 	  
-      Real getKappa()
-      # return the kappa calculated by PPPM force.
+   .. py:function:: float getKappa()
+   
+      return the kappa calculated by PPPM force.
 	  
    Example::
    
@@ -92,18 +96,17 @@ PPPM (long-range part)
 ENUF (long-range part)
 ----------------------
 
-   Constructor::
-   
-      ENUFForce(AllInfo all_info, NeighborList nlist, ParticleSet group)	  
-      # initializes an ENUF force object for a group of charged particles with system information,
-      # neighbor list, and particle group.
+.. py:class:: ENUFForce(all_info, nlist, group)
 	  
-   Functions::
-   
-      void setParams(Real alpha, Real sigma, int precision, int Nx, int Ny, int Nz)
-      # specifies the ENUF force with alpha, hyper sampling factor sigma, 
-      # precision determine the order of interpolation (precision*2+2), 
-      # and the number of grid points in x, y, and z direction.	
+   initializes an ENUF force object for a group of charged particles with system information, neighbor list, and particle group.
+
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.
+   :param ParticleSet group: The group of charged particles.
+
+   .. py:function:: setParams(float alpha, float sigma, int precision, int Nx, int Ny, int Nz)
+      
+      specifies the ENUF force with alpha, hyper sampling factor sigma, precision determine the order of interpolation (precision*2+2), and the number of grid points in x, y, and z direction.	
 	  
    Example::
    

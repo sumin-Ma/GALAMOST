@@ -89,16 +89,24 @@
               
             
             
-              <ul>
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -167,10 +175,16 @@
   <div class="section" id="welcome-to-galamost-s-documentation">
 <h1>Welcome to galamost’s documentation!<a class="headerlink" href="#welcome-to-galamost-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">General introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="data-format.html">Data format</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data-format.html#xml-format">XML format</a></li>
@@ -203,10 +217,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="system-group.html">Particle set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system-compute.html">Information computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system-sort.html">Memory sorting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="forcefield-nonbonded.html">Short range non-bonded interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#shift-lennard-jones-lj-interaction">Shift Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="forcefield-nonbonded.html#pair-interaction">Pair interaction</a></li>
@@ -234,6 +251,26 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="constraint-variant.html">Variant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="constraint-variant.html#variant-linear">Variant Linear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraint-variant.html#variant-sin">Variant Sin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraint-variant.html#variant-well">Variant Well</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="constraint-external_interaction.html">External interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="constraint-external_interaction.html#axial-stretching">Axial stretching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraint-external_interaction.html#external-force">External force</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="constraint-space_constraint.html">Space constraint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="constraint-space_constraint.html#bounce-back-condition">Bounce back condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraint-space_constraint.html#lj-surface-force">LJ surface force</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="constraint-remove_momentum.html">Remove CM momentum</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="module-mdscf.html">MD-SCF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module-polymerization.html">Polymerization</a><ul>
@@ -257,6 +294,7 @@
 <li class="toctree-l2"><a class="reference internal" href="integration-nve.html">NVE ensemble</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="integration-nve.html#nve-thermostat">NVE thermostat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="integration-nve.html#nve-for-rigid-body">NVE for rigid body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integration-nve.html#nve-for-rigid-body-with-tunable-freedoms">NVE for rigid body with tunable freedoms</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="integration-nvt.html">NVT ensemble</a><ul>
@@ -276,6 +314,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="molgen.html#molecule-generator-description">Molecule generator description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="molgen.html#molecule-definition">Molecule definition</a></li>

@@ -4,24 +4,30 @@ NPT ensemble
 Andersen barostat
 -----------------
 
-   Constructor::
+.. py:class:: Npt(all_info, group, comp_info_group, comp_info_all, T, P, tauT, tauP)
+
+   initializes a NPT thermostat object for a group of particles with system information, particle group, information computation for a group particles, information computation for all particles, temperature, pressure, tauT, tauP.
+
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param ComputeInfo comp_info_group: The calculation of collective information of group particles.
+   :param ComputeInfo comp_info_all: The calculation of collective information of all particles.   
+   :param float T: The temperature.  
+   :param float P: The pressure.     
+   :param float tauT: The thermostat coupling.
+   :param float tauP: The barostat coupling.
+
+   .. py:function:: setP(float P) 
    
-      Npt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info_group, 
-      ComputeInfo comp_info_all, Real T, Real P, Real tauT, Real tauP)
-      # initializes a NPT thermostat object for a group of particles with system information, 
-      # particle group, information computation for a group particles, information computation 
-      # for all particles, temperature, pressure, tauT, tauP.
+      specifies the pressure with a constant value.
 	  
-   Functions::
+   .. py:function:: setT(float T)
    
-      void setP(Real P) 
-      # specifies the pressure with a constant value.
+      specifies the temperature with a constant value.
 	  
-      void setT(Real T)
-      # specifies the temperature with a constant value.
-	  
-      void setT(boost::shared_ptr<Variant> vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time step.
 	  
    Example::
   
@@ -31,24 +37,30 @@ Andersen barostat
 NPT for rigid body
 ------------------
 
-   Constructor::
+.. py:class:: NptRigid(all_info, group, comp_info_group, comp_info_all, T, P, tauT, tauP)
+
+   initializes a NPT thermostat object for rigid bodies with system information, particle group, information computation for the group particles, information computation for all particles, temperature, pressure, tauT, and tauP.
+	  
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param ComputeInfo comp_info_group: The calculation of collective information of group particles.
+   :param ComputeInfo comp_info_all: The calculation of collective information of all particles.   
+   :param float T: The temperature.  
+   :param float P: The pressure.     
+   :param float tauT: The thermostat coupling.
+   :param float tauP: The barostat coupling.	  
+
+   .. py:function:: setT(float T)
    
-      NptRigid(AllInfo all_info, ParticleSet group, ComputeInfo comp_info_group, 
-      ComputeInfo comp_info_all, Real T, Real P, Real tauT, Real tauP)
-      # initializes a NPT thermostat object for rigid bodies with system information, particle group, 
-      # information computation for the group particles, information computation for all particles, 
-      # temperature, pressure, tauT, and tauP.
+      specifies the temperature with a fixed value.
 	  
-   Functions::
+   .. py:function:: setT(Variant vT)
    
-      void setT(Real T)
-      # specifies the temperature with a fixed value.
+      specifies the temperature with a varying value by time step.
 	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
-	  
-      void setP(Real P)
-      # specifies the pressure with a fixed value.
+   .. py:function:: setP(float P)
+   
+      specifies the pressure with a fixed value.
 	  
    Example::
    

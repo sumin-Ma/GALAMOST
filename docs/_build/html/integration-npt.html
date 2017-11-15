@@ -91,13 +91,18 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="integration.html">Integration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="integration-nve.html">NVE ensemble</a></li>
@@ -110,6 +115,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -181,55 +189,96 @@
 <h1>NPT ensemble<a class="headerlink" href="#npt-ensemble" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="andersen-barostat">
 <h2>Andersen barostat<a class="headerlink" href="#andersen-barostat" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Npt</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info_group</span><span class="p">,</span>
-<span class="n">ComputeInfo</span> <span class="n">comp_info_all</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">P</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauT</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauP</span><span class="p">)</span>
-<span class="c1"># initializes a NPT thermostat object for a group of particles with system information,</span>
-<span class="c1"># particle group, information computation for a group particles, information computation</span>
-<span class="c1"># for all particles, temperature, pressure, tauT, tauP.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setP</span><span class="p">(</span><span class="n">Real</span> <span class="n">P</span><span class="p">)</span>
-<span class="c1"># specifies the pressure with a constant value.</span>
+<dl class="class">
+<dt id="Npt">
+<em class="property">class </em><code class="descname">Npt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info_group</em>, <em>comp_info_all</em>, <em>T</em>, <em>P</em>, <em>tauT</em>, <em>tauP</em><span class="sig-paren">)</span><a class="headerlink" href="#Npt" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NPT thermostat object for a group of particles with system information, particle group, information computation for a group particles, information computation for all particles, temperature, pressure, tauT, tauP.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info_group</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of group particles.</li>
+<li><strong>comp_info_all</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of all particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The pressure.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thermostat coupling.</li>
+<li><strong>tauP</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The barostat coupling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Npt.setP">
+<code class="descname">setP</code><span class="sig-paren">(</span><em>float P</em><span class="sig-paren">)</span><a class="headerlink" href="#Npt.setP" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a constant value.</span>
+<dl class="function">
+<dt id="Npt.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#Npt.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a constant value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">boost</span><span class="p">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Variant</span><span class="o">&gt;</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">npt</span> <span class="o">=</span><span class="n">galamost</span><span class="o">.</span><span class="n">Npt</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">npt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 <div class="section" id="npt-for-rigid-body">
 <h2>NPT for rigid body<a class="headerlink" href="#npt-for-rigid-body" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NptRigid</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">ParticleSet</span> <span class="n">group</span><span class="p">,</span> <span class="n">ComputeInfo</span> <span class="n">comp_info_group</span><span class="p">,</span>
-<span class="n">ComputeInfo</span> <span class="n">comp_info_all</span><span class="p">,</span> <span class="n">Real</span> <span class="n">T</span><span class="p">,</span> <span class="n">Real</span> <span class="n">P</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauT</span><span class="p">,</span> <span class="n">Real</span> <span class="n">tauP</span><span class="p">)</span>
-<span class="c1"># initializes a NPT thermostat object for rigid bodies with system information, particle group,</span>
-<span class="c1"># information computation for the group particles, information computation for all particles,</span>
-<span class="c1"># temperature, pressure, tauT, and tauP.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Real</span> <span class="n">T</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a fixed value.</span>
+<dl class="class">
+<dt id="NptRigid">
+<em class="property">class </em><code class="descname">NptRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info_group</em>, <em>comp_info_all</em>, <em>T</em>, <em>P</em>, <em>tauT</em>, <em>tauP</em><span class="sig-paren">)</span><a class="headerlink" href="#NptRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes a NPT thermostat object for rigid bodies with system information, particle group, information computation for the group particles, information computation for all particles, temperature, pressure, tauT, and tauP.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info_group</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of group particles.</li>
+<li><strong>comp_info_all</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of all particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The temperature.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The pressure.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The thermostat coupling.</li>
+<li><strong>tauP</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The barostat coupling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="NptRigid.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#NptRigid.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a fixed value.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setT</span><span class="p">(</span><span class="n">Variant</span> <span class="n">vT</span><span class="p">)</span>
-<span class="c1"># specifies the temperature with a varying value by time step.</span>
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setP</span><span class="p">(</span><span class="n">Real</span> <span class="n">P</span><span class="p">)</span>
-<span class="c1"># specifies the pressure with a fixed value.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="NptRigid.setP">
+<code class="descname">setP</code><span class="sig-paren">(</span><em>float P</em><span class="sig-paren">)</span><a class="headerlink" href="#NptRigid.setP" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with a fixed value.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="n">comp_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
@@ -241,7 +290,8 @@
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rigidnpt</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 </div>
 

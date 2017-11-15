@@ -4,19 +4,23 @@ NVT ensemble
 Nose Hoover thermostat
 ----------------------
 
-   Constructor::
-   
-      NoseHooverNvt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info, Real T, Real tauT)
-      # initializes a NVT NoseHoover thermostat object for a group of particles with system information, 
-      # particle group, information computation, temperature, and tauT.
+.. py:class:: NoseHooverNvt(all_info, group, comp_info, T, tauT)
+
+   initializes a NVT NoseHoover thermostat object for a group of particles with system information, particle group, information computation, temperature, and tauT.
 	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param ComputeInfo comp_info: The object of calculation of collective information.	   
+   :param float T: The temperature.  
+   :param float tauT: The thermostat coupling.		  
+
+   .. py:function:: setT(float T)
    
-      void setT(Real T)
-      # specifies the temperature with a constant value.
+      specifies the temperature with a constant value.
 	  
-      void setT(Variant vT)
-      # specifies the temperature with a defined varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a defined varying value by time step.
 	  
    Example::
    
@@ -29,37 +33,45 @@ Nose Hoover thermostat
 Berendsen thermostat
 --------------------
 
-   Constructor::
-    
-      BerendsenNvt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info, Real T, Real tauT)
-      # initializes a NVT Berendsen thermostat object for a group of particles with system information, 
-      # particle set, information computation, temperature, and tauT.
-	  
-   Functions::
+.. py:class:: BerendsenNvt(all_info, group, comp_info, T, tauT)
+
+   initializes a NVT Berendsen thermostat object for a group of particles with system information, particle set, information computation, temperature, and tauT.
+	 
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param ComputeInfo comp_info: The object of calculation of collective information.	   
+   :param float T: The temperature.  
+   :param float tauT: The thermostat coupling parameter.	
+
+   .. py:function:: setT(float T)
    
-      void setT(Real T)
-      # specifies the temperature with a constant value.
+      specifies the temperature with a constant value.
       
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time steps.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time steps.
    
    
 Andersen thermostat
 -------------------
 
-   Constructor::
-   
-      AndersenNvt(AllInfo all_info, ParticleSet group, Real T, Real gamma, unsigned int seed)
-      # initializes a NVT Andersen thermostat object for a group of particles with system information, 
-      # particle set, temperature, collision frequency, and RNG seed.
+.. py:class:: AndersenNvt(all_info, group, T, gamma, seed)
+
+   initializes a NVT Andersen thermostat object for a group of particles with system information, particle set, temperature, collision frequency, and RNG seed.
 	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param float T: The temperature.  
+   :param float gamma: The collision frequency.		  
+   :param int seed: The seed of random number generator.	
+
+   .. py:function:: setT(float T)
    
-      void setT(Real T)
-      # specifies the temperature with a constant value.
+      specifies the temperature with a constant value.
 	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time steps.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time steps.
 	  
    Example::
    
@@ -69,25 +81,30 @@ Andersen thermostat
 Brownian dynamic thermostat
 ---------------------------
 
-   Constructor::
+.. py:class:: BdNvt(all_info, group, T, seed)
+
+   initializes a Brownian NVT thermostat object with system information, particle group, temperature, and RNG seed.
+	  
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param float T: The temperature.    
+   :param int seed: The seed of random number generator.		  
+
+   .. py:function:: setGamma(float gamma)
    
-      BdNvt(AllInfo all_info, ParticleSet group, Real T, unsigned int seed)
-      # initializes a Brownian NVT thermostat object with system information, 
-      # particle group, temperature, and RNG seed.
+      specifies the gamma with a constant value.
 	  
-   Functions::
+   .. py:function:: setGamma(string type, float gamma)
    
-      void setGamma(Real gamma)
-      # specifies the gamma with a constant value.
+      specifies the gamma of a particle type.
 	  
-      void setGamma(string type, Real gamma)
-      # specifies the gamma of a particle type.
+   .. py:function:: setT(float T)
+   
+      specifies the temperature with a constant value.
 	  
-      void setT(Real T)
-      # specifies the temperature with a constant value.
-	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+ 
+      specifies the temperature with a varying value by time step.
 	  
    Example::
    
@@ -100,19 +117,22 @@ Brownian dynamic thermostat
 NVT for rigid body
 ------------------
 
-   Constructor::
-   
-      NvtRigid(AllInfo all_info, ParticleSet group, Real T, Real tauT)
-      # initializes a NVT thermostat object for rigid bodies with system information, 
-      # particle group, temperature, and tauT.
+.. py:class:: NvtRigid(AllInfo all_info, ParticleSet group, float T, float tauT)
+
+   initializes a NVT thermostat object for rigid bodies with system information, particle group, temperature, and tauT.
 	  
-   Functions::
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param float T: The temperature.    
+   :param float tauT: The thermostat coupling parameter.  
+
+   .. py:function:: setT(float T)
    
-      void setT(Real T)
-      # specifies the temperature with a fixed value.
+      specifies the temperature with a fixed value.
 	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      pecifies the temperature with a varying value by time step.
 	  
    Example::
    
@@ -122,25 +142,31 @@ NVT for rigid body
 
 Brownian dynamic for rigid body
 -------------------------------
-   Constructor::
+
+.. py:class:: BdNvtRigid(all_info, group, T, seed)
+
+   initializes a Brownian NVT thermostat object for rigid bodies with system information, particle group, temperature, and RNG seed.
+	  
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param float T: The temperature.    
+   :param int seed: The seed of random number generator.		  
+
+   .. py:function:: setGamma(float gamma)
    
-      BdNvtRigid(AllInfo all_info, ParticleSet group, Real T, unsigned int seed)
-      # initializes a Brownian NVT thermostat object for rigid bodies with system information, 
-      # particle group, temperature, and RNG seed.
+      specifies the gamma of Brownian method with a constant value.
 	  
-   Functions::
+   .. py:function:: setGamma(const std::string & type, float gamma)
    
-      void setGamma(Real gamma)
-      # specifies the gamma of Brownian method with a constant value.
+      specifies the gamma of Brownian method of a particle type.
 	  
-      void setGamma(const std::string & type, Real gamma)
-      # specifies the gamma of Brownian method of a particle type.
+   .. py:function:: setT(float T)
+   
+      specifies the temperature with a constant value.
 	  
-      void setT(Real T)
-      # specifies the temperature with a constant value.
-	  
-      void setT(Variant vT)
-      # specifies the temperature with a varying value by time step.
+   .. py:function:: setT(Variant vT)
+   
+      specifies the temperature with a varying value by time step.
 	  
    Example::
    

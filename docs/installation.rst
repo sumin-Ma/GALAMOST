@@ -1,7 +1,8 @@
 Installation
 ============
 
-The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program. The binary program and the code can be downloaded from our website http://galamost.ciac.jl.cn/
+The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program. 
+The binary program and the code can be downloaded from our website http://galamost.ciac.jl.cn/
 Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path
 
    Examples::

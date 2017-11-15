@@ -91,13 +91,18 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module.html">Modules</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">MD-SCF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module-polymerization.html">Polymerization</a></li>
@@ -107,6 +112,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -176,21 +184,37 @@
             
   <div class="section" id="md-scf">
 <h1>MD-SCF<a class="headerlink" href="#md-scf" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Constructor:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MdScfForce</span><span class="p">(</span><span class="n">AllInfo</span> <span class="n">all_info</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">nx</span> <span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">ny</span><span class="p">,</span> <span class="n">unsigned</span> <span class="nb">int</span> <span class="n">nz</span><span class="p">,</span> <span class="n">Real</span> <span class="n">comp</span><span class="p">)</span>
-<span class="c1"># initializes an object of MD-SCF force with system information,</span>
-<span class="c1"># grid number in x, y, z, direction, and compressibility.</span>
-</pre></div>
-</div>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">chi</span><span class="p">)</span>
-<span class="c1"># specifies the MD-SCF interaction parameters by pair types with type1, type2, chi parameter.</span>
+<dl class="class">
+<dt id="MdScfForce">
+<em class="property">class </em><code class="descname">MdScfForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nx</em>, <em>ny</em>, <em>nz</em>, <em>comp</em><span class="sig-paren">)</span><a class="headerlink" href="#MdScfForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes an object of MD-SCF force with system information, grid number in x, y, z, direction, and compressibility.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of grid in x direction.</li>
+<li><strong>ny</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of grid in y direction.</li>
+<li><strong>nz</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The number of grid in z direction.</li>
+<li><strong>comp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The compressibility.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="MdScfForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float chi</em><span class="sig-paren">)</span><a class="headerlink" href="#MdScfForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the MD-SCF interaction parameters by pair types with type1, type2, chi parameter.</p>
+</dd></dl>
 
-<span class="n">void</span> <span class="n">setNewVersion</span><span class="p">(</span><span class="nb">bool</span> <span class="n">switch</span><span class="p">)</span>
-<span class="c1"># switches the function of newly developed method of implementation.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="MdScfForce.setNewVersion">
+<code class="descname">setNewVersion</code><span class="sig-paren">(</span><em>bool switch</em><span class="sig-paren">)</span><a class="headerlink" href="#MdScfForce.setNewVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>switches the function of newly developed method of implementation.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">scf</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">MdScfForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mf">0.100</span><span class="p">)</span>
 <span class="n">scf</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="mf">0.000</span><span class="p">)</span>
@@ -204,7 +228,8 @@
 <span class="c1"># adds this object to the application.</span>
 </pre></div>
 </div>
-</div></blockquote>
+</dd></dl>
+
 </div>
 
 

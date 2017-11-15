@@ -3,9 +3,15 @@ Data format
 
 XML format
 ----------
-e chose XML format files as the standard input and output configuration files. 
+We take XML format files as the standard input and output configuration files. 
 The XML files can contain coordinates, types, masses, velocities, bond connections, angles, dihedrals and so on.
-Here is an example of the XML file of a single molecule system (the molecule consisting of four particles is depicted in Fig. 5.1). 
+Here is an example of the XML file of a single molecule system. The molecule consisting of four particles is depicted in following picture. 
+
+.. image:: xml-config.png
+    :width: 250 px
+    :align: center
+    :alt: Principle of dihedral torsion
+
 The data in a line of XML file corresponds to a particle and all particles are given in sequence. 
 For example, the coordinate of a particle in x, y, and z directions is written in a line and three columns in XML files. 
 However, this rule does not include topological relevant information, including bonds, angles and dihedrals.

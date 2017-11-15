@@ -91,10 +91,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="system.html">System</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Information</a><ul>
@@ -104,12 +108,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="system-list.html">Particle list</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system-group.html">Particle set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system-compute.html">Information computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system-sort.html">Memory sorting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield.html">Force field</a></li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -223,26 +233,42 @@
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setNDimensions</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">nds</span><span class="p">);</span>
-<span class="c1"># set the number of dimensions</span>
+<dl class="function">
+<dt id="AllInfo.setNDimensions">
+<code class="descname">setNDimensions</code><span class="sig-paren">(</span><em>unsigned int nds</em><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.setNDimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the number of dimensions</p>
+</dd></dl>
 
-<span class="n">addParticleType</span><span class="p">(</span><span class="n">string</span> <span class="n">ptype</span><span class="p">)</span>
-<span class="c1"># add a particle type to system</span>
+<dl class="function">
+<dt id="AllInfo.addParticleType">
+<code class="descname">addParticleType</code><span class="sig-paren">(</span><em>string ptype</em><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.addParticleType" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a particle type to system</p>
+</dd></dl>
 
-<span class="n">addBondType</span><span class="p">(</span><span class="n">string</span> <span class="n">bondtype</span><span class="p">)</span>
-<span class="c1"># add a bond type to system</span>
+<dl class="function">
+<dt id="AllInfo.addBondType">
+<code class="descname">addBondType</code><span class="sig-paren">(</span><em>string bondtype</em><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.addBondType" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a bond type to system</p>
+</dd></dl>
 
-<span class="n">addAngleType</span><span class="p">(</span><span class="n">string</span> <span class="n">angletype</span><span class="p">)</span>
-<span class="c1"># add a angle type to system</span>
+<dl class="function">
+<dt id="AllInfo.addAngleType">
+<code class="descname">addAngleType</code><span class="sig-paren">(</span><em>string angletype</em><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.addAngleType" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a angle type to system</p>
+</dd></dl>
 
-<span class="n">addBondTypeByPairs</span><span class="p">()</span>
-<span class="c1"># add bond types to system according to particle types</span>
+<dl class="function">
+<dt id="AllInfo.addBondTypeByPairs">
+<code class="descname">addBondTypeByPairs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.addBondTypeByPairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>add bond types to system according to particle types</p>
+</dd></dl>
 
-<span class="n">addAngleTypeByPairs</span><span class="p">()</span>
-<span class="c1"># add angle types to system according to particle types</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="AllInfo.addAngleTypeByPairs">
+<code class="descname">addAngleTypeByPairs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#AllInfo.addAngleTypeByPairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>add angle types to system according to particle types</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;PE-1000.xml&#39;</span>
 <span class="n">build_method</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">XmlReader</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>

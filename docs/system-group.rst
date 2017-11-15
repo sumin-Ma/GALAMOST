@@ -31,11 +31,9 @@ Particle set
    :param AllInfo all_info: The system information.
    :param vector<unsigned_int> member_tags: A vector of particle tags	  
   
-	  
-   Functions::
+   .. py:function:: ParticleSet combine(ParticleSet group1, ParticleSet group2)
    
-      ParticleSet combine(ParticleSet group1, ParticleSet group2)
-      # combines two particle groups into one.	  
+      combines two particle groups into one.	  
    
    Example::
    

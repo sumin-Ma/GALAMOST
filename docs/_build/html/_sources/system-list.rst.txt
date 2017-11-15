@@ -12,32 +12,37 @@ Neighbor list
    :param float r_cut: The cut-off radius
    :param float r_buffer: The buffer distance
 
-   Functions::
+   .. py:function:: setRCut(float r_cut, float r_buffer)
    
-      setRCut(Real r_cut, Real r_buffer)
-      # specifies the cut-off and buffer distance.
+      specifies the cut-off and buffer distance.
 	  
-      setNsq()
-      # switches on the method of searching all particle to build up list.
+   .. py:function:: setNsq()
+   
+      switches on the method of searching all particle to build up list.
 	  
-      setDataReproducibility()
-      # switches on the data reproducibility.
+   .. py:function:: setDataReproducibility()
+   
+      switches on the data reproducibility.
 	  
-      addExclusionsFromBonds()
-      # add 1-2 exclusion into exclusion list.
+   .. py:function:: addExclusionsFromBonds()
+   
+      add 1-2 exclusion into exclusion list.
 	  
-      addExclusionsFromAngles()
-      # add 1-3 exclusion into exclusion list.
+   .. py:function:: addExclusionsFromAngles()
+   
+      add 1-3 exclusion into exclusion list.
 	  
-      addExclusionsFromDihedrals()
-      # add 1-4 exclusion into exclusion list.
+   .. py:function:: addExclusionsFromDihedrals()
+   
+      add 1-4 exclusion into exclusion list.
 	  
-      addExclusionsFromBodys()
-      # add body exclusion into exclusion list.
+   .. py:function:: addExclusionsFromBodys()
+   
+      add body exclusion into exclusion list.
 	  
-      setFilterDiameters()
-      # consider the radius of particle in neighbor list which includes the particles 
-      # within r_cut + (diameter_i + diameter_j)/2.
+   .. py:function:: setFilterDiameters()
+   
+      consider the radius of particle in neighbor list which includes the particles within r_cut + (diameter_i + diameter_j)/2.
    
    Example::
    
@@ -52,16 +57,17 @@ Cell list
 
    :param AllInfo all_info: The system information
 
-   Functions::
+   .. py:function:: setNominalWidth(float width)
    
-      setNominalWidth(Real width)
-      # specifies the length of cell.
+      specifies the length of cell.
 	  
-      setNominalDim(unsigned int x, unsigned int y, unsigned int z)
-      # specifies the dimensions of grid in x, y, z directions.
+   .. py:function:: setNominalDim(unsigned int x, unsigned int y, unsigned int z)
+   
+      specifies the dimensions of grid in x, y, z directions.
 	  
-      setDataReproducibility()
-      # switches on data reproducibility function.
+   .. py:function:: setDataReproducibility()
+   
+      switches on data reproducibility function.
 	  
    Example::
    

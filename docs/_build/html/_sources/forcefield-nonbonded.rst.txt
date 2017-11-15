@@ -1,10 +1,25 @@
 Short range non-bonded interactions
 ===================================
    
+Overview
+--------
+
 The net non-bonded force of each particle is produced by summing all the non-bonded forces of neighboring particles on the basis of a neighbor list that lists
 the interacting particles for each particle, built beforehand. Because of the independence of parallel CUDA threads, a pair of interacting particles is inevitably 
 included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy 
 functions are included in GALAMOST
+
+* :ref:`lennard-jones`
+
+* :ref:`shift-lennard-jones`
+
+* :ref:`harmonic-repulsion`
+
+* :ref:`gaussian-repulsion`
+
+* :ref:`IPL-potential`
+
+.. _lennard-jones:
 
 Lennard-Jones (LJ) interaction
 ------------------------------
@@ -35,18 +50,18 @@ Description:
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
    :param float r_cut: The cut-off radius.
-	  
-   Functions::
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha)
+ 
+      specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha, float r_cut)
    
-      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha)
-      # specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
+      specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha, and cut-off of radius.
 	  
-      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
-      # specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha, 
-      # and cut-off of radius.
-	  
-      setEnergy_shift()
-      # calls the function to shift LJ potential to be zero at cut-off point.
+   .. py:function:: setEnergy_shift()
+   
+      calls the function to shift LJ potential to be zero at cut-off point.
    
    Example::
    
@@ -55,6 +70,7 @@ Description:
       lj.setEnergy_shift()
       app.add(lj)	# Note: adds this object to the application.
 	  
+.. _shift-lennard-jones:
 	  
 Shift Lennard-Jones (LJ) interaction
 ------------------------------------
@@ -87,18 +103,18 @@ Description:
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
    :param float r_cut: The cut-off radius.
-	  
-   Functions::
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha)
    
-      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha)
-      # specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
+      specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
 	  
-      setParams(string type1, string type2, Real epsilon, Real sigma, Real alpha, Real r_cut)
-      # specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha, 
-      # and cut-off of radius.
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha, float r_cut)
+   
+      specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha, and cut-off of radius.
 	  
-      setEnergy_shift()
-      # calls the function to shift LJ potential to be zero at the cut-off point.
+   .. py:function:: setEnergy_shift()
+   
+      calls the function to shift LJ potential to be zero at the cut-off point.
 	  
    Example::
    
@@ -109,6 +125,8 @@ Description:
 
 Pair interaction
 ----------------
+
+.. _harmonic-repulsion:
    
 Harmonic repulsion
 ^^^^^^^^^^^^^^^^^^
@@ -130,7 +148,9 @@ Description:
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
 
    :ref:`pair-sc-label` 	
-	
+
+.. _gaussian-repulsion:
+   
 Gaussian repulsion
 ^^^^^^^^^^^^^^^^^^
    
@@ -152,7 +172,9 @@ Description:
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
 	
    :ref:`pair-sc-label` 
-   
+  
+.. _IPL-potential:
+  
 IPL potential
 ^^^^^^^^^^^^^
    
@@ -188,18 +210,13 @@ Script commands
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
 
-   Functions::
+   .. py:function:: setParams(string type1, string type2, float param0, float param1, float param2, float r_cut, Func function)
    
-      setParams(string type1, string type2, Real param0, Real param1, 
-                   Real param2, Real r_cut, Func function)
-      # specifies the interaction and its parameters with type1, type2, parameter0,
-      # parameter1, parameter2, cut-off radius, and potential type.
+      specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, and potential type.
    
-      setShiftParams(string type1, string type2, Real param0, Real param1,
-                        Real param2, Real r_cut, Real r_shift, Func function)
-      # specifies the interaction and its parameters with type1, type2, parameter0, 
-      # parameter1, parameter2, cut-off radius, shift radius, and potential type.
-      # This method employs the shift function same as the one of GROMACS.
+   .. py:function:: setShiftParams(string type1, string type2, float param0, float param1, float param2, float r_cut, float r_shift, Func function)
+   
+      specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, shift radius, and potential type. This method employs the shift function same as the one of GROMACS.
    
     
    ==============   ==========   ==========   ==========

@@ -91,10 +91,14 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
@@ -114,9 +118,13 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -188,6 +196,7 @@
             
   <div class="section" id="angle-bending">
 <h1>Angle bending<a class="headerlink" href="#angle-bending" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/angle.png"><img alt="Principle of angle bending" class="align-center" src="_images/angle.png" style="width: 250px;" /></a>
 <div class="section" id="harmonic-angle-potential">
 <h2>Harmonic angle potential<a class="headerlink" href="#harmonic-angle-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
@@ -213,12 +222,12 @@ V_{\mathrm{angle}}(\theta) = \frac{1}{2}k\left( \theta -\theta_{0} \right)^{2}
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">theta0</span><span class="p">)</span>
-<span class="c1"># specifies the angle harmonic force parameters with angle type,</span>
-<span class="c1"># potential constant, and equilibrium angle degree.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="AngleForceHarmonic.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#AngleForceHarmonic.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the angle harmonic force parameters with angle type, potential constant, and equilibrium angle degree.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angleforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AngleForceHarmonic</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">angleforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;P-G-G&#39;</span><span class="p">,</span> <span class="mf">25.000</span><span class="p">,</span> <span class="mf">120.000</span><span class="p">)</span>
@@ -253,12 +262,12 @@ V_{\mathrm{angle}}(\theta)=\frac{1}{2}k\left[\cos \left( \theta \right)-\cos \le
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">theta0</span><span class="p">)</span>
-<span class="c1"># specifies the angle cosine harmonic force parameters with angle type,</span>
-<span class="c1"># potential constant, and equilibrium angle degree.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="AngleForceHarmonicCos.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#AngleForceHarmonicCos.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the angle cosine harmonic force parameters with angle type, potential constant, and equilibrium angle degree.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angleforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AngleForceHarmonicCos</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">angleforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;P-G-G&#39;</span><span class="p">,</span><span class="mf">25.000</span><span class="p">,</span> <span class="mf">120.000</span><span class="p">)</span>
@@ -293,12 +302,12 @@ V_{\mathrm{angle}}(\theta)=k\left[ 1-\cos \left( \theta - {\theta}_{0} \right) \
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="nb">type</span><span class="p">,</span> <span class="n">Real</span> <span class="n">k</span><span class="p">,</span> <span class="n">Real</span> <span class="n">theta0</span><span class="p">)</span>
-<span class="c1"># specifies the angle cosine force parameters with angle type,</span>
-<span class="c1"># spring constant, and equilibrium angle degree.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="AngleForceCos.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type</em>, <em>float k</em>, <em>float theta0</em><span class="sig-paren">)</span><a class="headerlink" href="#AngleForceCos.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the angle cosine force parameters with angle type, spring constant, and equilibrium angle degree.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">angleforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">AngleForceCos</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">angleforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;P-G-G&#39;</span><span class="p">,</span> <span class="mf">25.000</span><span class="p">,</span> <span class="mf">120.000</span><span class="p">)</span>

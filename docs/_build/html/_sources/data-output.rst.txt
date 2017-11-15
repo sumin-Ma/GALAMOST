@@ -4,19 +4,21 @@ Data output
 Collective information
 ----------------------
 
-   Constructor::
+.. py:class:: DumpInfo(all_info, comp_info, filename)
+
+   initializes an information dump object of a group of particles with system information, information computation, and output file name.
    
-      DumpInfo(AllInfo all_info, ComputeInfo comp_info, string filename)
-      # initializes an information dump object of a group of particles with system information,  
-      # information computation, and output file name.
+   :param AllInfo all_info: The system information.	
+   :param ComputeInfo comp_info: The object of calculation of collective information.	   
+   :param str filename: The output file name.  
+
+   .. py:function:: dumpAnisotropy()
    
-   Functions::
-   
-      void dumpAnisotropy()
-      # switches on the dump of information related to anisotropic particles.
+      switches on the dump of information related to anisotropic particles.
 	  
-      void dumpVirialEnergy(Force force)
-      # switches on the dump of energy and virial of inputting force object.
+   .. py:function:: dumpVirialEnergy(Force force)
+   
+      switches on the dump of energy and virial of inputting force object.
    
    Example::
    
@@ -26,18 +28,21 @@ Collective information
 
 MOL2 dump
 ---------
-   Constructor::
-   
-      Mol2Dump(AllInfo all_info, string filename)
-      # initializes a dump object of mol2 files with system information and file name.
-	  
-   Functions::
 
-      void setChangeFreeType(string type)
-      # specifies the type of free particles which will be changed to be 'F' in output file.
+.. py:class:: Mol2Dump(all_info, filename)
+
+   initializes a dump object of mol2 files with system information and file name.
 	  
-      void deleteBoundaryBond(bool switch)
-      # switches on the function of not displaying the bonds across the box.
+   :param AllInfo all_info: The system information.   
+   :param str filename: The output file name. 	  
+
+   .. py:function:: setChangeFreeType(string type)
+   
+      specifies the type of free particles which will be changed to be 'F' in output file.
+	  
+   .. py:function:: deleteBoundaryBond(bool switch)
+   
+      switches on the function of not displaying the bonds across the box.
 	  
    Example::
    
@@ -48,78 +53,106 @@ MOL2 dump
 
 XML dump
 --------
-   Constructor::
+
+.. py:class:: XmlDump(all_info, filename)
+
+   initializes a dump object of XML files with system information and base file name.
+
+   :param AllInfo all_info: The system information.   
+   :param str filename: The output file name. 
+
+	  
+.. py:class:: XmlDump(all_info, group, filename)
+
+   initializes a dump object of XML files with system information, particle set, and base file name.
+
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param str filename: The output file name.
+
+   .. py:function:: setOutput (PyObject* out_put_list)
    
-      XmlDump(AllInfo all_info, string filename)
-      # initializes a dump object of XML files with system information and base file name.
+      indicate the output data type.
 	  
-      XmlDump(AllInfo all_info, ParticleSet group, string filename)
-      # initializes a dump object of XML files with system information, particle set, and base file name.
-	  
-   Functions::
+   .. py:function:: setOutputPosition(bool switch)
    
-      void setOutput (PyObject* out_put_list)
-      # indicate the output data type.
+      switches the function of output position (the default is true).
 	  
-      void setOutputPosition(bool switch)
-      # switches the function of output position (the default is true).
+   .. py:function:: setOutputType (bool switch)
+   
+      switches the function of output type (the default is true).
 	  
-      void setOutputType (bool switch)
-      #switches the function of output type (the default is true).
+   .. py:function:: setOutputImage(bool switch)
+   
+      switches the function of output image.
 	  
-      void setOutputImage(bool switch)
-      # switches the function of output image.
+   .. py:function:: setOutputVelocity(bool switch)
+   
+      switches the function of output velocity.
 	  
-      void setOutputVelocity(bool switch)
-      # switches the function of output velocity.
+   .. py:function:: setOutputMass(bool switch)
+   
+      switches the function of output mass.
 	  
-      void setOutputMass(bool switch)
-      # switches the function of output mass.
+   .. py:function:: setOutputCharge(bool switch)
+   
+      switchesthe function of output charge.
 	  
-      void setOutputCharge(bool switch)
-      # switchesthe function of output charge.
+   .. py:function:: setOutputDiameter(bool switch)
+   
+      switches the function of output diameter.
 	  
-      void setOutputDiameter(bool switch)
-      # switches the function of output diameter.
+   .. py:function:: setOutputBody(bool switch)
+   
+      switches the function of output body.
 	  
-      void setOutputBody(bool switch)
-      # switches the function of output body.
+   .. py:function:: setOutputVirial(bool switch)
+   
+      switches the function of output virial.
 	  
-      void setOutputVirial(bool switch)
-      # switches the function of output virial.
+   .. py:function:: setOutputForce(bool switch)
+   
+      switches the function of output force.
 	  
-      void setOutputForce(bool switch)
-      # switches the function of output force.
+   .. py:function:: setOutputOrientation(bool switch)
+   
+      switches the function of output orientation.
 	  
-      void setOutputOrientation(bool switch)
-      # switches the function of output orientation.
+   .. py:function:: setOutputQuaternion(bool switch)
+   
+      switches the function of output quaternion.
 	  
-      void setOutputQuaternion(bool switch)
-      # switches the function of output quaternion.
+   .. py:function:: setOutputRotation(bool switch)
+   
+      switches the function of output rotation velocity.
 	  
-      void setOutputRotation(bool switch)
-      # switches the function of output rotation velocity.
+   .. py:function:: setOutputTorque(bool switch)
+   
+      switches the function of output torque.
 	  
-      void setOutputTorque(bool switch)
-      # switches the function of output torque.
+   .. py:function:: setOutputInert(bool switch)
+   
+      switches the function of output inert tensor.
 	  
-      void setOutputInert(bool switch)
-      # switches the function of output inert tensor.
+   .. py:function:: setOutputInit(bool switch)
+   
+      switches the function of output initiator indication.
 	  
-      void setOutputInit(bool switch)
-      # switches the function of output initiator indication.
+   .. py:function:: setOutputCris(bool switch)
+   
+      switches the function of output cris.
 	  
-      void setOutputCris(bool switch)
-      # switches the function of output cris.
+   .. py:function:: setOutputBond(bool switch)
+   
+      switches the function of output bond.
 	  
-      void setOutputBond(bool switch)
-      # switches the function of output bond.
+   .. py:function:: setOutputAngle(bool switch)
+   
+      switches the function of output angle.
 	  
-      void setOutputAngle(bool switch)
-      # switches the function of output angle.
-	  
-      void setOutputDihedral(bool switch)
-      # switches the function of output dihedral.
+   .. py:function:: setOutputDihedral(bool switch)
+   
+      switches the function of output dihedral.
    
    Example::
    
@@ -131,25 +164,30 @@ XML dump
 DCD trajectory dump
 -------------------
 
-   Constructor::
+.. py:class:: DcdDump(all_info, filename, overwrite)
+
+   initializes a dump object of DCD file with system information, file name, and if overwrite former data.
+	  
+   :param AllInfo all_info: The system information.	
+   :param str filename: The output file name.
+   :param bool overwrite: If overwrite the existed DCD file.   
+	  
+.. py:class:: DcdDump(all_info, group, filename, overwrite)
+
+   initializes a dump object of DCD file with system information, particle set, file name, and if overwrite former data.
+	  
+   :param AllInfo all_info: The system information.
+   :param ParticleSet group: The group of particles.	
+   :param str filename: The output file name. 
+   :param bool overwrite: If overwrite the existed DCD file.    
+
+   .. py:function:: unpbc(bool switch)
    
-      DcdDump(AllInfo all_info, string filename, bool overwrite)
-      # initializes a dump object of DCD file with system information, file name, 
-      # and if overwrite former data.
+      switches the function of outputing the particle position without the application of PBC, the default value is false.
 	  
-      DcdDump(AllInfo all_info, ParticleSet group, string filename, bool overwrite)
-      # initializes a dump object of DCD file with system information, particle set, 
-      # file name, and if overwrite former data.
-	  
-   Functions::
+   .. py:function:: unwrap(bool switch)
    
-      void unpbc(bool switch)
-      # switches the function of outputing the particle position without the application 
-      # of PBC, the default value is false.
-	  
-      void unwrap(bool switch)
-      # switches the function of unwrapping the molecules across box boundary due to 
-      # PBC condition, the default value is false.
+      switches the function of unwrapping the molecules across box boundary due to PBC condition, the default value is false.
 	  
    Example::
    
@@ -161,21 +199,24 @@ DCD trajectory dump
 GALAMOST binary dump
 --------------------
 
-   Constructor::
+.. py:class:: BinaryDump(all_info, filename)
+
+   initializes a dump object of GALAMOST binary file with system information and file base name.
+	  
+   :param AllInfo all_info: The system information.
+   :param str filename: The output file name. 	  
+
+   .. py:function:: setOutputAll()
    
-      BinaryDump(AllInfo all_info, string filename)
-      # initializes a dump object of GALAMOST binary file with system information and file base name.
+      switches on the function of output all data.
 	  
-   Functions::
+   .. py:function:: setOutputForRestart()
    
-      void setOutputAll()
-      # switches on the function of output all data.
+      switches on the function of output data needed for restarting.
 	  
-      void setOutputForRestart()
-      # switches on the function of output data needed for restarting.
-	  
-      void enableCompression(bool switch)
-      # switches the function of compressing output file.
+   .. py:function:: enableCompression(bool switch)
+   
+      switches the function of compressing output file.
 	  
    Example::
    

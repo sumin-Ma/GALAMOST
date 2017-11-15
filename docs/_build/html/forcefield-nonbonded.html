@@ -91,14 +91,19 @@
               
             
             
-              <ul class="current">
+              <p class="caption"><span class="caption-text">General introduction</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Methods and modules</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="data.html">Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Short range non-bonded interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shift-lennard-jones-lj-interaction">Shift Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pair-interaction">Pair interaction</a><ul>
@@ -115,9 +120,13 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-coulomb.html">Coulomb interaction</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="application.html">Application</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plug-Ins</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="molgen.html">Molgen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="galatackle.html">GalaTackle</a></li>
 </ul>
@@ -187,12 +196,22 @@
             
   <div class="section" id="short-range-non-bonded-interactions">
 <h1>Short range non-bonded interactions<a class="headerlink" href="#short-range-non-bonded-interactions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The net non-bonded force of each particle is produced by summing all the non-bonded forces of neighboring particles on the basis of a neighbor list that lists
 the interacting particles for each particle, built beforehand. Because of the independence of parallel CUDA threads, a pair of interacting particles is inevitably
 included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy
 functions are included in GALAMOST</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lennard-jones"><span class="std std-ref">Lennard-Jones (LJ) interaction</span></a></li>
+<li><a class="reference internal" href="#shift-lennard-jones"><span class="std std-ref">Shift Lennard-Jones (LJ) interaction</span></a></li>
+<li><a class="reference internal" href="#harmonic-repulsion"><span class="std std-ref">Harmonic repulsion</span></a></li>
+<li><a class="reference internal" href="#gaussian-repulsion"><span class="std std-ref">Gaussian repulsion</span></a></li>
+<li><a class="reference internal" href="#ipl-potential"><span class="std std-ref">IPL potential</span></a></li>
+</ul>
+</div>
 <div class="section" id="lennard-jones-lj-interaction">
-<h2>Lennard-Jones (LJ) interaction<a class="headerlink" href="#lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
+<span id="lennard-jones"></span><h2>Lennard-Jones (LJ) interaction<a class="headerlink" href="#lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -226,18 +245,24 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
-<span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
+<dl class="function">
+<dt id="LjForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float epsilon</em>, <em>float sigma</em>, <em>float alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#LjForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</p>
+</dd></dl>
 
-<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha,</span>
-<span class="c1"># and cut-off of radius.</span>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float epsilon</em>, <em>float sigma</em>, <em>float alpha</em>, <em>float r_cut</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha, and cut-off of radius.</p>
+</dd></dl>
 
-<span class="n">setEnergy_shift</span><span class="p">()</span>
-<span class="c1"># calls the function to shift LJ potential to be zero at cut-off point.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="LjForce.setEnergy_shift">
+<code class="descname">setEnergy_shift</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LjForce.setEnergy_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>calls the function to shift LJ potential to be zero at cut-off point.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lj</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">LjForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="n">lj</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -249,7 +274,7 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 
 </div>
 <div class="section" id="shift-lennard-jones-lj-interaction">
-<h2>Shift Lennard-Jones (LJ) interaction<a class="headerlink" href="#shift-lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
+<span id="shift-lennard-jones"></span><h2>Shift Lennard-Jones (LJ) interaction<a class="headerlink" href="#shift-lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -284,18 +309,24 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">)</span>
-<span class="c1"># specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</span>
+<dl class="function">
+<dt id="SljForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float epsilon</em>, <em>float sigma</em>, <em>float alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#SljForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the shift LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.</p>
+</dd></dl>
 
-<span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">Real</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">Real</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">)</span>
-<span class="c1"># specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha,</span>
-<span class="c1"># and cut-off of radius.</span>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float epsilon</em>, <em>float sigma</em>, <em>float alpha</em>, <em>float r_cut</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the shift LJ interaction parameters with type1, type 2, epsilon, sigma, alpha, and cut-off of radius.</p>
+</dd></dl>
 
-<span class="n">setEnergy_shift</span><span class="p">()</span>
-<span class="c1"># calls the function to shift LJ potential to be zero at the cut-off point.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="SljForce.setEnergy_shift">
+<code class="descname">setEnergy_shift</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SljForce.setEnergy_shift" title="Permalink to this definition">¶</a></dt>
+<dd><p>calls the function to shift LJ potential to be zero at the cut-off point.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">slj</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">SljForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="n">slj</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -309,7 +340,7 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 <div class="section" id="pair-interaction">
 <h2>Pair interaction<a class="headerlink" href="#pair-interaction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="harmonic-repulsion">
-<h3>Harmonic repulsion<a class="headerlink" href="#harmonic-repulsion" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Harmonic repulsion<a class="headerlink" href="#harmonic-repulsion" title="Permalink to this headline">¶</a></h3>
 <p>Description:</p>
 <blockquote>
 <div><blockquote>
@@ -327,7 +358,7 @@ V_{\mathrm{harmonic}}(r)=&amp;\frac{1}{2}\alpha \left(1-\frac{r}{r_{cut}} \right
 </div></blockquote>
 </div>
 <div class="section" id="gaussian-repulsion">
-<h3>Gaussian repulsion<a class="headerlink" href="#gaussian-repulsion" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Gaussian repulsion<a class="headerlink" href="#gaussian-repulsion" title="Permalink to this headline">¶</a></h3>
 <p>Description:</p>
 <blockquote>
 <div><blockquote>
@@ -346,7 +377,7 @@ V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac
 </div></blockquote>
 </div>
 <div class="section" id="ipl-potential">
-<h3>IPL potential<a class="headerlink" href="#ipl-potential" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>IPL potential<a class="headerlink" href="#ipl-potential" title="Permalink to this headline">¶</a></h3>
 <p>Description:</p>
 <blockquote>
 <div><blockquote>
@@ -383,19 +414,18 @@ V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r 
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
-             <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
-<span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
-<span class="c1"># parameter1, parameter2, cut-off radius, and potential type.</span>
+<dl class="function">
+<dt id="PairForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float param0</em>, <em>float param1</em>, <em>float param2</em>, <em>float r_cut</em>, <em>Func function</em><span class="sig-paren">)</span><a class="headerlink" href="#PairForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, and potential type.</p>
+</dd></dl>
 
-<span class="n">setShiftParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param0</span><span class="p">,</span> <span class="n">Real</span> <span class="n">param1</span><span class="p">,</span>
-                  <span class="n">Real</span> <span class="n">param2</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_cut</span><span class="p">,</span> <span class="n">Real</span> <span class="n">r_shift</span><span class="p">,</span> <span class="n">Func</span> <span class="n">function</span><span class="p">)</span>
-<span class="c1"># specifies the interaction and its parameters with type1, type2, parameter0,</span>
-<span class="c1"># parameter1, parameter2, cut-off radius, shift radius, and potential type.</span>
-<span class="c1"># This method employs the shift function same as the one of GROMACS.</span>
-</pre></div>
-</div>
+<dl class="function">
+<dt id="PairForce.setShiftParams">
+<code class="descname">setShiftParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float param0</em>, <em>float param1</em>, <em>float param2</em>, <em>float r_cut</em>, <em>float r_shift</em>, <em>Func function</em><span class="sig-paren">)</span><a class="headerlink" href="#PairForce.setShiftParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, shift radius, and potential type. This method employs the shift function same as the one of GROMACS.</p>
+</dd></dl>
+
 <table border="1" class="docutils">
 <colgroup>
 <col width="32%" />
