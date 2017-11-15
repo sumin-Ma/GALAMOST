@@ -6,7 +6,7 @@ Andersen barostat
 
 .. py:class:: Npt(all_info, group, comp_info_group, comp_info_all, T, P, tauT, tauP)
 
-   initializes a NPT thermostat object for a group of particles with system information, particle group, information computation for a group particles, information computation for all particles, temperature, pressure, tauT, tauP.
+   The constructor of a NPT thermostat object for a group of particles.
 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -39,7 +39,7 @@ NPT for rigid body
 
 .. py:class:: NptRigid(all_info, group, comp_info_group, comp_info_all, T, P, tauT, tauP)
 
-   initializes a NPT thermostat object for rigid bodies with system information, particle group, information computation for the group particles, information computation for all particles, temperature, pressure, tauT, and tauP.
+   The constructor of a NPT thermostat object for rigid bodies.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	

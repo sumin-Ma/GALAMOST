@@ -6,7 +6,7 @@ Collective information
 
 .. py:class:: DumpInfo(all_info, comp_info, filename)
 
-   initializes an information dump object of a group of particles with system information, information computation, and output file name.
+   The constructor of an information dump object of a group of particles.
    
    :param AllInfo all_info: The system information.	
    :param ComputeInfo comp_info: The object of calculation of collective information.	   
@@ -31,10 +31,10 @@ MOL2 dump
 
 .. py:class:: Mol2Dump(all_info, filename)
 
-   initializes a dump object of mol2 files with system information and file name.
+   The constructor of a dump object of mol2 files.
 	  
    :param AllInfo all_info: The system information.   
-   :param str filename: The output file name. 	  
+   :param str filename: The output file base name. 	  
 
    .. py:function:: setChangeFreeType(string type)
    
@@ -56,7 +56,7 @@ XML dump
 
 .. py:class:: XmlDump(all_info, filename)
 
-   initializes a dump object of XML files with system information and base file name.
+   The constructor of a dump object of XML files.
 
    :param AllInfo all_info: The system information.   
    :param str filename: The output file name. 
@@ -64,11 +64,11 @@ XML dump
 	  
 .. py:class:: XmlDump(all_info, group, filename)
 
-   initializes a dump object of XML files with system information, particle set, and base file name.
+   The constructor of a dump object of XML files for a group of particles.
 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
-   :param str filename: The output file name.
+   :param str filename: The output file base name.
 
    .. py:function:: setOutput (PyObject* out_put_list)
    
@@ -166,7 +166,7 @@ DCD trajectory dump
 
 .. py:class:: DcdDump(all_info, filename, overwrite)
 
-   initializes a dump object of DCD file with system information, file name, and if overwrite former data.
+   The constructor of a dump object of DCD file.
 	  
    :param AllInfo all_info: The system information.	
    :param str filename: The output file name.
@@ -174,7 +174,7 @@ DCD trajectory dump
 	  
 .. py:class:: DcdDump(all_info, group, filename, overwrite)
 
-   initializes a dump object of DCD file with system information, particle set, file name, and if overwrite former data.
+   The constructor of a dump object of DCD file for a group of particles.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -201,10 +201,10 @@ GALAMOST binary dump
 
 .. py:class:: BinaryDump(all_info, filename)
 
-   initializes a dump object of GALAMOST binary file with system information and file base name.
+   The constructor of a dump object of GALAMOST binary file.
 	  
    :param AllInfo all_info: The system information.
-   :param str filename: The output file name. 	  
+   :param str filename: The output file base name. 	  
 
    .. py:function:: setOutputAll()
    

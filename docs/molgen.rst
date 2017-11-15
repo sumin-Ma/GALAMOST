@@ -65,14 +65,14 @@ Molecule definition
 
 .. py:class:: Molecule(np)
 
-   initializes a molecule with the number of particles.
+   The constructor of a molecule with the number of particles.
    
    :param int np: The number of particles.
 	  
 	  
 .. py:class:: Molecule(filename, np)
 
-   initializes a molecule and reads particles data from the XML file with file name and the number of particles.
+  The constructor of a molecule and reads particles data from the XML file with file name and the number of particles.
 	  
    :param str filename: The name of inputting file.
    :param int np: The number of particles.   
@@ -268,14 +268,14 @@ Objects definition
 
 .. py:class:: Object(np, shape)
 
-   initializes an object with the number of particles and shape.
+   The constructor of an object with the number of particles and shape.
 	  
    :param int np: The number of particles.   	  
    :param Shape shape: The shape of object.
    
 .. py:class:: Object(string filename, unsigned int, Object::Shape)
 
-   initializes an object by reading partial data from a file with file name, the number of particles, and shape (the candidates are "none" and "sphere").
+   The constructor of an object by reading partial data from a file with file name, the number of particles, and shape (the candidates are "none" and "sphere").
 	  
    :param str filename: The name of inputting file.  	  
    :param int np: The number of particles.   	  
@@ -302,7 +302,7 @@ Generator definition
 
 .. py:class:: Generators(double lx, double ly, double lz)
 
-   initializes a molecule generator with box length in x y z directions.
+   The constructor of a molecule generator with box length in x y z directions.
 	  
    :param float lx: The box length in x direction.  	  
    :param float ly: The box length in y direction.   	  

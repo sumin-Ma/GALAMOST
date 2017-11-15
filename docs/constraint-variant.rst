@@ -6,7 +6,7 @@ Variant Linear
 
 .. py:class:: VariantLinear ()
 
-   initializes a linearly varying method.
+   The constructor of a linearly varying method.
 
   .. py:function:: setPoint(unsigned int timestep, double value)
   
@@ -25,7 +25,7 @@ Variant Sin
 
 .. py:class:: VariantSin()
 
-   initializes a sinusoidal curve varying object.
+   The constructor of a sinusoidal curve varying object.
 
   .. py:function:: setPoint(unsigned int timestep, double period, double ubd, double lbd)
   
@@ -44,7 +44,7 @@ Variant Well
 
 .. py:class:: VariantWell()
 
-   initializes a well curve varying object.
+   The constructor of a well curve varying object.
 
   .. py:function:: setPoint(unsigned int timestep, double period, double ubd, double lbd)
   

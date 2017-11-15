@@ -6,7 +6,7 @@ Axial stretching
 
 .. py:class:: AxialStretching(all_info,  group)
 
-   initializes a stretching object of the box with a group of particles with system information and particle group.
+   The constructor of a stretching object of the box for a group of particles.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of charged particles.
@@ -32,7 +32,7 @@ External force
 
 .. py:class:: ExternalForce(all_info, group)
 
-   initializes an external force object for a group of particles with system information and particle group.
+   The constructor of an external force object for a group of particles.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of charged particles.   
