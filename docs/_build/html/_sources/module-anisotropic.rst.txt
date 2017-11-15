@@ -9,7 +9,7 @@ GB interaction
 
 .. py:class:: GBForce(all_info, nlist, r_cut)
 
-   initializes a method of Gay-Berne force with system information, neighbor list, and cut-off radius.
+   The constructor of a method of Gay-Berne force.
    
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -32,7 +32,7 @@ Bond Force of GB particles
 
 .. py:class:: BondForceAni(all_info)
 
-   initializes a method of bond force of anisotropic particles with system information.
+   The constructor of a method of bond force calculation of anisotropic particles.
    :param AllInfo all_info: The system information.   
 
    .. py:function:: setParams(string bondtype, float Kbond, float rbond, float Kangle, float dangle)
@@ -53,7 +53,7 @@ Interaction
 
 .. py:class:: LzwForce(all_info, nlist, r_cut)
 
-      initializes a method of LZW force with system information, neighbor list, and cut-off radius.
+   The constructor of a method of LZW force calculation.
 	  
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -80,7 +80,7 @@ Thermostat
 
 .. py:class:: BerendsenAniNvt(AllInfo all_info, ParticleSet group, ComputeInfo comp_info, float T, float tauT, float tauR)
 
-   initializes a Berendsen NVT thermostat for anisotropic particles with system information, particle group, information computation, temperature, tauT, and tauR.
+   The constructor of a Berendsen NVT thermostat for anisotropic particles.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	

@@ -6,7 +6,7 @@ Polymerization model
 
 .. py:class:: Polymerization(all_info, nlist, r_cut, seed)
 
-   initializes an object of polymerization with system information, neighbor list, cut-off, and RNG seed.
+   The constructor of an object of polymerization.
 	 
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -15,7 +15,7 @@ Polymerization model
 	 
 .. py:class:: Polymerization(all_info, type, percent, nlist, r_cut, seed)
 
-   specifies the method of polymerization with a percent of initiator with system information, particle type, percent, neighbor list, cut-off, and RNG seed.
+   The constructor of an object of polymerization with a percent of initiator.
    
    :param AllInfo all_info: The system information.
    :param str type: The particle type of initiators.  
@@ -79,7 +79,7 @@ Depolymerization model
 
 .. py:class:: DePolymerization(all_info, T, seed)
 
-   initializes an object of depolymerization with system information, temperature, and RNG seed.
+   The constructor of an object of depolymerization.
    
    :param AllInfo all_info: The system information. 
    :param float T: The temperature.

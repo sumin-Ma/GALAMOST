@@ -44,7 +44,7 @@ Ewald (short-range part)
 
 .. py:class:: EwaldForce(all_info, nlist, group, r_cut)
 
-   initializes an Ewald force object for a group of charged particles with system information, neighbor list, particle set, and cut-off radius.
+   The constructor of an direct Ewald force object for a group of charged particles.
 	  
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.
@@ -72,7 +72,7 @@ PPPM (long-range part)
 
 .. py:class:: PPPMForce(all_info, nlist, group)
 	  
-   initializes a PPPM force object for a group of charged particles with system information, neighbor list, and particle group.
+   The constructor of a PPPM force object for a group of charged particles.
 
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.
@@ -98,7 +98,7 @@ ENUF (long-range part)
 
 .. py:class:: ENUFForce(all_info, nlist, group)
 	  
-   initializes an ENUF force object for a group of charged particles with system information, neighbor list, and particle group.
+   The constructor of an ENUF force object for a group of charged particles.
 
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.

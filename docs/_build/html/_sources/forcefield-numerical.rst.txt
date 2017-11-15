@@ -58,7 +58,7 @@ Non-bonded interaction
 
 .. py:class:: PairForceTable(all_info, nlist, npoint)
 
-   initializes an object of numerical pair force with system information, neighbor list, and the number of potential points.
+   The constructor of an object of numerical pair force calculation.
    
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -87,7 +87,7 @@ Bond interaction
 
 .. py:class:: BondForceTable(all_info, npoint)
 
-   initializes an object of numerical bond force with system information and the number of potential points.
+   The constructor of an object of numerical bond force calculation.
 
    :param AllInfo all_info: The system information.
    :param int npoint: The number of numerical points.
@@ -115,7 +115,7 @@ Angle interaction
 
 .. py:class:: AngleForceTable(all_info, npoint)
 
-   initializes a method of numerical angle force with system information and the number of potential points.
+   The constructor of an object of numerical angle force calculation.
 	
    :param AllInfo all_info: The system information.
    :param int npoint: The number of numerical points.
@@ -143,7 +143,7 @@ Dihedral interaction
    
 .. py:class:: DihedralForceTable(all_info, npoint)
 
-   initializes an object of numerical dihedral force with system information and the number of potential points.
+   The constructor of an object of numerical dihedral force calculation.
 
    :param AllInfo all_info: The system information.
    :param int npoint: The number of numerical points.

@@ -6,7 +6,7 @@ NVE thermostat
 
 .. py:class:: Nve(all_info, group)
 
-   initializes a NVE thermostat object for a group of particles with system information and particle group.
+   The constructor of a NVE thermostat object for a group of particles.
 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.
@@ -26,7 +26,7 @@ NVE for rigid body
 
 .. py:class:: NveRigid(all_info, group)
 
-   initializes a NVE thermostat object for rigid bodies with system information and particle group.
+   The constructor of a NVE thermostat object for rigid bodies.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.
@@ -42,7 +42,7 @@ NVE for rigid body with tunable freedoms
 
 .. py:class:: TranRigid(all_info, group)
 
-   initializes a NVE thermostat object for rigid bodies for defined freedoms with system information and particle group.
+   The constructor of a NVE thermostat object for rigid bodies for defined freedoms.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	  

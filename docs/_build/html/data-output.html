@@ -195,7 +195,7 @@
 <dl class="class">
 <dt id="DumpInfo">
 <em class="property">class </em><code class="descname">DumpInfo</code><span class="sig-paren">(</span><em>all_info</em>, <em>comp_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#DumpInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>initializes an information dump object of a group of particles with system information, information computation, and output file name.</p>
+<dd><p>The constructor of an information dump object of a group of particles.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -235,14 +235,14 @@
 <dl class="class">
 <dt id="Mol2Dump">
 <em class="property">class </em><code class="descname">Mol2Dump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#Mol2Dump" title="Permalink to this definition">¶</a></dt>
-<dd><p>initializes a dump object of mol2 files with system information and file name.</p>
+<dd><p>The constructor of a dump object of mol2 files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file base name.</li>
 </ul>
 </td>
 </tr>
@@ -275,7 +275,7 @@
 <dl class="class">
 <dt id="XmlDump">
 <em class="property">class </em><code class="descname">XmlDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#XmlDump" title="Permalink to this definition">¶</a></dt>
-<dd><p>initializes a dump object of XML files with system information and base file name.</p>
+<dd><p>The constructor of a dump object of XML files.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -293,7 +293,7 @@
 <dl class="class">
 <dt>
 <em class="property">class </em><code class="descname">XmlDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>filename</em><span class="sig-paren">)</span></dt>
-<dd><p>initializes a dump object of XML files with system information, particle set, and base file name.</p>
+<dd><p>The constructor of a dump object of XML files for a group of particles.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -301,7 +301,7 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
 <li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file base name.</li>
 </ul>
 </td>
 </tr>
@@ -448,7 +448,7 @@
 <dl class="class">
 <dt id="DcdDump">
 <em class="property">class </em><code class="descname">DcdDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em>, <em>overwrite</em><span class="sig-paren">)</span><a class="headerlink" href="#DcdDump" title="Permalink to this definition">¶</a></dt>
-<dd><p>initializes a dump object of DCD file with system information, file name, and if overwrite former data.</p>
+<dd><p>The constructor of a dump object of DCD file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -467,7 +467,7 @@
 <dl class="class">
 <dt>
 <em class="property">class </em><code class="descname">DcdDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>filename</em>, <em>overwrite</em><span class="sig-paren">)</span></dt>
-<dd><p>initializes a dump object of DCD file with system information, particle set, file name, and if overwrite former data.</p>
+<dd><p>The constructor of a dump object of DCD file for a group of particles.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -509,14 +509,14 @@
 <dl class="class">
 <dt id="BinaryDump">
 <em class="property">class </em><code class="descname">BinaryDump</code><span class="sig-paren">(</span><em>all_info</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#BinaryDump" title="Permalink to this definition">¶</a></dt>
-<dd><p>initializes a dump object of GALAMOST binary file with system information and file base name.</p>
+<dd><p>The constructor of a dump object of GALAMOST binary file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
-<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file name.</li>
+<li><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – The output file base name.</li>
 </ul>
 </td>
 </tr>

@@ -4,9 +4,9 @@ Space constraint
 Bounce back condition
 ---------------------
 
-.. py:class:: BounceBackConstrain(boost::shared_ptr<AllInfo> all_info, boost::shared_ptr<ParticleSet> group)
+.. py:class:: BounceBackConstrain(all_info, group)
 
-   initializes a bounce back wall object with a group of particles with system information and particle group.
+   The constructor of a bounce back wall object with a group of particles.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of charged particles.     
@@ -37,7 +37,7 @@ LJ surface force
  
 .. py:class:: LjConstrainForce(all_info, group, r_cut)
 
-   initializes a LJ interaction surface object for a group of particles with system information, particle set, and cut-off radius.
+   The constructor of a LJ interaction surface object for a group of particles.
 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of charged particles. 

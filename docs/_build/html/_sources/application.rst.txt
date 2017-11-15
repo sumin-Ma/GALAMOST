@@ -3,7 +3,7 @@ Application
 
 .. py:class::  Application(all_info, dt)
 
-   initializes an application object with system information and integration time step.
+   The constructor of an application object.
 	  
    :param AllInfo all_info: The system information
    :param float dt: The integration time step	   

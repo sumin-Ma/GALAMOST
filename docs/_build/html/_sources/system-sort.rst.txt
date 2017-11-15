@@ -3,7 +3,7 @@ Memory sorting
 
 .. py:class:: Sort(all_info)
 
-   initializes a memory sort object with system information.
+   The constructor of a memory sort object.
  
    :param AllInfo all_info: The system information
    

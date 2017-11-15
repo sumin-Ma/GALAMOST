@@ -6,7 +6,7 @@ DPD force
 
 .. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, float temperature, unsigned int rand_num)
 
-   initializes a DPD interaction object with system information, neighbor list, cut-off radius, temperature, and RNG seed.
+   The constructor of a DPD interaction object.
 	  
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -16,7 +16,7 @@ DPD force
    
 .. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, unsigned int rand_num)
 
-   initializes a DPD interaction object with system information, neighbor list, cut-off of radius, and RNG seed. The default temperature is 1.0.
+   The constructor of a DPD interaction object. The default temperature is 1.0.
 	  
    :param AllInfo all_info: The system information.
    :param NeighborList nlist: The neighbor list.  
@@ -52,7 +52,7 @@ GWVV integration
 
 .. py:class:: DpdGwvv(AllInfo all_info, ParticleSet group)
 
-   initializes a GWVV NVT thermostat for a group of DPD particles with system information and particle group
+   The constructor of a GWVV NVT thermostat for a group of DPD particles.
 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	   

@@ -3,7 +3,7 @@ MD-SCF
 
 .. py:class:: MdScfForce(all_info, nx, ny, nz, comp)
 
-   initializes an object of MD-SCF force with system information, grid number in x, y, z, direction, and compressibility.
+   The constructor of an object of MD-SCF force.
    
    :param AllInfo all_info: The system information.
    :param int nx: The number of grid in x direction.  

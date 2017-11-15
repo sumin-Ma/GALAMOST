@@ -3,7 +3,7 @@ Remove CM momentum
 
 .. py:class:: ZeroMomentum(all_info)
 
-   initializes an object of removing the momentum of center mass of all particles.
+   The constructor of an object of removing the momentum of center mass of all particles.
    
    :param AllInfo all_info: The system information.
 	   

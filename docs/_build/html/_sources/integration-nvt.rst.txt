@@ -6,7 +6,7 @@ Nose Hoover thermostat
 
 .. py:class:: NoseHooverNvt(all_info, group, comp_info, T, tauT)
 
-   initializes a NVT NoseHoover thermostat object for a group of particles with system information, particle group, information computation, temperature, and tauT.
+   The constructor of a NVT NoseHoover thermostat object for a group of particles.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -35,7 +35,7 @@ Berendsen thermostat
 
 .. py:class:: BerendsenNvt(all_info, group, comp_info, T, tauT)
 
-   initializes a NVT Berendsen thermostat object for a group of particles with system information, particle set, information computation, temperature, and tauT.
+   The constructor of a NVT Berendsen thermostat object for a group of particles.
 	 
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -57,7 +57,7 @@ Andersen thermostat
 
 .. py:class:: AndersenNvt(all_info, group, T, gamma, seed)
 
-   initializes a NVT Andersen thermostat object for a group of particles with system information, particle set, temperature, collision frequency, and RNG seed.
+   The constructor of a NVT Andersen thermostat object for a group of particles.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -83,7 +83,7 @@ Brownian dynamic thermostat
 
 .. py:class:: BdNvt(all_info, group, T, seed)
 
-   initializes a Brownian NVT thermostat object with system information, particle group, temperature, and RNG seed.
+   The constructor of a Brownian NVT thermostat object for a group of particles.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -119,7 +119,7 @@ NVT for rigid body
 
 .. py:class:: NvtRigid(AllInfo all_info, ParticleSet group, float T, float tauT)
 
-   initializes a NVT thermostat object for rigid bodies with system information, particle group, temperature, and tauT.
+   The constructor of a NVT thermostat object for rigid bodies.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
@@ -145,7 +145,7 @@ Brownian dynamic for rigid body
 
 .. py:class:: BdNvtRigid(all_info, group, T, seed)
 
-   initializes a Brownian NVT thermostat object for rigid bodies with system information, particle group, temperature, and RNG seed.
+   The constructor of a Brownian NVT thermostat object for rigid bodies.
 	  
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of particles.	
