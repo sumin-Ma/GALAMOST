@@ -1,10 +1,31 @@
 Bond stretching
 ---------------
 
+**Overview**
+
+Bonds impose connected forces on specific pairs of particles to model chemical bonds.
+The bonds are specified in configuration file with the format::
+
+   <bond>
+   bond_type(str)  particle_i(int)  particle_j(int)
+   ...
+   </bond>
+   
+By themselves, bonds do nothing. Only when you specify a bond force in script(i.e. :py:class:`BondForceHarmonic`), are forces actually calculated between the listed particles.
+
+=======================   ===============================
+:ref:`harmonic-bond`      :py:class:`BondForceHarmonic`
+:ref:`fene-bond`          :py:class:`BondForceFene`
+:ref:`polynominal-bond`   :py:class:`BondForcePolynomial`
+:ref:`morse-bond`         :py:class:`BondForceMorse`
+=======================   ===============================
+
 .. image:: bond.png
     :width: 250 px
     :align: center
     :alt: Principle of bond stretching
+
+.. _harmonic-bond:
 	
 Harmonic bond potential
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,6 +60,8 @@ Description:
       bondforce.setParams('polymer', 1250.000, 0.470)
       app.add(bondforce)
 
+.. _fene-bond:	  
+	  
 FENE bond potential
 ^^^^^^^^^^^^^^^^^^^
 
@@ -98,6 +121,8 @@ Description:
       bondforcefene.setParams('polymer', 10, 1.2)
       app.add(bondforcefene)
 
+.. _polynominal-bond:		  
+	  
 Polynominal bond potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -133,6 +158,7 @@ Description:
       bondforce_polynomial.setParams('polymer', 10.0, 100.0, 1.2)
       app.add(bondforce_polynomial)
 
+.. _morse-bond:	  
 	
 Morse bond potential
 ^^^^^^^^^^^^^^^^^^^^

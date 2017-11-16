@@ -197,9 +197,39 @@
             
   <div class="section" id="bond-stretching">
 <h1>Bond stretching<a class="headerlink" href="#bond-stretching" title="Permalink to this headline">¶</a></h1>
+<p><strong>Overview</strong></p>
+<p>Bonds impose connected forces on specific pairs of particles to model chemical bonds.
+The bonds are specified in configuration file with the format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">bond</span><span class="o">&gt;</span>
+<span class="n">bond_type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="n">particle_i</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_j</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">bond</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>By themselves, bonds do nothing. Only when you specify a bond force in script(i.e. <a class="reference internal" href="#BondForceHarmonic" title="BondForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">BondForceHarmonic</span></code></a>), are forces actually calculated between the listed particles.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#harmonic-bond"><span class="std std-ref">Harmonic bond potential</span></a></td>
+<td><a class="reference internal" href="#BondForceHarmonic" title="BondForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">BondForceHarmonic</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#fene-bond"><span class="std std-ref">FENE bond potential</span></a></td>
+<td><a class="reference internal" href="#BondForceFene" title="BondForceFene"><code class="xref py py-class docutils literal"><span class="pre">BondForceFene</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#polynominal-bond"><span class="std std-ref">Polynominal bond potential</span></a></td>
+<td><a class="reference internal" href="#BondForcePolynomial" title="BondForcePolynomial"><code class="xref py py-class docutils literal"><span class="pre">BondForcePolynomial</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#morse-bond"><span class="std std-ref">Morse bond potential</span></a></td>
+<td><a class="reference internal" href="#BondForceMorse" title="BondForceMorse"><code class="xref py py-class docutils literal"><span class="pre">BondForceMorse</span></code></a></td>
+</tr>
+</tbody>
+</table>
 <a class="reference internal image-reference" href="_images/bond.png"><img alt="Principle of bond stretching" class="align-center" src="_images/bond.png" style="width: 250px;" /></a>
 <div class="section" id="harmonic-bond-potential">
-<h2>Harmonic bond potential<a class="headerlink" href="#harmonic-bond-potential" title="Permalink to this headline">¶</a></h2>
+<span id="harmonic-bond"></span><h2>Harmonic bond potential<a class="headerlink" href="#harmonic-bond-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -239,7 +269,7 @@ V_{\mathrm{bond}}(r) = \frac{1}{2}k\left( r - r_{0} \right)^{2}
 
 </div>
 <div class="section" id="fene-bond-potential">
-<h2>FENE bond potential<a class="headerlink" href="#fene-bond-potential" title="Permalink to this headline">¶</a></h2>
+<span id="fene-bond"></span><h2>FENE bond potential<a class="headerlink" href="#fene-bond-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -312,7 +342,7 @@ V_{\mathrm{bond}}(r)=-\frac{1}{2}k {r_{m}}^{2}\log \left[ 1-\frac{\left(r - r_{0
 
 </div>
 <div class="section" id="polynominal-bond-potential">
-<h2>Polynominal bond potential<a class="headerlink" href="#polynominal-bond-potential" title="Permalink to this headline">¶</a></h2>
+<span id="polynominal-bond"></span><h2>Polynominal bond potential<a class="headerlink" href="#polynominal-bond-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -353,7 +383,7 @@ V_{\mathrm{bond}}(r)=k_{1}\left( r - r_{0} \right)^{2}+k_{2}\left( r - r_{0} \ri
 
 </div>
 <div class="section" id="morse-bond-potential">
-<h2>Morse bond potential<a class="headerlink" href="#morse-bond-potential" title="Permalink to this headline">¶</a></h2>
+<span id="morse-bond"></span><h2>Morse bond potential<a class="headerlink" href="#morse-bond-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">

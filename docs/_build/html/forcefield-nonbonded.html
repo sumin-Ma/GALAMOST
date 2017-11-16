@@ -103,7 +103,6 @@
 <li class="toctree-l1"><a class="reference internal" href="system.html">System</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="forcefield.html">Force field</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Short range non-bonded interactions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lennard-jones-lj-interaction">Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#shift-lennard-jones-lj-interaction">Shift Lennard-Jones (LJ) interaction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pair-interaction">Pair interaction</a><ul>
@@ -196,20 +195,34 @@
             
   <div class="section" id="short-range-non-bonded-interactions">
 <h1>Short range non-bonded interactions<a class="headerlink" href="#short-range-non-bonded-interactions" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><strong>Overview</strong></p>
 <p>The net non-bonded force of each particle is produced by summing all the non-bonded forces of neighboring particles on the basis of a neighbor list that lists
 the interacting particles for each particle, built beforehand. Because of the independence of parallel CUDA threads, a pair of interacting particles is inevitably
 included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy
-functions are included in GALAMOST</p>
-<ul class="simple">
-<li><a class="reference internal" href="#lennard-jones"><span class="std std-ref">Lennard-Jones (LJ) interaction</span></a></li>
-<li><a class="reference internal" href="#shift-lennard-jones"><span class="std std-ref">Shift Lennard-Jones (LJ) interaction</span></a></li>
-<li><a class="reference internal" href="#harmonic-repulsion"><span class="std std-ref">Harmonic repulsion</span></a></li>
-<li><a class="reference internal" href="#gaussian-repulsion"><span class="std std-ref">Gaussian repulsion</span></a></li>
-<li><a class="reference internal" href="#ipl-potential"><span class="std std-ref">IPL potential</span></a></li>
-</ul>
-</div>
+functions are included in GALAMOST.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#lennard-jones"><span class="std std-ref">Lennard-Jones (LJ) interaction</span></a></td>
+<td><a class="reference internal" href="#LjForce" title="LjForce"><code class="xref py py-class docutils literal"><span class="pre">LjForce</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#shift-lennard-jones"><span class="std std-ref">Shift Lennard-Jones (LJ) interaction</span></a></td>
+<td><a class="reference internal" href="#SljForce" title="SljForce"><code class="xref py py-class docutils literal"><span class="pre">SljForce</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#harmonic-repulsion"><span class="std std-ref">Harmonic repulsion</span></a></td>
+<td><a class="reference internal" href="#PairForce" title="PairForce"><code class="xref py py-class docutils literal"><span class="pre">PairForce</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gaussian-repulsion"><span class="std std-ref">Gaussian repulsion</span></a></td>
+<td><a class="reference internal" href="#PairForce" title="PairForce"><code class="xref py py-class docutils literal"><span class="pre">PairForce</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#ipl-potential"><span class="std std-ref">IPL potential</span></a></td>
+<td><a class="reference internal" href="#PairForce" title="PairForce"><code class="xref py py-class docutils literal"><span class="pre">PairForce</span></code></a></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="lennard-jones-lj-interaction">
 <span id="lennard-jones"></span><h2>Lennard-Jones (LJ) interaction<a class="headerlink" href="#lennard-jones-lj-interaction" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>

@@ -189,12 +189,6 @@
             
   <div class="section" id="bonded-interactions">
 <h1>Bonded interactions<a class="headerlink" href="#bonded-interactions" title="Permalink to this headline">¶</a></h1>
-<p>The bonded forces generally include the bond, angle, and torsion forces.
-Because of the execution mode of SIMD in GPU, it is efficient that a thread calculates and sums the bond, angle, and torsion forces of a particle in the kernel functions.
-Therefore, we can employ the thread whose number is equal to the number of particle to calculate the bonded forces of each particle independently.
-Although the force of a bond will be computed twice (three times for an angle and four times for a torsion) on device,
-it casts the computation well into parallel mode for separated threads of GPUs and is efficient for data copy between host and device memories.
-The common bonded potential energy functions in GALAMOST:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="forcefield-bonded-bond.html">Bond stretching</a><ul>
@@ -206,7 +200,7 @@ The common bonded potential energy functions in GALAMOST:</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="forcefield-bonded-angle.html">Angle bending</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="forcefield-bonded-angle.html#harmonic-angle-potential">Harmonic angle potential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded-angle.html#cosine-harmonic-angle-potential">Cosine harmonic angle potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forcefield-bonded-angle.html#harmonic-cosine-angle-potential">Harmonic cosine angle potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="forcefield-bonded-angle.html#cosine-angle-potential">Cosine angle potential</a></li>
 </ul>
 </li>

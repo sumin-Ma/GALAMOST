@@ -41,20 +41,20 @@ Functions
       19 XML conversion 
       -------------------------------------------------------------
 
-Function 1:
-^^^^^^^^^^^
+1  Rg^2:
+^^^^^^^^
 
    Description:
       To calculate the mean square of gyration radius and output result to ``rg2.log``.
 
-Function 2:	  
-^^^^^^^^^^^
+2  Ed^2:	  
+^^^^^^^^
    
    Description:
       To calculate the mean square of end to end distance and output result to ``ed2.log``.
 	  
-Function 3:	  
-^^^^^^^^^^^
+3  RDF:	  
+^^^^^^^
    
    Description:
       To calculate the radial distribution function of all particles and output result to ``*.rdf`` and ``rdf.log``.
@@ -62,8 +62,8 @@ Function 3:
    Parameters:
       :maxbin=100|gpu=0|rmax=Lx/2|bondex=false|angleex=false|molex=false
 	  
-Function 4:	  
-^^^^^^^^^^^
+4  bond_distri:	  
+^^^^^^^^^^^^^^^
    
    Description:
       To calculate the distribution of bond lengths and output result to ``bond_distr.log``.
@@ -71,8 +71,8 @@ Function 4:
    Parameters:
       :npot=2001
 
-Function 5:	  
-^^^^^^^^^^^
+5  angle_distri:	  
+^^^^^^^^^^^^^^^^
    
    Description:
       To calculate the distribution of angle degrees and output result to ``angle_distr.log``.
@@ -80,8 +80,8 @@ Function 5:
    Parameters:
       :npot=2001
 	  
-Function 6:	  
-^^^^^^^^^^^
+6  dihedral_distri:	  
+^^^^^^^^^^^^^^^^^^^
    
    Description:
       To calculate the distribution of dihedral degrees and output result to ``dihedral_distr.log``.
@@ -89,8 +89,8 @@ Function 6:
    Parameters:
       :npot=2001
 	  
-Function 7:	  
-^^^^^^^^^^^
+7  stress tensor:	  
+^^^^^^^^^^^^^^^^^
    
    Description:
       To calculate the stress tensor by inputing the parameters of force calculation and output result to ``stress_tensor.log``.
@@ -98,14 +98,14 @@ Function 7:
    Parameters:
       :bondex=true|bodyex=true|diameter=true 
 
-Function 8:	  
+8  density:	  
 ^^^^^^^^^^^
    
    Description:
       To calculate the real density (g/cm^3) with basic units [amu] and [nm] and output result to ``density.log``.
 	  
-Function 9:	  
-^^^^^^^^^^^
+9  unwrapping:	  
+^^^^^^^^^^^^^^
    
    Description:
       To unwrap or shift molecules by changing the image information
@@ -114,15 +114,15 @@ Function 9:
       :unwrap_molecule=true|label_free_particle=particle type| molecule_center_in_box=false|shiftx=0.0|shifty=0.0|remove_image=false| convert_constraint_to_bond=false
 
 	  
-Function 10:	  
-^^^^^^^^^^^^
+10 MSD:	  
+^^^^^^^
    
    Description:
       To compute mean square displacement of all particles and output result to ``msd.log``.
 
 	  
-Function 11:	  
-^^^^^^^^^^^^
+11 RDF-CM:	  
+^^^^^^^^^^
    
    Description:
       To calculate the radial distribution function of the mass center of molecules and output result to ``rdf_cm.log``.
@@ -130,20 +130,20 @@ Function 11:
    Parameters:
       :maxbin=100|gpu=0|rmax=Lx/2	  
 	  
-Function 12:	  
-^^^^^^^^^^^^
+12 MSD-CM:	  
+^^^^^^^^^^
    
    Description:
       To compute mean square displacement of the mass center of molecules and output result to ``msd_cm.log``.
 	  
-Function 13:	  
-^^^^^^^^^^^^
+13 ents:	  
+^^^^^^^^
    
    Description:
       To analyze the entanglements of polymers and output result to ``ents.log``.
 	  
-Function 14:	  
-^^^^^^^^^^^^
+14 strfac:	  
+^^^^^^^^^^
    
    Description:
       To calculate the structure factor of particles and output result to ``*.strf`` and ``strf.log``.
@@ -151,8 +151,8 @@ Function 14:
    Parameters:
       :kmax=80|gpu=0|qbin=2pi/L
 
-Function 15:	  
-^^^^^^^^^^^^
+15 domain size:	  
+^^^^^^^^^^^^^^^
    
    Description:
       To calculate the domain size of components in mixtures and output result to ``domsize.log``.
@@ -160,8 +160,8 @@ Function 15:
    Parameters:
       :kmax=20|qc=0.4690|gpu=0
 
-Function 16:	  
-^^^^^^^^^^^^
+16 dynamic strfac:	  
+^^^^^^^^^^^^^^^^^^
    
    Description:
       To calculate the dynamic structure factor of particles and output result to ``dstrf.log``.
@@ -169,8 +169,8 @@ Function 16:
    Parameters:
       :kmax=20|q=7.0
 
-Function 17:	  
-^^^^^^^^^^^^
+17 config check:	  
+^^^^^^^^^^^^^^^^
    
    Description:
       To check the configuration including the minimum distance of particles, and the Maximum and minimum length of bonds, etc. and output result to ``config_check.log``.
@@ -179,8 +179,8 @@ Function 17:
       :bondex=true|angleex=true|dihedralex=true|bodyex=true|rcut=2.0
 
 
-Function 18:	  
-^^^^^^^^^^^^
+18 RDF between types:	  
+^^^^^^^^^^^^^^^^^^^^^
    
    Description:
       To compute the radial distribution function between types and output result to ``*.type.rdf`` and ``rdf_by_type.log``.
@@ -189,8 +189,8 @@ Function 18:
       :maxbin=100|gpu=0|rmax=Lx/2|bondex=false|angleex=false|molex=false
 
 
-Function 19:	  
-^^^^^^^^^^^^
+19 XML conversion:	  
+^^^^^^^^^^^^^^^^^^
    
    Description:
       To convert XML files into other formats

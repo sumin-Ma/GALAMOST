@@ -107,7 +107,7 @@
 <li class="toctree-l3"><a class="reference internal" href="forcefield-bonded-bond.html">Bond stretching</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Angle bending</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#harmonic-angle-potential">Harmonic angle potential</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cosine-harmonic-angle-potential">Cosine harmonic angle potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#harmonic-cosine-angle-potential">Harmonic cosine angle potential</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cosine-angle-potential">Cosine angle potential</a></li>
 </ul>
 </li>
@@ -196,9 +196,36 @@
             
   <div class="section" id="angle-bending">
 <h1>Angle bending<a class="headerlink" href="#angle-bending" title="Permalink to this headline">¶</a></h1>
+<p><strong>Overview</strong></p>
+<p>Angles impose forces on specific triplets of particles to model chemical angles between two bonds.
+The angles are specified in configuration file with the format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">angle</span><span class="o">&gt;</span>
+<span class="n">angle_type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="n">particle_i</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_j</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_k</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">angle</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>By themselves, angles do nothing. Only when you specify an angle force in script(i.e. <a class="reference internal" href="#AngleForceHarmonic" title="AngleForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">AngleForceHarmonic</span></code></a>), are forces actually calculated between the listed particles.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#harmonic-angle"><span class="std std-ref">Harmonic angle potential</span></a></td>
+<td><a class="reference internal" href="#AngleForceHarmonic" title="AngleForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">AngleForceHarmonic</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#harmonic-cosine-angle"><span class="std std-ref">Harmonic cosine angle potential</span></a></td>
+<td><a class="reference internal" href="#AngleForceHarmonicCos" title="AngleForceHarmonicCos"><code class="xref py py-class docutils literal"><span class="pre">AngleForceHarmonicCos</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#cosine-angle"><span class="std std-ref">Cosine angle potential</span></a></td>
+<td><a class="reference internal" href="#AngleForceCos" title="AngleForceCos"><code class="xref py py-class docutils literal"><span class="pre">AngleForceCos</span></code></a></td>
+</tr>
+</tbody>
+</table>
 <a class="reference internal image-reference" href="_images/angle.png"><img alt="Principle of angle bending" class="align-center" src="_images/angle.png" style="width: 250px;" /></a>
 <div class="section" id="harmonic-angle-potential">
-<h2>Harmonic angle potential<a class="headerlink" href="#harmonic-angle-potential" title="Permalink to this headline">¶</a></h2>
+<span id="harmonic-angle"></span><h2>Harmonic angle potential<a class="headerlink" href="#harmonic-angle-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -237,8 +264,8 @@ V_{\mathrm{angle}}(\theta) = \frac{1}{2}k\left( \theta -\theta_{0} \right)^{2}
 </dd></dl>
 
 </div>
-<div class="section" id="cosine-harmonic-angle-potential">
-<h2>Cosine harmonic angle potential<a class="headerlink" href="#cosine-harmonic-angle-potential" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="harmonic-cosine-angle-potential">
+<span id="harmonic-cosine-angle"></span><h2>Harmonic cosine angle potential<a class="headerlink" href="#harmonic-cosine-angle-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -278,7 +305,7 @@ V_{\mathrm{angle}}(\theta)=\frac{1}{2}k\left[\cos \left( \theta \right)-\cos \le
 
 </div>
 <div class="section" id="cosine-angle-potential">
-<h2>Cosine angle potential<a class="headerlink" href="#cosine-angle-potential" title="Permalink to this headline">¶</a></h2>
+<span id="cosine-angle"></span><h2>Cosine angle potential<a class="headerlink" href="#cosine-angle-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">

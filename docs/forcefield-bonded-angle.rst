@@ -1,11 +1,30 @@
 Angle bending
 -------------
+**Overview**
+
+Angles impose forces on specific triplets of particles to model chemical angles between two bonds.
+The angles are specified in configuration file with the format::
+
+   <angle>
+   angle_type(str)  particle_i(int)  particle_j(int)  particle_k(int)
+   ...
+   </angle>
+   
+By themselves, angles do nothing. Only when you specify an angle force in script(i.e. :py:class:`AngleForceHarmonic`), are forces actually calculated between the listed particles.
+
+============================   =================================
+:ref:`harmonic-angle`          :py:class:`AngleForceHarmonic`
+:ref:`harmonic-cosine-angle`   :py:class:`AngleForceHarmonicCos`
+:ref:`cosine-angle`            :py:class:`AngleForceCos`
+============================   =================================
 
 .. image:: angle.png
     :width: 250 px
     :align: center
     :alt: Principle of angle bending
 
+.. _harmonic-angle:	
+	
 Harmonic angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -39,7 +58,9 @@ Description:
       angleforce.setParams('P-G-G', 25.000, 120.000)
       app.add(angleforce)
 
-Cosine harmonic angle potential
+.. _harmonic-cosine-angle:
+	  
+Harmonic cosine angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Description:
@@ -71,6 +92,8 @@ Description:
       angleforce = galamost.AngleForceHarmonicCos(all_info)
       angleforce.setParams('P-G-G',25.000, 120.000)
       app.add(angleforce)
+
+.. _cosine-angle:
 	  
 Cosine angle potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

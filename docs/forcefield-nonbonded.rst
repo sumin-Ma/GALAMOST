@@ -1,23 +1,20 @@
 Short range non-bonded interactions
 ===================================
    
-Overview
---------
+**Overview**
 
 The net non-bonded force of each particle is produced by summing all the non-bonded forces of neighboring particles on the basis of a neighbor list that lists
 the interacting particles for each particle, built beforehand. Because of the independence of parallel CUDA threads, a pair of interacting particles is inevitably 
 included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy 
-functions are included in GALAMOST
+functions are included in GALAMOST.
 
-* :ref:`lennard-jones`
-
-* :ref:`shift-lennard-jones`
-
-* :ref:`harmonic-repulsion`
-
-* :ref:`gaussian-repulsion`
-
-* :ref:`IPL-potential`
+==========================   =====================
+:ref:`lennard-jones`         :py:class:`LjForce`
+:ref:`shift-lennard-jones`   :py:class:`SljForce`
+:ref:`harmonic-repulsion`    :py:class:`PairForce`
+:ref:`gaussian-repulsion`    :py:class:`PairForce`
+:ref:`IPL-potential`         :py:class:`PairForce`
+==========================   =====================
 
 .. _lennard-jones:
 
