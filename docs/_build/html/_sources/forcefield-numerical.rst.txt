@@ -30,19 +30,10 @@ more specifically, for each :math:`x_i< x < x_{i+1}`, let :math:`δ = x - x_i`, 
 where :math:`x` corresponds to :math:`z`, :math:`\theta`, and :math:`\varphi` for particle-particle distance square, bending angle, 
 and torsion angle, respectively. :math:`i` is the index of the grid point and :math:`C_0` is the starting potential value of each grid point. 
 Other parameters :math:`C_1`, :math:`C_2`, and :math:`C_3` are chosen to make the values of the first derivative and the second derivative 
-at both ends of interval :math:`x_i` and :math:`x_{i+1}` equal to the correct values of function V. 
-The potentials can be read from two columns in a file by function ``setPotential()`` with the formats, such as for pair interactions
+at both ends of interval :math:`x_i` and :math:`x_{i+1}` equal to the correct values of function V. The interval between two adjacent grids :math:`\Delta=x_{i+1}-x_i`
+should be equal.  
 
-   Example::
-
-      <PairPotential>
-      r  potential
-      </ PairPotential >
-	  
-The distance points in first column should be in equal interval and the potentials at the distance points are given in second column. 
-The other node names for bond, angle and dihedral are ``BondPotential``, ``AnglePotential``, and ``Dihedralpotential``.
-
-The interaction parameters :math:`(C_0, C_1, C_2, C_3)` can be read directly from four columns in a file by function ``setParams()``
+The interaction parameters :math:`(C_0, C_1, C_2, C_3)` can be read from four columns in a file by function ``setParams()``
 with the formats, such as pair interactions with
 
    Example::
@@ -51,7 +42,19 @@ with the formats, such as pair interactions with
       C0  C1  C2  C3
       </PairForcePoints>
 	  
-The other node names for bond, angle and dihedral are ``BondForcePoints``, ``AngleForcePoints``, and ``DihedralForcePoints``.
+The other node names for bond, angle and dihedral are ``BondForcePoints``, ``AngleForcePoints``, and ``DihedralForcePoints``, respectively.
+
+For convenience, the potentials also can be read directively from two columns in a file by function ``setPotential()`` with the formats, such as for pair potential
+
+   Example::
+
+      <PairPotential>
+      r  potential
+      </ PairPotential >
+
+With the potential input format, :math:`x` corresponds to :math:`r` for distance and :math:`F=-\partial V(r)/\partial r`. 
+The distance or angle points in first column should be in equal interval and the potentials at the corresponding points are given in second column. 
+The other node names for bond, angle and dihedral are ``BondPotential``, ``AnglePotential``, and ``Dihedralpotential``, respectively.
 	  
 Non-bonded interaction
 ----------------------

@@ -213,19 +213,9 @@ V(x)=C_{0}+C_{1}\delta +C_{2}{\delta}^{2}+C_{3}{\delta}^{3}
 <p>where <span class="math">\(x\)</span> corresponds to <span class="math">\(z\)</span>, <span class="math">\(\theta\)</span>, and <span class="math">\(\varphi\)</span> for particle-particle distance square, bending angle,
 and torsion angle, respectively. <span class="math">\(i\)</span> is the index of the grid point and <span class="math">\(C_0\)</span> is the starting potential value of each grid point.
 Other parameters <span class="math">\(C_1\)</span>, <span class="math">\(C_2\)</span>, and <span class="math">\(C_3\)</span> are chosen to make the values of the first derivative and the second derivative
-at both ends of interval <span class="math">\(x_i\)</span> and <span class="math">\(x_{i+1}\)</span> equal to the correct values of function V.
-The potentials can be read from two columns in a file by function <code class="docutils literal"><span class="pre">setPotential()</span></code> with the formats, such as for pair interactions</p>
-<blockquote>
-<div><p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">PairPotential</span><span class="o">&gt;</span>
-<span class="n">r</span>  <span class="n">potential</span>
-<span class="o">&lt;/</span> <span class="n">PairPotential</span> <span class="o">&gt;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>The distance points in first column should be in equal interval and the potentials at the distance points are given in second column.
-The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondPotential</span></code>, <code class="docutils literal"><span class="pre">AnglePotential</span></code>, and <code class="docutils literal"><span class="pre">Dihedralpotential</span></code>.</p>
-<p>The interaction parameters <span class="math">\((C_0, C_1, C_2, C_3)\)</span> can be read directly from four columns in a file by function <code class="docutils literal"><span class="pre">setParams()</span></code>
+at both ends of interval <span class="math">\(x_i\)</span> and <span class="math">\(x_{i+1}\)</span> equal to the correct values of function V. The interval between two adjacent grids <span class="math">\(\Delta=x_{i+1}-x_i\)</span>
+should be equal.</p>
+<p>The interaction parameters <span class="math">\((C_0, C_1, C_2, C_3)\)</span> can be read from four columns in a file by function <code class="docutils literal"><span class="pre">setParams()</span></code>
 with the formats, such as pair interactions with</p>
 <blockquote>
 <div><p>Example:</p>
@@ -235,7 +225,19 @@ with the formats, such as pair interactions with</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondForcePoints</span></code>, <code class="docutils literal"><span class="pre">AngleForcePoints</span></code>, and <code class="docutils literal"><span class="pre">DihedralForcePoints</span></code>.</p>
+<p>The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondForcePoints</span></code>, <code class="docutils literal"><span class="pre">AngleForcePoints</span></code>, and <code class="docutils literal"><span class="pre">DihedralForcePoints</span></code>, respectively.</p>
+<p>For convenience, the potentials also can be read directively from two columns in a file by function <code class="docutils literal"><span class="pre">setPotential()</span></code> with the formats, such as for pair potential</p>
+<blockquote>
+<div><p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">PairPotential</span><span class="o">&gt;</span>
+<span class="n">r</span>  <span class="n">potential</span>
+<span class="o">&lt;/</span> <span class="n">PairPotential</span> <span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>With the potential input format, <span class="math">\(x\)</span> corresponds to <span class="math">\(r\)</span> for distance and <span class="math">\(F=-\partial V(r)/\partial r\)</span>.
+The distance or angle points in first column should be in equal interval and the potentials at the corresponding points are given in second column.
+The other node names for bond, angle and dihedral are <code class="docutils literal"><span class="pre">BondPotential</span></code>, <code class="docutils literal"><span class="pre">AnglePotential</span></code>, and <code class="docutils literal"><span class="pre">Dihedralpotential</span></code>, respectively.</p>
 <div class="section" id="non-bonded-interaction">
 <h2>Non-bonded interaction<a class="headerlink" href="#non-bonded-interaction" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
