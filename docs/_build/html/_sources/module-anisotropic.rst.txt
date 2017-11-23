@@ -33,6 +33,7 @@ Bond Force of GB particles
 .. py:class:: BondForceAni(all_info)
 
    The constructor of a method of bond force calculation of anisotropic particles.
+   
    :param AllInfo all_info: The system information.   
 
    .. py:function:: setParams(string bondtype, float Kbond, float rbond, float Kangle, float dangle)

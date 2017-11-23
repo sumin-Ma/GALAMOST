@@ -20,7 +20,7 @@ The total electrostatic energy of N particles and their periodic images is given
        :nowrap:
    
        \begin{eqnarray*}
-        V=\frac{f}{2}\sum\limits_{n}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+n \right|}}}
+        V=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+\mathbf{n} \right|}}}
        \end{eqnarray*}
 
 The electrostatic potential is practically calculated in GALAMOST by
@@ -29,7 +29,7 @@ The electrostatic potential is practically calculated in GALAMOST by
        :nowrap:
    
        \begin{eqnarray*}
-	   U\left( r \right)=f\frac{q_{i} q_{j}}{r}
+	   U\left( r \right)=\frac{q_{i} q_{j}}{r}
        \end{eqnarray*}
 	   
 The electric conversion factor and relative dielectric constant are considered in the reduced charge. 
@@ -37,11 +37,26 @@ For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol]
 :math:`\sqrt{f/{\varepsilon }_{r}}` with :math:`f = 138.935`.
 
 The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part.
-The short-range part can employ Ewald summation and long-range part can employ PPPM or ENUF method. 
+The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-range part can employ PPPMForce or ENUFForce. 
 
 Ewald (short-range part)
 -------------------------------------
 
+Description:
+
+    The short-range term is exactly handled in the direct sum.
+
+    .. math::
+       :nowrap:
+   
+       \begin{eqnarray*}
+        V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}
+       \end{eqnarray*}
+
+    The following coefficients must be set per unique pair of particle types:
+	   
+    - :math:`\kappa` - *kappa* (unitless)
+	
 .. py:class:: EwaldForce(all_info, nlist, group, r_cut)
 
    The constructor of an direct Ewald force object for a group of charged particles.
@@ -57,7 +72,7 @@ Ewald (short-range part)
 	  
    .. py:function:: setParams(float kappa)
    
-      specifies the force parameters for all particle types with kappa.
+      specifies the force parameters for all pairs of particle types with kappa.
 	  
    Example::
    
@@ -67,8 +82,79 @@ Ewald (short-range part)
       ewald.setParams(kappa)
       app.add(ewald)
 	  
+Ewald for DPD (short-range part)
+-------------------------------------
+
+Description:
+
+    In order to remove the divergency at :math:`r=0`, a Slater-type charge density is used to describe the charged DPD particles.
+
+    .. math::
+       :nowrap:
+   
+       \begin{eqnarray*}
+        \rho(r)=\frac{q}{\pi\lambda^{3}}e^{-2r/\lambda}
+       \end{eqnarray*}
+	   
+    - :math:`\lambda` - the decay length of the charge (in distance units)	
+	
+    The short-range term is exactly handled in the direct sum. 
+
+    .. math::
+       :nowrap:
+   
+       \begin{eqnarray*}
+        V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|} \left[1-(1+\beta r_{ij}\mbox{e}^{-2\beta r_{ij}} \right]
+       \end{eqnarray*}
+
+    The following coefficients must be set per unique pair of particle types:
+	   
+    - :math:`\kappa` - *kappa* (unitless)
+    - :math:`\beta=1/\lambda` - *beta* (in inverse distance units)	
+	
+.. py:class:: DPDEwaldForce(all_info, nlist, group, r_cut)
+
+   The constructor of an direct Ewald force object for a group of charged particles.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.
+   :param ParticleSet group: The group of charged particles. 
+   :param float r_cut: The cut-off radius.	  
+
+   .. py:function:: setParams(string type0, string type1, float kappa)
+   
+      specifies the force parameters with kappa.
+	  
+   .. py:function:: setParams(float kappa)
+   
+      specifies the force parameters for all pairs of particle types with kappa.
+	  
+   .. py:function:: setBeta(float beta)
+   
+      specifies the force parameters all pairs of particle types with beta.	  
+	  
+   Example::
+   
+      group = galamost.ParticleSet(all_info, "charge")
+      kappa=0.8
+      dpd_ewald = galamost.DPDEwaldForce(all_info, neighbor_list, group, 3.0)
+      dpd_ewald.setParams(kappa)
+      app.add(dpd_ewald)	  
+	  
 PPPM (long-range part)
 ----------------------
+
+    The long-range term is exactly handled in the reciprocal sum. 
+
+    .. math::
+       :nowrap:
+   
+       \begin{eqnarray*}
+        V^{L}&=&\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
+        V^{self}&=&\frac{1}{f}\frac{\kappa}{\sqrt{\pi}}\sum\limits_{i=1}^{N}q_{i}^{2}		
+       \end{eqnarray*}
+	   
+    - :math:`\kappa` - *kappa* (unitless)
 
 .. py:class:: PPPMForce(all_info, nlist, group)
 	  

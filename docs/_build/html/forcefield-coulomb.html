@@ -108,6 +108,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Coulomb interaction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ewald-summation-theory">Ewald summation theory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ewald-short-range-part">Ewald (short-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ewald-for-dpd-short-range-part">Ewald for DPD (short-range part)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pppm-long-range-part">PPPM (long-range part)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enuf-long-range-part">ENUF (long-range part)</a></li>
 </ul>
@@ -203,22 +204,33 @@ The total electrostatic energy of N particles and their periodic images is given
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
- V=\frac{f}{2}\sum\limits_{n}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+n \right|}}}
+ V=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+\mathbf{n} \right|}}}
 \end{eqnarray*}</div></div></blockquote>
 <p>The electrostatic potential is practically calculated in GALAMOST by</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-    U\left( r \right)=f\frac{q_{i} q_{j}}{r}
+    U\left( r \right)=\frac{q_{i} q_{j}}{r}
 \end{eqnarray*}</div></div></blockquote>
 <p>The electric conversion factor and relative dielectric constant are considered in the reduced charge.
 For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
 <span class="math">\(\sqrt{f/{\varepsilon }_{r}}\)</span> with <span class="math">\(f = 138.935\)</span>.</p>
 <p>The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part.
-The short-range part can employ Ewald summation and long-range part can employ PPPM or ENUF method.</p>
+The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-range part can employ PPPMForce or ENUFForce.</p>
 </div>
 <div class="section" id="ewald-short-range-part">
 <h2>Ewald (short-range part)<a class="headerlink" href="#ewald-short-range-part" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><p>The short-range term is exactly handled in the direct sum.</p>
+<div class="math">
+\begin{eqnarray*}
+ V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="EwaldForce">
 <em class="property">class </em><code class="descname">EwaldForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#EwaldForce" title="Permalink to this definition">¶</a></dt>
@@ -246,7 +258,7 @@ The short-range part can employ Ewald summation and long-range part can employ P
 <dl class="function">
 <dt>
 <code class="descname">setParams</code><span class="sig-paren">(</span><em>float kappa</em><span class="sig-paren">)</span></dt>
-<dd><p>specifies the force parameters for all particle types with kappa.</p>
+<dd><p>specifies the force parameters for all pairs of particle types with kappa.</p>
 </dd></dl>
 
 <p>Example:</p>
@@ -260,8 +272,86 @@ The short-range part can employ Ewald summation and long-range part can employ P
 </dd></dl>
 
 </div>
+<div class="section" id="ewald-for-dpd-short-range-part">
+<h2>Ewald for DPD (short-range part)<a class="headerlink" href="#ewald-for-dpd-short-range-part" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><p>In order to remove the divergency at <span class="math">\(r=0\)</span>, a Slater-type charge density is used to describe the charged DPD particles.</p>
+<div class="math">
+\begin{eqnarray*}
+ \rho(r)=\frac{q}{\pi\lambda^{3}}e^{-2r/\lambda}
+\end{eqnarray*}</div><ul class="simple">
+<li><span class="math">\(\lambda\)</span> - the decay length of the charge (in distance units)</li>
+</ul>
+<p>The short-range term is exactly handled in the direct sum.</p>
+<div class="math">
+\begin{eqnarray*}
+ V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|} \left[1-(1+\beta r_{ij}\mbox{e}^{-2\beta r_{ij}} \right]
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
+<li><span class="math">\(\beta=1/\lambda\)</span> - <em>beta</em> (in inverse distance units)</li>
+</ul>
+</div></blockquote>
+<dl class="class">
+<dt id="DPDEwaldForce">
+<em class="property">class </em><code class="descname">DPDEwaldForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em>, <em>r_cut</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of an direct Ewald force object for a group of charged particles.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>nlist</strong> (<a class="reference internal" href="system-list.html#NeighborList" title="NeighborList"><em>NeighborList</em></a>) – The neighbor list.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of charged particles.</li>
+<li><strong>r_cut</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – The cut-off radius.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="DPDEwaldForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type0</em>, <em>string type1</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the force parameters with kappa.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>float kappa</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the force parameters for all pairs of particle types with kappa.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="DPDEwaldForce.setBeta">
+<code class="descname">setBeta</code><span class="sig-paren">(</span><em>float beta</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce.setBeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the force parameters all pairs of particle types with beta.</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+<span class="n">kappa</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">dpd_ewald</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DPDEwaldForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">dpd_ewald</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dpd_ewald</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="pppm-long-range-part">
 <h2>PPPM (long-range part)<a class="headerlink" href="#pppm-long-range-part" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The long-range term is exactly handled in the reciprocal sum.</p>
+<div class="math">
+\begin{eqnarray*}
+ V^{L}&amp;=&amp;\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
+ V^{self}&amp;=&amp;\frac{1}{f}\frac{\kappa}{\sqrt{\pi}}\sum\limits_{i=1}^{N}q_{i}^{2}
+\end{eqnarray*}</div><ul class="simple">
+<li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="PPPMForce">
 <em class="property">class </em><code class="descname">PPPMForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#PPPMForce" title="Permalink to this definition">¶</a></dt>
