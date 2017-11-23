@@ -29,12 +29,12 @@ The electrostatic potential is practically calculated in GALAMOST by
        :nowrap:
    
        \begin{eqnarray*}
-	   U\left( r \right)=\frac{q_{i} q_{j}}{r}
+	   U\left( r^{*} \right)=\frac{z_{i} z_{j}}{r^{*}}
        \end{eqnarray*}
 	   
 The electric conversion factor and relative dielectric constant are considered in the reduced charge. 
 For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
-:math:`\sqrt{f/{\varepsilon }_{r}}` with :math:`f = 138.935`.
+:math:`z=\sqrt{f/{\varepsilon }_{r}}` with :math:`f = 138.935`.
 
 The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part.
 The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-range part can employ PPPMForce or ENUFForce. 
@@ -144,17 +144,27 @@ Description:
 PPPM (long-range part)
 ----------------------
 
+Description:
+
     The long-range term is exactly handled in the reciprocal sum. 
 
     .. math::
        :nowrap:
    
        \begin{eqnarray*}
-        V^{L}&=&\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
-        V^{self}&=&\frac{1}{f}\frac{\kappa}{\sqrt{\pi}}\sum\limits_{i=1}^{N}q_{i}^{2}		
+        V^{L}&=&\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\		
        \end{eqnarray*}
 	   
     - :math:`\kappa` - *kappa* (unitless)
+	
+    The self-energy term. 
+
+    .. math::
+       :nowrap:
+   
+       \begin{eqnarray*}
+        V^{self}&=&\frac{1}{f}\frac{\kappa}{\sqrt{\pi}}\sum\limits_{i=1}^{N}q_{i}^{2}		
+       \end{eqnarray*}	
 
 .. py:class:: PPPMForce(all_info, nlist, group)
 	  

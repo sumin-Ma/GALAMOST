@@ -190,6 +190,22 @@
 <h1>Dissipative particle dynamics<a class="headerlink" href="#dissipative-particle-dynamics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dpd-force">
 <h2>DPD force<a class="headerlink" href="#dpd-force" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><p>The DPD force consists of pair‐wise conservative, dissipative and random terms.</p>
+<div class="math">
+\begin{eqnarray*}
+ \vec{F}_{ij}^{C}&amp;=&amp;\alpha\left(1-\frac{r_{ij}}{r_{cut}}\right)\vec{e}_{ij} \\
+ \vec{F}_{ij}^{D}&amp;=&amp;-\gamma\omega^{D}(r_{ij})(\vec{e}_{ij} \cdot \vec{v}_{ij} )\vec{e}_{ij}  \\
+ \vec{F}_{ij}^{R}&amp;=&amp;\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\
+\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+<ul class="simple">
+<li><span class="math">\(\alpha\)</span> - <em>alpha</em> (in energy units)</li>
+<li><span class="math">\(\sigma\)</span> - <em>sigma</em> (unitless)</li>
+<li><span class="math">\(\gamma=\sigma^{2}/2k_{B}T\)</span></li>
+<li><span class="math">\(r_{cut}\)</span> - <em>r_cut</em> (in distance units)</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="DpdForce">
 <em class="property">class </em><code class="descname">DpdForce</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>NeighborList nlist</em>, <em>float r_cut</em>, <em>float temperature</em>, <em>unsigned int rand_num</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce" title="Permalink to this definition">¶</a></dt>
@@ -229,12 +245,12 @@
 </tr>
 </tbody>
 </table>
-<p>Functions:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">py</span><span class="p">:</span><span class="n">function</span><span class="p">::</span> <span class="n">setParams</span><span class="p">(</span><span class="n">string</span> <span class="n">type1</span><span class="p">,</span> <span class="n">string</span> <span class="n">type2</span><span class="p">,</span> <span class="nb">float</span> <span class="n">alpha</span><span class="p">,</span> <span class="nb">float</span> <span class="n">sigma</span><span class="p">)</span>
-</pre></div>
-</div>
-<blockquote>
-<div>specifies the DPD interaction parameters with type1, type2, alpha, sigma.</div></blockquote>
+<dl class="function">
+<dt id="DpdForce.setParams">
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float alpha</em>, <em>float sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the DPD interaction parameters with type1, type2, alpha, sigma.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="DpdForce.setT">
 <code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setT" title="Permalink to this definition">¶</a></dt>
@@ -283,7 +299,7 @@
 <dl class="function">
 <dt id="DpdGwvv.setLamda">
 <code class="descname">setLamda</code><span class="sig-paren">(</span><em>float lamda</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv.setLamda" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies lamda.</p>
+<dd><p>specifies lamda - default value is 0.65.</p>
 </dd></dl>
 
 <p>Example:</p>
