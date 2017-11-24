@@ -107,10 +107,10 @@
 <li class="toctree-l2"><a class="reference internal" href="forcefield-numerical.html">Numerical interaction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Coulomb interaction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ewald-summation-theory">Ewald summation theory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ewald-short-range-part">Ewald (short-range part)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ewald-for-dpd-short-range-part">Ewald for DPD (short-range part)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pppm-long-range-part">PPPM (long-range part)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#enuf-long-range-part">ENUF (long-range part)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ewald-short-range">Ewald (short-range)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ewald-for-dpd-short-range">Ewald for DPD (short-range)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pppm-long-range">PPPM (long-range)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enuf-long-range">ENUF (long-range)</a></li>
 </ul>
 </li>
 </ul>
@@ -210,23 +210,50 @@ The total electrostatic energy of N particles and their periodic images is given
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-    U\left( r^{*} \right)=\frac{z_{i} z_{j}}{r^{*}}
+    U\left( r^{*} \right)=\frac{q^{*}_{i} q^{*}_{j}}{r^{*}}
 \end{eqnarray*}</div></div></blockquote>
 <p>The electric conversion factor and relative dielectric constant are considered in the reduced charge.
 For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
-<span class="math">\(z=\sqrt{f/{\varepsilon }_{r}}\)</span> with <span class="math">\(f = 138.935\)</span>.</p>
-<p>The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part.
-The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-range part can employ PPPMForce or ENUFForce.</p>
+<span class="math">\(q^{*}=z\sqrt{f/{\varepsilon }_{r}}\)</span> with <span class="math">\(f = 138.935\)</span>. The <span class="math">\(z\)</span> is the valence of ion.</p>
+<p>The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part by adding and subtracting a Gaussian distribution.</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+    G\left( r \right)=\frac{\kappa^{3}}{\pi^{3/2}}\mbox{exp}\left(-\kappa^2r^2\right)
+\end{eqnarray*}</div></div></blockquote>
+<p>The short-range part including <a class="reference internal" href="#EwaldForce" title="EwaldForce"><code class="xref py py-class docutils literal"><span class="pre">EwaldForce</span></code></a> and <a class="reference internal" href="#DPDEwaldForce" title="DPDEwaldForce"><code class="xref py py-class docutils literal"><span class="pre">DPDEwaldForce</span></code></a> (for DPD) methods is calculated directly as non-bonded interactions.
+The long-range part inlcuding <a class="reference internal" href="#PPPMForce" title="PPPMForce"><code class="xref py py-class docutils literal"><span class="pre">PPPMForce</span></code></a> or <a class="reference internal" href="#ENUFForce" title="ENUFForce"><code class="xref py py-class docutils literal"><span class="pre">ENUFForce</span></code></a> methods is calculated in the reciprocal sum by Fourier transform.</p>
+<p>For Coulomb interaction calculation, a short-range method and a long-range method are both needed.</p>
+<blockquote>
+<div><p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">groupC</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+
+<span class="c1"># real space</span>
+<span class="n">ewald</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">EwaldForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">groupC</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span><span class="c1">#(,,r_cut)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ewald</span><span class="p">)</span>
+
+<span class="c1"># reciprocal space</span>
+<span class="n">pppm</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">PPPMForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">groupC</span><span class="p">)</span>
+<span class="n">pppm</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="c1"># grid number in x, y, and z directions, spread order, r_cut in real space.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pppm</span><span class="p">)</span>
+
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">pppm</span><span class="o">.</span><span class="n">getKappa</span><span class="p">()</span>
+<span class="c1"># an optimized kappa can be calculated by PPPMForce and passed into EwaldForce.</span>
+<span class="n">ewald</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="ewald-short-range-part">
-<h2>Ewald (short-range part)<a class="headerlink" href="#ewald-short-range-part" title="Permalink to this headline">¶</a></h2>
+</div></blockquote>
+</div>
+<div class="section" id="ewald-short-range">
+<h2>Ewald (short-range)<a class="headerlink" href="#ewald-short-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>The short-range term is exactly handled in the direct sum.</p>
 <div class="math">
 \begin{eqnarray*}
  V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}
-\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+\end{eqnarray*}</div><p>The following coefficients must be set:</p>
 <ul class="simple">
 <li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
 </ul>
@@ -251,14 +278,14 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 </table>
 <dl class="function">
 <dt id="EwaldForce.setParams">
-<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type0</em>, <em>string type1</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#EwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies the force parameters with kappa.</p>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string typei</em>, <em>string typej</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#EwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the kappa per unique pair of particle types.</p>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descname">setParams</code><span class="sig-paren">(</span><em>float kappa</em><span class="sig-paren">)</span></dt>
-<dd><p>specifies the force parameters for all pairs of particle types with kappa.</p>
+<dd><p>specifies the kappa for all pairs of particle types.</p>
 </dd></dl>
 
 <p>Example:</p>
@@ -272,8 +299,8 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 </dd></dl>
 
 </div>
-<div class="section" id="ewald-for-dpd-short-range-part">
-<h2>Ewald for DPD (short-range part)<a class="headerlink" href="#ewald-for-dpd-short-range-part" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ewald-for-dpd-short-range">
+<h2>Ewald for DPD (short-range)<a class="headerlink" href="#ewald-for-dpd-short-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>In order to remove the divergency at <span class="math">\(r=0\)</span>, a Slater-type charge density is used to describe the charged DPD particles.</p>
@@ -287,7 +314,7 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 <div class="math">
 \begin{eqnarray*}
  V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|} \left[1-(1+\beta r_{ij}\mbox{e}^{-2\beta r_{ij}} \right]
-\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+\end{eqnarray*}</div><p>The following coefficients must be set:</p>
 <ul class="simple">
 <li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
 <li><span class="math">\(\beta=1/\lambda\)</span> - <em>beta</em> (in inverse distance units)</li>
@@ -313,20 +340,20 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 </table>
 <dl class="function">
 <dt id="DPDEwaldForce.setParams">
-<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type0</em>, <em>string type1</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies the force parameters with kappa.</p>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string typei</em>, <em>string typej</em>, <em>float kappa</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the kappa per unique pair of particle types.</p>
 </dd></dl>
 
 <dl class="function">
 <dt>
 <code class="descname">setParams</code><span class="sig-paren">(</span><em>float kappa</em><span class="sig-paren">)</span></dt>
-<dd><p>specifies the force parameters for all pairs of particle types with kappa.</p>
+<dd><p>specifies the kappa for all pairs of particle types.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="DPDEwaldForce.setBeta">
 <code class="descname">setBeta</code><span class="sig-paren">(</span><em>float beta</em><span class="sig-paren">)</span><a class="headerlink" href="#DPDEwaldForce.setBeta" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies the force parameters all pairs of particle types with beta.</p>
+<dd><p>specifies the beta for all pairs of particle types.</p>
 </dd></dl>
 
 <p>Example:</p>
@@ -340,22 +367,23 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 </dd></dl>
 
 </div>
-<div class="section" id="pppm-long-range-part">
-<h2>PPPM (long-range part)<a class="headerlink" href="#pppm-long-range-part" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pppm-long-range">
+<h2>PPPM (long-range)<a class="headerlink" href="#pppm-long-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>The long-range term is exactly handled in the reciprocal sum.</p>
 <div class="math">
 \begin{eqnarray*}
  V^{L}&amp;=&amp;\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
-\end{eqnarray*}</div><ul class="simple">
-<li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
-</ul>
-<p>The self-energy term.</p>
+ S(\mathbf{k})&amp;=&amp;\sum\limits_{i=1}^{N}q_{i}\mbox{exp}^{i\mathbf{k} \cdot \mathbf{r}_i}
+\end{eqnarray*}</div><p>The self-energy term.</p>
 <div class="math">
 \begin{eqnarray*}
  V^{self}&amp;=&amp;\frac{1}{f}\frac{\kappa}{\sqrt{\pi}}\sum\limits_{i=1}^{N}q_{i}^{2}
-\end{eqnarray*}</div></div></blockquote>
+\end{eqnarray*}</div><ul class="simple">
+<li><span class="math">\(\kappa\)</span> - <em>kappa</em> (unitless)</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="PPPMForce">
 <em class="property">class </em><code class="descname">PPPMForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#PPPMForce" title="Permalink to this definition">¶</a></dt>
@@ -395,8 +423,8 @@ The short-range part can employ EwaldForce and DPDEwaldForce(for DPD). The long-
 </dd></dl>
 
 </div>
-<div class="section" id="enuf-long-range-part">
-<h2>ENUF (long-range part)<a class="headerlink" href="#enuf-long-range-part" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="enuf-long-range">
+<h2>ENUF (long-range)<a class="headerlink" href="#enuf-long-range" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="ENUFForce">
 <em class="property">class </em><code class="descname">ENUFForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ENUFForce" title="Permalink to this definition">¶</a></dt>

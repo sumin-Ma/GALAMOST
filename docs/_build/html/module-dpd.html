@@ -197,13 +197,19 @@
 \begin{eqnarray*}
  \vec{F}_{ij}^{C}&amp;=&amp;\alpha\left(1-\frac{r_{ij}}{r_{cut}}\right)\vec{e}_{ij} \\
  \vec{F}_{ij}^{D}&amp;=&amp;-\gamma\omega^{D}(r_{ij})(\vec{e}_{ij} \cdot \vec{v}_{ij} )\vec{e}_{ij}  \\
- \vec{F}_{ij}^{R}&amp;=&amp;\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\
-\end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
+ \vec{F}_{ij}^{R}&amp;=&amp;T\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\
+\end{eqnarray*}</div><ul class="simple">
+<li><span class="math">\(\gamma=\sigma^{2}/2k_{B}T\)</span></li>
+<li><span class="math">\(\xi\)</span> - a random number with zero mean and unit variance</li>
+<li><span class="math">\(T\)</span> - <cite>temperature</cite>
+- <em>optional</em>: defaults to 1.0</li>
+<li><span class="math">\(r_{cut}\)</span> - <em>r_cut</em> (in distance units)
+- <em>optional</em>: defaults to 1.0</li>
+</ul>
+<p>The following coefficients must be set per unique pair of particle types:</p>
 <ul class="simple">
 <li><span class="math">\(\alpha\)</span> - <em>alpha</em> (in energy units)</li>
 <li><span class="math">\(\sigma\)</span> - <em>sigma</em> (unitless)</li>
-<li><span class="math">\(\gamma=\sigma^{2}/2k_{B}T\)</span></li>
-<li><span class="math">\(r_{cut}\)</span> - <em>r_cut</em> (in distance units)</li>
 </ul>
 </div></blockquote>
 <dl class="class">
@@ -247,8 +253,8 @@
 </table>
 <dl class="function">
 <dt id="DpdForce.setParams">
-<code class="descname">setParams</code><span class="sig-paren">(</span><em>string type1</em>, <em>string type2</em>, <em>float alpha</em>, <em>float sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setParams" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies the DPD interaction parameters with type1, type2, alpha, sigma.</p>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string typei</em>, <em>string typej</em>, <em>float alpha</em>, <em>float sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdForce.setParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the DPD interaction parameters per unique pair of particle types.</p>
 </dd></dl>
 
 <dl class="function">

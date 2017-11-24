@@ -1,11 +1,28 @@
 Dihedral torsion
 ----------------
+**Overview**
+
+Dihedrals impose forces on specific quadruplets of particles to model the rotation about chemical bonds.
+The dihedrals are specified in configuration file with the format::
+
+   <dihedral>
+   dihedral_type(str)  particle_i(int)  particle_j(int)  particle_k(int)  particle_l(int)
+   ...
+   </dihedral>
+   
+By themselves, dihedrals do nothing. Only when you specify a dihedral force in script(i.e. :py:class:`DihedralForceHarmonic`), are forces actually calculated between the listed particles.
+
+========================   ===================================
+:ref:`harmonic-dihedral`   :py:class:`DihedralForceHarmonic`
+:ref:`opls-dihedral`       :py:class:`DihedralForceOplsCosine`
+========================   ===================================
 
 .. image:: dihedral.png
     :width: 250 px
     :align: center
     :alt: Principle of dihedral torsion
 
+.. _harmonic-dihedral:	
 
 Harmonic dihedral potential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -40,6 +57,8 @@ Description:
       dihedralforce.setParams('A-B-B-A', 10.0, 0.0)
       app.add(dihedralforce)
 
+.. _opls-dihedral:	  
+	  
 OPLS dihedral potential
 ^^^^^^^^^^^^^^^^^^^^^^^
 

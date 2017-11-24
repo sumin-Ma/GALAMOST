@@ -195,9 +195,33 @@
             
   <div class="section" id="dihedral-torsion">
 <h1>Dihedral torsion<a class="headerlink" href="#dihedral-torsion" title="Permalink to this headline">¶</a></h1>
+<p><strong>Overview</strong></p>
+<p>Dihedrals impose forces on specific quadruplets of particles to model the rotation about chemical bonds.
+The dihedrals are specified in configuration file with the format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dihedral</span><span class="o">&gt;</span>
+<span class="n">dihedral_type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>  <span class="n">particle_i</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_j</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_k</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="n">particle_l</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;/</span><span class="n">dihedral</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>By themselves, dihedrals do nothing. Only when you specify a dihedral force in script(i.e. <a class="reference internal" href="#DihedralForceHarmonic" title="DihedralForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceHarmonic</span></code></a>), are forces actually calculated between the listed particles.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#harmonic-dihedral"><span class="std std-ref">Harmonic dihedral potential</span></a></td>
+<td><a class="reference internal" href="#DihedralForceHarmonic" title="DihedralForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceHarmonic</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#opls-dihedral"><span class="std std-ref">OPLS dihedral potential</span></a></td>
+<td><a class="reference internal" href="#DihedralForceOplsCosine" title="DihedralForceOplsCosine"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceOplsCosine</span></code></a></td>
+</tr>
+</tbody>
+</table>
 <a class="reference internal image-reference" href="_images/dihedral.png"><img alt="Principle of dihedral torsion" class="align-center" src="_images/dihedral.png" style="width: 250px;" /></a>
 <div class="section" id="harmonic-dihedral-potential">
-<h2>Harmonic dihedral potential<a class="headerlink" href="#harmonic-dihedral-potential" title="Permalink to this headline">¶</a></h2>
+<span id="harmonic-dihedral"></span><h2>Harmonic dihedral potential<a class="headerlink" href="#harmonic-dihedral-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">
@@ -237,7 +261,7 @@ V_{\mathrm{dihedral}}(\varphi)=k\left[ 1-\cos \left( \varphi-\delta \right) \rig
 
 </div>
 <div class="section" id="opls-dihedral-potential">
-<h2>OPLS dihedral potential<a class="headerlink" href="#opls-dihedral-potential" title="Permalink to this headline">¶</a></h2>
+<span id="opls-dihedral"></span><h2>OPLS dihedral potential<a class="headerlink" href="#opls-dihedral-potential" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><div class="math">

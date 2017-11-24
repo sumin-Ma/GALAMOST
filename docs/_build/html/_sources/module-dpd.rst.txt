@@ -14,15 +14,21 @@ Description:
        \begin{eqnarray*}
         \vec{F}_{ij}^{C}&=&\alpha\left(1-\frac{r_{ij}}{r_{cut}}\right)\vec{e}_{ij} \\
         \vec{F}_{ij}^{D}&=&-\gamma\omega^{D}(r_{ij})(\vec{e}_{ij} \cdot \vec{v}_{ij} )\vec{e}_{ij}  \\	
-        \vec{F}_{ij}^{R}&=&\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\			
+        \vec{F}_{ij}^{R}&=&T\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\			
        \end{eqnarray*}
 
-    The following coefficients must be set per unique pair of particle types:
 	   
+    - :math:`\gamma=\sigma^{2}/2k_{B}T`
+    - :math:`\xi` - a random number with zero mean and unit variance
+    - :math:`T` - `temperature`
+      - *optional*: defaults to 1.0	
+    - :math:`r_{cut}` - *r_cut* (in distance units)	
+      - *optional*: defaults to 1.0
+	  
+    The following coefficients must be set per unique pair of particle types:
+	
     - :math:`\alpha` - *alpha* (in energy units)
     - :math:`\sigma` - *sigma* (unitless)
-    - :math:`\gamma=\sigma^{2}/2k_{B}T`	
-    - :math:`r_{cut}` - *r_cut* (in distance units)	
 
 
 .. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, float temperature, unsigned int rand_num)
@@ -44,9 +50,9 @@ Description:
    :param float r_cut: The cut-off radius.
    :param int rand_num: The seed of random number generator.
    
-   .. py:function:: setParams(string type1, string type2, float alpha, float sigma)
+   .. py:function:: setParams(string typei, string typej, float alpha, float sigma)
    
-      specifies the DPD interaction parameters with type1, type2, alpha, sigma.
+      specifies the DPD interaction parameters per unique pair of particle types.
 	  
    .. py:function:: setT(float T)
    

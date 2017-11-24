@@ -1,7 +1,7 @@
 Numerical interaction
 =====================
 
-The numerical non-bonded, bond, angle, and torsion potentials can be derived from IBI or reverse Monte Carlo method. 
+The numerical non-bonded, bond, angle, and torsion potentials can be derived from iterative Boltzmann inversion (IBI) or reverse Monte Carlo (RMC) method. 
 With IBI method, the procedure starts with the potentials of mean force as guessed potentials and then optimizes 
 the potentials iteratively by mapping the structural distributions (i.e., radial distribution function, RDF) onto 
 the ones obtained either from atomistic simulations or from experiments. The resulting numerical potentials usually 
