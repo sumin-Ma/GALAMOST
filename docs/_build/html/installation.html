@@ -93,8 +93,13 @@
               <p class="caption"><span class="caption-text">General introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binary-program">Binary program</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Methods and modules</span></p>
 <ul>
@@ -175,8 +180,10 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="source-code">
+<h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program.
-The binary program and the code can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>
+The code and binary program can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>. At present, only Linux operating systems are supported.
 Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path</p>
 <blockquote>
 <div><p>Examples:</p>
@@ -240,6 +247,55 @@ Here is the guide for installation by code. Before compiling and installing of s
 </pre></div>
 </div>
 </div></blockquote>
+</div>
+<div class="section" id="binary-program">
+<h2>Binary program<a class="headerlink" href="#binary-program" title="Permalink to this headline">¶</a></h2>
+<p>The GALAMOST also can be installed by a compiled binary file which includes dependent libaries except CUDA libray.
+The “.rpm” or “.deb” files corresponding to the CUDA version in your machine can be downloaded from our
+website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>.</p>
+<ol class="arabic">
+<li><p class="first">Redhat Package Manager (RPM) file for Redhat, Fedora, and Suse Linux operating system.</p>
+<ul>
+<li><p class="first">Installation command, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rpm</span> <span class="o">-</span><span class="n">ivh</span> <span class="n">galamost</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">0.</span><span class="n">x86_64</span><span class="o">-</span><span class="n">cuda8</span><span class="o">.</span><span class="mf">0.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The environment variable for library files, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/galamost3/lib&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Uninstallation command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rpm</span> <span class="o">-</span><span class="n">e</span> <span class="n">galamost</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first">Debian (DEB) file for Ubuntu and Debian Linux operating system.</p>
+<ul>
+<li><p class="first">Installation command, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">galamost</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mf">0.</span><span class="n">x86_64</span><span class="o">-</span><span class="n">cuda8</span><span class="o">.</span><span class="mf">0.</span><span class="n">deb</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The environment variable for library files, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/galamost3/lib&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Uninstallation command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dkpg</span> <span class="o">-</span><span class="n">r</span> <span class="n">galamost</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
 </div>
 
 

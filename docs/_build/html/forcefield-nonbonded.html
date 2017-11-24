@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="units.html">Units</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Methods and modules</span></p>
 <ul class="current">
@@ -229,12 +230,12 @@ functions are included in GALAMOST.</p>
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
+V_{\mathrm{LJ}}(r)  = &amp; 4 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
                   \alpha \left( \frac{\sigma}{r} \right)^{6} \right] &amp; r &lt; r_{\mathrm{cut}} \\
                     = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
 \end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
 <ul class="simple">
-<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\epsilon\)</span> - <em>epsilon</em> (in energy units)</li>
 <li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
 <li><span class="math">\(\alpha\)</span> - <em>alpha</em> (unitless) - <em>optional</em>: defaults to 1.0</li>
 <li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)
@@ -292,12 +293,12 @@ V_{\mathrm{LJ}}(r)  = &amp; 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-   V_{\mathrm{SLJ}}(r)=&amp;4 \varepsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\alpha \left( \frac{\sigma }{r-\Delta } \right)^{6} \right]
+   V_{\mathrm{SLJ}}(r)=&amp;4 \epsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\alpha \left( \frac{\sigma }{r-\Delta } \right)^{6} \right]
                                &amp; r&lt;(r_{\mathrm{cut}}+\Delta )  \\
                     = &amp; 0 &amp; r \ge (r_{\mathrm{cut}}+\Delta )  \\
 \end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
 <ul class="simple">
-<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\epsilon\)</span> - <em>epsilon</em> (in energy units)</li>
 <li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
 <li><span class="math">\(\alpha\)</span> - <em>alpha</em> (unitless) - <em>optional</em>: defaults to 1.0</li>
 <li><span class="math">\(\Delta = (d_{i} + d_{j})/2 - \sigma\)</span> - (in distance units); <span class="math">\(d_{i}\)</span> and <span class="math">\(d_{j}\)</span> are the diameter of particle <span class="math">\(i\)</span> and <span class="math">\(j\)</span> which can be input from XML file.</li>
@@ -377,11 +378,11 @@ V_{\mathrm{harmonic}}(r)=&amp;\frac{1}{2}\alpha \left(1-\frac{r}{r_{cut}} \right
 <div><blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] &amp; r &lt; r_{\mathrm{cut}} \\
+V_{\mathrm{Gaussion}}(r)=&amp; \epsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] &amp; r &lt; r_{\mathrm{cut}} \\
                     = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
 \end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
 <ul class="simple">
-<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\epsilon\)</span> - <em>epsilon</em> (in energy units)</li>
 <li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
 <li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)</li>
 </ul>
@@ -396,11 +397,11 @@ V_{\mathrm{Gaussion}}(r)=&amp; \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac
 <div><blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-V_{\mathrm{IPL}}(r)=&amp;\varepsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r &lt; r_{\mathrm{cut}} \\
+V_{\mathrm{IPL}}(r)=&amp;\epsilon \left(\frac{\sigma}{r} \right)^{n} &amp; r &lt; r_{\mathrm{cut}} \\
                     = &amp; 0 &amp; r \ge r_{\mathrm{cut}} \\
 \end{eqnarray*}</div><p>The following coefficients must be set per unique pair of particle types:</p>
 <ul class="simple">
-<li><span class="math">\(\varepsilon\)</span> - <em>epsilon</em> (in energy units)</li>
+<li><span class="math">\(\epsilon\)</span> - <em>epsilon</em> (in energy units)</li>
 <li><span class="math">\(\sigma\)</span> - <em>sigma</em> (in distance units)</li>
 <li><span class="math">\(n\)</span> - <em>n</em> (unitless)</li>
 <li><span class="math">\(r_{\mathrm{cut}}\)</span> - <em>r_cut</em> (in distance units)</li>

@@ -27,14 +27,14 @@ Description:
         :nowrap:
 
         \begin{eqnarray*}
-        V_{\mathrm{LJ}}(r)  = & 4 \varepsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
+        V_{\mathrm{LJ}}(r)  = & 4 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
                           \alpha \left( \frac{\sigma}{r} \right)^{6} \right] & r < r_{\mathrm{cut}} \\
                             = & 0 & r \ge r_{\mathrm{cut}} \\
         \end{eqnarray*}
 
     The following coefficients must be set per unique pair of particle types:
 
-    - :math:`\varepsilon` - *epsilon* (in energy units)
+    - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)
     - :math:`\alpha` - *alpha* (unitless) - *optional*: defaults to 1.0
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
@@ -78,14 +78,14 @@ Description:
         :nowrap:
 
         \begin{eqnarray*}
-           V_{\mathrm{SLJ}}(r)=&4 \varepsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\alpha \left( \frac{\sigma }{r-\Delta } \right)^{6} \right] 
+           V_{\mathrm{SLJ}}(r)=&4 \epsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\alpha \left( \frac{\sigma }{r-\Delta } \right)^{6} \right] 
 		                       & r<(r_{\mathrm{cut}}+\Delta )  \\
                             = & 0 & r \ge (r_{\mathrm{cut}}+\Delta )  \\
         \end{eqnarray*}
 
     The following coefficients must be set per unique pair of particle types:
 
-    - :math:`\varepsilon` - *epsilon* (in energy units)
+    - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)
     - :math:`\alpha` - *alpha* (unitless) - *optional*: defaults to 1.0
     - :math:`\Delta = (d_{i} + d_{j})/2 - \sigma` - (in distance units); :math:`d_{i}` and :math:`d_{j}` are the diameter of particle :math:`i` and :math:`j` which can be input from XML file.
@@ -157,14 +157,14 @@ Description:
         :nowrap:
    
         \begin{eqnarray*}
-   	V_{\mathrm{Gaussion}}(r)=& \varepsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] & r < r_{\mathrm{cut}} \\				
+   	V_{\mathrm{Gaussion}}(r)=& \epsilon \exp \left[ -\frac{1}{2}{\left( \frac{r}{\sigma} \right)}^{2} \right] & r < r_{\mathrm{cut}} \\				
                             = & 0 & r \ge r_{\mathrm{cut}} \\
         \end{eqnarray*}				
    
    
     The following coefficients must be set per unique pair of particle types:
    
-    - :math:`\varepsilon` - *epsilon* (in energy units)
+    - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
 	
@@ -181,14 +181,14 @@ Description:
         :nowrap:
    	
         \begin{eqnarray*}
-   	V_{\mathrm{IPL}}(r)=&\varepsilon \left(\frac{\sigma}{r} \right)^{n} & r < r_{\mathrm{cut}} \\				
+   	V_{\mathrm{IPL}}(r)=&\epsilon \left(\frac{\sigma}{r} \right)^{n} & r < r_{\mathrm{cut}} \\				
                             = & 0 & r \ge r_{\mathrm{cut}} \\
         \end{eqnarray*}				
    
    
     The following coefficients must be set per unique pair of particle types:
    
-    - :math:`\varepsilon` - *epsilon* (in energy units)
+    - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)	
     - :math:`n` - *n* (unitless)	
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)

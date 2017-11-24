@@ -13,6 +13,7 @@ Welcome to galamost's documentation!
    introduction 
    installation
    usage
+   units
    
 .. toctree::
    :maxdepth: 3

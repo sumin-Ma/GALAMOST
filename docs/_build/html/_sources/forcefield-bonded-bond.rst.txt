@@ -75,7 +75,7 @@ Description:
         \end{eqnarray*}
 
         \begin{eqnarray*}
-           V_{\mathrm{WCA}}(r)=&4 \varepsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\left( \frac{\sigma }{r-\Delta } \right)^{6} \right] + \varepsilon 
+           V_{\mathrm{WCA}}(r)=&4 \epsilon \left[ \left( \frac{\sigma }{r-\Delta } \right)^{12}-\left( \frac{\sigma }{r-\Delta } \right)^{6} \right] + \epsilon 
 		                       & ,(r - \Delta)<\sigma^{1/6}  \\
                             = & 0 & ,(r - \Delta) \ge \sigma^{1/6}  \\
         \end{eqnarray*}
@@ -86,7 +86,7 @@ Description:
     - :math:`r_0` - equilibrium length ``r0`` (in distance units)
       - *optional*: defaults to 0.0
     - :math:`r_m` - maximum bond length ``rm`` (in distance units)
-    - :math:`\varepsilon` - *epsilon* (in energy units)
+    - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)
     - :math:`\Delta = (d_{i} + d_{j})/2 - 1.0` - (in distance units); :math:`d_{i}` and :math:`d_{j}` are the diameter of particle :math:`i` and :math:`j` which can be input from XML file.	
     

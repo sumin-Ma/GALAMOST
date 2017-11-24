@@ -10,17 +10,17 @@ The Coulomb interaction between two charge particles is given by:
        :nowrap:
    
        \begin{eqnarray*}
-	   U\left( r \right)=f\frac{q_{i} q_{j}}{\varepsilon_{r}r}
+	   U\left( r \right)=f\frac{q_{i} q_{j}}{\epsilon_{r}r}
        \end{eqnarray*}
 	   
-where electric conversion factor :math:`f= 1/4\pi \varepsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}`.
+where electric conversion factor :math:`f= 1/4\pi \epsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}`.
 The total electrostatic energy of N particles and their periodic images is given by
 
    .. math::
        :nowrap:
    
        \begin{eqnarray*}
-        V=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+\mathbf{n} \right|}}}
+        V=\frac{f}{2\epsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}{\sum\limits_{j}^{N}{\frac{{q}_{i}{q}_{j}}{\left| {r}_{ij}+\mathbf{n} \right|}}}
        \end{eqnarray*}
 
 The electrostatic potential is practically calculated in GALAMOST by
@@ -34,7 +34,7 @@ The electrostatic potential is practically calculated in GALAMOST by
 	   
 The electric conversion factor and relative dielectric constant are considered in the reduced charge. 
 For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
-:math:`q^{*}=z\sqrt{f/{\varepsilon }_{r}}` with :math:`f = 138.935`. The :math:`z` is the valence of ion.
+:math:`q^{*}=z\sqrt{f/{\epsilon }_{r}}` with :math:`f = 138.935`. The :math:`z` is the valence of ion.
 
 The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part by adding and subtracting a Gaussian distribution.
 
@@ -79,7 +79,7 @@ Description:
        :nowrap:
    
        \begin{eqnarray*}
-        V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}
+        V^{S}=\frac{f}{2\epsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}
        \end{eqnarray*}
 
     The following coefficients must be set:
@@ -133,7 +133,7 @@ Description:
        :nowrap:
    
        \begin{eqnarray*}
-        V^{S}=\frac{f}{2\varepsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|} \left[1-(1+\beta r_{ij}\mbox{e}^{-2\beta r_{ij}} \right]
+        V^{S}=\frac{f}{2\epsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|} \left[1-(1+\beta r_{ij}\mbox{e}^{-2\beta r_{ij}} \right]
        \end{eqnarray*}
 
     The following coefficients must be set:
@@ -181,7 +181,7 @@ Description:
        :nowrap:
    
        \begin{eqnarray*}
-        V^{L}&=&\frac{1}{2V\varepsilon_{0}\varepsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
+        V^{L}&=&\frac{1}{2V\epsilon_{0}\epsilon_{r}}\sum\limits_{\mathbf{k}\neq0}\frac{\mbox{exp}(-\mathbf{k}^{2}/4\kappa^{2})}{\mathbf{k}^{2}} \left| S(\mathbf{k}) \right|^{2} \\
         S(\mathbf{k})&=&\sum\limits_{i=1}^{N}q_{i}\mbox{exp}^{i\mathbf{k} \cdot \mathbf{r}_i}		
        \end{eqnarray*}
 
