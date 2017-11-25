@@ -120,6 +120,61 @@ Description:
       slj.setEnergy_shift()
       app.add(slj)
 
+	  
+.. _linear-pi-pi:
+	  
+Linear molecule :math:`\pi`-:math:`\pi` interaction
+---------------------------------------------------
+
+Description:
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+           V_{\mathrm{\pi-\pi}}(r, \theta)=&-\epsilon \cos^{2}\theta (1-r) 
+		                       & r<r_{\mathrm{cut}}  \\
+                            = & 0 & r \ge r_{\mathrm{cut}} \\
+        \end{eqnarray*}
+
+    - :math:`\theta` - (in radians)  the angle between two linear molecules
+    - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
+      - *optional*: defaults to the global r_cut	
+
+    The following coefficients must be set per unique pair of particle types:
+
+    - :math:`\epsilon` - *epsilon* (in energy units)
+
+   The transitional forces are added between the center particles of linear molcules. A group of 
+   the center particles are needed for :py:class:`CenterForce`. The rotational forces are added
+   on the two neighbor particles of a center particle.
+    
+.. image:: pi-pi.png
+    :width: 400 px
+    :align: center
+    :alt: Principle of pi-pi interaction between linear molecules	
+
+	 
+.. py:class:: CenterForce(all_info, nlist, group, r_cut, epsilon)
+
+   The constructor of a pi-pi interaction calculation object for linear molecules.
+   
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list. 
+   :param ParticleSet group: The group of center particles.   
+   :param float r_cut: The cut-off radius.
+   :param float epsilon:  the depth of the potential well. 
+
+   .. py:function:: setPreNextShift(int prev, int next)
+   
+      sets the previous particle and next particle of center particle with shift ID value, the default value is -1 and 1, respectively.
+
+   Example::
+   
+      groupC = galamost.ParticleSet(all_info, 'C')
+      cf = galamost.CenterForce(all_info,neighbor_list, groupC, 1.0, 2.0)
+      app.add(cf)	  
+	  
 Pair interaction
 ----------------
 

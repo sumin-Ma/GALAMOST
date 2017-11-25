@@ -3,7 +3,7 @@ Dihedral torsion
 **Overview**
 
 Dihedrals impose forces on specific quadruplets of particles to model the rotation about chemical bonds.
-The dihedrals are specified in configuration file with the format::
+The dihedrals are specified in :ref:`xml-format` configuration file with the format::
 
    <dihedral>
    dihedral_type(str)  particle_i(int)  particle_j(int)  particle_k(int)  particle_l(int)

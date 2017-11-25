@@ -3,7 +3,7 @@ Angle bending
 **Overview**
 
 Angles impose forces on specific triplets of particles to model chemical angles between two bonds.
-The angles are specified in configuration file with the format::
+The angles are specified in :ref:`xml-format` configuration file with the format::
 
    <angle>
    angle_type(str)  particle_i(int)  particle_j(int)  particle_k(int)

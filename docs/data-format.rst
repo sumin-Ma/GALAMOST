@@ -1,6 +1,8 @@
 Data format
 ===========
 
+.. _xml-format:
+
 XML format
 ----------
 We take XML format files as the standard input and output configuration files. 

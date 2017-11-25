@@ -105,7 +105,11 @@
 <li class="toctree-l1"><a class="reference internal" href="constraint.html">Constraint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration.html">Integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modules-management">Modules management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-stage-simulation">Multi-stage simulation</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Plug-Ins</span></p>
 <ul>
@@ -176,6 +180,11 @@
             
   <div class="section" id="application">
 <h1>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="modules-management">
+<h2>Modules management<a class="headerlink" href="#modules-management" title="Permalink to this headline">¶</a></h2>
+<p>GALAMOST is a modular program. Application manages and calls modules and run simulation.
+Usually, we only define an application object in the context of script. The modules can be
+added <code class="docutils literal"><span class="pre">add()</span></code> into or removed <code class="docutils literal"><span class="pre">remove()</span></code> from the application before runing <code class="docutils literal"><span class="pre">run()</span></code> the simulation.</p>
 <dl class="class">
 <dt id="Application">
 <em class="property">class </em><code class="descname">Application</code><span class="sig-paren">(</span><em>all_info</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#Application" title="Permalink to this definition">¶</a></dt>
@@ -226,6 +235,35 @@
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="multi-stage-simulation">
+<h2>Multi-stage simulation<a class="headerlink" href="#multi-stage-simulation" title="Permalink to this headline">¶</a></h2>
+<p>An application can have single or multiple stage simulations. The commands in the context of script are executed sequentially.
+Every stage simulation is achieved with <code class="docutils literal"><span class="pre">run()</span></code>.  Before a stage of simulation, the modules and parameters can be adjusted.
+New modules can be added into the applicaitons by <code class="docutils literal"><span class="pre">add()</span></code>. The added modules at last stage can be removed from the application,
+otherwise they will be kept. For example:</p>
+<ul>
+<li><p class="first">First stage simulation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">Application</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lj</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nvt</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Second state simulation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">app</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">lj</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">nvt</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">harmonic</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">npt</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
 </div>
 
 

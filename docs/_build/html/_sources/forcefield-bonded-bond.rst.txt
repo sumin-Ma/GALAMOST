@@ -4,7 +4,7 @@ Bond stretching
 **Overview**
 
 Bonds impose connected forces on specific pairs of particles to model chemical bonds.
-The bonds are specified in configuration file with the format::
+The bonds are specified in :ref:`xml-format` configuration file with the format::
 
    <bond>
    bond_type(str)  particle_i(int)  particle_j(int)
