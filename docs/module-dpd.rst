@@ -141,7 +141,9 @@ Reduced charges:
 
     The charges should be converted into the ones in reduced units according to :ref:`charge-units` for the input of GALAMOST.
     Typically, the fundamental length and energy are :math:`\sigma=0.646\text{ }nm` and :math:`\epsilon=k_{B}T` with :math:`T=300\text{ }K`, respectively, in DPD.
-    The reduced charges are :math:`q^{*}=z\sqrt{f/(\sigma k_{B}T \epsilon_r)}`. Here is a :ref:`molgen` script for polyelectrolyte. 
+    The reduced charges are :math:`q^{*}=z\sqrt{f/(\sigma k_{B}T \epsilon_r)}`. The :math:`z` is the valence of ion.
+
+    Here is a :ref:`molgen` script for polyelectrolyte. 
 
    Example::
    

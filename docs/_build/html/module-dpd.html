@@ -362,9 +362,11 @@ And the <a class="reference internal" href="forcefield-coulomb.html#enuf-long"><
 <p>Reduced charges:</p>
 <blockquote>
 <div><blockquote>
-<div>The charges should be converted into the ones in reduced units according to <a class="reference internal" href="units.html#charge-units"><span class="std std-ref">Charge units</span></a> for the input of GALAMOST.
+<div><p>The charges should be converted into the ones in reduced units according to <a class="reference internal" href="units.html#charge-units"><span class="std std-ref">Charge units</span></a> for the input of GALAMOST.
 Typically, the fundamental length and energy are <span class="math">\(\sigma=0.646\text{ }nm\)</span> and <span class="math">\(\epsilon=k_{B}T\)</span> with <span class="math">\(T=300\text{ }K\)</span>, respectively, in DPD.
-The reduced charges are <span class="math">\(q^{*}=z\sqrt{f/(\sigma k_{B}T \epsilon_r)}\)</span>. Here is a <a class="reference internal" href="molgen.html#molgen"><span class="std std-ref">Molgen</span></a> script for polyelectrolyte.</div></blockquote>
+The reduced charges are <span class="math">\(q^{*}=z\sqrt{f/(\sigma k_{B}T \epsilon_r)}\)</span>. The <span class="math">\(z\)</span> is the valence of ion.</p>
+<p>Here is a <a class="reference internal" href="molgen.html#molgen"><span class="std std-ref">Molgen</span></a> script for polyelectrolyte.</p>
+</div></blockquote>
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="kn">import</span> <span class="nn">sys</span>
