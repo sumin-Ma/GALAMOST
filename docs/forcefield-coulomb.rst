@@ -1,6 +1,8 @@
 Coulomb interaction
 ===================
 
+.. _ewald-theory:
+
 Ewald summation theory
 ----------------------
 
@@ -33,8 +35,8 @@ The electrostatic potential is practically calculated in GALAMOST by
        \end{eqnarray*}
 	   
 The electric conversion factor and relative dielectric constant are considered in the reduced charge. 
-For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
-:math:`q^{*}=z\sqrt{f/{\epsilon }_{r}}` with :math:`f = 138.935`. The :math:`z` is the valence of ion.
+For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, according to :ref:`charge-units` the reduced charge is
+:math:`q^{*}=z\sqrt{f^*/{\epsilon }_{r}}` with :math:`f^* = 138.935`. The :math:`z` is the valence of ion.
 
 The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part by adding and subtracting a Gaussian distribution.
 
@@ -68,6 +70,8 @@ For Coulomb interaction calculation, a short-range method and a long-range metho
       # an optimized kappa can be calculated by PPPMForce and passed into EwaldForce.
       ewald.setParams(kappa)
 
+.. _ewald-short:	  
+	  
 Ewald (short-range)
 -------------------------------------
 
@@ -110,6 +114,8 @@ Description:
       ewald = galamost.EwaldForce(all_info, neighbor_list, group, 3.0)
       ewald.setParams(kappa)
       app.add(ewald)
+
+.. _ewald-short-dpd:
 	  
 Ewald for DPD (short-range)
 -------------------------------------
@@ -169,6 +175,8 @@ Description:
       dpd_ewald = galamost.DPDEwaldForce(all_info, neighbor_list, group, 3.0)
       dpd_ewald.setParams(kappa)
       app.add(dpd_ewald)	  
+
+.. _pppm-long:	  
 	  
 PPPM (long-range)
 ----------------------
@@ -218,6 +226,8 @@ Description:
       pppm = galamost.PPPMForce(all_info, neighbor_list, group)
       pppm.setParams(32, 32, 32, 5, 3.0)
       app.add(pppm)
+
+.. _enuf-long:
 	  
 ENUF (long-range)
 ----------------------

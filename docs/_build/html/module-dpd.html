@@ -111,6 +111,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Dissipative particle dynamics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dpd-force">DPD force</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gwvv-integration">GWVV integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coulomb-interaction-in-dpd">Coulomb interaction in DPD</a></li>
 </ul>
 </li>
 </ul>
@@ -201,7 +202,8 @@
  \vec{F}_{ij}^{R}&amp;=&amp;T\sigma\omega^{R}(r_{ij})\xi_{ij}\vec{e}_{ij} \\
 \end{eqnarray*}</div><ul class="simple">
 <li><span class="math">\(\gamma=\sigma^{2}/2k_{B}T\)</span></li>
-<li><span class="math">\(\xi\)</span> - a random number with zero mean and unit variance</li>
+<li><span class="math">\(\omega^{D}(r_{ij})=[\omega^{R}(r_{ij})]^2=(1-r_{ij}/r_{cut})^2\)</span></li>
+<li><span class="math">\(\xi_{ij}\)</span> - a random number with zero mean and unit variance</li>
 <li><span class="math">\(T\)</span> - <cite>temperature</cite>
 - <em>optional</em>: defaults to 1.0</li>
 <li><span class="math">\(r_{cut}\)</span> - <em>r_cut</em> (in distance units)
@@ -287,6 +289,21 @@
 </div>
 <div class="section" id="gwvv-integration">
 <h2>GWVV integration<a class="headerlink" href="#gwvv-integration" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><p>Integration algorithm.</p>
+<div class="math">
+\begin{eqnarray*}
+ &amp;v_i^0&amp;\leftarrow v_i+ \lambda\frac{1}{m}(F_i^c \Delta t + F_i^d \Delta t + F_i^r \sqrt{\Delta t})\\
+ &amp;v_i&amp;\leftarrow v_i+ \frac{1}{2}\frac{1}{m}(F_i^c \Delta t + F_i^d \Delta t + F_i^r \sqrt{\Delta t})\\
+ &amp;r_i&amp;\leftarrow r_i+ v_i \Delta t\\
+ &amp;&amp;Calculate \quad F_i^c\{r_j\}, F_i^d\{r_j, v_j^0\}, F_i^r\{r_j\}\\
+ &amp;v_i&amp;\leftarrow v_i+ \frac{1}{2}\frac{1}{m}(F_i^c \Delta t + F_i^d \Delta t + F_i^r \sqrt{\Delta t})
+\end{eqnarray*}</div><ul class="simple">
+<li><span class="math">\(\lambda\)</span> - <em>lambda</em> (unitless)
+- <em>optional</em>: defaults to 0.65</li>
+</ul>
+</div></blockquote>
 <dl class="class">
 <dt id="DpdGwvv">
 <em class="property">class </em><code class="descname">DpdGwvv</code><span class="sig-paren">(</span><em>AllInfo all_info</em>, <em>ParticleSet group</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv" title="Permalink to this definition">¶</a></dt>
@@ -304,9 +321,9 @@
 </tbody>
 </table>
 <dl class="function">
-<dt id="DpdGwvv.setLamda">
-<code class="descname">setLamda</code><span class="sig-paren">(</span><em>float lamda</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv.setLamda" title="Permalink to this definition">¶</a></dt>
-<dd><p>specifies lamda - default value is 0.65.</p>
+<dt id="DpdGwvv.setLambda">
+<code class="descname">setLambda</code><span class="sig-paren">(</span><em>float lambda</em><span class="sig-paren">)</span><a class="headerlink" href="#DpdGwvv.setLambda" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies lambda.</p>
 </dd></dl>
 
 <p>Example:</p>
@@ -316,6 +333,85 @@
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="coulomb-interaction-in-dpd">
+<h2>Coulomb interaction in DPD<a class="headerlink" href="#coulomb-interaction-in-dpd" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><blockquote>
+<div>In order to remove the divergency at <span class="math">\(r=0\)</span>, a Slater-type charge density is used to describe the charged DPD particles.
+Thereby, <a class="reference internal" href="forcefield-coulomb.html#ewald-short-dpd"><span class="std std-ref">Ewald for DPD (short-range)</span></a> (<a class="reference internal" href="forcefield-coulomb.html#DPDEwaldForce" title="DPDEwaldForce"><code class="xref py py-class docutils literal"><span class="pre">DPDEwaldForce</span></code></a>) method can be employed in GALAMOST to calculated the short-range part of Ewald summation.
+The long-range part of Ewald summation can be calculated by <a class="reference internal" href="forcefield-coulomb.html#pppm-long"><span class="std std-ref">PPPM (long-range)</span></a> (<a class="reference internal" href="forcefield-coulomb.html#PPPMForce" title="PPPMForce"><code class="xref py py-class docutils literal"><span class="pre">PPPMForce</span></code></a>) or <a class="reference internal" href="forcefield-coulomb.html#enuf-long"><span class="std std-ref">ENUF (long-range)</span></a> (<a class="reference internal" href="forcefield-coulomb.html#ENUFForce" title="ENUFForce"><code class="xref py py-class docutils literal"><span class="pre">ENUFForce</span></code></a>).
+And the <a class="reference internal" href="forcefield-coulomb.html#enuf-long"><span class="std std-ref">ENUF (long-range)</span></a> (<a class="reference internal" href="forcefield-coulomb.html#ENUFForce" title="ENUFForce"><code class="xref py py-class docutils literal"><span class="pre">ENUFForce</span></code></a>) is suggested.</div></blockquote>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group_charge</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;charge&quot;</span><span class="p">)</span>
+<span class="n">kappa</span><span class="o">=</span><span class="mf">0.2</span>
+
+<span class="c1"># real space</span>
+<span class="n">ewald</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DPDEwaldForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group_charge</span><span class="p">,</span> <span class="mf">3.64</span><span class="p">)</span><span class="c1">#(,,rcut)</span>
+<span class="n">ewald</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ewald</span><span class="p">)</span>
+
+<span class="c1"># reciprocal space</span>
+<span class="n">enuf</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ENUFForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">neighbor_list</span><span class="p">,</span> <span class="n">group_charge</span><span class="p">)</span>
+<span class="n">enuf</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">kappa</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">enuf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Reduced charges:</p>
+<blockquote>
+<div><blockquote>
+<div>The charges should be converted into the ones in reduced units according to <a class="reference internal" href="units.html#charge-units"><span class="std std-ref">Charge units</span></a> for the input of GALAMOST.
+Typically, the fundamental length and energy are <span class="math">\(\sigma=0.646\text{ }nm\)</span> and <span class="math">\(\epsilon=k_{B}T\)</span> with <span class="math">\(T=300\text{ }K\)</span>, respectively, in DPD.
+The reduced charges are <span class="math">\(q^{*}=z\sqrt{f/(\sigma k_{B}T \epsilon_r)}\)</span>. Here is a <a class="reference internal" href="molgen.html#molgen"><span class="std std-ref">Molgen</span></a> script for polyelectrolyte.</div></blockquote>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/opt/galamost3/lib&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">molgen</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">er</span><span class="o">=</span><span class="mf">78.0</span>
+<span class="n">kBT</span><span class="o">=</span><span class="mf">300.0</span><span class="o">*</span><span class="mf">8.314</span><span class="o">/</span><span class="mf">1000.0</span>
+<span class="n">r</span><span class="o">=</span><span class="mf">0.646</span>
+<span class="n">gama</span><span class="o">=</span><span class="mf">138.935</span>
+<span class="n">dpdcharge</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">gama</span><span class="o">/</span><span class="p">(</span><span class="n">er</span><span class="o">*</span><span class="n">kBT</span><span class="o">*</span><span class="n">r</span><span class="p">))</span>
+
+<span class="n">mol1</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;P*50&quot;</span><span class="p">)</span>
+<span class="n">topo</span><span class="o">=</span><span class="s2">&quot;0-1&quot;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+  <span class="n">c</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">topo</span><span class="o">+=</span><span class="n">c</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="n">topo</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setBondLength</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">mol1</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">mol2</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mol2</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="n">mol2</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">mol2</span><span class="o">.</span><span class="n">setCharge</span><span class="p">(</span><span class="n">dpdcharge</span><span class="p">)</span>
+
+<span class="n">mol3</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mol3</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="n">mol3</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">mol3</span><span class="o">.</span><span class="n">setCharge</span><span class="p">(</span><span class="o">-</span><span class="n">dpdcharge</span><span class="p">)</span>
+
+<span class="n">mol4</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Molecule</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mol4</span><span class="o">.</span><span class="n">setParticleTypes</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">)</span>
+<span class="n">mol4</span><span class="o">.</span><span class="n">setMass</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">gen</span><span class="o">=</span><span class="n">molgen</span><span class="o">.</span><span class="n">Generators</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol2</span><span class="p">,</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol3</span><span class="p">,</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">gen</span><span class="o">.</span><span class="n">addMolecule</span><span class="p">(</span><span class="n">mol4</span><span class="p">,</span><span class="mi">9925</span><span class="p">)</span>
+
+<span class="n">gen</span><span class="o">.</span><span class="n">outPutXml</span><span class="p">(</span><span class="s2">&quot;ps0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 </div>
 

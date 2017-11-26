@@ -16,19 +16,25 @@ The three fundamental units are:
 - mass - :math:`\mathcal{m}`
 
 
-Temperature (thermal energy)
-----------------------------
+Temperature units (thermal energy)
+----------------------------------
 
 GALAMOST accepts all temperature inputs and provides all temperature output values in units of energy:
 :math:`k_{B} T`, where :math:`k_{B}` is Boltzmann's constant. In reduced units, one usually reports the value
 :math:`T^* = k_{B}T/\mathcal{\varepsilon}`.
 
-Charge
-------
+.. _charge-units:
 
-The unit of charge used in GALAMOST is also reduced. The units of charge are: 
-:math:`(4 \pi \epsilon_0 \epsilon_r \mathcal{\sigma} \mathcal{\varepsilon})^{1/2}`. 
+Charge units
+------------
+
+The charge used in GALAMOST is also reduced. The units of charge are: 
+:math:`(4 \pi \epsilon_0 \epsilon_r \mathcal{\sigma} \mathcal{\varepsilon})^{1/2}`, where
 :math:`\epsilon_0` is vacuum permittivity and :math:`\epsilon_r` is relative permittivity.
+
+With :math:`f= 1/4\pi \epsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}`,
+the units of charge are: 
+:math:`(\epsilon_r \mathcal{\sigma} \mathcal{\varepsilon}/f)^{1/2}`.
 Divide a given charge by this quantity to convert it into an input value for GALAMOST.
 
 Common derived units

@@ -1,6 +1,16 @@
 NVE ensemble
 ============
 
+**Overview**
+
+========================   =====================
+:ref:`nve`                 :py:class:`Nve`
+:ref:`nve-rigid`           :py:class:`NveRigid`
+:ref:`nve-rigid-tunable`   :py:class:`TranRigid`
+========================   =====================
+
+.. _nve:
+
 NVE thermostat
 --------------
 
@@ -21,6 +31,8 @@ NVE thermostat
       thermo = galamost.Nve(all_info,group)
       app.add(thermo)
 
+.. _nve-rigid:	  
+	  
 NVE for rigid body
 ------------------
 
@@ -36,7 +48,9 @@ NVE for rigid body
       bgroup = galamost.ParticleSet(all_info, 'body')
       rigidnve = galamost.NveRigid(all_info, bgroup)
       app.add(rigidnve)
-	  
+	
+.. _nve-rigid-tunable:
+	
 NVE for rigid body with tunable freedoms
 ----------------------------------------
 

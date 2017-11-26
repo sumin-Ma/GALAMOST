@@ -193,7 +193,7 @@
   <div class="section" id="coulomb-interaction">
 <h1>Coulomb interaction<a class="headerlink" href="#coulomb-interaction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="ewald-summation-theory">
-<h2>Ewald summation theory<a class="headerlink" href="#ewald-summation-theory" title="Permalink to this headline">¶</a></h2>
+<span id="ewald-theory"></span><h2>Ewald summation theory<a class="headerlink" href="#ewald-summation-theory" title="Permalink to this headline">¶</a></h2>
 <p>The Coulomb interaction between two charge particles is given by:</p>
 <blockquote>
 <div><div class="math">
@@ -214,8 +214,8 @@ The total electrostatic energy of N particles and their periodic images is given
     U\left( r^{*} \right)=\frac{q^{*}_{i} q^{*}_{j}}{r^{*}}
 \end{eqnarray*}</div></div></blockquote>
 <p>The electric conversion factor and relative dielectric constant are considered in the reduced charge.
-For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, the reduced charge is
-<span class="math">\(q^{*}=z\sqrt{f/{\epsilon }_{r}}\)</span> with <span class="math">\(f = 138.935\)</span>. The <span class="math">\(z\)</span> is the valence of ion.</p>
+For example, if the mass, length, and energy units are [amu], [nm], and [kJ/mol], respectively, according to <a class="reference internal" href="units.html#charge-units"><span class="std std-ref">Charge units</span></a> the reduced charge is
+<span class="math">\(q^{*}=z\sqrt{f^*/{\epsilon }_{r}}\)</span> with <span class="math">\(f^* = 138.935\)</span>. The <span class="math">\(z\)</span> is the valence of ion.</p>
 <p>The calculation of Coulomb interaction is splitted into two parts, short-range part and long-range part by adding and subtracting a Gaussian distribution.</p>
 <blockquote>
 <div><div class="math">
@@ -247,7 +247,7 @@ The long-range part inlcuding <a class="reference internal" href="#PPPMForce" ti
 </div></blockquote>
 </div>
 <div class="section" id="ewald-short-range">
-<h2>Ewald (short-range)<a class="headerlink" href="#ewald-short-range" title="Permalink to this headline">¶</a></h2>
+<span id="ewald-short"></span><h2>Ewald (short-range)<a class="headerlink" href="#ewald-short-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>The short-range term is exactly handled in the direct sum.</p>
@@ -301,7 +301,7 @@ The long-range part inlcuding <a class="reference internal" href="#PPPMForce" ti
 
 </div>
 <div class="section" id="ewald-for-dpd-short-range">
-<h2>Ewald for DPD (short-range)<a class="headerlink" href="#ewald-for-dpd-short-range" title="Permalink to this headline">¶</a></h2>
+<span id="ewald-short-dpd"></span><h2>Ewald for DPD (short-range)<a class="headerlink" href="#ewald-for-dpd-short-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>In order to remove the divergency at <span class="math">\(r=0\)</span>, a Slater-type charge density is used to describe the charged DPD particles.</p>
@@ -369,7 +369,7 @@ The long-range part inlcuding <a class="reference internal" href="#PPPMForce" ti
 
 </div>
 <div class="section" id="pppm-long-range">
-<h2>PPPM (long-range)<a class="headerlink" href="#pppm-long-range" title="Permalink to this headline">¶</a></h2>
+<span id="pppm-long"></span><h2>PPPM (long-range)<a class="headerlink" href="#pppm-long-range" title="Permalink to this headline">¶</a></h2>
 <p>Description:</p>
 <blockquote>
 <div><p>The long-range term is exactly handled in the reciprocal sum.</p>
@@ -425,7 +425,7 @@ The long-range part inlcuding <a class="reference internal" href="#PPPMForce" ti
 
 </div>
 <div class="section" id="enuf-long-range">
-<h2>ENUF (long-range)<a class="headerlink" href="#enuf-long-range" title="Permalink to this headline">¶</a></h2>
+<span id="enuf-long"></span><h2>ENUF (long-range)<a class="headerlink" href="#enuf-long-range" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="ENUFForce">
 <em class="property">class </em><code class="descname">ENUFForce</code><span class="sig-paren">(</span><em>all_info</em>, <em>nlist</em>, <em>group</em><span class="sig-paren">)</span><a class="headerlink" href="#ENUFForce" title="Permalink to this definition">¶</a></dt>

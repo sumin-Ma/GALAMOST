@@ -97,8 +97,8 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Units</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#fundamental-units">Fundamental Units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#temperature-thermal-energy">Temperature (thermal energy)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#charge">Charge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#temperature-units-thermal-energy">Temperature units (thermal energy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#charge-units">Charge units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#common-derived-units">Common derived units</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-physical-units">Example physical units</a></li>
 </ul>
@@ -194,17 +194,20 @@ the ones in reduced units by defining a set of fundamental units by user himself
 <li>mass - <span class="math">\(\mathcal{m}\)</span></li>
 </ul>
 </div>
-<div class="section" id="temperature-thermal-energy">
-<h2>Temperature (thermal energy)<a class="headerlink" href="#temperature-thermal-energy" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="temperature-units-thermal-energy">
+<h2>Temperature units (thermal energy)<a class="headerlink" href="#temperature-units-thermal-energy" title="Permalink to this headline">¶</a></h2>
 <p>GALAMOST accepts all temperature inputs and provides all temperature output values in units of energy:
 <span class="math">\(k_{B} T\)</span>, where <span class="math">\(k_{B}\)</span> is Boltzmann’s constant. In reduced units, one usually reports the value
 <span class="math">\(T^* = k_{B}T/\mathcal{\varepsilon}\)</span>.</p>
 </div>
-<div class="section" id="charge">
-<h2>Charge<a class="headerlink" href="#charge" title="Permalink to this headline">¶</a></h2>
-<p>The unit of charge used in GALAMOST is also reduced. The units of charge are:
-<span class="math">\((4 \pi \epsilon_0 \epsilon_r \mathcal{\sigma} \mathcal{\varepsilon})^{1/2}\)</span>.
-<span class="math">\(\epsilon_0\)</span> is vacuum permittivity and <span class="math">\(\epsilon_r\)</span> is relative permittivity.
+<div class="section" id="charge-units">
+<span id="id1"></span><h2>Charge units<a class="headerlink" href="#charge-units" title="Permalink to this headline">¶</a></h2>
+<p>The charge used in GALAMOST is also reduced. The units of charge are:
+<span class="math">\((4 \pi \epsilon_0 \epsilon_r \mathcal{\sigma} \mathcal{\varepsilon})^{1/2}\)</span>, where
+<span class="math">\(\epsilon_0\)</span> is vacuum permittivity and <span class="math">\(\epsilon_r\)</span> is relative permittivity.</p>
+<p>With <span class="math">\(f= 1/4\pi \epsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}\)</span>,
+the units of charge are:
+<span class="math">\((\epsilon_r \mathcal{\sigma} \mathcal{\varepsilon}/f)^{1/2}\)</span>.
 Divide a given charge by this quantity to convert it into an input value for GALAMOST.</p>
 </div>
 <div class="section" id="common-derived-units">

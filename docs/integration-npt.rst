@@ -1,6 +1,15 @@
 NPT ensemble
 ============
 
+**Overview**
+
+===================   ====================
+:ref:`andersen-npt`   :py:class:`Npt`
+:ref:`npt-rigid`      :py:class:`NptRigid`
+===================   ====================
+
+.. _andersen-npt:
+
 Andersen barostat
 -----------------
 
@@ -34,6 +43,8 @@ Andersen barostat
       npt =galamost.Npt(all_info, group, comp_info, comp_info, 1.0, 0.2, 0.5, 0.1)
       app.add(npt)
 
+.. _npt-rigid:  
+	  
 NPT for rigid body
 ------------------
 

@@ -1,6 +1,20 @@
 NVT ensemble
 ============
 
+**Overview**
+
+====================   =========================
+:ref:`nh-nvt`          :py:class:`NoseHooverNvt`
+:ref:`berendsen-nvt`   :py:class:`BerendsenNvt`
+:ref:`andersen-nvt`    :py:class:`AndersenNvt`
+:ref:`bd-nvt`          :py:class:`BdNvt`
+:ref:`nvt-rigid`       :py:class:`NvtRigid`
+:ref:`bd-nvt-rigid`    :py:class:`BdNvtRigid`
+====================   =========================
+
+
+.. _nh-nvt:
+
 Nose Hoover thermostat
 ----------------------
 
@@ -29,6 +43,7 @@ Nose Hoover thermostat
       nh = galamost.NoseHooverNvt(all_info, group, comp_info, 1.0, 0.5)
       app.add(nh)
 
+.. _berendsen-nvt:
 
 Berendsen thermostat
 --------------------
@@ -51,6 +66,7 @@ Berendsen thermostat
    
       specifies the temperature with a varying value by time steps.
    
+.. _andersen-nvt:
    
 Andersen thermostat
 -------------------
@@ -78,6 +94,8 @@ Andersen thermostat
       an = galamost.AndersenNvt(all_info,group,1.0,10.0, 12345)
       app.add(an)
 
+.. _bd-nvt:	  
+	  
 Brownian dynamic thermostat
 ---------------------------
 
@@ -112,7 +130,7 @@ Brownian dynamic thermostat
       bdnvt = galamost.BdNvt(all_info, group, 1.0, 123)
       app.add(bdnvt)
 
-
+.. _nvt-rigid:
 
 NVT for rigid body
 ------------------
@@ -140,6 +158,8 @@ NVT for rigid body
       rigidnvt = galamost.NvtRigid(all_info, bgroup, 1.0, 10.0)
       app.add(rigidnvt)
 
+.. _bd-nvt-rigid:	  
+	  
 Brownian dynamic for rigid body
 -------------------------------
 
