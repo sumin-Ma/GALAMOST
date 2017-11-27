@@ -32,7 +32,7 @@ Description:
     - :math:`\sigma` - *sigma* (unitless)
 
 
-.. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, float temperature, unsigned int rand_num)
+.. py:class:: DpdForce(all_info, nlist, r_cut, temperature, rand_num)
 
    The constructor of a DPD interaction object.
 	  
@@ -42,7 +42,7 @@ Description:
    :param float temperature: The temperature.
    :param int rand_num: The seed of random number generator.   
    
-.. py:class:: DpdForce(AllInfo all_info, NeighborList nlist, float r_cut, unsigned int rand_num)
+.. py:class:: DpdForce(all_info, nlist, r_cut, rand_num)
 
    The constructor of a DPD interaction object. The default temperature is 1.0.
 	  
