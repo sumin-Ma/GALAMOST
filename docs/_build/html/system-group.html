@@ -265,21 +265,24 @@
 
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">groupC</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
-<span class="c1"># initializes a particle set object by the particle type.</span>
+<span class="c1"># initializes a particle set object by a particle type.</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
+<span class="c1"># initializes a particle set object by particle types</span>
 
 <span class="n">groupB</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;body&#39;</span><span class="p">)</span>
 <span class="c1"># initializes a particle set object of body particles by &#39;body&#39;.</span>
 
 <span class="n">group_e</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;charge&#39;</span><span class="p">)</span>
-<span class="c1"># initializes a particle set object of nonbody particles by &#39;non_body&#39;.</span>
+<span class="c1"># initializes a particle set object of charged particles by &#39;charge&#39;.</span>
 
 <span class="n">groupC</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="c1"># initializes a particle set object of all particles by &#39;all&#39;.</span>
 
 <span class="n">group</span><span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">])</span>
-<span class="c1"># initializes a particle set object of charged particles by &#39;charge&#39;.</span>
+<span class="c1"># initializes a particle set object of particles by mixed keywords.</span>
 
-<span class="n">groupAB</span><span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="o">.</span><span class="n">combine</span> <span class="p">(</span><span class="n">groupA</span><span class="p">,</span><span class="n">groupB</span><span class="p">)</span>
+<span class="n">groupAB</span><span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">groupA</span><span class="p">,</span> <span class="n">groupB</span><span class="p">)</span>
 <span class="c1"># combines two particle sets into one set.</span>
 </pre></div>
 </div>

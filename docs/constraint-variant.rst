@@ -1,12 +1,26 @@
 Variant
 =======
 
+Variant Const
+-------------
+
+.. py:class:: VariantConst(value)
+
+   The constructor of a constant value method.
+   
+   :param float value: The constant value.
+	  
+   Example::
+   
+      v = galamost.VariantConst(1.0)
+      # set the constant value.
+
 Variant Linear
 --------------
 
-.. py:class:: VariantLinear ()
+.. py:class:: VariantLinear()
 
-   The constructor of a linearly varying method.
+   The constructor of a linearly varying value method.
 
   .. py:function:: setPoint(unsigned int timestep, double value)
   
@@ -18,7 +32,7 @@ Variant Linear
       v.setPoint (0, 1.0)
       v.setPoint (100000, 2.0)
       # set the value at the time step. The value at a time step 
-      # can be gotten by linear interpolation.
+      # varies by linear interpolation.
 
 Variant Sin
 -----------
@@ -52,7 +66,7 @@ Variant Well
    
    Example::
    
-      v = galamost.VariantWell ()
+      v = galamost.VariantWell()
       v.setPoint (0, 1000, 1.0, -1.0)
       v.setPoint (100000, 1000, 1.0, -1.0)
       # set the parameters of periodic well at the time step and the parameters 

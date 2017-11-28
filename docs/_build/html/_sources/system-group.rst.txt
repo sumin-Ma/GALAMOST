@@ -38,21 +38,24 @@ Particle set
    Example::
    
       groupC = galamost.ParticleSet(all_info,'C')
-      # initializes a particle set object by the particle type.
+      # initializes a particle set object by a particle type.
+	  
+      group = galamost.ParticleSet(all_info,['A', 'B', 'C'])
+      # initializes a particle set object by particle types	  
 	  
       groupB = galamost.ParticleSet(all_info,'body')
       # initializes a particle set object of body particles by 'body'.
 	  
       group_e = galamost.ParticleSet(all_info,'charge')
-      # initializes a particle set object of nonbody particles by 'non_body'.
+      # initializes a particle set object of charged particles by 'charge'.
 	  
       groupC = galamost.ParticleSet(all_info,'all')
       # initializes a particle set object of all particles by 'all'.
 	  
       group= galamost.ParticleSet(all_info, ['A', 12, 'body'])
-      # initializes a particle set object of charged particles by 'charge'.
+      # initializes a particle set object of particles by mixed keywords.
 	  
-      groupAB= galamost.ParticleSet.combine (groupA,groupB)
+      groupAB= galamost.ParticleSet.combine(groupA, groupB)
       # combines two particle sets into one set.
    
    

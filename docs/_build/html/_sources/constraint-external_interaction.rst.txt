@@ -32,7 +32,8 @@ External force
 
 .. py:class:: ExternalForce(all_info, group)
 
-   The constructor of an external force object for a group of particles.
+   The constructor of an external force object for a group of particles. The external force :math:`F` will be added on 
+   the group of particles and each particle have a :math:`F/N`, where :math:`N` is the number of particles.
    
    :param AllInfo all_info: The system information.
    :param ParticleSet group: The group of charged particles.   
