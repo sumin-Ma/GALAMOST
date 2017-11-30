@@ -1,6 +1,9 @@
 Numerical interaction
 =====================
 
+Theory description
+------------------
+
 The numerical non-bonded, bond, angle, and torsion potentials can be derived from iterative Boltzmann inversion (IBI) or reverse Monte Carlo (RMC) method. 
 With IBI method, the procedure starts with the potentials of mean force as guessed potentials and then optimizes 
 the potentials iteratively by mapping the structural distributions (i.e., radial distribution function, RDF) onto 
@@ -54,7 +57,7 @@ For convenience, the potentials also can be read directively from two columns in
 
 With the potential input format, :math:`x` corresponds to :math:`r` for distance and :math:`F=-\partial V(r)/\partial r`. 
 The distance or angle points in first column should be in equal interval and the potentials at the corresponding points are given in second column. 
-The other node names for bond, angle and dihedral are ``BondPotential``, ``AnglePotential``, and ``Dihedralpotential``, respectively.
+The angles :math:`\theta` and :math:`\varphi` are in radians. The other node names for bond, angle and dihedral are ``BondPotential``, ``AnglePotential``, and ``Dihedralpotential``, respectively.
 	  
 Non-bonded interaction
 ----------------------
