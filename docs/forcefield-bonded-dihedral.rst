@@ -39,7 +39,10 @@ Description:
     Coefficients:
 
     - :math:`k` - multiplicative constant ``k`` (in units of energy)
-    - :math:`\delta` - phase shift angle ``delta`` (in radians, the unit of input values is degree which will be converted into radian)
+    - :math:`\delta` - phase shift angle ``delta`` (in radians)
+	
+    .. note::
+	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
 
 .. py:class:: DihedralForceHarmonic(all_info)
 
@@ -74,7 +77,10 @@ Description:
     Coefficients:
 
     - :math:`k_1, k_2, k_3, k_4` - multiplicative constant ``k1, k2, k3, k4`` (in units of energy)
-    - :math:`\delta` - phase shift angle ``delta`` (in radians, the unit of input values is degree which will be converted into radian)
+    - :math:`\delta` - phase shift angle ``delta`` (in radians)
+	
+    .. note::
+	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
 
 .. py:class:: DihedralForceOplsCosine(all_info)
 

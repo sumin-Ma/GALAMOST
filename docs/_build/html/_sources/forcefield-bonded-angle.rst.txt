@@ -40,7 +40,10 @@ Description:
     Coefficients:
 
     - :math:`k` - potential constant ``k`` (in units of energy/radians^2)
-    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians, the unit of input values is degree which will be converted into radian)
+    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
+
+    .. note::
+	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.
 
 .. py:class:: AngleForceHarmonic(all_info)
 
@@ -75,7 +78,10 @@ Description:
     Coefficients:
 
     - :math:`k` - potential constant ``k`` (in units of energy)
-    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians, the unit of input values is degree which will be converted into radian)
+    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
+	
+    .. note::
+	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
 
 .. py:class:: AngleForceHarmonicCos(all_info)
 
@@ -110,7 +116,10 @@ Description:
     Coefficients:
 
     - :math:`k` - potential constant ``k`` (in units of energy)
-    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians, the unit of input values is degree which will be converted into radian)
+    - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
+	
+    .. note::
+	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
 
 .. py:class:: AngleForceCos(all_info)
 

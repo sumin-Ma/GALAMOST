@@ -324,7 +324,7 @@ Generator definition
    
       sets the minimum separated distance between two particle types with particle type 1, particle type 2 and minimum distance.
 	  
-   .. py:function:: setParam(cstring type1, string type2, double epsilon, double sigma, double r_cut)
+   .. py:function:: setParam(string type1, string type2, double epsilon, double sigma, double r_cut)
    
       sets the LJ potential parameters between two particle types for Rosenblueth method with particle type1, particle type2, epsilon, sigma, and cut-off radius.
 	  
