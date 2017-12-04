@@ -14,7 +14,7 @@ The "galaTackle" can be found in the installed "bin" folder. You can use this to
       galaTackle *.xml
 	  
 After pressing enter, a menu of function options will be listed. You can choose one or more functions by 
-input the number indexex separated by blank. The parameters for a function can be input after ":" and seperated by "|". 
+the number indexes separated by blank. The parameters for a function can be input after ":" and seperated by "|". 
 
    Such as::
    
