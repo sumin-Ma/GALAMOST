@@ -202,28 +202,40 @@
 <h1>GalaTackle<a class="headerlink" href="#galatackle" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>The “galaTackle” is a plugin of GALAMOST to obtain some important statistical information by analyzing the output configuration files.
-You can use this tool by running the following</p>
+<p>The “galaTackle” is a plugin of GALAMOST to analyze some important properties by reading the generated configuration files.
+The “galaTackle” can be found in the installed “bin” folder. You can use this tool to analyze one or more files by running the following commands.</p>
 <blockquote>
-<div><p>Command:</p>
+<div><p>Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">galaTackle</span> <span class="n">particle</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">galaTackle</span> <span class="n">particle0</span><span class="o">.</span><span class="n">xml</span> <span class="n">particle1</span><span class="o">.</span><span class="n">xml</span>
 <span class="n">galaTackle</span> <span class="o">*.</span><span class="n">xml</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>The “galaTackle” plugin supports the configuration files with XML and DCD formats.
-The XML files can be tackled independently. However, a DCD trajectory file has to be tackled along with
-a XML file for particle attributes and topological information,</p>
+<p>After pressing enter, a menu of function options will be listed. You can choose one or more functions by
+input the number indexex separated by blank. The parameters for a function can be input after “:” and seperated by “|”.</p>
 <blockquote>
 <div><p>Such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="p">:</span><span class="n">npot</span><span class="o">=</span><span class="mi">1000</span> <span class="mi">3</span><span class="p">:</span><span class="n">gpu</span><span class="o">=</span><span class="mi">0</span><span class="o">|</span><span class="n">rmax</span><span class="o">=</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The “galaTackle” also can be called and passed parameters in Shell script.</p>
+<blockquote>
+<div><p>Such as:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;18:gpu=1|rmax=3.0&quot;</span> <span class="o">|</span> <span class="n">galaTackle</span> <span class="n">particles</span><span class="o">.*.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The “galaTackle” plugin supports the configuration files with XML and DCD formats.
+The XML files can be tackled independently. However, a DCD trajectory file has to be tackled along with
+a XML file for particles attributes and topological information.</p>
+<blockquote>
+<div><p>Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">galaTackle</span> <span class="n">particle</span><span class="o">.</span><span class="n">xml</span> <span class="n">trajectory</span><span class="o">.</span><span class="n">dcd</span>
 </pre></div>
 </div>
 </div></blockquote>
-<p>The “galaTackle” can be found in the installed “bin” folder and the XML configuration files should be put in current directory.
-After the executing of above command, a menu of many options will be listed. You can choose one or several functions by
-input the number index separated by blank and press enter to execute them.</p>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>

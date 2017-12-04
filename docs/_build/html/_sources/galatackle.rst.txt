@@ -4,27 +4,35 @@ GalaTackle
 Usage
 -----
 
-The "galaTackle" is a plugin of GALAMOST to obtain some important statistical information by analyzing the output configuration files. 
-You can use this tool by running the following 
+The "galaTackle" is a plugin of GALAMOST to analyze some important properties by reading the generated configuration files. 
+The "galaTackle" can be found in the installed "bin" folder. You can use this tool to analyze one or more files by running the following commands.
 
-   Command::
+   Examples::
    
       galaTackle particle.xml
       galaTackle particle0.xml particle1.xml
       galaTackle *.xml
 	  
-The "galaTackle" plugin supports the configuration files with XML and DCD formats. 
-The XML files can be tackled independently. However, a DCD trajectory file has to be tackled along with 
-a XML file for particle attributes and topological information, 
+After pressing enter, a menu of function options will be listed. You can choose one or more functions by 
+input the number indexex separated by blank. The parameters for a function can be input after ":" and seperated by "|". 
 
    Such as::
    
-      galaTackle particle.xml trajectory.dcd
-	  
-The "galaTackle" can be found in the installed "bin" folder and the XML configuration files should be put in current directory. 
-After the executing of above command, a menu of many options will be listed. You can choose one or several functions by 
-input the number index separated by blank and press enter to execute them.
+      4:npot=1000 3:gpu=0|rmax=2.0
 
+The "galaTackle" also can be called and passed parameters in Shell script.
+
+   Such as::
+   
+      echo -e "18:gpu=1|rmax=3.0" | galaTackle particles.*.xml
+
+The "galaTackle" plugin supports the configuration files with XML and DCD formats. 
+The XML files can be tackled independently. However, a DCD trajectory file has to be tackled along with 
+a XML file for particles attributes and topological information.
+
+   Examples::
+
+      galaTackle particle.xml trajectory.dcd
 
 Functions
 ---------
