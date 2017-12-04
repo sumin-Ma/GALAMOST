@@ -213,7 +213,7 @@ The “galaTackle” can be found in the installed “bin” folder. You can use
 </div>
 </div></blockquote>
 <p>After pressing enter, a menu of function options will be listed. You can choose one or more functions by
-input the number indexex separated by blank. The parameters for a function can be input after “:” and seperated by “|”.</p>
+the number indexes separated by blank. The parameters for a function can be input after “:” and seperated by “|”.</p>
 <blockquote>
 <div><p>Such as:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="p">:</span><span class="n">npot</span><span class="o">=</span><span class="mi">1000</span> <span class="mi">3</span><span class="p">:</span><span class="n">gpu</span><span class="o">=</span><span class="mi">0</span><span class="o">|</span><span class="n">rmax</span><span class="o">=</span><span class="mf">2.0</span>
@@ -411,7 +411,11 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the dynamic structure factor of particles and output result to <code class="docutils literal"><span class="pre">dstrf.log</span></code>.</dd>
+<dd><p class="first">Dynamic structure factor (incoherent intermediate) measures the decorrelation of the positions
+of individual monomers with the time on length scale <span class="math">\(1/q\)</span>, where <span class="math">\(q=2\pi\sqrt{x^2+y^2+z^2}/L\)</span>, and <span class="math">\(L\)</span> is cubic box length.
+<span class="math">\(\mbox{kmax}\)</span> limits the space in which the <span class="math">\(q\)</span> with possible combinations of x, y, z will be generated.</p>
+<p class="last">The results will be output to <code class="docutils literal"><span class="pre">dstrf.log</span></code>.</p>
+</dd>
 <dt>Parameters:</dt>
 <dd>:kmax=20|q=7.0</dd>
 </dl>

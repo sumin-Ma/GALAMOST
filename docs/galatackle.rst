@@ -172,7 +172,11 @@ Functions
 ^^^^^^^^^^^^^^^^^^
    
    Description:
-      To calculate the dynamic structure factor of particles and output result to ``dstrf.log``.
+      Dynamic structure factor (incoherent intermediate) measures the decorrelation of the positions 
+      of individual monomers with the time on length scale :math:`1/q`, where :math:`q=2\pi\sqrt{x^2+y^2+z^2}/L`, and :math:`L` is cubic box length. 
+      :math:`\mbox{kmax}` limits the space in which the :math:`q` with possible combinations of x, y, z will be generated.
+
+      The results will be output to ``dstrf.log``.	  
 	  
    Parameters:
       :kmax=20|q=7.0
