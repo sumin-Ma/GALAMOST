@@ -341,6 +341,20 @@
 </div>
 <div class="section" id="brownian-dynamic-thermostat">
 <span id="bd-nvt"></span><h2>Brownian dynamic thermostat<a class="headerlink" href="#brownian-dynamic-thermostat" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><p>The particles are integrated forward in time according to the Langevin equations of motion:</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}m \frac{d\vec{v}}{dt} = \vec{F}_\mathrm{C} - \gamma \cdot \vec{v} + \vec{F}_\mathrm{R}\\\langle \vec{F}_\mathrm{R} \rangle = 0\\\langle |\vec{F}_\mathrm{R}|^2 \rangle = 2 d kT \gamma / \delta t\end{aligned}\end{align} \]</div>
+<ul class="simple">
+<li><span class="math">\(\gamma\)</span> - <em>gamma</em> (unitless) - <em>optional</em>: defaults to 1.0</li>
+</ul>
+<p>where <span class="math">\(\vec{F}_\mathrm{C}\)</span> is the force on the particle from all potentials and constraint forces,
+<span class="math">\(\gamma\)</span> is the drag coefficient, <span class="math">\(\vec{v}\)</span> is the particle’s velocity, <span class="math">\(\vec{F}_\mathrm{R}\)</span>
+is a uniform random force, and <span class="math">\(d\)</span> is the dimensionality of the system (2 or 3).  The magnitude of
+the random force is chosen via the fluctuation-dissipation theorem to be consistent with the specified drag and temperature, <span class="math">\(T\)</span>.
+When <span class="math">\(kT=0\)</span>, the random force <span class="math">\(\vec{F}_\mathrm{R}=0\)</span>.</p>
+</div></blockquote>
 <dl class="class">
 <dt id="BdNvt">
 <em class="property">class </em><code class="descname">BdNvt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>T</em>, <em>seed</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvt" title="Permalink to this definition">¶</a></dt>
@@ -435,6 +449,7 @@
 </div>
 <div class="section" id="brownian-dynamic-for-rigid-body">
 <span id="bd-nvt-rigid"></span><h2>Brownian dynamic for rigid body<a class="headerlink" href="#brownian-dynamic-for-rigid-body" title="Permalink to this headline">¶</a></h2>
+<p>Please see <a class="reference internal" href="#BdNvt" title="BdNvt"><code class="xref py py-class docutils literal"><span class="pre">BdNvt</span></code></a> for the theory.</p>
 <dl class="class">
 <dt id="BdNvtRigid">
 <em class="property">class </em><code class="descname">BdNvtRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>T</em>, <em>seed</em><span class="sig-paren">)</span><a class="headerlink" href="#BdNvtRigid" title="Permalink to this definition">¶</a></dt>

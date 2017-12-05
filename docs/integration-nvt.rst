@@ -99,6 +99,26 @@ Andersen thermostat
 Brownian dynamic thermostat
 ---------------------------
 
+Description:
+
+    The particles are integrated forward in time according to the Langevin equations of motion:
+
+    .. math::
+
+        m \frac{d\vec{v}}{dt} = \vec{F}_\mathrm{C} - \gamma \cdot \vec{v} + \vec{F}_\mathrm{R}
+
+        \langle \vec{F}_\mathrm{R} \rangle = 0
+
+        \langle |\vec{F}_\mathrm{R}|^2 \rangle = 2 d kT \gamma / \delta t
+		
+    - :math:`\gamma` - *gamma* (unitless) - *optional*: defaults to 1.0
+	
+    where :math:`\vec{F}_\mathrm{C}` is the force on the particle from all potentials and constraint forces,
+    :math:`\gamma` is the drag coefficient, :math:`\vec{v}` is the particle's velocity, :math:`\vec{F}_\mathrm{R}`
+    is a uniform random force, and :math:`d` is the dimensionality of the system (2 or 3).  The magnitude of
+    the random force is chosen via the fluctuation-dissipation theorem to be consistent with the specified drag and temperature, :math:`T`.
+    When :math:`kT=0`, the random force :math:`\vec{F}_\mathrm{R}=0`.
+
 .. py:class:: BdNvt(all_info, group, T, seed)
 
    The constructor of a Brownian NVT thermostat object for a group of particles.
@@ -162,6 +182,8 @@ NVT for rigid body
 	  
 Brownian dynamic for rigid body
 -------------------------------
+
+Please see :py:class:`BdNvt` for the theory.
 
 .. py:class:: BdNvtRigid(all_info, group, T, seed)
 
