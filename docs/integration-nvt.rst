@@ -183,7 +183,7 @@ NVT for rigid body
 Brownian dynamic for rigid body
 -------------------------------
 
-Please see :py:class:`BdNvt` for the theory.
+Please see :ref:`bd-nvt` for the theory.
 
 .. py:class:: BdNvtRigid(all_info, group, T, seed)
 
