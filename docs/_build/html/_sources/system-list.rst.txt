@@ -16,7 +16,7 @@ Neighbor list
    
       specifies the cut-off and buffer distance.
 
-   .. py:function:: setRCutPair(string typi, string typj, float r_cut); 
+   .. py:function:: setRCutPair(string typi, string typj, float r_cut) 
 
       specifies the cut-off per unique pair of particle types.
 	  
