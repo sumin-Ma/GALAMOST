@@ -15,6 +15,10 @@ Neighbor list
    .. py:function:: setRCut(float r_cut, float r_buffer)
    
       specifies the cut-off and buffer distance.
+
+   .. py:function:: setRCutPair(string typi, string typj, float r_cut); 
+
+      specifies the cut-off per unique pair of particle types.
 	  
    .. py:function:: setNsq()
    
