@@ -36,7 +36,7 @@ Description:
 
     - :math:`\epsilon` - *epsilon* (in energy units)
     - :math:`\sigma` - *sigma* (in distance units)
-    - :math:`\alpha` - *alpha* (unitless) - *optional*: defaults to 1.0
+    - :math:`\alpha` - *alpha* (unitless)
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
       - *optional*: defaults to the global r_cut specified in the pair command
 
@@ -177,6 +177,31 @@ Description:
 	  
 Pair interaction
 ----------------
+
+.. _lj9_6-repulsion:
+   
+LJ9_6 repulsion
+^^^^^^^^^^^^^^^
+ 
+Description:
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+        V_{\mathrm{LJ}}(r)  = & 6.75 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{9} -
+                          \alpha \left( \frac{\sigma}{r} \right)^{6} \right] & r < r_{\mathrm{cut}} \\
+                            = & 0 & r \ge r_{\mathrm{cut}} \\
+        \end{eqnarray*}
+
+    The following coefficients must be set per unique pair of particle types:
+
+    - :math:`\epsilon` - *epsilon* (in energy units)
+    - :math:`\sigma` - *sigma* (in distance units)
+    - :math:`\alpha` - *alpha* (unitless)
+    - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
+
+   :ref:`pair-sc-label` 
 
 .. _harmonic-repulsion:
    
