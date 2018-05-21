@@ -180,8 +180,8 @@ Pair interaction
 
 .. _lj9_6-repulsion:
    
-LJ9_6 repulsion
-^^^^^^^^^^^^^^^
+LJ9_6 interaction
+^^^^^^^^^^^^^^^^^
  
 Description:
 
