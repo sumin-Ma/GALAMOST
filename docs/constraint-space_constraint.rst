@@ -61,7 +61,7 @@ LJ surface force
 	  
    Example::
    
-      ljc = galamost. LjConstrainForce(all_info, group, 1.0)
+      ljc = galamost.LjConstrainForce(all_info, group, 1.0)
       ljc.addWall(0.0, 10.0, 0.0, 0.0, 1.0, 0.0)
       ljc.addWall(0.0, -10.0, 0.0, 0.0, 1.0, 0.0)
       app.add(ljc)
