@@ -26,9 +26,9 @@ Bounce back condition
    
    Example::
    
-      bbc = galamost.BounceBackConstrain(all_info,group)
-      bbc.addwall(0.0, 10.0, 0.0, 0.0, 1.0, 0.0)
-      bbc.addwall(0.0, -10.0, 0.0, 0.0, 1.0, 0.0)
+      bbc = galamost.BounceBackConstrain(all_info, group)
+      bbc.addWall(0.0, 10.0, 0.0, 0.0, 1.0, 0.0)
+      bbc.addWall(0.0, -10.0, 0.0, 0.0, 1.0, 0.0)
       app.add(bbc)
 
 
@@ -61,7 +61,7 @@ LJ surface force
 	  
    Example::
    
-      ljc = galamost. LjConstrainForce (all_info, group, 1.0)
+      ljc = galamost. LjConstrainForce(all_info, group, 1.0)
       ljc.addWall(0.0, 10.0, 0.0, 0.0, 1.0, 0.0)
       ljc.addWall(0.0, -10.0, 0.0, 0.0, 1.0, 0.0)
       app.add(ljc)
