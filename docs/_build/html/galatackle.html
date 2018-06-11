@@ -258,7 +258,17 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the mean square of gyration radius and output result to <code class="docutils literal"><span class="pre">rg2.log</span></code>.</dd>
+<dd><blockquote class="first">
+<div>To calculate the mean square of gyration radius and output result to <code class="docutils literal"><span class="pre">rg2.log</span></code>.</div></blockquote>
+<div class="math">
+\begin{eqnarray*}
+        R{_{g}^{2}}&amp;=&amp;\frac{1}{N}\sum\limits_{i=1}^{N}{{{({{{\vec{R}}}_{i}}-{{{\vec{R}}}_{cm}})}^{2}}} \\
+        {{\vec{R}}_{cm}}&amp;=&amp;\frac{1}{N}\sum\limits_{i=1}^{N}{{{{\vec{R}}}_{i}}}
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="last simple">
+<li><span class="math">\({\vec{R}}_{i}\)</span> - monomer position vector</li>
+</ul>
+</dd>
 </dl>
 </div></blockquote>
 </div>
@@ -267,7 +277,16 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the mean square of end to end distance and output result to <code class="docutils literal"><span class="pre">ed2.log</span></code>.</dd>
+<dd><blockquote class="first">
+<div>To calculate the mean square of end to end distance and output result to <code class="docutils literal"><span class="pre">ed2.log</span></code>.</div></blockquote>
+<div class="math">
+\begin{eqnarray*}
+        E{_{d}^{2}}={( {{{\vec{R}}}_{0}}-{{{\vec{R}}}_{N-1}} )}^{2}
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="last simple">
+<li><span class="math">\({\vec{R}}_{i}\)</span> - monomer position vector</li>
+</ul>
+</dd>
 </dl>
 </div></blockquote>
 </div>

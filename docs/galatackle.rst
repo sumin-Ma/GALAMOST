@@ -55,11 +55,34 @@ Functions
    Description:
       To calculate the mean square of gyration radius and output result to ``rg2.log``.
 
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		R{_{g}^{2}}&=&\frac{1}{N}\sum\limits_{i=1}^{N}{{{({{{\vec{R}}}_{i}}-{{{\vec{R}}}_{cm}})}^{2}}} \\
+		{{\vec{R}}_{cm}}&=&\frac{1}{N}\sum\limits_{i=1}^{N}{{{{\vec{R}}}_{i}}}
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`{\vec{R}}_{i}` - monomer position vector 
+
 2  Ed^2:	  
 ^^^^^^^^
    
    Description:
       To calculate the mean square of end to end distance and output result to ``ed2.log``.
+	  
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		E{_{d}^{2}}={( {{{\vec{R}}}_{0}}-{{{\vec{R}}}_{N-1}} )}^{2}
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`{\vec{R}}_{i}` - monomer position vector 	  
 	  
 3  RDF:	  
 ^^^^^^^
