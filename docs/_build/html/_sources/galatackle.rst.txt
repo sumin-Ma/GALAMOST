@@ -85,7 +85,7 @@ Functions
 
     Coefficients:
 
-    - :math:`dr` - the space of bond length of `L/(2npot)`, where `L` is the box size
+    - :math:`dr` - the space of bond length `L/(2npot)`, where `L` is the box size
     - :math:`N(i)` - the number of bonds in the range of `idr < r < (i+1)dr`, where `i` is an integer
     - :math:`N` - the total number of bonds		
 	  
@@ -107,7 +107,7 @@ Functions
 
     Coefficients:
 
-    - :math:`da` - the space of angle radian of `2pi/npot`
+    - :math:`da` - the space of angle radian `2pi/npot`
     - :math:`N(i)` - the number of angles in the range of `ida < angle < (i+1)da`, where `i` is an integer	  
     - :math:`N` - the total number of angles	
 	
@@ -129,7 +129,7 @@ Functions
 
     Coefficients:
 
-    - :math:`da` - the space of dihedral angle radian of `2pi/npot`
+    - :math:`da` - the space of dihedral angle radian `2pi/npot`
     - :math:`N(i)` - the number of dihedrals in the range of `ida < dihedral angle < (i+1)da`, where `i` is an integer
     - :math:`N` - the total number of dihedrals		
 	  
