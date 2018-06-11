@@ -107,7 +107,7 @@ Functions
 
     Coefficients:
 
-    - :math:`da` - the space of angle radian `2pi/npot`
+    - :math:`da` - the space of angle radian `pi/npot`
     - :math:`N(i)` - the number of angles in the range of `ida < angle < (i+1)da`, where `i` is an integer	  
     - :math:`N` - the total number of angles	
 	
