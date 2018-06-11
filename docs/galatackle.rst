@@ -72,9 +72,22 @@ Functions
 	  
 4  bond_distri:	  
 ^^^^^^^^^^^^^^^
-   
+
    Description:
       To calculate the distribution of bond lengths and output result to ``bond_distr.log``.
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		bond\_distri(i \cdot dr)=N(i)/(N \cdot dr)
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`dr` - the space of bond length of `L/(2npot)`, where `L` is the box size
+    - :math:`N(i)` - the number of bonds in the range of `idr < r < (i+1)dr`, where `i` is an integer
+    - :math:`N` - the total number of bonds		
 	  
    Parameters:
       :npot=2001
@@ -85,6 +98,19 @@ Functions
    Description:
       To calculate the distribution of angle degrees and output result to ``angle_distr.log``.
 	  
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		angle\_distri(i \cdot da)=N(i)/(N \cdot da)
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`da` - the space of angle radian of `2pi/npot`
+    - :math:`N(i)` - the number of angles in the range of `ida < angle < (i+1)da`, where `i` is an integer	  
+    - :math:`N` - the total number of angles	
+	
    Parameters:
       :npot=2001
 	  
@@ -93,6 +119,19 @@ Functions
    
    Description:
       To calculate the distribution of dihedral degrees and output result to ``dihedral_distr.log``.
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		dihedral\_distri(i \cdot da)=N(i)/(N \cdot da)
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`da` - the space of dihedral angle radian of `2pi/npot`
+    - :math:`N(i)` - the number of dihedrals in the range of `ida < dihedral angle < (i+1)da`, where `i` is an integer
+    - :math:`N` - the total number of dihedrals		
 	  
    Parameters:
       :npot=2001

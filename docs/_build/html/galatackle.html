@@ -287,7 +287,18 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the distribution of bond lengths and output result to <code class="docutils literal"><span class="pre">bond_distr.log</span></code>.</dd>
+<dd><blockquote class="first">
+<div>To calculate the distribution of bond lengths and output result to <code class="docutils literal"><span class="pre">bond_distr.log</span></code>.</div></blockquote>
+<div class="math">
+\begin{eqnarray*}
+        bond\_distri(i \cdot dr)=N(i)/(N \cdot dr)
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="last simple">
+<li><span class="math">\(dr\)</span> - the space of bond length of <cite>L/(2npot)</cite>, where <cite>L</cite> is the box size</li>
+<li><span class="math">\(N(i)\)</span> - the number of bonds in the range of <cite>idr &lt; r &lt; (i+1)dr</cite>, where <cite>i</cite> is an integer</li>
+<li><span class="math">\(N\)</span> - the total number of bonds</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd>:npot=2001</dd>
 </dl>
@@ -298,7 +309,18 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the distribution of angle degrees and output result to <code class="docutils literal"><span class="pre">angle_distr.log</span></code>.</dd>
+<dd><blockquote class="first">
+<div>To calculate the distribution of angle degrees and output result to <code class="docutils literal"><span class="pre">angle_distr.log</span></code>.</div></blockquote>
+<div class="math">
+\begin{eqnarray*}
+        angle\_distri(i \cdot da)=N(i)/(N \cdot da)
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="last simple">
+<li><span class="math">\(da\)</span> - the space of angle radian of <cite>2pi/npot</cite></li>
+<li><span class="math">\(N(i)\)</span> - the number of angles in the range of <cite>ida &lt; angle &lt; (i+1)da</cite>, where <cite>i</cite> is an integer</li>
+<li><span class="math">\(N\)</span> - the total number of angles</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd>:npot=2001</dd>
 </dl>
@@ -309,7 +331,18 @@ a XML file for particles attributes and topological information.</p>
 <blockquote>
 <div><dl class="docutils">
 <dt>Description:</dt>
-<dd>To calculate the distribution of dihedral degrees and output result to <code class="docutils literal"><span class="pre">dihedral_distr.log</span></code>.</dd>
+<dd><blockquote class="first">
+<div>To calculate the distribution of dihedral degrees and output result to <code class="docutils literal"><span class="pre">dihedral_distr.log</span></code>.</div></blockquote>
+<div class="math">
+\begin{eqnarray*}
+        dihedral\_distri(i \cdot da)=N(i)/(N \cdot da)
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="last simple">
+<li><span class="math">\(da\)</span> - the space of dihedral angle radian of <cite>2pi/npot</cite></li>
+<li><span class="math">\(N(i)\)</span> - the number of dihedrals in the range of <cite>ida &lt; dihedral angle &lt; (i+1)da</cite>, where <cite>i</cite> is an integer</li>
+<li><span class="math">\(N\)</span> - the total number of dihedrals</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd>:npot=2001</dd>
 </dl>
