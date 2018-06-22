@@ -109,7 +109,7 @@ Description:
 	  
    .. py:function:: setParams(string type, float k, float rm, float epsilon, float sigma)
    
-      specifies the FENE+LJ bond parameters with bond type, spring constant, maximum length of the bond, epsilon, sigma (the latter two parameters for LJ force between two bonded particles ).
+      specifies the FENE+WCA bond parameters with bond type, spring constant, maximum length of the bond, epsilon, sigma (the latter two parameters for WCA force between two bonded particles ).
 
    .. py:function:: setConsiderDiameter(bool con_dia)
    
