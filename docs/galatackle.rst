@@ -34,6 +34,12 @@ a XML file for particles attributes and topological information.
 
       galaTackle particle.xml trajectory.dcd
 
+For the help about the parameters, you could input "function number:h" after the function list shown.
+ 	  
+   Examples::
+
+      14:h	  
+	  
 Functions
 ---------
 
@@ -181,7 +187,7 @@ Functions
       To unwrap or shift molecules by changing the image information
 	  
    Parameters:
-      :unwrap_molecule=true|label_free_particle=particle type| molecule_center_in_box=false|shiftx=0.0|shifty=0.0|remove_image=false| convert_constraint_to_bond=false
+      :unwrap_molecule=true|label_free_particle=particle type|molecule_center_in_box=false| shiftx=0.0|shifty=0.0|shiftz=0.0|remove_image=false|convert_constraint_to_bond=false| remove_bond_cross_box=false
 
 	  
 10 MSD:	  
@@ -190,6 +196,8 @@ Functions
    Description:
       To compute mean square displacement of all particles and output result to ``msd.log``.
 
+   Parameters:
+      :direction=XYZ (candidates are X,Y,Z,XY,YZ,XZ,XYZ) 
 	  
 11 RDF-CM:	  
 ^^^^^^^^^^
@@ -206,6 +214,9 @@ Functions
    Description:
       To compute mean square displacement of the mass center of molecules and output result to ``msd_cm.log``.
 	  
+   Parameters:
+      :direction=XYZ (candidates are X,Y,Z,XY,YZ,XZ,XYZ)  
+	  
 13 ents:	  
 ^^^^^^^^
    
@@ -219,7 +230,7 @@ Functions
       To calculate the structure factor of particles and output result to ``*.strf`` and ``strf.log``.
 	  
    Parameters:
-      :kmax=80|gpu=0|qbin=2pi/L
+      :qmax=160pi/Lmin|gpu=0|deltaq=2pi/Lmin|direction=XYZ|2D=false
 
 15 domain size:	  
 ^^^^^^^^^^^^^^^
@@ -241,7 +252,7 @@ Functions
       The results will be output to ``dstrf.log``.
 
    Parameters:
-      :kmax=20|q=7.0
+      :kmax=int(L)|q=7.0
 	  
    `Maintainer`: Shu-Jia Li
 	  

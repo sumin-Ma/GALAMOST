@@ -251,7 +251,12 @@ Molecule definition
    .. py:function:: setCylinder(double px, double py, double pz, double ax, double ay, double az, double r_min, double r_max)
    
       specifies the cylinder where the molecules are generated with cylinder center position(px, py, pz), cylinder axe vecter(ax, ay, ax), cyliner radius r_min, and r_max. The molecules are generated in the range r_min< r<r_max.
+	
+   .. py:function:: setBodyEvacuation()
+   
+      specifies the generation of molecules outside bodies.
 	  
+	
    Example::
    
       mol0=molgen.Molecule(8)
