@@ -4,12 +4,12 @@ External interaction
 Axial stretching
 ----------------
 
-.. py:class:: AxialStretching(all_info,  group)
+.. py:class:: AxialStretching(all_info, group)
 
    The constructor of a stretching object of the box for a group of particles.
    
    :param AllInfo all_info: The system information.
-   :param ParticleSet group: The group of charged particles.
+   :param ParticleSet group: The group of particles.
    
 
    .. py:function:: setBoxLength(Variant vL, string direction)
@@ -36,7 +36,7 @@ External force
    the group of particles and each particle have a :math:`F/N`, where :math:`N` is the number of particles.
    
    :param AllInfo all_info: The system information.
-   :param ParticleSet group: The group of charged particles.   
+   :param ParticleSet group: The group of particles.   
 
    .. py:function:: setForce(Variant vf, std::string direction)
    
