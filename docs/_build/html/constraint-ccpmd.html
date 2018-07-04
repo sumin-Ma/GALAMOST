@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Constant chemical potential &mdash; GALAMOST 3.1.0 documentation</title>
+  <title>Constant chemical potential &mdash; GALAMOST 3.1.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+    <link rel="top" title="GALAMOST 3.1.1 documentation" href="index.html"/>
         <link rel="up" title="Constraint" href="constraint.html"/>
         <link rel="next" title="Modules" href="module.html"/>
         <link rel="prev" title="Remove CM momentum" href="constraint-remove_momentum.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.1.0
+                3.1.1
               </div>
             
           
@@ -186,6 +186,10 @@
             
   <div class="section" id="constant-chemical-potential">
 <h1>Constant chemical potential<a class="headerlink" href="#constant-chemical-potential" title="Permalink to this headline">¶</a></h1>
+<div class="admonition attention">
+<p class="first admonition-title">Attention</p>
+<p class="last">GALAMOST v4.0.0’s function</p>
+</div>
 <p>Constant Chemical Potential Molecular Dynamics (C <span class="math">\(\mu\)</span> MD) method introduces an external force that controls the environment of the chemical process of interest.
 This external force, drawing molecules from a finite reservoir, maintains the chemical potential constant in the region where the process takes place.
 This method is able to study crystal growth dynamics under constant supersaturation conditions or evaporation dynamics under constant vapor pressure.</p>
@@ -223,10 +227,7 @@ F^{\mathrm{\mu}}(z) &amp;=&amp; k(n^{CR}-n_{0})G(z, Z_{F}) \\
 <dl class="function">
 <dt id="CCPMD.setWall">
 <code class="descname">setWall</code><span class="sig-paren">(</span><em>float ox</em>, <em>float oy</em>, <em>float oz</em>, <em>float dx</em>, <em>float dy</em>, <em>float dz</em><span class="sig-paren">)</span><a class="headerlink" href="#CCPMD.setWall" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>specifies external force region with plane center (ox, oy, oz) and direction (dx, dy, dz).</dt>
-<dd>If the normal direction of wall is in Z direction, the center position of plane is (0.0, 0.0, <span class="math">\(Z_{F}\)</span>).</dd>
-</dl>
+<dd><p>specifies external force region with plane center (ox, oy, oz) and direction (dx, dy, dz). If the normal direction of wall is in Z direction, the center position of plane is (0.0, 0.0, <span class="math">\(Z_{F}\)</span>).</p>
 </dd></dl>
 
 <dl class="function">
@@ -291,7 +292,7 @@ F^{\mathrm{\mu}}(z) &amp;=&amp; k(n^{CR}-n_{0})G(z, Z_{F}) \\
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

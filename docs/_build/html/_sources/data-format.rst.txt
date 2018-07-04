@@ -69,6 +69,111 @@ However, this rule does not include topological relevant information, including 
       phi 0 1 2 3
       </dihedral>
    
+   The other notes of XML ... :: 
+
+     # the diameter of particles in float type.
+      <diameter>
+	  1.0
+	  1.0
+	  1.0
+	  1.0
+      </diameter>
+
+     # the charge of particles in float type.
+      <charge>
+	   1.333
+	   1.333
+	  -1.333
+	  -1.333
+      </charge>
+
+     # the body index of particles in int type, -1 for non-body particles.
+      <body>
+	  -1
+	  -1
+	  0
+	  0
+      </body>
+	  
+     # the image in x, y, and z directions of particles in int3 type.	  
+      <image>
+	  0 0 0 
+	  0 0 0
+	  0 0 0
+	  0 0 0
+      </image>
+	  
+     # the velocity in x, y, and z directions of particles in float3 type. 
+      <velocity>
+       3.768     -2.595    -1.874
+      -3.988     -1.148     2.800
+       1.570      1.015    -3.167
+       2.441     -1.859    -1.039
+      </velocity>
+
+
+     # the orientation vector (x, y, z) of particles in float3 type.
+      <orientation>
+       -0.922     0.085     0.376
+       -0.411    -0.637    -0.651
+        0.293     0.892    -0.342
+       -0.223     0.084     0.970  
+      </orientation>
+
+     # the quaternion vector (x, y, z, w) of particles in float4 type. 	  
+      <quaternion>
+       0.369   0.817  -0.143   0.418
+      -0.516  -0.552   0.653   0.024
+      -0.521  -0.002   0.131   0.843
+      -0.640   0.159  -0.048  -0.749  
+      </quaternion>
+
+     # the angular velocity of rotation in x, y, and z directions of particles in float3 type.	  
+      <rotation>
+       -0.640    0.571   -0.512
+       -0.744    0.346    0.569
+        0.620   -0.086    0.779
+       -0.542    0.319   -0.776	  
+      </rotation>	  
+
+    # the moment of inertia in x, y, and z directions of particles in float3 type.	  
+      <inert>
+	  1.0 1.0 3.0
+	  1.0 1.0 3.0
+	  1.0 1.0 3.0
+	  1.0 1.0 3.0	  
+      </inert>	  
+
+    # the initiator indication of particles in int type, 1 for initiator.	  
+      <h_init>
+	  0
+	  1
+	  0
+	  1
+      </h_init>	 
+
+    # the crosslinking number of particles in int type, 0 for reactable monomer.	  
+      <h_cris>
+	  0
+	  0
+	  0
+	  0
+      </h_cris>	 
+
+    # the molecule index of particles in int type.	  
+      <molecule>
+	  0
+	  0
+	  1
+	  1
+      </molecule>	 	  
+
+
+
+
+
+
+
    
    
    

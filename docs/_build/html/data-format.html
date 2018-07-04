@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data format &mdash; GALAMOST 3.1.0 documentation</title>
+  <title>Data format &mdash; GALAMOST 3.1.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="GALAMOST 3.1.0 documentation" href="index.html"/>
+    <link rel="top" title="GALAMOST 3.1.1 documentation" href="index.html"/>
         <link rel="up" title="Data" href="data.html"/>
         <link rel="next" title="Data input" href="data-input.html"/>
         <link rel="prev" title="Data" href="data.html"/> 
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                3.1.0
+                3.1.1
               </div>
             
           
@@ -248,6 +248,105 @@ A
 <span class="o">&lt;/</span><span class="n">dihedral</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+<p>The other notes of XML …</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="c1"># the diameter of particles in float type.</span>
+  <span class="o">&lt;</span><span class="n">diameter</span><span class="o">&gt;</span>
+      <span class="mf">1.0</span>
+      <span class="mf">1.0</span>
+      <span class="mf">1.0</span>
+      <span class="mf">1.0</span>
+  <span class="o">&lt;/</span><span class="n">diameter</span><span class="o">&gt;</span>
+
+ <span class="c1"># the charge of particles in float type.</span>
+  <span class="o">&lt;</span><span class="n">charge</span><span class="o">&gt;</span>
+       <span class="mf">1.333</span>
+       <span class="mf">1.333</span>
+      <span class="o">-</span><span class="mf">1.333</span>
+      <span class="o">-</span><span class="mf">1.333</span>
+  <span class="o">&lt;/</span><span class="n">charge</span><span class="o">&gt;</span>
+
+ <span class="c1"># the body index of particles in int type, -1 for non-body particles.</span>
+  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+      <span class="o">-</span><span class="mi">1</span>
+      <span class="o">-</span><span class="mi">1</span>
+      <span class="mi">0</span>
+      <span class="mi">0</span>
+  <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+
+ <span class="c1"># the image in x, y, and z directions of particles in int3 type.</span>
+  <span class="o">&lt;</span><span class="n">image</span><span class="o">&gt;</span>
+      <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+      <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+      <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+      <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+  <span class="o">&lt;/</span><span class="n">image</span><span class="o">&gt;</span>
+
+ <span class="c1"># the velocity in x, y, and z directions of particles in float3 type.</span>
+  <span class="o">&lt;</span><span class="n">velocity</span><span class="o">&gt;</span>
+   <span class="mf">3.768</span>     <span class="o">-</span><span class="mf">2.595</span>    <span class="o">-</span><span class="mf">1.874</span>
+  <span class="o">-</span><span class="mf">3.988</span>     <span class="o">-</span><span class="mf">1.148</span>     <span class="mf">2.800</span>
+   <span class="mf">1.570</span>      <span class="mf">1.015</span>    <span class="o">-</span><span class="mf">3.167</span>
+   <span class="mf">2.441</span>     <span class="o">-</span><span class="mf">1.859</span>    <span class="o">-</span><span class="mf">1.039</span>
+  <span class="o">&lt;/</span><span class="n">velocity</span><span class="o">&gt;</span>
+
+
+ <span class="c1"># the orientation vector (x, y, z) of particles in float3 type.</span>
+  <span class="o">&lt;</span><span class="n">orientation</span><span class="o">&gt;</span>
+   <span class="o">-</span><span class="mf">0.922</span>     <span class="mf">0.085</span>     <span class="mf">0.376</span>
+   <span class="o">-</span><span class="mf">0.411</span>    <span class="o">-</span><span class="mf">0.637</span>    <span class="o">-</span><span class="mf">0.651</span>
+    <span class="mf">0.293</span>     <span class="mf">0.892</span>    <span class="o">-</span><span class="mf">0.342</span>
+   <span class="o">-</span><span class="mf">0.223</span>     <span class="mf">0.084</span>     <span class="mf">0.970</span>
+  <span class="o">&lt;/</span><span class="n">orientation</span><span class="o">&gt;</span>
+
+ <span class="c1"># the quaternion vector (x, y, z, w) of particles in float4 type.</span>
+  <span class="o">&lt;</span><span class="n">quaternion</span><span class="o">&gt;</span>
+   <span class="mf">0.369</span>   <span class="mf">0.817</span>  <span class="o">-</span><span class="mf">0.143</span>   <span class="mf">0.418</span>
+  <span class="o">-</span><span class="mf">0.516</span>  <span class="o">-</span><span class="mf">0.552</span>   <span class="mf">0.653</span>   <span class="mf">0.024</span>
+  <span class="o">-</span><span class="mf">0.521</span>  <span class="o">-</span><span class="mf">0.002</span>   <span class="mf">0.131</span>   <span class="mf">0.843</span>
+  <span class="o">-</span><span class="mf">0.640</span>   <span class="mf">0.159</span>  <span class="o">-</span><span class="mf">0.048</span>  <span class="o">-</span><span class="mf">0.749</span>
+  <span class="o">&lt;/</span><span class="n">quaternion</span><span class="o">&gt;</span>
+
+ <span class="c1"># the angular velocity of rotation in x, y, and z directions of particles in float3 type.</span>
+  <span class="o">&lt;</span><span class="n">rotation</span><span class="o">&gt;</span>
+   <span class="o">-</span><span class="mf">0.640</span>    <span class="mf">0.571</span>   <span class="o">-</span><span class="mf">0.512</span>
+   <span class="o">-</span><span class="mf">0.744</span>    <span class="mf">0.346</span>    <span class="mf">0.569</span>
+    <span class="mf">0.620</span>   <span class="o">-</span><span class="mf">0.086</span>    <span class="mf">0.779</span>
+   <span class="o">-</span><span class="mf">0.542</span>    <span class="mf">0.319</span>   <span class="o">-</span><span class="mf">0.776</span>
+  <span class="o">&lt;/</span><span class="n">rotation</span><span class="o">&gt;</span>
+
+<span class="c1"># the moment of inertia in x, y, and z directions of particles in float3 type.</span>
+  <span class="o">&lt;</span><span class="n">inert</span><span class="o">&gt;</span>
+      <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">3.0</span>
+      <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">3.0</span>
+      <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">3.0</span>
+      <span class="mf">1.0</span> <span class="mf">1.0</span> <span class="mf">3.0</span>
+  <span class="o">&lt;/</span><span class="n">inert</span><span class="o">&gt;</span>
+
+<span class="c1"># the initiator indication of particles in int type, 1 for initiator.</span>
+  <span class="o">&lt;</span><span class="n">h_init</span><span class="o">&gt;</span>
+      <span class="mi">0</span>
+      <span class="mi">1</span>
+      <span class="mi">0</span>
+      <span class="mi">1</span>
+  <span class="o">&lt;/</span><span class="n">h_init</span><span class="o">&gt;</span>
+
+<span class="c1"># the crosslinking number of particles in int type, 0 for reactable monomer.</span>
+  <span class="o">&lt;</span><span class="n">h_cris</span><span class="o">&gt;</span>
+      <span class="mi">0</span>
+      <span class="mi">0</span>
+      <span class="mi">0</span>
+      <span class="mi">0</span>
+  <span class="o">&lt;/</span><span class="n">h_cris</span><span class="o">&gt;</span>
+
+<span class="c1"># the molecule index of particles in int type.</span>
+  <span class="o">&lt;</span><span class="n">molecule</span><span class="o">&gt;</span>
+      <span class="mi">0</span>
+      <span class="mi">0</span>
+      <span class="mi">1</span>
+      <span class="mi">1</span>
+  <span class="o">&lt;/</span><span class="n">molecule</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </div></blockquote>
 </div>
 </div>
@@ -296,7 +395,7 @@ A
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

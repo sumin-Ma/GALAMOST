@@ -1,6 +1,10 @@
 Constant chemical potential
 ===========================
 
+.. attention::
+
+    GALAMOST v4.0.0's function
+
 Constant Chemical Potential Molecular Dynamics (C :math:`\mu` MD) method introduces an external force that controls the environment of the chemical process of interest. 
 This external force, drawing molecules from a finite reservoir, maintains the chemical potential constant in the region where the process takes place. 
 This method is able to study crystal growth dynamics under constant supersaturation conditions or evaporation dynamics under constant vapor pressure.
@@ -36,8 +40,7 @@ Description:
   
    .. py:function:: setWall(float ox, float oy, float oz, float dx, float dy, float dz)
    
-      specifies external force region with plane center (ox, oy, oz) and direction (dx, dy, dz).
-	  If the normal direction of wall is in Z direction, the center position of plane is (0.0, 0.0, :math:`Z_{F}`).
+      specifies external force region with plane center (ox, oy, oz) and direction (dx, dy, dz). If the normal direction of wall is in Z direction, the center position of plane is (0.0, 0.0, :math:`Z_{F}`).
 
    .. py:function:: setParams(float n0, float k, float sigma, float omega, float Len_CR)
    
