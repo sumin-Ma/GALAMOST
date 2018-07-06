@@ -8,13 +8,15 @@ the interacting particles for each particle, built beforehand. Because of the in
 included independently in neighbor list in the mode that one thread calculates and sums all non-bonded forces of a particle. The common non-bonded potential energy 
 functions are included in GALAMOST.
 
-==========================   =====================
+==========================   =======================
 :ref:`lennard-jones`         :py:class:`LjForce`
 :ref:`shift-lennard-jones`   :py:class:`SljForce`
+:ref:`linear-pi-pi`          :py:class:`CenterForce`
+:ref:`gem`                   :py:class:`GEMForce`
 :ref:`harmonic-repulsion`    :py:class:`PairForce`
 :ref:`gaussian-repulsion`    :py:class:`PairForce`
 :ref:`IPL-potential`         :py:class:`PairForce`
-==========================   =====================
+==========================   =======================
 
 .. _lennard-jones:
 
@@ -175,6 +177,55 @@ Description:
       groupC = galamost.ParticleSet(all_info, 'C')
       cf = galamost.CenterForce(all_info,neighbor_list, groupC, 1.0, 2.0)
       app.add(cf)	  
+	  
+.. _gem:
+	  
+Generalized exponential model
+-----------------------------
+
+Description:
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+		
+          \phi(r)=&\epsilon\text{ exp}\left[-\left(\frac{r}{\sigma}\right)^{n}\right] 
+		                            & r<r_{\mathrm{cut}}  \\
+                            = & 0 & r \ge r_{\mathrm{cut}} \\
+        \end{eqnarray*}
+
+    The following coefficients must be set per unique pair of particle types:
+
+    - :math:`\epsilon` - *epsilon* (in energy units)
+    - :math:`\sigma` - *sigma* (in distance units)
+    - :math:`n` - power exponent *n*	
+    - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
+      - *optional*: defaults to the global r_cut	
+
+
+.. py:class:: GEMForce(all_info, nlist, r_cut)
+
+   The constructor of a generalized exponential model object.
+   
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.   
+   :param float r_cut: The cut-off radius.
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float n)
+   
+      specifies the GEM interaction parameters with type1, type2, epsilon, sigma, and n.
+   
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float n, float r_cut) 
+   
+      specifies the GEM interaction parameters with type1, type2, epsilon, sigma, n, and cut-off radius.
+
+   Example::
+
+      gem = galamost.GEMForce(all_info, neighbor_list, 2.0)
+      gem.setParams('A', 'A',  1.0,  1.0, 4.0) # epsilon, sigma, n
+      app.add(gem)	  
+	  
 	  
 Pair interaction
 ----------------
