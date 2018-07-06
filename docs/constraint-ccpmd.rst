@@ -1,13 +1,13 @@
 Constant chemical potential
 ===========================
 
-.. attention::
+.. note::
 
     GALAMOST v4.0.0's function
 
 Constant Chemical Potential Molecular Dynamics (C :math:`\mu` MD) method introduces an external force that controls the environment of the chemical process of interest. 
 This external force, drawing molecules from a finite reservoir, maintains the chemical potential constant in the region where the process takes place. 
-This method is able to study crystal growth dynamics under constant supersaturation conditions or evaporation dynamics under constant vapor pressure.
+This method is able to study crystal growth dynamics under constant supersaturation conditions or evaporation dynamics under constant vapor pressure. Reference: C. Perego, M. Salvalaglio, and M. Parrinello, J. Chem. Phys., 2015, 142, 144113.
 
 .. image:: ccpmd.png
     :width: 512 px

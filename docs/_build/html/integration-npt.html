@@ -111,6 +111,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">NPT ensemble</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#andersen-barostat">Andersen barostat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#npt-for-rigid-body">NPT for rigid body</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#martyna-tobias-klein-barostat">Martyna-Tobias-Klein barostat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#martyna-tobias-klein-barostat-for-rigid-body">Martyna-Tobias-Klein barostat for rigid body</a></li>
 </ul>
 </li>
 </ul>
@@ -205,6 +207,7 @@
 </table>
 <div class="section" id="andersen-barostat">
 <span id="andersen-npt"></span><h2>Andersen barostat<a class="headerlink" href="#andersen-barostat" title="Permalink to this headline">¶</a></h2>
+<p>Reference: H. C. Andersen, J. Chem. Phys., 1980, 72(4), 2384-2393.</p>
 <dl class="class">
 <dt id="Npt">
 <em class="property">class </em><code class="descname">Npt</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info_group</em>, <em>comp_info_all</em>, <em>T</em>, <em>P</em>, <em>tauT</em>, <em>tauP</em><span class="sig-paren">)</span><a class="headerlink" href="#Npt" title="Permalink to this definition">¶</a></dt>
@@ -304,6 +307,151 @@
 
 <span class="n">rigidnpt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NptRigid</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">,</span> <span class="n">comp_info_b</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">rigidnpt</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="martyna-tobias-klein-barostat">
+<h2>Martyna-Tobias-Klein barostat<a class="headerlink" href="#martyna-tobias-klein-barostat" title="Permalink to this headline">¶</a></h2>
+<p>Reference: G. J. Martyna, D. J. Tobias, and M. L. Klein, J. Chem. Phys., 1994, 101(5), 4177-4189.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">GALAMOST v4.0.0’s function</p>
+</div>
+<dl class="class">
+<dt id="NPTMTK">
+<em class="property">class </em><code class="descname">NPTMTK</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info_group</em>, <em>comp_info_all</em>, <em>T</em>, <em>P</em>, <em>tauT</em>, <em>tauP</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTK" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of a NPTMTK thermostat object for a group of particles.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info_group</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of group particles.</li>
+<li><strong>comp_info_all</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of all particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The temperature.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The pressure.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The thermostat coupling.</li>
+<li><strong>tauP</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The barostat coupling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="NPTMTK.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTK.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a fixed value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="NPTMTK.setSemiisotropic">
+<code class="descname">setSemiisotropic</code><span class="sig-paren">(</span><em>float pressxy</em>, <em>float pressz</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTK.setSemiisotropic" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with fixed values for XY and Z directions, respectively.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setSemiisotropic</code><span class="sig-paren">(</span><em>float pressxy</em>, <em>Variant vpressz</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the pressure with a fixed value for XY direction and a varying value for Z direction, respectively.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="NPTMTK.setAnisotropic">
+<code class="descname">setAnisotropic</code><span class="sig-paren">(</span><em>float pressx</em>, <em>float pressy</em>, <em>float pressz</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTK.setAnisotropic" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with fixed values for X, Y and Z directions, respectively.</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">comp_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+
+<span class="n">npt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NPTMTK</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">npt</span><span class="o">.</span><span class="n">setSemiisotropic</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">npt</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="martyna-tobias-klein-barostat-for-rigid-body">
+<h2>Martyna-Tobias-Klein barostat for rigid body<a class="headerlink" href="#martyna-tobias-klein-barostat-for-rigid-body" title="Permalink to this headline">¶</a></h2>
+<p>Reference: G. J. Martyna, D. J. Tobias, and M. L. Klein, J. Chem. Phys., 1994, 101(5), 4177-4189.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">GALAMOST v4.0.0’s function</p>
+</div>
+<dl class="class">
+<dt id="NPTMTKRigid">
+<em class="property">class </em><code class="descname">NPTMTKRigid</code><span class="sig-paren">(</span><em>all_info</em>, <em>group</em>, <em>comp_info_group</em>, <em>comp_info_all</em>, <em>T</em>, <em>P</em>, <em>tauT</em>, <em>tauP</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTKRigid" title="Permalink to this definition">¶</a></dt>
+<dd><p>The constructor of a NPTMTK thermostat object for rigid bodies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</li>
+<li><strong>group</strong> (<a class="reference internal" href="system-group.html#ParticleSet" title="ParticleSet"><em>ParticleSet</em></a>) – The group of particles.</li>
+<li><strong>comp_info_group</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of group particles.</li>
+<li><strong>comp_info_all</strong> (<a class="reference internal" href="system-compute.html#ComputeInfo" title="ComputeInfo"><em>ComputeInfo</em></a>) – The calculation of collective information of all particles.</li>
+<li><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The temperature.</li>
+<li><strong>P</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The pressure.</li>
+<li><strong>tauT</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The thermostat coupling.</li>
+<li><strong>tauP</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The barostat coupling.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="NPTMTKRigid.setT">
+<code class="descname">setT</code><span class="sig-paren">(</span><em>float T</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTKRigid.setT" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the temperature with a fixed value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setT</code><span class="sig-paren">(</span><em>Variant vT</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the temperature with a varying value by time step.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="NPTMTKRigid.setSemiisotropic">
+<code class="descname">setSemiisotropic</code><span class="sig-paren">(</span><em>float pressxy</em>, <em>float pressz</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTKRigid.setSemiisotropic" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with fixed values for XY and Z directions, respectively.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">setSemiisotropic</code><span class="sig-paren">(</span><em>float pressxy</em>, <em>Variant vpressz</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the pressure with a fixed value for XY direction and a varying value for Z direction, respectively.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="NPTMTKRigid.setAnisotropic">
+<code class="descname">setAnisotropic</code><span class="sig-paren">(</span><em>float pressx</em>, <em>float pressy</em>, <em>float pressz</em><span class="sig-paren">)</span><a class="headerlink" href="#NPTMTKRigid.setAnisotropic" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the pressure with fixed values for X, Y and Z directions, respectively.</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">comp_info</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+
+<span class="n">bgroup</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
+<span class="n">comp_info_b</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ComputeInfo</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">bgroup</span><span class="p">)</span>
+
+<span class="n">npt</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">NPTMTK</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">groupb</span><span class="p">,</span> <span class="n">comp_infob</span><span class="p">,</span> <span class="n">comp_info</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">npt</span><span class="o">.</span><span class="n">setSemiisotropic</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">npt</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>

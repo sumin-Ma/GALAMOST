@@ -125,6 +125,7 @@ Description:
 	  
 Linear molecule :math:`\pi`-:math:`\pi` interaction
 ---------------------------------------------------
+An attractive potential to mimic :math:`\pi-\pi` interactions of rod segments. Reference: Y.-L. Lin, H.-Y. Chang, and Y.-J. Sheng, Macromolecules 2012, 45, 7143-7156.
 
 Description:
 
