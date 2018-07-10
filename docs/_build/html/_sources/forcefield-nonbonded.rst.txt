@@ -13,6 +13,7 @@ functions are included in GALAMOST.
 :ref:`shift-lennard-jones`   :py:class:`SljForce`
 :ref:`linear-pi-pi`          :py:class:`CenterForce`
 :ref:`gem`                   :py:class:`GEMForce`
+:ref:`lj9_6-repulsion`       :py:class:`PairForce`
 :ref:`harmonic-repulsion`    :py:class:`PairForce`
 :ref:`gaussian-repulsion`    :py:class:`PairForce`
 :ref:`IPL-potential`         :py:class:`PairForce`
