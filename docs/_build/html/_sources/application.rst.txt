@@ -12,8 +12,8 @@ added ``add()`` into or removed ``remove()`` from the application before runing 
 
    The constructor of an application object.
 	  
-   :param AllInfo all_info: The system information
-   :param float dt: The integration time step	   
+   :param AllInfo all_info: system information
+   :param float dt: integration time step	   
 
    .. py:function:: add(boost::shared_ptr<*> object)
    
@@ -26,6 +26,10 @@ added ``add()`` into or removed ``remove()`` from the application before runing 
    .. py:function:: clear()
    
       removes all objects from the application.
+	  
+   .. py:function:: setDt(float dt)
+   
+      sets integration time step.	  
 	  
    .. py:function:: run(unsigned int N)
    

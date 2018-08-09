@@ -9,6 +9,11 @@ With the prepared script, you should now be able to try running GALAMOST as:
       ./yourscript.gala --gpu=0 >a.log&
 	  
 Where you may specify the GPU id with the ``--gpu=`` option and output the screen information into ``a.log`` file. If the script file has no executive permission, the command of ``chmod +x yourscript.gala`` should be executed before running above command.
+An alternative running command which could ignore the executive permission of the script:
+
+   Examples::
+   
+      python yourscript.gala --gpu=0 >a.log& 
 
 Here is an example of script for DPD simulation. The head of GALAMOST script usually is:
 

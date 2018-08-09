@@ -17,6 +17,7 @@ functions are included in GALAMOST.
 :ref:`harmonic-repulsion`    :py:class:`PairForce`
 :ref:`gaussian-repulsion`    :py:class:`PairForce`
 :ref:`IPL-potential`         :py:class:`PairForce`
+:ref:`Coulomb-potential`     :py:class:`PairForce`
 ==========================   =======================
 
 .. _lennard-jones:
@@ -326,8 +327,31 @@ Description:
     - :math:`n` - *n* (unitless)	
     - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
 	
+   :ref:`pair-sc-label`
+
+.. _Coulomb-potential:   
+   
+Short-range Coulomb potential
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
+Description:
+   
+    .. math::
+        :nowrap:
+   	
+        \begin{eqnarray*}
+   	U\left( r \right)=&\frac{\alpha}{r} & r < r_{\mathrm{cut}} \\				
+                            = & 0 & r \ge r_{\mathrm{cut}} \\
+        \end{eqnarray*}				
+   
+   
+    The following coefficients must be set per unique pair of particle types:
+   
+    - :math:`\alpha = f\frac{q_{i} q_{j}}{\epsilon_{r}}` - *alpha* - (in energy*distance unit): :math:`f= 1/4\pi \epsilon_0=138.935\text{ }kJ\text{ }mol^{-1}\text{ }nm\text{ }e^{-2}`
+    - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
+
    :ref:`pair-sc-label` 
-	
+   
 .. _pair-sc-label:
 
 Script commands
@@ -346,7 +370,8 @@ Script commands
    
    .. py:function:: setShiftParams(string type1, string type2, float param0, float param1, float param2, float r_cut, float r_shift, Func function)
    
-      specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, shift radius, and potential type. This method employs the shift function same as the one of GROMACS.
+      specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, shift radius, and potential type.
+      This method employs a shift function introduced by GROMACS in which the potential is smoothed at the boundaries.
    
     
    ==============   ==========   ==========   ==========
@@ -356,7 +381,8 @@ Script commands
    lj9_6            epsilon      sigma        alpha
    harmonic         alpha                               
    gauss            epsilon      sigma                  
-   ipl              epsilon      sigma        n          
+   ipl              epsilon      sigma        n   
+   Coulomb          alpha    
    ==============   ==========   ==========   ==========
     
    Example::

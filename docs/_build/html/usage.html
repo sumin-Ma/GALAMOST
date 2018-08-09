@@ -184,7 +184,14 @@ With the prepared script, you should now be able to try running GALAMOST as:</p>
 </pre></div>
 </div>
 </div></blockquote>
-<p>Where you may specify the GPU id with the <code class="docutils literal"><span class="pre">--gpu=</span></code> option and output the screen information into <code class="docutils literal"><span class="pre">a.log</span></code> file. If the script file has no executive permission, the command of <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">yourscript.gala</span></code> should be executed before running above command.</p>
+<p>Where you may specify the GPU id with the <code class="docutils literal"><span class="pre">--gpu=</span></code> option and output the screen information into <code class="docutils literal"><span class="pre">a.log</span></code> file. If the script file has no executive permission, the command of <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">yourscript.gala</span></code> should be executed before running above command.
+An alternative running command which could ignore the executive permission of the script:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">yourscript</span><span class="o">.</span><span class="n">gala</span> <span class="o">--</span><span class="n">gpu</span><span class="o">=</span><span class="mi">0</span> <span class="o">&gt;</span><span class="n">a</span><span class="o">.</span><span class="n">log</span><span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>Here is an example of script for DPD simulation. The head of GALAMOST script usually is:</p>
 <blockquote>
 <div><p>Examples:</p>
