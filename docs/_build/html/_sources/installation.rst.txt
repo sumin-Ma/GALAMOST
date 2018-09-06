@@ -6,11 +6,11 @@ Source code
 
 The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program. 
 The code and binary program can be downloaded from our website http://galamost.ciac.jl.cn/. At present, only Linux operating systems are supported.
-Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path
+Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by ``configure``.
 
    Examples::
 
-      ./configuration --prefix=/opt/galamost3
+      ./configure --prefix=/opt/galamost3
 	 
 More configuration commands are given here:
 
@@ -27,7 +27,22 @@ Commands       Functions                    Examples
 --python=      the path of Python program   --python=/usr
 ============   ==========================   =======================
 
-After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package
+The compute capability of some NVIDIA GPU is listed. For more please visit https://developer.nvidia.com/cuda-gpus.
+
+===================   ==================
+GPUs                  Compute Capability
+===================   ==================
+Tesla V100            70
+Tesla P100            60
+Tesla P40             61
+Tesla P4              61 
+NVIDIA TITAN V        70 
+NVIDIA TITAN Xp       61
+NVIDIA TITAN X        61 
+GeForce GTX 1080 Ti   61
+===================   ==================
+
+After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by ``make install``.
 
    Examples::
    
@@ -38,7 +53,7 @@ Binary program
 --------------
 
 The GALAMOST also can be installed by a compiled binary file which includes dependent libaries except CUDA libray.
-The ".rpm" or ".deb" files corresponding to the CUDA version in your machine can be downloaded from our 
+The ``.rpm`` or ``.deb`` files corresponding to the CUDA version in your machine can be downloaded from our 
 website http://galamost.ciac.jl.cn/.
 
 1. Redhat Package Manager (RPM) file for Redhat, Fedora, and Suse Linux operating system.

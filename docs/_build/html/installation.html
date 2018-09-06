@@ -184,10 +184,10 @@
 <h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program.
 The code and binary program can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>. At present, only Linux operating systems are supported.
-Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path</p>
+Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by <code class="docutils literal"><span class="pre">configure</span></code>.</p>
 <blockquote>
 <div><p>Examples:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configuration</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">galamost3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">galamost3</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -239,7 +239,45 @@ Here is the guide for installation by code. Before compiling and installing of s
 </tr>
 </tbody>
 </table>
-<p>After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package</p>
+<p>The compute capability of some NVIDIA GPU is listed. For more please visit <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">GPUs</th>
+<th class="head">Compute Capability</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Tesla V100</td>
+<td>70</td>
+</tr>
+<tr class="row-odd"><td>Tesla P100</td>
+<td>60</td>
+</tr>
+<tr class="row-even"><td>Tesla P40</td>
+<td>61</td>
+</tr>
+<tr class="row-odd"><td>Tesla P4</td>
+<td>61</td>
+</tr>
+<tr class="row-even"><td>NVIDIA TITAN V</td>
+<td>70</td>
+</tr>
+<tr class="row-odd"><td>NVIDIA TITAN Xp</td>
+<td>61</td>
+</tr>
+<tr class="row-even"><td>NVIDIA TITAN X</td>
+<td>61</td>
+</tr>
+<tr class="row-odd"><td>GeForce GTX 1080 Ti</td>
+<td>61</td>
+</tr>
+</tbody>
+</table>
+<p>After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code>.</p>
 <blockquote>
 <div><p>Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span> <span class="o">-</span><span class="n">j4</span>
@@ -251,7 +289,7 @@ Here is the guide for installation by code. Before compiling and installing of s
 <div class="section" id="binary-program">
 <h2>Binary program<a class="headerlink" href="#binary-program" title="Permalink to this headline">¶</a></h2>
 <p>The GALAMOST also can be installed by a compiled binary file which includes dependent libaries except CUDA libray.
-The “.rpm” or “.deb” files corresponding to the CUDA version in your machine can be downloaded from our
+The <code class="docutils literal"><span class="pre">.rpm</span></code> or <code class="docutils literal"><span class="pre">.deb</span></code> files corresponding to the CUDA version in your machine can be downloaded from our
 website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>.</p>
 <ol class="arabic">
 <li><p class="first">Redhat Package Manager (RPM) file for Redhat, Fedora, and Suse Linux operating system.</p>

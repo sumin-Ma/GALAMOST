@@ -371,7 +371,7 @@ Script commands
    .. py:function:: setShiftParams(string type1, string type2, float param0, float param1, float param2, float r_cut, float r_shift, Func function)
    
       specifies the interaction and its parameters with type1, type2, parameter0, parameter1, parameter2, cut-off radius, shift radius, and potential type.
-      This method employs a shift function introduced by GROMACS in which the potential is smoothed at the boundaries.
+      This method employs a shift function introduced by GROMACS by which potential and force are smoothed at the boundaries.
    
     
    ==============   ==========   ==========   ==========
