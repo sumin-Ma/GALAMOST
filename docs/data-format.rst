@@ -20,29 +20,29 @@ However, this rule does not include topological relevant information, including 
 
    Particles coordinates, Velocities, Types, Masses ... ::
    
-      <?xml version="0.2" encoding="UTF-8"?>
-      <galamost_xml>
-      <configuration time_step="0">
-      <box units="sigma"  Lx="10" Ly="10" Lz="10"/>
-      <position units="sigma">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <galamost_xml version="1.3">
+      <configuration time_step="0" dimensions="3" natoms="4" >
+      <box lx="10" ly="10" lz="10"/>
+      <position num="4">
       -1 2 -1
       -2 3 0
       -1 4 1
       -1 5 2
       </position>
-      <velocity units="sigma/tau">
+      <velocity num="4">
       1 2 3
       1 0 0
       3 -2 1
       0 1 1
       </velocity>
-      <type>
+      <type num="4">
       A
       B
       B
       A
       </type>
-      <mass>
+      <mass num="4">
       1.0
       2.1
       1.0
@@ -53,7 +53,7 @@ However, this rule does not include topological relevant information, including 
 
    Bonds, Angles, Dihedrals ... ::  
    
-      <bond>
+      <bond num="3">
       polymer 0 1
       polymer 1 2
       polymer 2 3
@@ -61,18 +61,18 @@ However, this rule does not include topological relevant information, including 
       # As above example, each bond connection should be given in one line (bond type, 
       # particle i and particle j). In addition to bond connection, angle and dihedral information 
       # also should be given explicitly in XML as following format, if they are needed.
-      <angle>
+      <angle num="2">
       theta 0 1 2
       theta 1 2 3
       </angle>
-      <dihedral>
+      <dihedral num="1">
       phi 0 1 2 3
       </dihedral>
    
    The other notes of XML ... :: 
 
      # the diameter of particles in float type.
-      <diameter>
+      <diameter num="4">
 	  1.0
 	  1.0
 	  1.0
@@ -80,7 +80,7 @@ However, this rule does not include topological relevant information, including 
       </diameter>
 
      # the charge of particles in float type.
-      <charge>
+      <charge num="4">
 	   1.333
 	   1.333
 	  -1.333
@@ -88,7 +88,7 @@ However, this rule does not include topological relevant information, including 
       </charge>
 
      # the body index of particles in int type, -1 for non-body particles.
-      <body>
+      <body num="4">
 	  -1
 	  -1
 	  0
@@ -96,7 +96,7 @@ However, this rule does not include topological relevant information, including 
       </body>
 	  
      # the image in x, y, and z directions of particles in int3 type.	  
-      <image>
+      <image num="4">
 	  0 0 0 
 	  0 0 0
 	  0 0 0
@@ -104,7 +104,7 @@ However, this rule does not include topological relevant information, including 
       </image>
 	  
      # the velocity in x, y, and z directions of particles in float3 type. 
-      <velocity>
+      <velocity num="4">
        3.768     -2.595    -1.874
       -3.988     -1.148     2.800
        1.570      1.015    -3.167
@@ -113,7 +113,7 @@ However, this rule does not include topological relevant information, including 
 
 
      # the orientation vector (x, y, z) of particles in float3 type.
-      <orientation>
+      <orientation num="4">
        -0.922     0.085     0.376
        -0.411    -0.637    -0.651
         0.293     0.892    -0.342
@@ -121,7 +121,7 @@ However, this rule does not include topological relevant information, including 
       </orientation>
 
      # the quaternion vector (x, y, z, w) of particles in float4 type. 	  
-      <quaternion>
+      <quaternion num="4">
        0.369   0.817  -0.143   0.418
       -0.516  -0.552   0.653   0.024
       -0.521  -0.002   0.131   0.843
@@ -129,7 +129,7 @@ However, this rule does not include topological relevant information, including 
       </quaternion>
 
      # the angular velocity of rotation in x, y, and z directions of particles in float3 type.	  
-      <rotation>
+      <rotation num="4">
        -0.640    0.571   -0.512
        -0.744    0.346    0.569
         0.620   -0.086    0.779
@@ -137,7 +137,7 @@ However, this rule does not include topological relevant information, including 
       </rotation>	  
 
     # the moment of inertia in x, y, and z directions of particles in float3 type.	  
-      <inert>
+      <inert num="4">
 	  1.0 1.0 3.0
 	  1.0 1.0 3.0
 	  1.0 1.0 3.0
@@ -145,7 +145,7 @@ However, this rule does not include topological relevant information, including 
       </inert>	  
 
     # the initiator indication of particles in int type, 1 for initiator.	  
-      <h_init>
+      <h_init num="4">
 	  0
 	  1
 	  0
@@ -153,7 +153,7 @@ However, this rule does not include topological relevant information, including 
       </h_init>	 
 
     # the crosslinking number of particles in int type, 0 for reactable monomer.	  
-      <h_cris>
+      <h_cris num="4">
 	  0
 	  0
 	  0
@@ -161,7 +161,7 @@ However, this rule does not include topological relevant information, including 
       </h_cris>	 
 
     # the molecule index of particles in int type.	  
-      <molecule>
+      <molecule num="4">
 	  0
 	  0
 	  1
