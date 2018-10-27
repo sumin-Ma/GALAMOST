@@ -18,8 +18,8 @@ The data in a line of XML file corresponds to a particle and all particles are g
 For example, the coordinate of a particle in x, y, and z directions is written in a line and three columns in XML files. 
 However, this rule does not include topological relevant information, including bonds, angles and dihedrals.
 
-   Particles coordinates, Velocities, Types, Masses ... ::
-   
+   An example XML file with particles coordinates, velocities, types, masses ... ::
+
       <?xml version="1.0" encoding="UTF-8"?>
       <galamost_xml version="1.3">
       <configuration time_step="0" dimensions="3" natoms="4" >
@@ -51,56 +51,58 @@ However, this rule does not include topological relevant information, including 
       </configuration>
       </galamost_xml>
 
-   Bonds, Angles, Dihedrals ... ::  
+   The file could include the nodes of bond, angle, dihedral ... :: 
    
+     # bond with 'bond type, the index of particle i, j'. 
       <bond num="3">
       polymer 0 1
       polymer 1 2
       polymer 2 3
       </bond>
-      # As above example, each bond connection should be given in one line (bond type, 
-      # particle i and particle j). In addition to bond connection, angle and dihedral information 
-      # also should be given explicitly in XML as following format, if they are needed.
+      
+     # angle with 'angle type, the index of particle i, j, k'. 	  
       <angle num="2">
       theta 0 1 2
       theta 1 2 3
       </angle>
+      
+     # dihedral with 'dihedral type, the index of particle i, j, k, l'. 	  
       <dihedral num="1">
       phi 0 1 2 3
       </dihedral>
-   
-   The other notes of XML ... :: 
-
+         
+   The other nodes of XML ... :: 
+      
      # the diameter of particles in float type.
       <diameter num="4">
-	  1.0
-	  1.0
-	  1.0
-	  1.0
+      1.0
+      1.0
+      1.0
+      1.0
       </diameter>
 
      # the charge of particles in float type.
       <charge num="4">
-	   1.333
-	   1.333
-	  -1.333
-	  -1.333
+       1.333
+       1.333
+      -1.333
+      -1.333
       </charge>
 
      # the body index of particles in int type, -1 for non-body particles.
       <body num="4">
-	  -1
-	  -1
-	  0
-	  0
+      -1
+      -1
+      0
+      0
       </body>
 	  
      # the image in x, y, and z directions of particles in int3 type.	  
       <image num="4">
-	  0 0 0 
-	  0 0 0
-	  0 0 0
-	  0 0 0
+      0 0 0 
+      0 0 0
+      0 0 0
+      0 0 0
       </image>
 	  
      # the velocity in x, y, and z directions of particles in float3 type. 
@@ -138,39 +140,58 @@ However, this rule does not include topological relevant information, including 
 
     # the moment of inertia in x, y, and z directions of particles in float3 type.	  
       <inert num="4">
-	  1.0 1.0 3.0
-	  1.0 1.0 3.0
-	  1.0 1.0 3.0
-	  1.0 1.0 3.0	  
+      1.0 1.0 3.0
+      1.0 1.0 3.0
+      1.0 1.0 3.0
+      1.0 1.0 3.0	  
       </inert>	  
 
     # the initiator indication of particles in int type, 1 for initiator.	  
       <h_init num="4">
-	  0
-	  1
-	  0
-	  1
+      0
+      1
+      0
+      1
       </h_init>	 
 
     # the crosslinking number of particles in int type, 0 for reactable monomer.	  
       <h_cris num="4">
-	  0
-	  0
-	  0
-	  0
+      0
+      0
+      0
+      0
       </h_cris>	 
 
     # the molecule index of particles in int type.	  
       <molecule num="4">
-	  0
-	  0
-	  1
-	  1
+      0
+      0
+      1
+      1
       </molecule>	 	  
 
+   The nodes of anisotropic particle attribute ... ::
 
-
-
+    # the particle patch attribute with 'particle type, patch number' 
+    # followd by 'patch type, patch size, patch position vector in x, y, z directions'.
+      <Patches>
+      B 2
+      p1 60  0    0    1
+      p1 60  0    0   -1
+      </Patches>
+	  
+    # the patch-patch interaction parameter with 'patch type, patch type, gamma_epsilon, alpha'.	  
+      <PatchParams>
+      p1 p1 88.0 0.5
+      </PatchParams>
+	  
+    # the particle shape attribute with 'particle type, diameter a, diameter b, diameter c, 
+    # epsion a, epsion b, epsion c'. The a, b, c are along x, y, z directions in body frame, 
+    # respectively.	  
+      <Aspheres>
+      A 1.0 1.0 1.0 3.0 3.0 3.0      
+      B 1.0 1.0 3.0 1.0 1.0 0.2 
+      </Aspheres>
 
 
 
