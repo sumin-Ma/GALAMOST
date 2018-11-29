@@ -5,8 +5,17 @@ Source code
 -----------
 
 The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program. 
-The code and binary program can be downloaded from our website http://galamost.ciac.jl.cn/. At present, only Linux operating systems are supported.
-Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by ``configure``.
+The code and binary program can be downloaded from our website http://galamost.ciac.jl.cn/Download.php. At present, only Linux operating systems are supported.
+Here is the guide for installation by code. 
+
+1. Requrements::
+
+	Python
+	Boost library
+	CUDA tookit
+	Mvapich2 (additionally needed for version 4)
+
+2. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by ``configure``.
 
    Examples::
 
@@ -25,6 +34,7 @@ Commands       Functions                    Examples
 --cuda=        the path of CUDA toolkit     --cuda=/usr/local/cuda
 --boost=       the path of boost library    --boost=/usr
 --python=      the path of Python program   --python=/usr
+--mpi=         the path of mpi compiler     --python=/usr
 ============   ==========================   =======================
 
 The compute capability of some NVIDIA GPU is listed. For more please visit https://developer.nvidia.com/cuda-gpus.
@@ -42,7 +52,7 @@ NVIDIA TITAN X        61
 GeForce GTX 1080 Ti   61
 ===================   ==================
 
-After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by ``make install``.
+3. After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by ``make install``.
 
    Examples::
    

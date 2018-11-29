@@ -183,14 +183,24 @@
 <div class="section" id="source-code">
 <h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>The entire GALAMOST package is a Free Software under the GNU General Public License. The package is mainly distributed as source code and binary program.
-The code and binary program can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/">http://galamost.ciac.jl.cn/</a>. At present, only Linux operating systems are supported.
-Here is the guide for installation by code. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by <code class="docutils literal"><span class="pre">configure</span></code>.</p>
-<blockquote>
-<div><p>Examples:</p>
+The code and binary program can be downloaded from our website <a class="reference external" href="http://galamost.ciac.jl.cn/Download.php">http://galamost.ciac.jl.cn/Download.php</a>. At present, only Linux operating systems are supported.
+Here is the guide for installation by code.</p>
+<ol class="arabic">
+<li><p class="first">Requrements:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Python</span>
+<span class="n">Boost</span> <span class="n">library</span>
+<span class="n">CUDA</span> <span class="n">tookit</span>
+<span class="n">Mvapich2</span> <span class="p">(</span><span class="n">additionally</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">version</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by <code class="docutils literal"><span class="pre">configure</span></code>.</p>
+<p>Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">galamost3</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ol>
 <p>More configuration commands are given here:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -237,6 +247,10 @@ Here is the guide for installation by code. Before compiling and installing of s
 <td>the path of Python program</td>
 <td>–python=/usr</td>
 </tr>
+<tr class="row-even"><td>–mpi=</td>
+<td>the path of mpi compiler</td>
+<td>–python=/usr</td>
+</tr>
 </tbody>
 </table>
 <p>The compute capability of some NVIDIA GPU is listed. For more please visit <a class="reference external" href="https://developer.nvidia.com/cuda-gpus">https://developer.nvidia.com/cuda-gpus</a>.</p>
@@ -277,14 +291,15 @@ Here is the guide for installation by code. Before compiling and installing of s
 </tr>
 </tbody>
 </table>
-<p>After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code>.</p>
-<blockquote>
-<div><p>Examples:</p>
+<ol class="arabic" start="3">
+<li><p class="first">After configuration, a Makefile file will be generated in your current directory. Then you can compile and install the package  by <code class="docutils literal"><span class="pre">make</span> <span class="pre">install</span></code>.</p>
+<p>Examples:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">install</span> <span class="o">-</span><span class="n">j4</span>
 <span class="c1"># where -j indicates the number of threads to compile the code.</span>
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="binary-program">
 <h2>Binary program<a class="headerlink" href="#binary-program" title="Permalink to this headline">¶</a></h2>
