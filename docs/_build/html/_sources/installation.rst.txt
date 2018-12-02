@@ -10,10 +10,10 @@ Here is the guide for installation by code.
 
 1. Requrements::
 
-	Python
+	Python >=2.6
 	Boost library
-	CUDA tookit
-	Mvapich2 (additionally needed for version 4)
+	NVIDIA CUDA Toolkit >= 7.0
+	MPI(MVAPICH2 >= 2.3 or OpenMPI >= 4.0.0) Note:additionally needed for version 4
 
 2. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by ``configure``.
 
