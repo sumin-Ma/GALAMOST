@@ -216,6 +216,11 @@ Description:
    
       specifies the PPPM force with the number of grid points in x, y, and z direction, the order of interpolation, and the cutoff radius of direct force.
 	  
+   .. py:function:: setParams(float fourierspace, int order, float r_cut)
+   
+      specifies the PPPM force with the fourier space, the order of interpolation, and the cutoff radius of direct force.
+      The number of grid points will be derived automatically.
+	  
    .. py:function:: float getKappa()
    
       return the kappa calculated by PPPM force.

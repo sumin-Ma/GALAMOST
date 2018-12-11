@@ -13,6 +13,7 @@ functions are included in GALAMOST.
 :ref:`shift-lennard-jones`   :py:class:`SljForce`
 :ref:`linear-pi-pi`          :py:class:`CenterForce`
 :ref:`gem`                   :py:class:`GEMForce`
+:ref:`ljewald`               :py:class:`LJEwaldForce`
 :ref:`lj9_6-repulsion`       :py:class:`PairForce`
 :ref:`harmonic-repulsion`    :py:class:`PairForce`
 :ref:`gaussian-repulsion`    :py:class:`PairForce`
@@ -63,6 +64,10 @@ Description:
    .. py:function:: setEnergy_shift()
    
       calls the function to shift LJ potential to be zero at cut-off point.
+	  
+   .. py:function:: setDispVirialCorr(bool open)
+   
+      switches the dispersion virial correction.	  
    
    Example::
    
@@ -227,7 +232,74 @@ Description:
       gem = galamost.GEMForce(all_info, neighbor_list, 2.0)
       gem.setParams('A', 'A',  1.0,  1.0, 4.0) # epsilon, sigma, n
       app.add(gem)	  
+
+.. _ljewald:	  
 	  
+Lennard-Jones and Ewald (short range) interaction
+-------------------------------------------------
+
+Description:
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+        V_{\mathrm{LJ}}(r)  = & 4 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
+                          \alpha \left( \frac{\sigma}{r} \right)^{6} \right] & r < r_{\mathrm{cut}}
+                         +\frac{f}{2\epsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} 
+						 \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}\\
+                            = & 0 & r \ge r_{\mathrm{cut}} \\
+        						
+        \end{eqnarray*}
+
+    The following coefficients must be set per unique pair of particle types:
+
+    - :math:`\epsilon` - *epsilon* (in energy units)
+    - :math:`\sigma` - *sigma* (in distance units)
+    - :math:`\alpha` - *alpha* (unitless)
+    - :math:`\kappa` - *kappa* (unitless)	
+    - :math:`r_{\mathrm{cut}}` - *r_cut* (in distance units)
+      - *optional*: defaults to the global r_cut specified in the pair command
+
+.. py:class:: LJEwaldForce(all_info, nlist, r_cut)
+
+   The constructor of LJ + Ewald in real space interaction calculation object. The :math:`\kappa` parameter could be derived
+   automatically.
+	  
+   :param AllInfo all_info: The system information.
+   :param NeighborList nlist: The neighbor list.  
+   :param float r_cut: The cut-off radius.
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha)
+ 
+      specifies the LJ interaction parameters with type1, type2, epsilon, sigma, and alpha.
+
+   .. py:function:: setParams(string type1, string type2, float epsilon, float sigma, float alpha, float r_cut)
+   
+      specifies the LJ interaction parameters with type1, type2, epsilon, sigma, alpha, and cut-off of radius.
+	  
+   .. py:function:: setEnergy_shift()
+   
+      calls the function to shift LJ potential to be zero at cut-off point.
+	  
+   .. py:function:: setDispVirialCorr(bool open)
+   
+      switches the dispersion virial correction.	  
+   
+   Example::
+   
+      lj = galamost.LJEwaldForce(all_info, neighbor_list, 0.9)
+      lj.setParams('OW', 'OW',   0.648520, 0.315365, 1.0)
+      lj.setParams('HW', 'HW',   0.0, 0.47, 1.0)
+      lj.setParams('MW',  'MW',  0.0, 0.47, 1.0)
+      
+      lj.setParams('OW', 'HW',   0.0, 0.47, 1.0)
+      lj.setParams('OW',  'MW',  0.0, 0.47, 1.0)
+      
+      lj.setParams('HW',  'MW',  0.0, 0.47, 1.0)
+      lj.setEnergy_shift()
+      lj.setDispVirialCorr(True)
+      app.add(lj)	  
 	  
 Pair interaction
 ----------------
