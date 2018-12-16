@@ -244,10 +244,10 @@ Description:
         :nowrap:
 
         \begin{eqnarray*}
-        V_{\mathrm{LJ}}(r)  = & 4 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{12} -
-                          \alpha \left( \frac{\sigma}{r} \right)^{6} \right] & r < r_{\mathrm{cut}}
-                         +\frac{f}{2\epsilon_{r}}\sum\limits_{\mathbf{n}}\sum\limits_{i}^{N}\sum\limits_{j}^{N}\frac{{q}_{i}{q}_{j}\mbox{erfc} 
-						 \left(\kappa\left| {r}_{ij}+\mathbf{n} \right| \right)}{\left| {r}_{ij}+\mathbf{n} \right|}\\
+        V(r_{ij})  = & 4 \epsilon \left[ \left( \frac{\sigma}{r_{ij}} \right)^{12} -
+                          \alpha \left( \frac{\sigma}{r_{ij}} \right)^{6} \right] 
+                         +\frac{f}{\epsilon_{r}}\frac{{q}_{i}{q}_{j}\mbox{erfc} 
+						 \left(\kappa{r}_{ij}\right)}{{r}_{ij}} & r < r_{\mathrm{cut}}\\
                             = & 0 & r \ge r_{\mathrm{cut}} \\
         						
         \end{eqnarray*}
@@ -315,7 +315,7 @@ Description:
         :nowrap:
 
         \begin{eqnarray*}
-        V_{\mathrm{LJ}}(r)  = & 6.75 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{9} -
+        V(r)  = & 6.75 \epsilon \left[ \left( \frac{\sigma}{r} \right)^{9} -
                           \alpha \left( \frac{\sigma}{r} \right)^{6} \right] & r < r_{\mathrm{cut}} \\
                             = & 0 & r \ge r_{\mathrm{cut}} \\
         \end{eqnarray*}
