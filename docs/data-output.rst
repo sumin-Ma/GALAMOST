@@ -153,6 +153,15 @@ XML dump
    .. py:function:: setOutputDihedral(bool switch)
    
       switches the function of output dihedral.
+	  
+   .. py:function:: setOutputEllipsoid(PBGBForce object)
+   
+      outputs ellipsoid information for display in OVITO.
+
+   .. py:function:: setOutputEllipsoid(GBForce object)
+   
+      outputs ellipsoid information for display in OVITO.	  
+	  
    
    Example::
    
