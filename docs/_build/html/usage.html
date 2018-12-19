@@ -192,6 +192,13 @@ An alternative running command which could ignore the executive permission of th
 </pre></div>
 </div>
 </div></blockquote>
+<p>For version 4, you could use multiple GPU for parallel computation by following commands:</p>
+<blockquote>
+<div><p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="n">python</span> <span class="n">yourscript</span><span class="o">.</span><span class="n">gala</span> <span class="o">--</span><span class="n">gpu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span> <span class="o">&gt;</span><span class="n">a</span><span class="o">.</span><span class="n">log</span><span class="o">&amp;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <p>Here is an example of script for DPD simulation. The head of GALAMOST script usually is:</p>
 <blockquote>
 <div><p>Examples:</p>

@@ -14,6 +14,12 @@ An alternative running command which could ignore the executive permission of th
    Examples::
    
       python yourscript.gala --gpu=0 >a.log& 
+	  
+For version 4, you could use multiple GPU for parallel computation by following commands:	 
+
+   Examples::
+   
+      mpirun -n 4 python yourscript.gala --gpu=0,1,2,3 >a.log& 
 
 Here is an example of script for DPD simulation. The head of GALAMOST script usually is:
 

@@ -10,11 +10,12 @@ Here is the guide for installation by code.
 
 1. Requrements::
 
-	Python >=2.6
-	Boost library
-	NVIDIA CUDA Toolkit >= 7.0
-	MPI(MVAPICH2 >= 2.3 or OpenMPI >= 4.0.0) Note:additionally needed for version 4
-
+	1. Python >=2.6
+	2. Boost library
+	3. NVIDIA CUDA Toolkit >= 7.0
+	4. MPI(MVAPICH2 >= 2.3 or OpenMPI >= 4.0.0) Note:additionally needed for version 4
+	   For MVAPICH2, environment variable "export MV2_ENABLE_AFFINITY=0" is necessary to 
+	   avoid multiple processes running on a same CPU core
 2. Before compiling and installing of source code, you should configure compiling system firstly, i.e. installation path, by ``configure``.
 
    Examples::
@@ -34,7 +35,7 @@ Commands       Functions                    Examples
 --cuda=        the path of CUDA toolkit     --cuda=/usr/local/cuda
 --boost=       the path of boost library    --boost=/usr
 --python=      the path of Python program   --python=/usr
---mpi=         the path of mpi compiler     --python=/usr
+--mpi_dir=     the path of mpi compiler     --mpi_dir=/usr/local
 ============   ==========================   =======================
 
 The compute capability of some NVIDIA GPU is listed. For more please visit https://developer.nvidia.com/cuda-gpus.
