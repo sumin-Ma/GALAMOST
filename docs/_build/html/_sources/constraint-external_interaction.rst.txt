@@ -56,16 +56,16 @@ External force
 	  
    Example::
    
-      v = galamost.VariantSin ()
+      v = galamost.VariantSin()
       v.setPoint(0, 1000, 1, -1) 
       v.setPoint(1000000, 1000, 1, -1)
       # set the parameters of sinusoid force by time step, period, max and min value where 
 	  # the latter three parameters are linearly varying by time step.
 	  
       groupA = galamost.ParticleSet(all_info, "A")
-      ef = galamost.ExternalForce (all_info, groupA)
+      ef = galamost.ExternalForce(all_info, groupA)
       #initializes an external force object with system information and particle group.
-      ef.setForce (v, "X")
+      ef.setForce(v, "X")
       # sets parameters with force and direction.
       app.add(ef)
 

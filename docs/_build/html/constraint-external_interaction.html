@@ -271,16 +271,16 @@ the group of particles and each particle have a <span class="math">\(F/N\)</span
 </dd></dl>
 
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">VariantSin</span> <span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">VariantSin</span><span class="p">()</span>
 <span class="n">v</span><span class="o">.</span><span class="n">setPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">v</span><span class="o">.</span><span class="n">setPoint</span><span class="p">(</span><span class="mi">1000000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># set the parameters of sinusoid force by time step, period, max and min value where</span>
     <span class="c1"># the latter three parameters are linearly varying by time step.</span>
 
 <span class="n">groupA</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ParticleSet</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
-<span class="n">ef</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ExternalForce</span> <span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">groupA</span><span class="p">)</span>
+<span class="n">ef</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">ExternalForce</span><span class="p">(</span><span class="n">all_info</span><span class="p">,</span> <span class="n">groupA</span><span class="p">)</span>
 <span class="c1">#initializes an external force object with system information and particle group.</span>
-<span class="n">ef</span><span class="o">.</span><span class="n">setForce</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">ef</span><span class="o">.</span><span class="n">setForce</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
 <span class="c1"># sets parameters with force and direction.</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ef</span><span class="p">)</span>
 </pre></div>
