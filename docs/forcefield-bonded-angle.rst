@@ -43,7 +43,7 @@ Description:
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
 
     .. note::
-	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.
+	    The angles set in script are in the unit of degree, and the program will convert them into radian automatically.
 
 .. py:class:: AngleForceHarmonic(all_info)
 
@@ -81,7 +81,7 @@ Description:
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
 	
     .. note::
-	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
+	    The angles set in script are in the unit of degree, and the program will convert them into radian automatically.
 
 .. py:class:: AngleForceHarmonicCos(all_info)
 
@@ -119,7 +119,7 @@ Description:
     - :math:`\theta_{0}` - equilibrium angle ``theta0`` (in radians)
 	
     .. note::
-	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
+	    The angles set in script are in the unit of degree, and the program will convert them into radian automatically.	
 
 .. py:class:: AngleForceCos(all_info)
 

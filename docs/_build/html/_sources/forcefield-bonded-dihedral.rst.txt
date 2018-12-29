@@ -12,10 +12,11 @@ The dihedrals are specified in :ref:`xml-format` configuration file with the for
    
 By themselves, dihedrals do nothing. Only when you specify a dihedral force in script(i.e. :py:class:`DihedralForceHarmonic`), are forces actually calculated between the listed particles.
 
-========================   ===================================
-:ref:`harmonic-dihedral`   :py:class:`DihedralForceHarmonic`
-:ref:`opls-dihedral`       :py:class:`DihedralForceOplsCosine`
-========================   ===================================
+=================================   ===================================
+:ref:`harmonic-dihedral`            :py:class:`DihedralForceHarmonic`
+:ref:`harmonic-dihedral-improper`   :py:class:`DihedralForceHarmonic`
+:ref:`opls-dihedral`                :py:class:`DihedralForceOplsCosine`
+=================================   ===================================
 
 .. image:: dihedral.png
     :width: 250 px
@@ -33,16 +34,18 @@ Description:
         :nowrap:
 
         \begin{eqnarray*}
-        V_{\mathrm{dihedral}}(\varphi)=k\left[ 1-\cos \left( \varphi-\delta \right) \right]		
+        V_{\mathrm{dihedral}}(\varphi)=k\left[ 1+f\cos \left( \varphi-\delta \right) \right]		
         \end{eqnarray*}
 
     Coefficients:
 
     - :math:`k` - multiplicative constant ``k`` (in units of energy)
     - :math:`\delta` - phase shift angle ``delta`` (in radians)
+    - :math:`f` - factor ``f`` (unitless)	
+      - *optional*: defaults to `-1.0`		
 	
     .. note::
-	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
+	    The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.
 
 .. py:class:: DihedralForceHarmonic(all_info)
 
@@ -52,12 +55,54 @@ Description:
 
    .. py:function:: setParams(string name, float k, float delta)
    
-      specifies the dihedral harmonic force parameters with dihedral type, multiplicative constant, and phase shift angle.	  
+      specifies the dihedral harmonic force parameters with dihedral type, multiplicative constant, and phase shift angle.	
+
+   .. py:function:: setCosFactor(float f)
+   
+      specifies the dihedral harmonic force parameters with factor.		  
 	  
    Example::
    
       dihedralforce = galamost.DihedralForceHarmonic(all_info)
       dihedralforce.setParams('A-B-B-A', 10.0, 0.0)
+      app.add(dihedralforce)
+	  
+.. _harmonic-dihedral-improper:	
+	  
+Harmonic dihedral(improper) potential
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Description:
+
+    .. math::
+        :nowrap:
+
+        \begin{eqnarray*}
+        V_{\mathrm{dihedral}}(\varphi)=k\left( \varphi-\delta \right)^2		
+        \end{eqnarray*}
+
+    Coefficients:
+
+    - :math:`k` - potential constant ``k`` (in units of energy/radians^2)
+    - :math:`\delta` - phase shift angle ``delta`` (in radians)
+
+    .. note::
+	    The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.	
+
+.. py:class:: DihedralForceHarmonic(all_info)
+
+   The constructor of dihedral harmonic interaction object.
+ 
+   :param AllInfo all_info: The system information.
+
+   .. py:function:: setParams(string name, float k, float delta)
+   
+      specifies the dihedral harmonic force parameters with dihedral type, potential constant, and phase shift angle.	  
+	  
+   Example::
+   
+      dihedralforce = galamost.DihedralForceHarmonic(all_info)
+      dihedralforce.setParams('A-B-B-A', 10.0, 0.0, galamost.DihedralForceHarmonic.Prop.improper)
       app.add(dihedralforce)
 
 .. _opls-dihedral:	  
@@ -80,7 +125,7 @@ Description:
     - :math:`\delta` - phase shift angle ``delta`` (in radians)
 	
     .. note::
-	    The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.	
+	    The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.
 
 .. py:class:: DihedralForceOplsCosine(all_info)
 

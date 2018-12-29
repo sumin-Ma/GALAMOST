@@ -109,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="forcefield-bonded-angle.html">Angle bending</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Dihedral torsion</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#harmonic-dihedral-potential">Harmonic dihedral potential</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#harmonic-dihedral-improper-potential">Harmonic dihedral(improper) potential</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#opls-dihedral-potential">OPLS dihedral potential</a></li>
 </ul>
 </li>
@@ -208,14 +209,17 @@ The dihedrals are specified in <a class="reference internal" href="data-format.h
 <p>By themselves, dihedrals do nothing. Only when you specify a dihedral force in script(i.e. <a class="reference internal" href="#DihedralForceHarmonic" title="DihedralForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceHarmonic</span></code></a>), are forces actually calculated between the listed particles.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="41%" />
-<col width="59%" />
+<col width="49%" />
+<col width="51%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#harmonic-dihedral"><span class="std std-ref">Harmonic dihedral potential</span></a></td>
 <td><a class="reference internal" href="#DihedralForceHarmonic" title="DihedralForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceHarmonic</span></code></a></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#opls-dihedral"><span class="std std-ref">OPLS dihedral potential</span></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#harmonic-dihedral-improper"><span class="std std-ref">Harmonic dihedral(improper) potential</span></a></td>
+<td><a class="reference internal" href="#DihedralForceHarmonic" title="DihedralForceHarmonic"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceHarmonic</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#opls-dihedral"><span class="std std-ref">OPLS dihedral potential</span></a></td>
 <td><a class="reference internal" href="#DihedralForceOplsCosine" title="DihedralForceOplsCosine"><code class="xref py py-class docutils literal"><span class="pre">DihedralForceOplsCosine</span></code></a></td>
 </tr>
 </tbody>
@@ -227,15 +231,17 @@ The dihedrals are specified in <a class="reference internal" href="data-format.h
 <blockquote>
 <div><div class="math">
 \begin{eqnarray*}
-V_{\mathrm{dihedral}}(\varphi)=k\left[ 1-\cos \left( \varphi-\delta \right) \right]
+V_{\mathrm{dihedral}}(\varphi)=k\left[ 1+f\cos \left( \varphi-\delta \right) \right]
 \end{eqnarray*}</div><p>Coefficients:</p>
 <ul class="simple">
 <li><span class="math">\(k\)</span> - multiplicative constant <code class="docutils literal"><span class="pre">k</span></code> (in units of energy)</li>
 <li><span class="math">\(\delta\)</span> - phase shift angle <code class="docutils literal"><span class="pre">delta</span></code> (in radians)</li>
+<li><span class="math">\(f\)</span> - factor <code class="docutils literal"><span class="pre">f</span></code> (unitless)
+- <em>optional</em>: defaults to <cite>-1.0</cite></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.</p>
+<p class="last">The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.</p>
 </div>
 </div></blockquote>
 <dl class="class">
@@ -256,9 +262,59 @@ V_{\mathrm{dihedral}}(\varphi)=k\left[ 1-\cos \left( \varphi-\delta \right) \rig
 <dd><p>specifies the dihedral harmonic force parameters with dihedral type, multiplicative constant, and phase shift angle.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="DihedralForceHarmonic.setCosFactor">
+<code class="descname">setCosFactor</code><span class="sig-paren">(</span><em>float f</em><span class="sig-paren">)</span><a class="headerlink" href="#DihedralForceHarmonic.setCosFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>specifies the dihedral harmonic force parameters with factor.</p>
+</dd></dl>
+
 <p>Example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dihedralforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DihedralForceHarmonic</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
 <span class="n">dihedralforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A-B-B-A&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dihedralforce</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="harmonic-dihedral-improper-potential">
+<span id="harmonic-dihedral-improper"></span><h2>Harmonic dihedral(improper) potential<a class="headerlink" href="#harmonic-dihedral-improper-potential" title="Permalink to this headline">¶</a></h2>
+<p>Description:</p>
+<blockquote>
+<div><div class="math">
+\begin{eqnarray*}
+V_{\mathrm{dihedral}}(\varphi)=k\left( \varphi-\delta \right)^2
+\end{eqnarray*}</div><p>Coefficients:</p>
+<ul class="simple">
+<li><span class="math">\(k\)</span> - potential constant <code class="docutils literal"><span class="pre">k</span></code> (in units of energy/radians^2)</li>
+<li><span class="math">\(\delta\)</span> - phase shift angle <code class="docutils literal"><span class="pre">delta</span></code> (in radians)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.</p>
+</div>
+</div></blockquote>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="descname">DihedralForceHarmonic</code><span class="sig-paren">(</span><em>all_info</em><span class="sig-paren">)</span></dt>
+<dd><p>The constructor of dihedral harmonic interaction object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>all_info</strong> (<a class="reference internal" href="system-information.html#AllInfo" title="AllInfo"><em>AllInfo</em></a>) – The system information.</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt>
+<code class="descname">setParams</code><span class="sig-paren">(</span><em>string name</em>, <em>float k</em>, <em>float delta</em><span class="sig-paren">)</span></dt>
+<dd><p>specifies the dihedral harmonic force parameters with dihedral type, potential constant, and phase shift angle.</p>
+</dd></dl>
+
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dihedralforce</span> <span class="o">=</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DihedralForceHarmonic</span><span class="p">(</span><span class="n">all_info</span><span class="p">)</span>
+<span class="n">dihedralforce</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="s1">&#39;A-B-B-A&#39;</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">galamost</span><span class="o">.</span><span class="n">DihedralForceHarmonic</span><span class="o">.</span><span class="n">Prop</span><span class="o">.</span><span class="n">improper</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dihedralforce</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -279,7 +335,7 @@ V_{\mathrm{dihedral}}(\varphi)=k_{1}+k_{2}\left[ 1+\cos \left( \varphi-\delta \r
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The unit of the angle parameter input in the script should be degree, and the program will convert it into radian.</p>
+<p class="last">The dihedral angles set in script are in the unit of degree, and the program will convert them into radian automatically.</p>
 </div>
 </div></blockquote>
 <dl class="class">
